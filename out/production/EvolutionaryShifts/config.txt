@@ -1,0 +1,7 @@
+in order to configure watchmaker framework
+we need to put in lib folder:
+    1. google-collect-1.0.jar
+    2. uncommons-maths-1.2.1.jar
+    3. watchmaker-framework-0.7.1.jar
+
+on project structure->libraries, add lib folder
