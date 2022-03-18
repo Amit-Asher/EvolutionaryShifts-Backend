@@ -2,5 +2,11 @@ package EvolutionaryShifts;
 
 public class Role
 {
-    public String name;
+    public String m_Name;
+
+    public  Role(String name)
+    {
+        m_Name = name;
+    }
+
 }

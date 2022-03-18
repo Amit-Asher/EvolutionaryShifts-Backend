@@ -1,16 +1,21 @@
-package EvolutionaryShifts;
+package EvolutionaryShifts.Rule;
+
+import EvolutionaryShifts.Arrangement.Arrangement;
+import EvolutionaryShifts.Employee;
+import EvolutionaryShifts.Preference;
+import EvolutionaryShifts.Rule.Rule;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-public class RuleVSEmployees extends Rule{
+public class RuleVSEmployees extends Rule {
 
     ArrayList<Map.Entry<Employee, Employee>> vs;
     // ArrayList<Map.Entry<Employee, Employee>> kind of prop
 
-    public RuleVSEmployees(Rule rule) {
-        super(rule);
-    }
+   // public RuleVSEmployees(Rule rule) {
+     //   super(rule);
+    //}
 
     @Override
     public void setM_Config(Preference preference) {

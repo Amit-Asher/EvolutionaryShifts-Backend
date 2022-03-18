@@ -1,5 +1,11 @@
 package EvolutionaryShifts;
 
+import EvolutionaryShifts.Arrangement.Arrangement;
+import EvolutionaryShifts.Arrangement.ArrangementEvaluator;
+import EvolutionaryShifts.Arrangement.ArrangementFactory;
+import EvolutionaryShifts.Crossovers.ArrangementCrossover;
+import EvolutionaryShifts.Mutations.MutationByDay;
+import EvolutionaryShifts.Rule.Rule;
 import org.uncommons.maths.random.MersenneTwisterRNG;
 import org.uncommons.watchmaker.framework.*;
 import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;

@@ -1,5 +1,6 @@
-package EvolutionaryShifts;
+package EvolutionaryShifts.Mutations;
 
+import EvolutionaryShifts.Arrangement.Arrangement;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 
 import java.util.List;

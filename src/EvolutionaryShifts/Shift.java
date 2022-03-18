@@ -1,15 +1,16 @@
 package EvolutionaryShifts;
 
-public class Shift {
+public class Shift
+{
     protected Employee m_Employee;
-    protected String m_RoleForEmployee;
-    protected RoleBasedSlot m_Slot;
+    protected Role m_Role;
+    protected Slot m_Slot;
 
-    public RoleBasedSlot getSlot() {return m_Slot;}
+    public Slot getSlot() {return m_Slot;}
     public Employee getEmployee() {return m_Employee;}
-    public String getRoleForEmployee() {return m_RoleForEmployee;}
+    public Role getRole() {return m_Role;}
 
-    public void setSlot(RoleBasedSlot slot) {this.m_Slot = slot;}
+    public void setSlot(Slot slot) {this.m_Slot = slot;}
     public void setEmployee(Employee employee) {this.m_Employee = employee;}
-    public void setRoleForEmployee(String roleForEmployee) {this.m_RoleForEmployee = roleForEmployee;}
+    public void setRole(Role role) {this.m_Role = role;}
 }

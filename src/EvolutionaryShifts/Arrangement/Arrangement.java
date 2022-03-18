@@ -1,4 +1,6 @@
-package EvolutionaryShifts;
+package EvolutionaryShifts.Arrangement;
+
+import EvolutionaryShifts.Shift;
 
 import java.util.ArrayList;
 

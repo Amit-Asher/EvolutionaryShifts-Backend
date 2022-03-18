@@ -1,5 +1,6 @@
-package EvolutionaryShifts;
+package EvolutionaryShifts.Arrangement;
 
+import EvolutionaryShifts.Arrangement.Arrangement;
 import org.uncommons.watchmaker.framework.factories.AbstractCandidateFactory;
 
 import java.util.Random;

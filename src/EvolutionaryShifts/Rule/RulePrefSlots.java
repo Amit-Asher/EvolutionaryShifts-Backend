@@ -1,13 +1,15 @@
-package EvolutionaryShifts;
+package EvolutionaryShifts.Rule;
+
+import EvolutionaryShifts.*;
+import EvolutionaryShifts.Arrangement.Arrangement;
+import EvolutionaryShifts.Rule.Rule;
 
 public class RulePrefSlots extends Rule
 {
     protected SlotPreference m_Preferences;
     //Map<Employee, ArrayList<Slot>> kind of prop
 
-    public RulePrefSlots(Rule rule,
-                         SlotPreference employeePreferences) {
-        super(rule);
+    public RulePrefSlots(SlotPreference employeePreferences) {
         m_Preferences = employeePreferences;
     }
 

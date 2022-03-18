@@ -1,5 +1,7 @@
 package EvolutionaryShifts;
 
+import EvolutionaryShifts.Rule.Rule;
+
 import java.util.Map;
 
 public class EmployeePreferences
@@ -8,7 +10,7 @@ public class EmployeePreferences
     //protected Employee employee;
 
     protected Map<Rule, Preference> preferences;
-
+                //String//
 
 
    // ArrayList<Preference> pref;

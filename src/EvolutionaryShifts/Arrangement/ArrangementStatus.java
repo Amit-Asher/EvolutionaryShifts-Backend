@@ -1,4 +1,4 @@
-package EvolutionaryShifts;
+package EvolutionaryShifts.Arrangement;
 
 public enum ArrangementStatus
 {
@@ -6,5 +6,5 @@ public enum ArrangementStatus
     WAIT_EMP_REQ,//
     SOLVING,//
     WAIT_EMP_APPROVAL,//
-
+    FINISH
 }

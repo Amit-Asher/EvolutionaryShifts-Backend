@@ -1,5 +1,6 @@
-package EvolutionaryShifts;
+package EvolutionaryShifts.Arrangement;
 
+import EvolutionaryShifts.Rule.Rule;
 import org.uncommons.watchmaker.framework.FitnessEvaluator;
 
 import java.util.List;
