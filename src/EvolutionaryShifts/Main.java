@@ -46,11 +46,13 @@ public class Main {
         EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<>(operators);
         EvolutionEngine<Arrangement> engine = null;
         try {
-            engine = new GenerationalEvolutionEngine<>(factory,
+            engine = new GenerationalEvolutionEngine<>(
+                    factory,
                     pipeline,
                     new ArrangementEvaluator(rule2Weight),
                     new RouletteWheelSelection(),
-                    new MersenneTwisterRNG());
+                    new MersenneTwisterRNG()
+            );
         } catch (Exception e) {
             e.printStackTrace();
         }

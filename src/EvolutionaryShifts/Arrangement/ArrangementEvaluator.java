@@ -21,18 +21,21 @@ public class ArrangementEvaluator implements FitnessEvaluator<Arrangement>
     }
 
     @Override
-    public double getFitness(Arrangement arrangeShifts,
+    public double getFitness(Arrangement arrangement,
                              List<? extends Arrangement> list)
     {
         double fitness = 0;
-        for (Rule rule:m_Rule2Weight.keySet())
+        for (Rule rule : m_Rule2Weight.keySet())
         {
-            fitness += rule.Execute(arrangeShifts) * m_Rule2Weight.get(rule);
+            fitness += rule.Execute(arrangement) * m_Rule2Weight.get(rule);
         }
 
         return fitness;
     }
 
     @Override
-    public boolean isNatural() { return true; }//100 == best fitness
+    public boolean isNatural() {
+        //100 == best fitness
+        return true;
+    }
 }

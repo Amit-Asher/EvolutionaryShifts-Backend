@@ -15,13 +15,10 @@ public class BusinessLogic
         company.getArrangementManager().setCurrArrangementProp(arrangementProperties);
     }
 
-    public void setEmployeePreference(Employee employee,
-                                 EmployeePreferences employeePreferences,
-                                 Company company)
+    public void setEmployeePreference(EmployeePreferences employeePreferences, Company company)
     {
         try {
-            company.getArrangementManager().setEmployeePreference(employee,
-                    employeePreferences);
+            company.getArrangementManager().updateEmployeePreference(employeePreferences);
         }
         catch (Exception exception){
             throw exception;

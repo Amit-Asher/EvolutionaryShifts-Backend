@@ -1,4 +1,4 @@
-package EvolutionaryShifts;
+package EvolutionaryShifts.Rule;
 
 public abstract class Preference
 {

@@ -1,11 +1,22 @@
 package EvolutionaryShifts.Arrangement;
 
-import EvolutionaryShifts.AlgorithmConfig;
-import EvolutionaryShifts.Employee;
-import EvolutionaryShifts.EmployeePreferences;
+import EvolutionaryShifts.*;
+import EvolutionaryShifts.Crossovers.ArrangementCrossover;
+import EvolutionaryShifts.Mutations.MutationByDay;
+import EvolutionaryShifts.Rule.Preference;
+import EvolutionaryShifts.Rule.Rule;
+import EvolutionaryShifts.Rule.RuleSlots.RuleSlots;
+import EvolutionaryShifts.Rule.RuleSlots.RuleSlotsPreference;
+import org.uncommons.maths.random.MersenneTwisterRNG;
 import org.uncommons.watchmaker.framework.EvolutionEngine;
+import org.uncommons.watchmaker.framework.EvolutionaryOperator;
+import org.uncommons.watchmaker.framework.GenerationalEvolutionEngine;
+import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
+import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
+import org.uncommons.watchmaker.framework.termination.TargetFitness;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class ArrangementManager
@@ -13,27 +24,24 @@ public class ArrangementManager
     protected ArrangementProperties m_CurrArrangementProp;
     protected ArrangementStatus m_CurrArrangementStatus;
     protected EvolutionEngine<Arrangement> engine;
-    protected Map<Employee, EmployeePreferences> m_Employee2Pref;
-
-    protected ArrayList<EmployeePreferences> m_EmployeePreferences;
-
-    public void addEmployeePreference(EmployeePreferences employeePreference)
-    {
-        m_EmployeePreferences.add(employeePreference);
-    }
 
     public ArrangementStatus getCurrArrangementStatus() {
         return m_CurrArrangementStatus;
     }
 
-    public void setEmployeePreference(Employee employee,
-                                      EmployeePreferences employeePreference)
+    public void updateEmployeePreference(EmployeePreferences employeePreference)
     {
-        if(m_CurrArrangementStatus != ArrangementStatus.WAIT_EMP_REQ)
+        if (m_CurrArrangementStatus != ArrangementStatus.WAIT_EMP_REQ)
             throw new RuntimeException("Failed to setEmployeePreference\n Current status: " +
                     m_CurrArrangementStatus + " expected: WAIT_EMP_REQ");
 
-        m_Employee2Pref.put(employee, employeePreference);
+
+        // add employees preferences to each rule configuration
+        employeePreference.getPreferences().forEach((ruleNameInput, preferenceInput) -> {
+            m_CurrArrangementProp.m_rule2weight.keySet().stream().filter(rule -> {
+                return rule.getM_Name().equals(ruleNameInput);
+            }).forEach(rule -> rule.addPreference(preferenceInput));
+        });
     }
 
     public void setCurrArrangementProp(ArrangementProperties m_CurrArrangementProp) {
@@ -53,8 +61,32 @@ public class ArrangementManager
         this.m_CurrArrangementStatus = m_CurrArrangementStatus;
     }
 
-    public void runAlgorithm(AlgorithmConfig algorithmConfig)
+    // todo: wrap with thread
+    public Arrangement runAlgorithm(AlgorithmConfig algorithmConfig)
     {
+        Map<Rule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
+        ArrangementFactory factory = new ArrangementFactory();
+        List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
+        operators.add(new MutationByDay(0.3));
+        operators.add(new ArrangementCrossover(2));
+        EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<>(operators);
+        EvolutionEngine<Arrangement> engine = null;
+        try {
+            engine = new GenerationalEvolutionEngine<>(
+                    factory,
+                    pipeline,
+                    new ArrangementEvaluator(rule2Weight),
+                    new RouletteWheelSelection(),
+                    new MersenneTwisterRNG()
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return engine.evolve(100, // 100 individuals in the population.
+                5, // 5% elitism.
+                new TargetFitness(0, true));
+
     /*
     * todo:
     *

@@ -2,8 +2,7 @@ package EvolutionaryShifts.Rule;
 
 import EvolutionaryShifts.Arrangement.Arrangement;
 import EvolutionaryShifts.Employee;
-import EvolutionaryShifts.Preference;
-import EvolutionaryShifts.Rule.Rule;
+import EvolutionaryShifts.EmployeePreferences;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -17,8 +16,9 @@ public class RuleVSEmployees extends Rule {
      //   super(rule);
     //}
 
+
     @Override
-    public void setM_Config(Preference preference) {
+    public void setPreference(Map<Employee, EmployeePreferences> employeePreferencesMap) {
 
     }
 
