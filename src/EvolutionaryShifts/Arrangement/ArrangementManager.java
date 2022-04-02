@@ -3,10 +3,8 @@ package EvolutionaryShifts.Arrangement;
 import EvolutionaryShifts.*;
 import EvolutionaryShifts.Crossovers.ArrangementCrossover;
 import EvolutionaryShifts.Mutations.MutationByDay;
-import EvolutionaryShifts.Rule.Preference;
-import EvolutionaryShifts.Rule.Rule;
-import EvolutionaryShifts.Rule.RuleSlots.RuleSlots;
-import EvolutionaryShifts.Rule.RuleSlots.RuleSlotsPreference;
+import EvolutionaryShifts.Rule.IRule;
+import com.sun.deploy.security.ruleset.Rule;
 import org.uncommons.maths.random.MersenneTwisterRNG;
 import org.uncommons.watchmaker.framework.EvolutionEngine;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
@@ -38,7 +36,7 @@ public class ArrangementManager
         // add employees preferences to each rule configuration
         employeePreference.getPreferences().forEach((ruleNameInput, preferenceInput) -> {
             m_CurrArrangementProp.m_rule2weight.keySet().stream().filter(rule -> {
-                return rule.getM_Name().equals(ruleNameInput);
+                return rule.getName().equals(ruleNameInput);
             }).forEach(rule -> rule.addPreference(preferenceInput));
         });
     }
@@ -63,7 +61,7 @@ public class ArrangementManager
     // todo: wrap with thread
     public Arrangement startAlgorithm(AlgorithmConfig algorithmConfig)
     {
-        Map<Rule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
+        Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
         ArrangementFactory factory = new ArrangementFactory();
         List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
         operators.add(new MutationByDay(0.3));
