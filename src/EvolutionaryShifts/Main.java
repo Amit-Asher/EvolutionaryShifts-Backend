@@ -5,7 +5,7 @@ import EvolutionaryShifts.Arrangement.ArrangementEvaluator;
 import EvolutionaryShifts.Arrangement.ArrangementFactory;
 import EvolutionaryShifts.Crossovers.ArrangementCrossover;
 import EvolutionaryShifts.Mutations.MutationByDay;
-import EvolutionaryShifts.Rule.Rule;
+import EvolutionaryShifts.Rule.IRule;
 import org.uncommons.maths.random.MersenneTwisterRNG;
 import org.uncommons.watchmaker.framework.*;
 import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
@@ -38,7 +38,7 @@ public class Main {
         //list of rules
         //data for the work place
 
-        Map<Rule, Double> rule2Weight = new HashMap<Rule, Double>();
+        Map<IRule, Double> rule2Weight = new HashMap<IRule, Double>();
         ArrangementFactory factory = new ArrangementFactory();
         List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
         operators.add(new MutationByDay(0.3));

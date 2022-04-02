@@ -1,16 +1,14 @@
 package EvolutionaryShifts;
 
-import EvolutionaryShifts.Rule.Preference;
-import EvolutionaryShifts.Rule.Rule;
-
 import java.util.Map;
 
-public class EmployeePreferences
+public class EmployeePreferences<T>
 {
-    protected Map<String, Preference> preferences;
+    //            ruleName
+    protected Map<String, T> preferences;
     protected Employee employee;
 
-    public Map<String, Preference> getPreferences() {
+    public Map<String, T> getPreferences() {
         return preferences;
     }
 }

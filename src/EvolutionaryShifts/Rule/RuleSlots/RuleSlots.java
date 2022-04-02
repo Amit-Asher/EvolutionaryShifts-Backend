@@ -2,27 +2,27 @@ package EvolutionaryShifts.Rule.RuleSlots;
 
 import EvolutionaryShifts.*;
 import EvolutionaryShifts.Arrangement.Arrangement;
-import EvolutionaryShifts.Rule.Preference;
-import EvolutionaryShifts.Rule.Rule;
+import EvolutionaryShifts.Rule.IRule;
+import EvolutionaryShifts.Rule.RuleConfig;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-public class RuleSlots extends Rule
+public class RuleSlots  implements IRule<RuleSlotsPreference>
 {
-    protected ArrayList<RuleSlotsPreference> preferences = new ArrayList<>();
+    //protected ArrayList<RuleSlotsPreference> preferences = new ArrayList<>();
+    private final RuleConfig<RuleSlotsPreference> config = new RuleConfig<>();
+
 
     @Override
-    public void addPreference(Preference pref) {
-        // todo: ask Aviad for best practices of polymorphism (maybe generics instead of Preference marker?)
-        preferences.add((RuleSlotsPreference) pref);
+    public void addPreference(RuleSlotsPreference preference) {
+        config.addPreferences(preference);
     }
 
     @Override
-    public double Execute(Arrangement arrangement)
-    {
+    public String getName() {
+        return "RuleSlots";
+    }
+
+    @Override
+    public double evaluate(Arrangement arrangement) {
         // todo: try to improve accuracy
 
         double goodShifts = 0;
@@ -31,7 +31,7 @@ public class RuleSlots extends Rule
         {
             Employee employee = shift.getEmployee();
             RuleSlotsPreference employeesPref = null;
-            for (RuleSlotsPreference pref : preferences) {
+            for (RuleSlotsPreference pref :  config.getPreferences()) {
                 if (pref.employee.equals(employee)) {
                     employeesPref = pref;
                 }

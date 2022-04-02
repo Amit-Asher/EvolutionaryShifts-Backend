@@ -3,7 +3,7 @@ package EvolutionaryShifts.Arrangement;
 import EvolutionaryShifts.Day;
 import EvolutionaryShifts.Employee;
 import EvolutionaryShifts.ReqSlot;
-import EvolutionaryShifts.Rule.Rule;
+import EvolutionaryShifts.Rule.IRule;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -13,10 +13,14 @@ public class ArrangementProperties
 
     protected ArrayList<ReqSlot> m_Slots;
     protected ArrayList<Employee> m_ActiveEmployees;
-    protected Map<Rule, Double> m_rule2weight;
+    protected Map<IRule, Double> m_rule2weight;
     protected ArrayList<Day> days;
 
-    public ArrangementProperties(ArrayList<ReqSlot> m_Slots, ArrayList<Employee> m_ActiveEmployees, Map<Rule, Double> m_rule2weight, ArrayList<Day> days) {
+    public ArrangementProperties(ArrayList<ReqSlot> m_Slots,
+                                 ArrayList<Employee> m_ActiveEmployees,
+                                 Map<IRule, Double> m_rule2weight,
+                                 ArrayList<Day> days)
+    {
         this.m_Slots = m_Slots;
         this.m_ActiveEmployees = m_ActiveEmployees;
         this.m_rule2weight = m_rule2weight;
@@ -39,7 +43,7 @@ public class ArrangementProperties
         this.m_ActiveEmployees = m_ActiveEmployees;
     }
 
-    public void setM_rule2weight(Map<Rule, Double> m_rule2weight) {
+    public void setM_rule2weight(Map<IRule, Double> m_rule2weight) {
         this.m_rule2weight = m_rule2weight;
     }
 
@@ -47,7 +51,7 @@ public class ArrangementProperties
         this.days = days;
     }
 
-    public Map<Rule, Double> getM_rule2weight() {
+    public Map<IRule, Double> getM_rule2weight() {
         return m_rule2weight;
     }
 

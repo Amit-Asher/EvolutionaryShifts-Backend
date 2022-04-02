@@ -1,6 +1,6 @@
 package EvolutionaryShifts.Arrangement;
 
-import EvolutionaryShifts.Rule.Rule;
+import EvolutionaryShifts.Rule.IRule;
 import org.uncommons.watchmaker.framework.FitnessEvaluator;
 
 import java.util.List;
@@ -8,9 +8,9 @@ import java.util.Map;
 
 public class ArrangementEvaluator implements FitnessEvaluator<Arrangement>
 {
-    protected Map<Rule, Double> m_Rule2Weight;
+    protected Map<IRule, Double> m_Rule2Weight;
 
-    public ArrangementEvaluator(Map<Rule, Double> rule2Weight) throws Exception
+    public ArrangementEvaluator(Map<IRule, Double> rule2Weight) throws Exception
     {
         if (rule2Weight != null && !rule2Weight.isEmpty()) {
             if(rule2Weight.values().stream().mapToDouble(d -> d).sum() != 1)
@@ -25,9 +25,9 @@ public class ArrangementEvaluator implements FitnessEvaluator<Arrangement>
                              List<? extends Arrangement> list)
     {
         double fitness = 0;
-        for (Rule rule : m_Rule2Weight.keySet())
+        for (IRule rule : m_Rule2Weight.keySet())
         {
-            fitness += rule.Execute(arrangement) * m_Rule2Weight.get(rule);
+            fitness += rule.evaluate(arrangement) * m_Rule2Weight.get(rule);
         }
 
         return fitness;
