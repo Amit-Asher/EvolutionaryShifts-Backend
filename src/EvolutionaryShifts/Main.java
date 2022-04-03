@@ -78,9 +78,7 @@ public class Main {
     {
         public void populationUpdate(PopulationData<? extends Arrangement> data)
         {
-            System.out.printf("Generation %d: %s\n",
-                    data.getGenerationNumber(),
-                    data.getBestCandidate());
+            System.out.printf("Generation %d: %s\n", data.getGenerationNumber(), data.getBestCandidate());
         }
     }
 }

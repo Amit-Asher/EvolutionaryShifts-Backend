@@ -35,7 +35,6 @@ public class ArrangementManager
             throw new RuntimeException("Failed to setEmployeePreference\n Current status: " +
                     m_CurrArrangementStatus + " expected: WAIT_EMP_REQ");
 
-
         // add employees preferences to each rule configuration
         employeePreference.getPreferences().forEach((ruleNameInput, preferenceInput) -> {
             m_CurrArrangementProp.m_rule2weight.keySet().stream().filter(rule -> {
@@ -51,7 +50,7 @@ public class ArrangementManager
 
     public void BlockEmployeesToSetPref()
     {
-        if(this.m_CurrArrangementStatus != ArrangementStatus.WAIT_EMP_REQ)
+        if (this.m_CurrArrangementStatus != ArrangementStatus.WAIT_EMP_REQ)
             return;
 
         this.m_CurrArrangementStatus = ArrangementStatus.SOLVING;
@@ -62,7 +61,7 @@ public class ArrangementManager
     }
 
     // todo: wrap with thread
-    public Arrangement runAlgorithm(AlgorithmConfig algorithmConfig)
+    public Arrangement startAlgorithm(AlgorithmConfig algorithmConfig)
     {
         Map<Rule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
         ArrangementFactory factory = new ArrangementFactory();
