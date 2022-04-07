@@ -7,6 +7,7 @@ import java.util.Set;
 
 public class BusinessLogic {
 //    protected Map<String, Company> m_ID2Company;
+    // sanity check for git
 
     public static Company company = new Company(); // for testing
 
