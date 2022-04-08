@@ -5,46 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-logic/business-logic.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/database.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/es-backend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/evolution.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server/web-server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EvolutionaryShifts.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/AlgorithmConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/AlgorithmConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementEvaluator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/ArrangementCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/ArrangementCrossover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Employee/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Employee/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Employee/EmployeePreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Employee/EmployeePreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Range.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Shift.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Shift.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/ReqSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/ReqSlot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/IRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/IRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlots.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlotsPreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlotsPreference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +17,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/business-logic/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
@@ -80,13 +41,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java\BusinessLogic" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\evolution" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\evolution\src\main\java" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java" />
@@ -104,6 +66,8 @@
       <workItem from="1649397908860" duration="21000" />
       <workItem from="1649397980933" duration="524000" />
       <workItem from="1649398571743" duration="1099000" />
+      <workItem from="1649400858322" duration="45000" />
+      <workItem from="1649400930175" duration="96000" />
     </task>
     <servers />
   </component>
@@ -120,6 +84,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
