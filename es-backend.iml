@@ -11,9 +11,5 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
-    <orderEntry type="module" module-name="business-logic" />
-    <orderEntry type="module" module-name="database" />
-    <orderEntry type="module" module-name="evolution" />
-    <orderEntry type="module" module-name="web-server" />
   </component>
 </module>

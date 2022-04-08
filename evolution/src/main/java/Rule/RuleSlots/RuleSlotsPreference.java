@@ -7,6 +7,14 @@ import java.util.ArrayList;
 
 public class RuleSlotsPreference
 {
-    public ArrayList<Slot> slots;
-    public Employee employee;
+    private ArrayList<Slot> slots;
+    private Employee employee;
+
+    public ArrayList<Slot> getSlots() {
+        return slots;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
 }
