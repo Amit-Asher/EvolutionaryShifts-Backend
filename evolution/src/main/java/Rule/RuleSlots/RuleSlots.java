@@ -10,7 +10,7 @@ import Rule.RuleConfig;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuleSlots  implements IRule<RuleSlotsPreference>
+public class RuleSlots implements IRule<RuleSlotsPreference>
 {
     private final RuleConfig<RuleSlotsPreference> config = new RuleConfig<>();
 

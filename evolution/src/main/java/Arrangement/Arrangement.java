@@ -1,5 +1,7 @@
 package Arrangement;
 
+import Model.Day;
+import Model.Employee.Employee;
 import Model.Shift;
 
 import java.util.ArrayList;
@@ -10,6 +12,24 @@ public class Arrangement
 
     public ArrayList<Shift> getShifts() {
         return m_Shifts;
+    }
+
+    public ArrayList<Day> getDaysOfWorkForEmployee(Employee employee)
+    {
+        ArrayList<Day> daysOfWork = new ArrayList<>();
+        ArrayList<Boolean> days = new ArrayList<>(7);
+
+        for(int i = 0;i < 7;i++)
+            days.add(false);
+
+        for(Shift shift : m_Shifts)
+            days.set(shift.getSlot().getDay().ordinal(), true);
+
+        for(int i = 0;i < 7;i++)
+            if(days.get(i))
+                daysOfWork.add(Day.getDay(i + 1));
+
+        return daysOfWork;
     }
 
     /* public Arrangement(ArrayList<Map.Entry<Integer, ArrayList<Integer>>> daysOfWork2Levels, ArrayList<ArrayList<Shift>> arrangement)

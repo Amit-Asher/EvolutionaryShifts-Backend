@@ -6,7 +6,19 @@ import java.time.LocalDateTime;
 
 public class Slot
 {
-    public Day day;
-    public LocalDateTime startTime;
-    public LocalDateTime endTime;
+    private Day day;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+
+    public Day getDay() {
+        return day;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
 }
