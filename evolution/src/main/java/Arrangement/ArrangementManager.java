@@ -1,14 +1,14 @@
 package Arrangement;
 
 import Algorithm.AlgorithmConfig;
+import Algorithm.BestArrangement;
+import Algorithm.EvolutionStatus;
 import Crossovers.ArrangementCrossover;
 import Model.Employee.EmployeePreferences;
 import Mutations.MutationByDay;
 import Rule.IRule;
 import org.uncommons.maths.random.MersenneTwisterRNG;
-import org.uncommons.watchmaker.framework.EvolutionEngine;
-import org.uncommons.watchmaker.framework.EvolutionaryOperator;
-import org.uncommons.watchmaker.framework.GenerationalEvolutionEngine;
+import org.uncommons.watchmaker.framework.*;
 import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
 import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
 import org.uncommons.watchmaker.framework.termination.TargetFitness;
@@ -22,6 +22,7 @@ public class ArrangementManager
     protected ArrangementProperties m_CurrArrangementProp;
     protected ArrangementStatus m_CurrArrangementStatus;
     protected EvolutionEngine<Arrangement> engine;
+    protected BestArrangement bestArrangement;
 
     public ArrangementStatus getCurrArrangementStatus() {
         return m_CurrArrangementStatus;
@@ -61,6 +62,18 @@ public class ArrangementManager
     // todo: wrap with thread
     public Arrangement startAlgorithm(AlgorithmConfig algorithmConfig)
     {
+        /*
+         * todo:
+         *
+         *
+         *
+         * create EvolutionThread extends Thread that
+         * implements all the logic off creating new engine
+         * and run evolve based on algorithmConfig.
+         *
+         *
+         *  */
+
         Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
         ArrangementFactory factory = new ArrangementFactory();
         List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
@@ -79,22 +92,28 @@ public class ArrangementManager
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        engine.addEvolutionObserver(populationData -> {
+            bestArrangement = new BestArrangement(
+                    populationData.getBestCandidate(),
+                    populationData.getGenerationNumber(),
+                    populationData.getBestCandidateFitness());
+        });
         return engine.evolve(100, // 100 individuals in the population.
                 5, // 5% elitism.
                 new TargetFitness(0, true));
-
-    /*
-    * todo:
-    *
-    *
-    *
-    * create EvolutionThread extends Thread that
-    * implements all the logic off creating new engine
-    * and run evolve based on algorithmConfig.
-    *
-    *
-    *  */
     }
 
+    public BestArrangement getBestArrangement() {
+        return bestArrangement;
+    }
+
+    public void publishArrangement() {
+        if (!m_CurrArrangementStatus.equals(ArrangementStatus.SOLVING)) {
+            return;
+        }
+
+        // todo: if algorithm is running then block the operation and wait for terminate/end
+
+        m_CurrArrangementStatus = ArrangementStatus.WAIT_EMP_APPROVAL;
+    }
 }

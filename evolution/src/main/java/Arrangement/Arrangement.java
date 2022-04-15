@@ -10,6 +10,23 @@ public class Arrangement
 {
     protected ArrayList<Shift> m_Shifts;
 
+    public Arrangement() {
+        this.m_Shifts = new ArrayList<>();
+    }
+
+    public Arrangement(Arrangement arrangement) {
+        /* DEEP CLONE */
+        ArrayList<Shift> shifts = arrangement.getShifts();
+        this.m_Shifts = new ArrayList<>();
+        for (Shift shift : shifts) {
+            this.m_Shifts.add(new Shift(
+                    shift.getEmployee(),
+                    shift.getRole(),
+                    shift.getSlot()
+            ));
+        }
+    }
+
     public ArrayList<Shift> getShifts() {
         return m_Shifts;
     }

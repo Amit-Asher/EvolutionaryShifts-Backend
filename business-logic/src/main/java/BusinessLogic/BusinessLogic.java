@@ -110,13 +110,17 @@ public class BusinessLogic {
      *
      * */
 
-    public EvolutionStatus getSolution() {
-        // todo: impl
-        return null;
+    public EvolutionStatus getSolution(Company company) {
+        // todo: support getHistory
+        return new EvolutionStatus(
+                company.getArrangementManager().getBestArrangement(),
+                false // todo: check if thread finished
+        );
     }
 
-    public void publishArrangement() {
-        // todo: impl
+    public void publishArrangement(Company company) {
+        // manager operation
+        company.getArrangementManager().publishArrangement();
     }
 
     /*************** WAIT EMP APPROVAL *****************/
