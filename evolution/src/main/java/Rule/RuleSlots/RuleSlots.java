@@ -58,24 +58,24 @@ public class RuleSlots implements IRule<RuleSlotsPreference>
 
         //new solution
         //Assumed that *all* employees participate in this Rule *once*
-        double finalGrade = 0.0, gradeForEmployee = 0.0;
-        List<RuleSlotsPreference> Preferences = config.getPreferences();
-        ArrayList<Shift> shifts = arrangement.getShifts();
+        //return how many shifts from arrangement are valid(shift in emp-pref)
+        double goodShifts = 0.0;
+        List<RuleSlotsPreference> preferences = config.getPreferences();
+        ArrayList<Slot> employeeValidSlots;
 
-        for (RuleSlotsPreference pref : Preferences) {
-            for (Shift shift : shifts) {
-                for (Slot slot : pref.getSlots()) {
-                    if (slot.equals(shift.getSlot()))
-                        gradeForEmployee++;
+        for (RuleSlotsPreference pref : preferences) {
+            employeeValidSlots = pref.getSlots();
+            for (Slot employeeValidSlot : employeeValidSlots) {
+                for (Shift shift : arrangement.getShifts()) {
+                    if (employeeValidSlot.equals(shift.getSlot()))
+                        goodShifts++;
                 }
             }
-
-            gradeForEmployee = gradeForEmployee / shifts.size();
-            gradeForEmployee = gradeForEmployee * 100;
-            gradeForEmployee = gradeForEmployee / Preferences.size();
-            finalGrade += gradeForEmployee;
         }
 
-        return finalGrade;
+        goodShifts = goodShifts / arrangement.getShifts().size();
+        goodShifts = goodShifts * 100;
+
+        return goodShifts;
     }
 }
