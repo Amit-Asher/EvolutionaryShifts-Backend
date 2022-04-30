@@ -72,7 +72,7 @@ public class ArrangementManager
     public void setCurrArrangementStatus(ArrangementStatus m_CurrArrangementStatus) {
         this.m_CurrArrangementStatus = m_CurrArrangementStatus;
     }
-
+ // main comment
     // todo: wrap with thread
     public Arrangement startAlgorithm(AlgorithmConfig algorithmConfig)
     {
