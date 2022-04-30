@@ -8,14 +8,13 @@ import Model.Company;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Role;
+import Arrangement.ArrangementStatus;
 
 import java.util.Set;
 
 public class BusinessLogic {
 //    protected Map<String, Company> m_ID2Company;
     // sanity check for git
-
-    public static Company company = new Company(); // for testing
 
     private static BusinessLogic instance = null;
 
@@ -32,8 +31,8 @@ public class BusinessLogic {
 
     /************** SET PROPS **************/
 
-    public void addEmployee(String employeeName,
-                            Company company,
+    public void addEmployee(Company company,
+                            String employeeName,
                             String phoneNumber,
                             Set<Role> fitRoles)
     {
@@ -43,38 +42,42 @@ public class BusinessLogic {
 
         company.addEmployee(employee);
     }
-    public void removeEmployee(String employeeID, Company company)
+    public void removeEmployee(Company company, String employeeID)
     {
         company.removeEmployee(employeeID);
     }
-    public void setAsManager(String employeeID, Company company)
+    public void setAsManager(Company company, String employeeID)
     {
         company.setAsManager(employeeID);
     }
-    public void removeManager(String employeeID, Company company)
+    public void removeManager(Company company, String employeeID)
     {
         company.removeManager(employeeID);
     }
 
-    public void addNewRole(String roleName, Company company)
+    public void addNewRole(Company company, String roleName)
     {
         Role role = new Role(roleName);
         company.addRole(role);
     }
-    public void removeRole(String roleName, Company company)
+    public void removeRole(Company company, String roleName)
     {
         Role role = new Role(roleName);
         company.removeRole(role);
     }
 
-    public void setArrangementProperties(ArrangementProperties arrangementProperties,
-                                         Company company) {
+    public void startNewArrangement(Company company) {
+        company.startNewArrangement();
+    }
+
+    public void setArrangementProperties(Company company,
+                                         ArrangementProperties arrangementProperties) {
         company.getArrangementManager().setCurrArrangementProp(arrangementProperties);
     }
 
     /*************** WAIT EMP REQ ***************/
 
-    public void setEmployeePreference(EmployeePreferences employeePreferences, Company company) {
+    public void setEmployeePreference(Company company, EmployeePreferences employeePreferences) {
         try {
             company.getArrangementManager().updateEmployeePreference(employeePreferences);
         } catch (Exception exception) {
@@ -90,7 +93,6 @@ public class BusinessLogic {
     /**************** SOLVING *******************/
 
     public void startAlgorithm(Company company, AlgorithmConfig algorithmConfig) {
-        blockEmployeesToSetPref(company);
         company.getArrangementManager().startAlgorithm(algorithmConfig);
     }
 
@@ -113,7 +115,7 @@ public class BusinessLogic {
     public EvolutionStatus getSolution(Company company) {
         // todo: support getHistory
         return new EvolutionStatus(
-                company.getArrangementManager().getBestArrangement(),
+                company.getArrangementManager().getCurArrangementSolution(),
                 false // todo: check if thread finished
         );
     }
@@ -125,27 +127,32 @@ public class BusinessLogic {
 
     /*************** WAIT EMP APPROVAL *****************/
 
-    public void approveArrangement(Employee employee) {
-        // todo: impl
+    // declineArrangement
+    public void createTicket(Company company,
+                                   Employee employee,
+                                   String employeeMessage) {
+        company.getArrangementManager().createTicket(
+                employee,
+                employeeMessage
+        );
     }
 
-    public void declineArrangement(String employeeMessage) {
-        // todo: impl
+    public void closeTicket(Company company, String ticketId) {
+        company.getArrangementManager().closeTicket(ticketId);
     }
 
     // todo: optional- set employee preferences
 
-    public void setArrangement(Arrangement arrangement) {
+    public void setArrangement(Company company, Arrangement arrangement) {
+        // manager method to set new arrangement after review tickets
         // todo: impl
+        company.getArrangementManager().setArrangement(arrangement);
+
     }
 
-    public void finishArrangement(String arrangementName) {
-        // todo: impl
+    public void finishArrangement(Company company) {
+        company.getArrangementManager().finishArrangement();
     }
 
     /********************** FINISH ********************/
-
-    public void reopenArrangement(String arrangementId) {
-        // todo: impl
-    }
 }

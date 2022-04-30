@@ -6,8 +6,8 @@ import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 import java.util.List;
 import java.util.Random;
 
-public class ArrangementCrossover extends AbstractCrossover<Arrangement> {
-    public ArrangementCrossover(int crossoverPoints) {
+public class BasicCrossover extends AbstractCrossover<Arrangement> {
+    public BasicCrossover(int crossoverPoints) {
         super(crossoverPoints);
     }
 

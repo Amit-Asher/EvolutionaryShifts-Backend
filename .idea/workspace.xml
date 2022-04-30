@@ -5,16 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="adding another solution for RuleSlots">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFight/RuleFight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFight/RuleFightPreference.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/ArrangementEvoSolution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/ArrangementSolution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Ticket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/TicketStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Day.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlots.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlotsPreference.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlotsPreference.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/business-logic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/business-logic.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/evolution.iml" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/evolution.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/BestArrangement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/ArrangementCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicCrossover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +32,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -31,22 +40,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/AlgorithmConfig.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/web-server/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business-logic/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/database/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/evolution/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/operators/EvolutionPipeline.class" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/database/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/EvolutionaryOperator.class" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/AlgorithmConfig.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business-logic/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/web-server/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="27VGZkyXDQuJ59Eyr2dmKCxR3Jq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -129,6 +141,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

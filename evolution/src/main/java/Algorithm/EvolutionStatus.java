@@ -1,11 +1,12 @@
 package Algorithm;
 
 public class EvolutionStatus {
-    public BestArrangement bestArrangement;
+    public ArrangementEvoSolution arrangementSolution;
     public boolean isFinished;
 
-    public EvolutionStatus(BestArrangement bestArrangement, boolean isFinished) {
-        this.bestArrangement = bestArrangement;
+    public EvolutionStatus(ArrangementSolution arrangementSolution, boolean isFinished) {
+
+        this.arrangementSolution = (ArrangementEvoSolution) arrangementSolution;
         this.isFinished = isFinished;
     }
 }

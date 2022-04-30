@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class MutationByDay implements EvolutionaryOperator<Arrangement> {
 
-    protected double m_Probability;
+    private double m_Probability;
 
     public MutationByDay(double probability)
     {
