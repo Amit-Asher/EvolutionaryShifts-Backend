@@ -47,7 +47,7 @@ public class ArrangementManager
             }).forEach(rule -> rule.addPreference(preferenceInput));
         });
     }
-
+ // comment
     public void setCurrArrangementProp(ArrangementProperties m_CurrArrangementProp) {
         this.m_CurrArrangementProp = m_CurrArrangementProp;
         this.m_CurrArrangementStatus = ArrangementStatus.WAIT_EMP_REQ;
