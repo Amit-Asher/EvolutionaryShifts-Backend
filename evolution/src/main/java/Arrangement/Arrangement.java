@@ -49,6 +49,21 @@ public class Arrangement
         return daysOfWork;
     }
 
+    public ArrayList<Shift> getShiftsByDay(Day day)
+    {
+        ArrayList<Shift> shifts = new ArrayList<>();
+
+        for(int i=0;i < this.m_Shifts.size();i++)
+        {
+            if(this.m_Shifts.get(i).getSlot().getDay().equals(day))
+            {
+                shifts.add(this.m_Shifts.get(i));
+            }
+        }
+
+        return shifts;
+    }
+
     /* public Arrangement(ArrayList<Map.Entry<Integer, ArrayList<Integer>>> daysOfWork2Levels, ArrayList<ArrayList<Shift>> arrangement)
     {
         m_DaysOfWork2Levels = daysOfWork2Levels;

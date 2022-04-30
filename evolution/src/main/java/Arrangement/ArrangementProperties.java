@@ -14,7 +14,7 @@ public class ArrangementProperties
     protected ArrayList<ReqSlot> m_Slots;
     protected ArrayList<Employee> m_ActiveEmployees;
     protected Map<IRule, Double> m_rule2weight;
-    protected ArrayList<Day> days;
+    protected ArrayList<Day> days; //why not Set??
 
     public ArrangementProperties(ArrayList<ReqSlot> m_Slots,
                                  ArrayList<Employee> m_ActiveEmployees,

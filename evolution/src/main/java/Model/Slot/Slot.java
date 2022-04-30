@@ -21,4 +21,8 @@ public class Slot
     public LocalDateTime getStartTime() {
         return startTime;
     }
+
+    public void setDay(Day day) {
+        this.day = day;
+    }
 }
