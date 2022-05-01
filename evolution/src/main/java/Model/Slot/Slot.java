@@ -10,6 +10,12 @@ public class Slot
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
+    public Slot(Slot slot) {
+        this.day = slot.getDay();
+        this.startTime = slot.startTime;
+        this.endTime = slot.endTime;
+    }
+
     public Day getDay() {
         return day;
     }

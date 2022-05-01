@@ -27,6 +27,11 @@ public class Arrangement
         }
     }
 
+    public void addShift(Shift shift)
+    {
+        m_Shifts.add(shift);
+    }
+
     public ArrayList<Shift> getShifts() {
         return m_Shifts;
     }
