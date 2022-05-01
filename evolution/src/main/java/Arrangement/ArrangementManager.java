@@ -53,6 +53,10 @@ public class ArrangementManager
         this.m_CurrArrangementStatus = ArrangementStatus.WAIT_EMP_REQ;
     }
 
+    public ArrangementProperties getCurrArrangementProp() {
+        return this.m_CurrArrangementProp;
+    }
+
     public void BlockEmployeesToSetPref()
     {
         if (this.m_CurrArrangementStatus != ArrangementStatus.WAIT_EMP_REQ)
@@ -163,6 +167,7 @@ public class ArrangementManager
     }
 
     public void setArrangement(Arrangement arrangement) {
+        /* MANAGER METHOD */
         if (!this.m_CurrArrangementStatus.equals(ArrangementStatus.WAIT_EMP_APPROVAL)) {
             throw new RuntimeException("Failed to set new arrangement \n Current status: " +
                     this.m_CurrArrangementStatus + " expected: WAIT_EMP_APPROVAL");

@@ -1,20 +1,23 @@
-package BusinessLogic;
+package Model;
 
 import Arrangement.ArrangementProperties;
-import Model.Company;
+import BusinessLogic.BusinessLogic;
 import Model.Employee.Employee;
-import Model.Range;
-import Model.Role;
 import Model.Slot.ReqSlot;
 import Model.Slot.Slot;
 import Rule.IRule;
 import Rule.RuleSlots.RuleSlots;
+import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class Test {
-    public static void main(String[] args) {
+public class MainTest {
+
+    // NOTE: In order to run the test you need to add dependencies for business logic on evolution libraries
+
+    @Test
+    public void mainTest() {
         Company company = new Company();
         BusinessLogic businessLogic = BusinessLogic.getInstance();
 
@@ -348,11 +351,11 @@ public class Test {
 
         List<Employee> activeEmployees = businessLogic.getAllEmployees(company);
         Map<IRule, Double> ruleWeights = new HashMap<IRule, Double>() {{
-           put(new RuleSlots(), 1.0);
+            put(new RuleSlots(), 1.0);
         }};
 
         ArrangementProperties arrangementProperties = new ArrangementProperties(
-            reqSlots, activeEmployees, ruleWeights
+                reqSlots, activeEmployees, ruleWeights
         );
 
         businessLogic.setArrangementProperties(company, arrangementProperties);

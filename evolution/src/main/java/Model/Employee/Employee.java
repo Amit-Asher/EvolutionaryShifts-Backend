@@ -25,14 +25,14 @@ public class Employee {
         m_PhoneNumber = phoneNumber;
         m_FitRoles = fitRoles;
 //        m_IsTrainee = isTrainee;
-        m_ID =  UUID.randomUUID().toString();
+        m_ID = UUID.randomUUID().toString();
     }
 
     public Set<Role> getFitRoles() {return m_FitRoles;}
     public String getFullName() {return m_FullName;}
     public String getPhoneNumber() {return m_PhoneNumber;}
 //    public boolean IsTrainee() {return m_IsTrainee;}
-    public String getID() {return m_ID;}
+    public String getID() { return m_ID; }
 
     public void setFitRoles(Set<Role> fitRoles) {this.m_FitRoles = fitRoles;}
     public void setFullName(String fullName) {this.m_FullName = fullName;}

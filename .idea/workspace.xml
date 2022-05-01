@@ -5,24 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="adding another solution for RuleSlots">
-      <change afterPath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/ArrangementEvoSolution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/ArrangementSolution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Ticket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/TicketStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/ArrangementPropsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/EmployeesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/RolesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business-logic/business-logic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/business-logic.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/evolution.iml" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/evolution.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/BestArrangement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/test/java/Model/MainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/ArrangementCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicCrossover.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Employee/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Employee/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Range.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Algorithm/AlgorithmConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Algorithm/EvolutionStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/Arrangement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementEvaluator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Crossovers/ArrangementCrossover.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Company.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Day.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Employee/Employee.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Employee/EmployeePreferences.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Range.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/Slot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Mutations/MutationByDay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/IRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlotsPreference.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +57,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -75,7 +99,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/evolution/lib" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.112612605" />
@@ -89,8 +114,75 @@
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.test in business-logic (1)">
+    <configuration name="ArrangementPropsTest.addRoles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="business-logic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.Internals.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model.Internals" />
+      <option name="MAIN_CLASS_NAME" value="Model.Internals.ArrangementPropsTest" />
+      <option name="METHOD_NAME" value="addRoles" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmployeesTest.addEmployeesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="business-logic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.Internals.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model.Internals" />
+      <option name="MAIN_CLASS_NAME" value="Model.Internals.EmployeesTest" />
+      <option name="METHOD_NAME" value="addEmployeesTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.mainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="business-logic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.Internals.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.MainTest" />
+      <option name="METHOD_NAME" value="mainTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Model in business-logic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="business-logic" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/business-logic/test/java/Model" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test in business-logic (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="business-logic" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/business-logic/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="database" />
       <method v="2">
@@ -104,6 +196,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.test in business-logic (1)" />
+        <item itemvalue="JUnit.ArrangementPropsTest.addRoles" />
+        <item itemvalue="JUnit.EmployeesTest.addEmployeesTest" />
+        <item itemvalue="JUnit.Model in business-logic" />
+        <item itemvalue="JUnit.MainTest.mainTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

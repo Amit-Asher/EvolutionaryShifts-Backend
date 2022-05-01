@@ -8,10 +8,8 @@ import Model.Company;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Role;
-import Arrangement.ArrangementStatus;
 
 import java.util.List;
-import java.util.Set;
 
 public class BusinessLogic {
 //    protected Map<String, Company> m_ID2Company;
@@ -58,6 +56,9 @@ public class BusinessLogic {
     {
         company.removeRole(role);
     }
+    public List<Role> getAllRoles(Company company) {
+        return company.getAllRoles();
+    }
 
     public List<Employee> getAllEmployees(Company company) {
         return company.getAllEmployees();
@@ -70,6 +71,10 @@ public class BusinessLogic {
     public void setArrangementProperties(Company company,
                                          ArrangementProperties arrangementProperties) {
         company.getArrangementManager().setCurrArrangementProp(arrangementProperties);
+    }
+
+    public ArrangementProperties getArrangementProperties(Company company) {
+        return company.getArrangementManager().getCurrArrangementProp();
     }
 
     /*************** WAIT EMP REQ ***************/

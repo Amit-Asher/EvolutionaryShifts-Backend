@@ -21,4 +21,11 @@ public class Range
     {
         return (number >= low && number <= high);
     }
+
+    public String toString() {
+        if (this.low == this.high) {
+            return Integer.toString(low);
+        }
+        return String.format("%s-%s", low, high);
+    }
 }

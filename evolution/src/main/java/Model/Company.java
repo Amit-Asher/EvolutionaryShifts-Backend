@@ -20,11 +20,15 @@ public class Company
     protected Map<Date, Arrangement> m_History;
 
     public void addRole(Role role){
-        m_Roles.add(role);
+        this.m_Roles.add(role);
     }
     public void removeRole(Role role){
-        m_Roles.remove(role);
+        this.m_Roles.remove(role);
     }
+    public List<Role> getAllRoles() {
+        return new ArrayList<>(this.m_Roles);
+    }
+
     public void addEmployee(Employee employee){
         m_Id2Employee.put(employee.getID(), employee);
     }
