@@ -4,11 +4,13 @@ import Model.Day;
 import Model.Employee.Employee;
 import Model.Shift;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Arrangement
 {
-    protected ArrayList<Shift> m_Shifts;
+    private List<Shift> m_Shifts;
 
     public Arrangement() {
         this.m_Shifts = new ArrayList<>();
@@ -16,7 +18,7 @@ public class Arrangement
 
     public Arrangement(Arrangement arrangement) {
         /* DEEP CLONE */
-        ArrayList<Shift> shifts = arrangement.getShifts();
+        List<Shift> shifts = arrangement.getShifts();
         this.m_Shifts = new ArrayList<>();
         for (Shift shift : shifts) {
             this.m_Shifts.add(new Shift(
@@ -27,13 +29,13 @@ public class Arrangement
         }
     }
 
-    public ArrayList<Shift> getShifts() {
+    public List<Shift> getShifts() {
         return m_Shifts;
     }
 
-    public ArrayList<Day> getDaysOfWorkForEmployee(Employee employee)
+    public List<DayOfWeek> getDaysOfWorkForEmployee(Employee employee)
     {
-        ArrayList<Day> daysOfWork = new ArrayList<>();
+        ArrayList<DayOfWeek> daysOfWork = new ArrayList<>();
         ArrayList<Boolean> days = new ArrayList<>(7);
 
         for(int i = 0;i < 7;i++)

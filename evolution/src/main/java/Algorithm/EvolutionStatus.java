@@ -5,7 +5,6 @@ public class EvolutionStatus {
     public boolean isFinished;
 
     public EvolutionStatus(ArrangementSolution arrangementSolution, boolean isFinished) {
-
         this.arrangementSolution = (ArrangementEvoSolution) arrangementSolution;
         this.isFinished = isFinished;
     }

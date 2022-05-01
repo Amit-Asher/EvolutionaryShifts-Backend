@@ -8,6 +8,7 @@ import Model.Slot.Slot;
 import Rule.IRule;
 import Rule.RuleConfig;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +25,12 @@ public class RuleFight implements IRule<RuleFightPreference> {
         {
             double gradeForEmployee = 100;
             Employee employee = pref.getEmployee();
-            ArrayList<Day> daysOfWork = arrangement.getDaysOfWorkForEmployee(employee);
-            ArrayList<Shift> shifts = arrangement.getShifts();
+            List<DayOfWeek> daysOfWork = arrangement.getDaysOfWorkForEmployee(employee);
+            List<Shift> shifts = arrangement.getShifts();
             int sizeShifts = shifts.size();
             boolean flagBreakSlot1;
 
-            for (Day day : daysOfWork)
+            for (DayOfWeek day : daysOfWork)
             {
                 flagBreakSlot1 = false;
 

@@ -28,6 +28,11 @@ public class Company
     public void addEmployee(Employee employee){
         m_Id2Employee.put(employee.getID(), employee);
     }
+
+    public List<Employee> getAllEmployees() {
+        return new ArrayList<>(this.m_Id2Employee.values());
+    }
+
     public void removeEmployee(String employeeID){
         if(m_Id2Employee.containsKey(employeeID))
             m_Id2Employee.remove(employeeID);

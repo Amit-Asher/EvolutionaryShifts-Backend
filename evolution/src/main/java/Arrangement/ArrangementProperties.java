@@ -1,45 +1,40 @@
 package Arrangement;
 
-import Model.Day;
 import Model.Employee.Employee;
 import Model.Slot.ReqSlot;
 import Rule.IRule;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class ArrangementProperties
 {
+    private List<ReqSlot> m_Slots;
+    private List<Employee> m_ActiveEmployees;
+    private Map<IRule, Double> m_rule2weight;
 
-    protected ArrayList<ReqSlot> m_Slots;
-    protected ArrayList<Employee> m_ActiveEmployees;
-    protected Map<IRule, Double> m_rule2weight;
-    protected ArrayList<Day> days;
-
-    public ArrangementProperties(ArrayList<ReqSlot> m_Slots,
-                                 ArrayList<Employee> m_ActiveEmployees,
-                                 Map<IRule, Double> m_rule2weight,
-                                 ArrayList<Day> days)
+    public ArrangementProperties(List<ReqSlot> m_Slots,
+                                 List<Employee> m_ActiveEmployees,
+                                 Map<IRule, Double> m_rule2weight)
     {
         this.m_Slots = m_Slots;
         this.m_ActiveEmployees = m_ActiveEmployees;
         this.m_rule2weight = m_rule2weight;
-        this.days = days;
     }
 
-    public ArrayList<ReqSlot> getM_Slots() {
+    public List<ReqSlot> getM_Slots() {
         return m_Slots;
     }
 
-    public void setM_Slots(ArrayList<ReqSlot> m_Slots) {
+    public void setM_Slots(List<ReqSlot> m_Slots) {
         this.m_Slots = m_Slots;
     }
 
-    public ArrayList<Employee> getM_ActiveEmployees() {
+    public List<Employee> getM_ActiveEmployees() {
         return m_ActiveEmployees;
     }
 
-    public void setM_ActiveEmployees(ArrayList<Employee> m_ActiveEmployees) {
+    public void setM_ActiveEmployees(List<Employee> m_ActiveEmployees) {
         this.m_ActiveEmployees = m_ActiveEmployees;
     }
 
@@ -47,14 +42,7 @@ public class ArrangementProperties
         this.m_rule2weight = m_rule2weight;
     }
 
-    public void setDays(ArrayList<Day> days) {
-        this.days = days;
-    }
-
     public Map<IRule, Double> getM_rule2weight() {
         return m_rule2weight;
     }
-
-    public ArrayList<Day> getDays() { return days; }
-    public int getNumOfDays() { return days.size(); }
 }

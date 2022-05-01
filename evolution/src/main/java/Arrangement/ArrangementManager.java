@@ -21,13 +21,13 @@ import java.util.Map;
 
 public class ArrangementManager
 {
-    private ArrangementProperties m_CurrArrangementProp;
+    private ArrangementProperties m_CurrArrangementProp = null;
     private ArrangementStatus m_CurrArrangementStatus = ArrangementStatus.SET_PROPS;
-    private EvolutionEngine<Arrangement> engine;
+    private EvolutionEngine<Arrangement> engine = null;
 
-    private ArrangementSolution curArrangementSolution;
+    private ArrangementSolution curArrangementSolution = null;
     private Map<String, Ticket> tickets = new HashMap<String, Ticket>();
-    private ArrangementEvaluator arrangementEvaluator;
+    private ArrangementEvaluator arrangementEvaluator = null;
 
     public ArrangementStatus getCurrArrangementStatus() {
         return m_CurrArrangementStatus;
@@ -42,7 +42,7 @@ public class ArrangementManager
 
         // add employees preferences to each rule configuration
         employeePreference.getPreferences().forEach((ruleName, preferenceInput) -> {
-            m_CurrArrangementProp.m_rule2weight.keySet().stream().filter(rule -> {
+            m_CurrArrangementProp.getM_rule2weight().keySet().stream().filter(rule -> {
                 return rule.getName().equals(ruleName);
             }).forEach(rule -> rule.addPreference(preferenceInput));
         });

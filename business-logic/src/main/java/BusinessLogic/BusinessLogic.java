@@ -10,6 +10,7 @@ import Model.Employee.EmployeePreferences;
 import Model.Role;
 import Arrangement.ArrangementStatus;
 
+import java.util.List;
 import java.util.Set;
 
 public class BusinessLogic {
@@ -32,14 +33,8 @@ public class BusinessLogic {
     /************** SET PROPS **************/
 
     public void addEmployee(Company company,
-                            String employeeName,
-                            String phoneNumber,
-                            Set<Role> fitRoles)
+                            Employee employee)
     {
-        Employee employee = new Employee(employeeName,
-                phoneNumber,
-                fitRoles);
-
         company.addEmployee(employee);
     }
     public void removeEmployee(Company company, String employeeID)
@@ -55,15 +50,17 @@ public class BusinessLogic {
         company.removeManager(employeeID);
     }
 
-    public void addNewRole(Company company, String roleName)
+    public void addNewRole(Company company, Role role)
     {
-        Role role = new Role(roleName);
         company.addRole(role);
     }
-    public void removeRole(Company company, String roleName)
+    public void removeRole(Company company, Role role)
     {
-        Role role = new Role(roleName);
         company.removeRole(role);
+    }
+
+    public List<Employee> getAllEmployees(Company company) {
+        return company.getAllEmployees();
     }
 
     public void startNewArrangement(Company company) {
