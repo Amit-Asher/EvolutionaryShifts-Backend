@@ -100,7 +100,7 @@ public class ArrangementManager
         Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
         ArrangementFactory factory = new ArrangementFactory();
         List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
-        operators.add(new MutationByDay(0.3));
+        operators.add(new MutationByDay(0.3, m_CurrArrangementProp.getDays()));
         operators.add(new BasicCrossover(2));
         EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<>(operators);
         EvolutionEngine<Arrangement> engine = null;

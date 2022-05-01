@@ -7,6 +7,7 @@ import Rule.IRule;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Set;
 
 public class ArrangementProperties
 {
@@ -14,12 +15,12 @@ public class ArrangementProperties
     protected ArrayList<ReqSlot> m_Slots;
     protected ArrayList<Employee> m_ActiveEmployees;
     protected Map<IRule, Double> m_rule2weight;
-    protected ArrayList<Day> days; //why not Set??
+    protected Set<Day> days;
 
     public ArrangementProperties(ArrayList<ReqSlot> m_Slots,
                                  ArrayList<Employee> m_ActiveEmployees,
                                  Map<IRule, Double> m_rule2weight,
-                                 ArrayList<Day> days)
+                                 Set<Day> days)
     {
         this.m_Slots = m_Slots;
         this.m_ActiveEmployees = m_ActiveEmployees;
@@ -47,7 +48,7 @@ public class ArrangementProperties
         this.m_rule2weight = m_rule2weight;
     }
 
-    public void setDays(ArrayList<Day> days) {
+    public void setDays(Set<Day> days) {
         this.days = days;
     }
 
@@ -55,6 +56,6 @@ public class ArrangementProperties
         return m_rule2weight;
     }
 
-    public ArrayList<Day> getDays() { return days; }
+    public Set<Day> getDays() { return days; }
     public int getNumOfDays() { return days.size(); }
 }

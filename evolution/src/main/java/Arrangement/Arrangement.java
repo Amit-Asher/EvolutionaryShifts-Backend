@@ -69,6 +69,10 @@ public class Arrangement
         return shifts;
     }
 
+    public int size() {
+        return m_Shifts.size();
+    }
+
     /* public Arrangement(ArrayList<Map.Entry<Integer, ArrayList<Integer>>> daysOfWork2Levels, ArrayList<ArrayList<Shift>> arrangement)
     {
         m_DaysOfWork2Levels = daysOfWork2Levels;

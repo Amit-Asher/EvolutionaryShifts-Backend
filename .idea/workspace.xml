@@ -4,14 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="implement MutationByDay">
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="implementing BasicCrossover">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicCrossover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Employee/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Employee/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Shift.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Shift.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/Arrangement.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/Arrangement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Employee/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Employee/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/Slot.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/Slot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Mutations/MutationByDay.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Mutations/MutationByDay.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +152,7 @@
       <workItem from="1649398571743" duration="1099000" />
       <workItem from="1649400858322" duration="45000" />
       <workItem from="1649400930175" duration="96000" />
-      <workItem from="1651319379959" duration="18591000" />
+      <workItem from="1651319379959" duration="28623000" />
     </task>
     <task id="LOCAL‎00001" summary="adding another solution for RuleSlots">
       <created>1649410094056</created>
@@ -172,7 +178,13 @@
       <option name="presentableId" value="LOCAL‎00004" />
       <updated>1651346405376</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL‎00005" summary="implementing BasicCrossover">
+      <created>1651391765002</created>
+      <option name="number" value="LOCAL‎00005" />
+      <option name="presentableId" value="LOCAL‎00005" />
+      <updated>1651391765002</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +206,7 @@
     <MESSAGE value="adding another solution for RuleSlots" />
     <MESSAGE value="Evo1.0" />
     <MESSAGE value="implement MutationByDay" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement MutationByDay" />
+    <MESSAGE value="implementing BasicCrossover" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing BasicCrossover" />
   </component>
 </project>
