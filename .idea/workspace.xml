@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="Delete MutationByDay class and create generic BasicMutation">
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRolePreference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RulePeace/RulePeace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RulePeace/RulePeacePreference.java" afterDir="false" />
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="implementing RuleFitEmpRole and RulePeace">
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleRangeWorkDays/RuleRangeWorkDays.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleRangeWorkDays/RuleRangeWorkDaysPreference.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +146,7 @@
       <workItem from="1649400930175" duration="96000" />
       <workItem from="1651319379959" duration="30981000" />
       <workItem from="1651487540906" duration="8787000" />
-      <workItem from="1651561503246" duration="4470000" />
+      <workItem from="1651561503246" duration="8188000" />
     </task>
     <task id="LOCAL‎00001" summary="adding another solution for RuleSlots">
       <created>1649410094056</created>
@@ -191,7 +190,13 @@
       <option name="presentableId" value="LOCAL‎00007" />
       <updated>1651491074220</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL‎00008" summary="implementing RuleFitEmpRole and RulePeace">
+      <created>1651660507115</created>
+      <option name="number" value="LOCAL‎00008" />
+      <option name="presentableId" value="LOCAL‎00008" />
+      <updated>1651660507115</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +221,7 @@
     <MESSAGE value="implementing BasicCrossover" />
     <MESSAGE value="improving evo-operators" />
     <MESSAGE value="Delete MutationByDay class and create generic BasicMutation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete MutationByDay class and create generic BasicMutation" />
+    <MESSAGE value="implementing RuleFitEmpRole and RulePeace" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing RuleFitEmpRole and RulePeace" />
   </component>
 </project>

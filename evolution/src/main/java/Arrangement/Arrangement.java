@@ -5,10 +5,14 @@ import Model.Employee.Employee;
 import Model.Shift;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Arrangement
 {
     protected ArrayList<Shift> m_Shifts;
+
+    //private int daysOfWork; //instead of getWorkDays() maybe
 
     public Arrangement() {
         this.m_Shifts = new ArrayList<>();
@@ -71,6 +75,17 @@ public class Arrangement
 
     public int size() {
         return m_Shifts.size();
+    }
+
+    public ArrayList<Day> getWorkDays()
+    {
+        Set<Day> days = new HashSet<>();
+
+        for(Shift shift : m_Shifts){
+            days.add(shift.getSlot().getDay());
+        }
+
+        return new ArrayList<>(days);
     }
 
     /* public Arrangement(ArrayList<Map.Entry<Integer, ArrayList<Integer>>> daysOfWork2Levels, ArrayList<ArrayList<Shift>> arrangement)
