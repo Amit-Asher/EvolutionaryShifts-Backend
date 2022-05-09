@@ -3,10 +3,15 @@ package Model;
 import Arrangement.ArrangementProperties;
 import BusinessLogic.BusinessLogic;
 import Model.Employee.Employee;
+import Model.Employee.EmployeePreferences;
 import Model.Slot.ReqSlot;
 import Model.Slot.Slot;
 import Rule.IRule;
 import Rule.RuleSlots.RuleSlots;
+import com.sun.org.apache.bcel.internal.generic.PUTFIELD;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
@@ -17,7 +22,7 @@ public class MainTest {
     // NOTE: In order to run the test you need to add dependencies for business logic on evolution libraries
 
     @Test
-    public void mainTest() {
+    public void mainTest() throws JSONException {
         Company company = new Company();
         BusinessLogic businessLogic = BusinessLogic.getInstance();
 
@@ -359,5 +364,30 @@ public class MainTest {
         );
 
         businessLogic.setArrangementProperties(company, arrangementProperties);
+
+        // ******** SET EMPLOYEES PREFERENCES ******* //
+
+        EmployeePreferences waiter3NamePref = new EmployeePreferences(waiter3, new JSONObject() {{
+            put("RuleSlots", new JSONObject() {{
+                put("employee", "waiter3Name");
+                put("slots", new JSONArray() {{
+                    put(new Slot(
+                            LocalDateTime.of(2022, 5, 22, 8, 0),
+                            LocalDateTime.of(2022, 5, 22, 16, 0)));
+                    put(new Slot(
+                            LocalDateTime.of(2022, 5, 25, 8, 0),
+                            LocalDateTime.of(2022, 5, 25, 16, 0)));
+                    put(new Slot(
+                            LocalDateTime.of(2022, 5, 26, 16, 0),
+                            LocalDateTime.of(2022, 5, 26, 23, 59)));
+                }});
+            }});
+        }});
+
+        businessLogic.setEmployeePreference(company, waiter3NamePref);
+
+
+
+
     }
 }

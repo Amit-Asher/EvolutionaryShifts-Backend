@@ -380,7 +380,7 @@ public class ArrangementPropsTest {
                     reqSlot.getSlot().getEndTime().format(hmFormatter)));
         });
 
-        System.out.format("%nManager required the following rules and weights:%n");
+        System.out.format("%nManager opened the following rules and weights:%n");
         businessLogic.getArrangementProperties(company).getM_rule2weight().forEach((key, value) -> {
             System.out.format("%s: %s%n",
                     key.getName(),
@@ -388,7 +388,7 @@ public class ArrangementPropsTest {
         });
 
 
-        System.out.format("%nManager defined the active employees (participants) as follows:%n");
+        System.out.format("%nManager defined the active employees as follows (participants):%n");
         businessLogic.getArrangementProperties(company).getM_ActiveEmployees().forEach(employee -> {
             System.out.format("%s%n", employee.getFullName());
         });
