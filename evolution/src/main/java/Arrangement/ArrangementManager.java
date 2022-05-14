@@ -4,7 +4,6 @@ import Algorithm.AlgorithmConfig;
 import Algorithm.ArrangementSolution;
 import Algorithm.ArrangementEvoSolution;
 import Crossovers.BasicCrossover;
-import Model.Day;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Mutations.BasicMutation;
@@ -16,6 +15,7 @@ import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
 import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
 import org.uncommons.watchmaker.framework.termination.TargetFitness;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -102,7 +102,7 @@ public class ArrangementManager
         Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
         ArrangementFactory factory = new ArrangementFactory();
         List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
-        operators.add(new BasicMutation<Day>(0.3, (ArrayList<Day>) m_CurrArrangementProp.getDays(), new MutateByDay()));
+        operators.add(new BasicMutation<DayOfWeek>(0.3, (ArrayList<DayOfWeek>) m_CurrArrangementProp.getDays(), new MutateByDay()));
         operators.add(new BasicCrossover(2));
         EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<>(operators);
         EvolutionEngine<Arrangement> engine = null;

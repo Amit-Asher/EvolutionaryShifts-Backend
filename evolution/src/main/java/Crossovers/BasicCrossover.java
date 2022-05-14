@@ -2,6 +2,7 @@ package Crossovers;
 
 import Arrangement.Arrangement;
 import Model.Shift;
+import MyUtils.OneTimeRandomRange;
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 
 import java.util.ArrayList;
@@ -13,7 +14,6 @@ public class BasicCrossover extends AbstractCrossover<Arrangement>
 {
     private Arrangement parent1;
     private Arrangement parent2;
-    //note: the crossoverPoints in the Constructor and in the mate method is not the same
 
     public BasicCrossover(int crossoverPoints)
     {
@@ -35,15 +35,13 @@ public class BasicCrossover extends AbstractCrossover<Arrangement>
         }
 
         boolean isParent1 = random.nextBoolean();
-        ArrayList<Integer> crossoverPoints = new ArrayList<>(numberOfCrossoverPoints);
         List<Arrangement> children = new ArrayList<>(2);
         Arrangement child1 = new Arrangement();//offsprings
         Arrangement child2 = new Arrangement();
+        ArrayList<Integer> crossoverPoints = OneTimeRandomRange.random(numberOfCrossoverPoints,
+                parent1.size(), random, false);
 
-        for (int i = 0;i < numberOfCrossoverPoints;i++)
-            crossoverPoints.add(1 + random.nextInt(parent1.size() - 1));
         Collections.sort(crossoverPoints);
-
         for (int indexCurr = 0;indexCurr < numberOfCrossoverPoints;indexCurr++)
         {
             crossMate(isParent1,

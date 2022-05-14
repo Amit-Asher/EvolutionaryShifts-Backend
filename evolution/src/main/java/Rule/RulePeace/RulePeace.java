@@ -1,13 +1,13 @@
 package Rule.RulePeace;
 
 import Arrangement.Arrangement;
-import Model.Day;
 import Model.Employee.Employee;
 import Model.Shift;
 import Model.Slot.Slot;
 import Rule.IRule;
 import Rule.RuleConfig;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +24,12 @@ public class RulePeace implements IRule<RulePeacePreference> {
         {
             double gradeForEmployee = 100;
             Employee employee = pref.getEmployee();
-            ArrayList<Day> daysOfWork = arrangement.getDaysOfWorkForEmployee(employee);
+            ArrayList<DayOfWeek> daysOfWork = arrangement.getDaysOfWorkForEmployee(employee);
             ArrayList<Shift> shifts = arrangement.getShifts();
             int sizeShifts = shifts.size();
             boolean flagBreakSlot1;
 
-            for (Day day : daysOfWork)
+            for (DayOfWeek day : daysOfWork)
             {
                 flagBreakSlot1 = false;
 

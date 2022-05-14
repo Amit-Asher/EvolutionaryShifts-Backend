@@ -1,16 +1,17 @@
 package Mutations.MutateBy;
 
-import Model.Day;
 import Model.Shift;
 
-public class MutateByDay implements MutateBy<Day> {
+import java.time.DayOfWeek;
+
+public class MutateByDay implements MutateBy<DayOfWeek> {
     @Override
-    public Day get(Shift shift) {
+    public DayOfWeek get(Shift shift) {
         return shift.getSlot().getDay();
     }
 
     @Override
-    public void set(Shift shift, Day value) {
+    public void set(Shift shift, DayOfWeek value) {
         shift.getSlot().setDay(value);
     }
 }

@@ -1,9 +1,9 @@
 package Arrangement;
 
-import Model.Day;
 import Model.Employee.Employee;
 import Model.Shift;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -40,25 +40,25 @@ public class Arrangement
         return m_Shifts;
     }
 
-    public ArrayList<Day> getDaysOfWorkForEmployee(Employee employee)
+    public ArrayList<DayOfWeek> getDaysOfWorkForEmployee(Employee employee)
     {
-        ArrayList<Day> daysOfWork = new ArrayList<>();
+        ArrayList<DayOfWeek> daysOfWork = new ArrayList<>();
         ArrayList<Boolean> days = new ArrayList<>(7);
 
         for(int i = 0;i < 7;i++)
             days.add(false);
 
         for(Shift shift : m_Shifts)
-            days.set(shift.getSlot().getDay().ordinal(), true);
+            days.set(shift.getSlot().getDay().getValue(), true);
 
         for(int i = 0;i < 7;i++)
             if(days.get(i))
-                daysOfWork.add(Day.getDay(i + 1));
+                daysOfWork.add(DayOfWeek.of(i + 1));
 
         return daysOfWork;
     }
 
-    public ArrayList<Shift> getShiftsByDay(Day day)
+    public ArrayList<Shift> getShiftsByDay(DayOfWeek day)
     {
         ArrayList<Shift> shifts = new ArrayList<>();
 
@@ -77,9 +77,9 @@ public class Arrangement
         return m_Shifts.size();
     }
 
-    public ArrayList<Day> getWorkDays()
+    public ArrayList<DayOfWeek> getWorkDays()
     {
-        Set<Day> days = new HashSet<>();
+        Set<DayOfWeek> days = new HashSet<>();
 
         for(Shift shift : m_Shifts){
             days.add(shift.getSlot().getDay());

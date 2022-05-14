@@ -35,13 +35,14 @@ public class RuleFitEmpRole  implements IRule<RuleFitEmpRolePreference> {
     @Override
     public double evaluate(Arrangement arrangement)
     {
-        double finalGrade = 0, gradeForFitRole = 1.0 / arrangement.size();
+        double finalGrade = 0, gradeForFitRole = 100.0 / arrangement.size();
 
         for(int i = 0;i < arrangement.size();i++) {
-            if (arrangement.getShifts().get(i).getEmployee().getFitRoles().contains(
+            if (arrangement.getShifts().get(i).getEmployee().
+                    getFitRoles().contains(
                     arrangement.getShifts().get(i).getRole()
             ))
-                finalGrade += 100 * gradeForFitRole;
+                finalGrade += gradeForFitRole;
         }
 
         return finalGrade;
