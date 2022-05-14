@@ -41,11 +41,11 @@ public class ArrangementManager
         }
 
         // add employees preferences to each rule configuration
-        employeePreference.getPreferences().forEach((ruleName, preferenceInput) -> {
-            m_CurrArrangementProp.getM_rule2weight().keySet().stream().filter(rule -> {
-                return rule.getName().equals(ruleName);
-            }).forEach(rule -> rule.addPreference(preferenceInput));
-        });
+//        employeePreference.getPreferences().forEach((ruleName, preferenceInput) -> {
+//            m_CurrArrangementProp.getM_rule2weight().keySet().stream().filter(rule -> {
+//                return rule.getName().equals(ruleName);
+//            }).forEach(rule -> rule.addPreference(preferenceInput));
+//        });
     }
 
     public void setCurrArrangementProp(ArrangementProperties m_CurrArrangementProp) {

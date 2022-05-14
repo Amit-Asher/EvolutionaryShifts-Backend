@@ -1,9 +1,12 @@
-package Model;
+package Model.Internals;
 
 import Arrangement.ArrangementProperties;
 import BusinessLogic.BusinessLogic;
+import Model.Company;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
+import Model.Range;
+import Model.Role;
 import Model.Slot.ReqSlot;
 import Model.Slot.Slot;
 import Rule.IRule;
@@ -16,12 +19,11 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class MainTest {
-
-    // NOTE: In order to run the test you need to add dependencies for business logic on evolution libraries
+public class setEmployeePref {
 
     @Test
-    public void mainTest() throws JSONException {
+    public void setEmployeesPrefTest() throws JSONException {
+
         Company company = new Company();
         BusinessLogic businessLogic = BusinessLogic.getInstance();
 
@@ -914,6 +916,52 @@ public class MainTest {
         businessLogic.setEmployeePreference(company, shiftManager1NamePref);
         businessLogic.setEmployeePreference(company, shiftManager2NamePref);
 
+        System.out.format("***** %s ******\n", waiter1NamePref.getEmployee().getFullName());
+        System.out.println(waiter1NamePref.getPreferences().toString(2));
 
+        System.out.format("***** %s ******\n", waiter2NamePref.getEmployee().getFullName());
+        System.out.println(waiter2NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", waiter3NamePref.getEmployee().getFullName());
+        System.out.println(waiter3NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", waiter4NamePref.getEmployee().getFullName());
+        System.out.println(waiter4NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", waiter5NamePref.getEmployee().getFullName());
+        System.out.println(waiter5NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", waiter6NamePref.getEmployee().getFullName());
+        System.out.println(waiter6NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", chef1NamePref.getEmployee().getFullName());
+        System.out.println(chef1NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", chef2NamePref.getEmployee().getFullName());
+        System.out.println(chef2NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", chef3NamePref.getEmployee().getFullName());
+        System.out.println(chef3NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", barman1NamePref.getEmployee().getFullName());
+        System.out.println(barman1NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", barman2NamePref.getEmployee().getFullName());
+        System.out.println(barman2NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", barman3NamePref.getEmployee().getFullName());
+        System.out.println(barman3NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", host1NamePref.getEmployee().getFullName());
+        System.out.println(host1NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", host2NamePref.getEmployee().getFullName());
+        System.out.println(host2NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", shiftManager1NamePref.getEmployee().getFullName());
+        System.out.println(shiftManager1NamePref.getPreferences().toString(2));
+
+        System.out.format("***** %s ******\n", shiftManager2NamePref.getEmployee().getFullName());
+        System.out.println(shiftManager2NamePref.getPreferences().toString(2));
     }
 }

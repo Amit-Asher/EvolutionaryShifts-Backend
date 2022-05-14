@@ -1,12 +1,13 @@
 package Rule;
 
 import Arrangement.Arrangement;
+import org.json.JSONObject;
 
-public interface IRule<T>
+public interface IRule
 {
     /* EVALUATE RULE FITNESS ON A GIVEN ARRANGEMENT */
     double evaluate(Arrangement arrangement);
-    void addPreference(T preference);
+    void addPreference(JSONObject preference);
 
     String getName();
 }

@@ -6,6 +6,7 @@ import Model.Employee.Employee;
 import Model.Role;
 import org.junit.Test;
 
+import java.util.Comparator;
 import java.util.HashSet;
 
 public class EmployeesTest {
@@ -43,6 +44,13 @@ public class EmployeesTest {
             add(waiter);
             add(host);
         }});
+        Employee waiter5 = new Employee("waiter5Name", "111", new HashSet<Role>() {{
+            add(waiter);
+        }});
+        Employee waiter6 = new Employee("waiter6Name", "111", new HashSet<Role>() {{
+            add(waiter);
+            add(barman);
+        }});
         Employee chef1 = new Employee("chef1Name", "111", new HashSet<Role>() {{
             add(chef);
         }});
@@ -72,11 +80,17 @@ public class EmployeesTest {
             add(shiftManager);
             add(host);
         }});
+        Employee shiftManager2 = new Employee("shiftManager2Name", "111", new HashSet<Role>() {{
+            add(shiftManager);
+            add(host);
+        }});
 
         businessLogic.addEmployee(company, waiter1);
         businessLogic.addEmployee(company, waiter2);
         businessLogic.addEmployee(company, waiter3);
         businessLogic.addEmployee(company, waiter4);
+        businessLogic.addEmployee(company, waiter5);
+        businessLogic.addEmployee(company, waiter6);
         businessLogic.addEmployee(company, chef1);
         businessLogic.addEmployee(company, chef2);
         businessLogic.addEmployee(company, chef3);
@@ -86,9 +100,13 @@ public class EmployeesTest {
         businessLogic.addEmployee(company, host1);
         businessLogic.addEmployee(company, host2);
         businessLogic.addEmployee(company, shiftManager1);
+        businessLogic.addEmployee(company, shiftManager2);
+
 
         System.out.println("******** EMPLOYEES *********");
-        businessLogic.getAllEmployees(company).forEach((employee)-> {
+        businessLogic.getAllEmployees(company)
+                .stream().sorted(Comparator.comparing(Employee::getFullName))
+                .forEach((employee)-> {
             System.out.println(String.format("name: %s", employee.getFullName()));
             System.out.println(String.format("id: %s", employee.getID()));
             System.out.print("fit roles:");

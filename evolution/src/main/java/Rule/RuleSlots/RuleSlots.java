@@ -6,17 +6,20 @@ import Model.Shift;
 import Model.Slot.Slot;
 import Rule.IRule;
 import Rule.RuleConfig;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuleSlots implements IRule<RuleSlotsPreference>
+public class RuleSlots implements IRule
 {
-    private final RuleConfig<RuleSlotsPreference> config = new RuleConfig<>();
+    private final List<RuleSlotsPreference> preferences = new ArrayList<>();
+
 
     @Override
-    public void addPreference(RuleSlotsPreference preference) {
-        config.addPreferences(preference);
+    public void addPreference(JSONObject preference) {
+//        preferences.add(new RuleSlotsPreference(
+//        ))
     }
 
     @Override
@@ -60,11 +63,9 @@ public class RuleSlots implements IRule<RuleSlotsPreference>
         //Assumed that *all* employees participate in this Rule *once*
         //return how many shifts from arrangement are valid(shift in emp-pref)
         double goodShifts = 0.0;
-        List<RuleSlotsPreference> preferences = config.getPreferences();
-        ArrayList<Slot> employeeValidSlots;
 
-        for (RuleSlotsPreference pref : preferences) {
-            employeeValidSlots = pref.getSlots();
+        for (RuleSlotsPreference pref : this.preferences) {
+            ArrayList<Slot> employeeValidSlots = pref.getSlots();
             for (Slot employeeValidSlot : employeeValidSlots) {
                 for (Shift shift : arrangement.getShifts()) {
                     if (employeeValidSlot.equals(shift.getSlot()))

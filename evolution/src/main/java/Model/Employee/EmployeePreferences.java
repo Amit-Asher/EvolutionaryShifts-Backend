@@ -17,8 +17,11 @@ public class EmployeePreferences
         this.preferences = preferences;
     }
 
-    public Map<String, JSONObject> getPreferences() {
-        // todo: fix mismatch between json objects
-        Map<String, JSONObject> preferences = new HashMap<>();
+    public JSONObject getPreferences() {
+        return preferences;
+    }
+
+    public Employee getEmployee() {
+        return employee;
     }
 }
