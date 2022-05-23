@@ -1,6 +1,9 @@
 package Model.Slot;
 
 import java.time.DayOfWeek;
+import Model.Day;
+
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
 public class Slot
@@ -26,6 +29,10 @@ public class Slot
         return startTime;
     }
 
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
     public DayOfWeek getDay() {
         return startTime.getDayOfWeek();
     }
@@ -48,6 +55,24 @@ public class Slot
                 endTime.getDayOfWeek().getValue()));
     }
 
+
+    public boolean equals(Slot slot) {
+        return this.startTime.equals(slot.startTime) &&
+                this.endTime.equals(slot.endTime);
+    }
+}
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public DayOfWeek getDay() {
+        return startTime.getDayOfWeek();
+    }
 
     public boolean equals(Slot slot) {
         return this.startTime.equals(slot.startTime) &&

@@ -4,43 +4,46 @@ import Model.Employee.Employee;
 import Model.Slot.ReqSlot;
 import Rule.IRule;
 
+import java.util.*;
 import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
 
 public class ArrangementProperties
 {
-
-    protected ArrayList<ReqSlot> m_Slots;
-    protected ArrayList<Employee> m_ActiveEmployees;
-    protected Map<IRule, Double> m_rule2weight;
+    private List<ReqSlot> m_Slots;
+    private List<Employee> m_ActiveEmployees;
+    private Map<IRule, Double> m_rule2weight;
     protected Set<DayOfWeek> days;
 
     public ArrangementProperties(ArrayList<ReqSlot> m_Slots,
                                  ArrayList<Employee> m_ActiveEmployees,
-                                 Map<IRule, Double> m_rule2weight,
-                                 Set<DayOfWeek> days)
+                                 Map<IRule, Double> m_rule2weight)
     {
         this.m_Slots = m_Slots;
         this.m_ActiveEmployees = m_ActiveEmployees;
         this.m_rule2weight = m_rule2weight;
-        this.days = days;
+        this.days = new HashSet<>();
+        for (int i=0; i < m_Slots.size(); i++) {
+            this.days.add(this.m_Slots.get(i).getSlot().getDay());
+        }
     }
 
-    public ArrayList<ReqSlot> getSlots() {
+    public Set<IRule> getRules() {
+        return m_rule2weight.keySet();
+    }
+
+    public List<ReqSlot> getSlots() {
         return m_Slots;
     }
 
-    public void setSlots(ArrayList<ReqSlot> m_Slots) {
+    public void setSlots(List<ReqSlot> m_Slots) {
         this.m_Slots = m_Slots;
     }
 
-    public ArrayList<Employee> getActiveEmployees() {
+    public List<Employee> getActiveEmployees() {
         return m_ActiveEmployees;
     }
 
-    public void setActiveEmployees(ArrayList<Employee> m_ActiveEmployees) {
+    public void setActiveEmployees(List<Employee> m_ActiveEmployees) {
         this.m_ActiveEmployees = m_ActiveEmployees;
     }
 

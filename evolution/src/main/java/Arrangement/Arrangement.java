@@ -5,22 +5,25 @@ import Model.Shift;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Arrangement
 {
-    protected ArrayList<Shift> m_Shifts;
-
-    //private int daysOfWork; //instead of getWorkDays() maybe
+    private List<Shift> m_Shifts;
 
     public Arrangement() {
         this.m_Shifts = new ArrayList<>();
     }
 
+    public Arrangement(List<Shift> shifts) {
+        this.m_Shifts = shifts;
+    }
+
     public Arrangement(Arrangement arrangement) {
         /* DEEP CLONE */
-        ArrayList<Shift> shifts = arrangement.getShifts();
+        List<Shift> shifts = arrangement.getShifts();
         this.m_Shifts = new ArrayList<>();
         for (Shift shift : shifts) {
             this.m_Shifts.add(new Shift(
@@ -31,6 +34,7 @@ public class Arrangement
         }
     }
 
+    public List<Shift> getShifts() {
     public void addShift(Shift shift)
     {
         m_Shifts.add(shift);

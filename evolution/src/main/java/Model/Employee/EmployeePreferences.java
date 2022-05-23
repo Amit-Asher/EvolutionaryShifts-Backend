@@ -1,14 +1,23 @@
 package Model.Employee;
 
-import java.util.Map;
+import org.json.JSONObject;
 
-public class EmployeePreferences<T>
+public class EmployeePreferences
 {
     //            ruleName
-    protected Map<String, T> preferences;
-    protected Employee employee;
+    private JSONObject preferences;
+    private Employee employee;
 
-    public Map<String, T> getPreferences() {
+    public EmployeePreferences(Employee employee, JSONObject preferences) {
+        this.employee = employee;
+        this.preferences = preferences;
+    }
+
+    public JSONObject getPreferences() {
         return preferences;
+    }
+
+    public Employee getEmployee() {
+        return employee;
     }
 }

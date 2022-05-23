@@ -9,6 +9,10 @@ public class Role
         m_Name = name;
     }
 
+    public String getName() {
+        return m_Name;
+    }
+
     public boolean equals(Role role) {
         return this.m_Name.equals(role.m_Name);
     }
