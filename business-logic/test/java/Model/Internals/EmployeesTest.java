@@ -13,9 +13,11 @@ public class EmployeesTest {
 
     @Test
     public void addEmployeesTest() {
-        Company company = new Company();
         BusinessLogic businessLogic = BusinessLogic.getInstance();
 
+        String compName = "Apple";
+        businessLogic.addCompany(compName);
+        
         // ******** ADD ROLES ******* //
         Role waiter = new Role("waiter");
         Role chef = new Role("chef");
@@ -23,11 +25,11 @@ public class EmployeesTest {
         Role barman = new Role("barman");
         Role shiftManager = new Role("Shift Manager");
 
-        businessLogic.addNewRole(company, waiter);
-        businessLogic.addNewRole(company, chef);
-        businessLogic.addNewRole(company, host);
-        businessLogic.addNewRole(company, barman);
-        businessLogic.addNewRole(company, shiftManager);
+        businessLogic.addNewRole(compName, waiter);
+        businessLogic.addNewRole(compName, chef);
+        businessLogic.addNewRole(compName, host);
+        businessLogic.addNewRole(compName, barman);
+        businessLogic.addNewRole(compName, shiftManager);
 
         // ******** ADD EMPLOYEES ******* //
         Employee waiter1 = new Employee("waiter1Name", "111", new HashSet<Role>() {{
@@ -85,26 +87,26 @@ public class EmployeesTest {
             add(host);
         }});
 
-        businessLogic.addEmployee(company, waiter1);
-        businessLogic.addEmployee(company, waiter2);
-        businessLogic.addEmployee(company, waiter3);
-        businessLogic.addEmployee(company, waiter4);
-        businessLogic.addEmployee(company, waiter5);
-        businessLogic.addEmployee(company, waiter6);
-        businessLogic.addEmployee(company, chef1);
-        businessLogic.addEmployee(company, chef2);
-        businessLogic.addEmployee(company, chef3);
-        businessLogic.addEmployee(company, barman1);
-        businessLogic.addEmployee(company, barman2);
-        businessLogic.addEmployee(company, barman3);
-        businessLogic.addEmployee(company, host1);
-        businessLogic.addEmployee(company, host2);
-        businessLogic.addEmployee(company, shiftManager1);
-        businessLogic.addEmployee(company, shiftManager2);
+        businessLogic.addEmployee(compName, waiter1);
+        businessLogic.addEmployee(compName, waiter2);
+        businessLogic.addEmployee(compName, waiter3);
+        businessLogic.addEmployee(compName, waiter4);
+        businessLogic.addEmployee(compName, waiter5);
+        businessLogic.addEmployee(compName, waiter6);
+        businessLogic.addEmployee(compName, chef1);
+        businessLogic.addEmployee(compName, chef2);
+        businessLogic.addEmployee(compName, chef3);
+        businessLogic.addEmployee(compName, barman1);
+        businessLogic.addEmployee(compName, barman2);
+        businessLogic.addEmployee(compName, barman3);
+        businessLogic.addEmployee(compName, host1);
+        businessLogic.addEmployee(compName, host2);
+        businessLogic.addEmployee(compName, shiftManager1);
+        businessLogic.addEmployee(compName, shiftManager2);
 
 
         System.out.println("******** EMPLOYEES *********");
-        businessLogic.getAllEmployees(company)
+        businessLogic.getAllEmployees(compName)
                 .stream().sorted(Comparator.comparing(Employee::getFullName))
                 .forEach((employee)-> {
             System.out.println(String.format("name: %s", employee.getFullName()));

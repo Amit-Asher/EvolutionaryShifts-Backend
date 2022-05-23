@@ -9,9 +9,11 @@ public class RolesTest {
 
     @Test
     public void addRoles() {
-        Company company = new Company();
         BusinessLogic businessLogic = BusinessLogic.getInstance();
 
+        String compName = "Apple";
+        businessLogic.addCompany(compName);
+        
         // ******** ADD ROLES ******* //
         Role waiter = new Role("waiter");
         Role chef = new Role("chef");
@@ -19,14 +21,14 @@ public class RolesTest {
         Role barman = new Role("barman");
         Role shiftManager = new Role("Shift Manager");
 
-        businessLogic.addNewRole(company, waiter);
-        businessLogic.addNewRole(company, chef);
-        businessLogic.addNewRole(company, host);
-        businessLogic.addNewRole(company, barman);
-        businessLogic.addNewRole(company, shiftManager);
+        businessLogic.addNewRole(compName, waiter);
+        businessLogic.addNewRole(compName, chef);
+        businessLogic.addNewRole(compName, host);
+        businessLogic.addNewRole(compName, barman);
+        businessLogic.addNewRole(compName, shiftManager);
 
         System.out.println("******** ROLES *********");
-        businessLogic.getAllRoles(company).forEach((role) -> {
+        businessLogic.getAllRoles(compName).forEach((role) -> {
             System.out.println(role.m_Name);
         });
         System.out.println("************************");

@@ -8,6 +8,7 @@ import org.uncommons.watchmaker.framework.TerminationCondition;
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AlgorithmConfig
 {
@@ -20,19 +21,41 @@ public class AlgorithmConfig
     private final int populationSize;
     private final int elitism;
 
-    public AlgorithmConfig() {
-
-    }
-
-    public ArrayList<TerminationCondition> getTerminationConditions() {
-        return terminationConditions;
-    }
-
-    public void setTerminationConditions(ArrayList<TerminationCondition> terminationConditions) {
+    public AlgorithmConfig(List<EvolutionaryOperator<Arrangement>> mutations,
+                           AbstractCrossover<Arrangement> crossover,
+                           SelectionStrategy<? super Arrangement> selectionStrategy,
+                           List<TerminationCondition> terminationConditions,
+                           int populationSize,
+                           int elitism) {
+        this.mutations = mutations;
+        this.crossover = crossover;
+        this.selectionStrategy = selectionStrategy;
         this.terminationConditions = terminationConditions;
+        this.populationSize = populationSize;
+        this.elitism = elitism;
+    }
+
+    public List<EvolutionaryOperator<Arrangement>> getMutations() {
+        return mutations;
+    }
+
+    public AbstractCrossover<Arrangement> getCrossover() {
+        return crossover;
+    }
+
+    public SelectionStrategy<? super Arrangement> getSelectionStrategy() {
+        return selectionStrategy;
+    }
+
+    public List<TerminationCondition> getTerminationConditions() {
+        return terminationConditions;
     }
 
     public int getPopulationSize() {
         return populationSize;
+    }
+
+    public int getElitism() {
+        return elitism;
     }
 }

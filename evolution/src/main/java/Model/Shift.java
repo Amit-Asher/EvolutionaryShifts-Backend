@@ -9,9 +9,6 @@ public class Shift
     protected Role m_Role;
     protected Slot m_Slot;
 
-    public Shift() {
-    }
-
     public Shift(Employee m_Employee, Role m_Role, Slot m_Slot) {
         this.m_Employee = m_Employee;
         this.m_Role = m_Role;

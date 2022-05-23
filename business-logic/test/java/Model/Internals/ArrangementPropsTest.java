@@ -19,9 +19,11 @@ import java.util.*;
 public class ArrangementPropsTest {
     @Test
     public void addRoles() {
-        Company company = new Company();
         BusinessLogic businessLogic = BusinessLogic.getInstance();
 
+        String compName = "Apple";
+        businessLogic.addCompany(compName);
+        
         // ******** ADD ROLES ******* //
         Role waiter = new Role("waiter");
         Role chef = new Role("chef");
@@ -29,11 +31,11 @@ public class ArrangementPropsTest {
         Role barman = new Role("barman");
         Role shiftManager = new Role("Shift Manager");
 
-        businessLogic.addNewRole(company, waiter);
-        businessLogic.addNewRole(company, chef);
-        businessLogic.addNewRole(company, host);
-        businessLogic.addNewRole(company, barman);
-        businessLogic.addNewRole(company, shiftManager);
+        businessLogic.addNewRole(compName, waiter);
+        businessLogic.addNewRole(compName, chef);
+        businessLogic.addNewRole(compName, host);
+        businessLogic.addNewRole(compName, barman);
+        businessLogic.addNewRole(compName, shiftManager);
 
         // ******** ADD EMPLOYEES ******* //
         Employee waiter1 = new Employee("waiter1Name", "111", new HashSet<Role>() {{
@@ -91,27 +93,27 @@ public class ArrangementPropsTest {
             add(host);
         }});
 
-        businessLogic.addEmployee(company, waiter1);
-        businessLogic.addEmployee(company, waiter2);
-        businessLogic.addEmployee(company, waiter3);
-        businessLogic.addEmployee(company, waiter4);
-        businessLogic.addEmployee(company, waiter5);
-        businessLogic.addEmployee(company, waiter6);
-        businessLogic.addEmployee(company, chef1);
-        businessLogic.addEmployee(company, chef2);
-        businessLogic.addEmployee(company, chef3);
-        businessLogic.addEmployee(company, barman1);
-        businessLogic.addEmployee(company, barman2);
-        businessLogic.addEmployee(company, barman3);
-        businessLogic.addEmployee(company, host1);
-        businessLogic.addEmployee(company, host2);
-        businessLogic.addEmployee(company, shiftManager1);
-        businessLogic.addEmployee(company, shiftManager2);
+        businessLogic.addEmployee(compName, waiter1);
+        businessLogic.addEmployee(compName, waiter2);
+        businessLogic.addEmployee(compName, waiter3);
+        businessLogic.addEmployee(compName, waiter4);
+        businessLogic.addEmployee(compName, waiter5);
+        businessLogic.addEmployee(compName, waiter6);
+        businessLogic.addEmployee(compName, chef1);
+        businessLogic.addEmployee(compName, chef2);
+        businessLogic.addEmployee(compName, chef3);
+        businessLogic.addEmployee(compName, barman1);
+        businessLogic.addEmployee(compName, barman2);
+        businessLogic.addEmployee(compName, barman3);
+        businessLogic.addEmployee(compName, host1);
+        businessLogic.addEmployee(compName, host2);
+        businessLogic.addEmployee(compName, shiftManager1);
+        businessLogic.addEmployee(compName, shiftManager2);
 
 
 
         // ******** START NEW ARRANGEMENT ******* //
-        businessLogic.startNewArrangement(company);
+        businessLogic.startNewArrangement(compName);
 
 
         // ******** SET ARRANGEMENT PROPS ******* //
@@ -365,7 +367,7 @@ public class ArrangementPropsTest {
 
         }};
 
-        List<Employee> activeEmployees = businessLogic.getAllEmployees(company);
+        List<Employee> activeEmployees = businessLogic.getAllEmployees(compName);
         Map<IRule, Double> ruleWeights = new HashMap<IRule, Double>() {{
             put(new RuleSlots(), 1.0);
         }};
@@ -374,7 +376,7 @@ public class ArrangementPropsTest {
                 reqSlots, activeEmployees, ruleWeights
         );
 
-        businessLogic.setArrangementProperties(company, arrangementProperties);
+        businessLogic.setArrangementProperties(compName, arrangementProperties);
 
 
         System.out.println("************** ARRANGEMENT PROPERTIES ******************");
@@ -383,7 +385,7 @@ public class ArrangementPropsTest {
         System.out.format("+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+%n");
         System.out.format("| Date            | Day             | Role            | Personnel Size  | Start Time      | End Time        |%n");
         System.out.format("+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+%n");
-        businessLogic.getArrangementProperties(company).getSlots().forEach(reqSlot -> {
+        businessLogic.getArrangementProperties(compName).getSlots().forEach(reqSlot -> {
             DateTimeFormatter hmFormatter = DateTimeFormatter.ofPattern("HH:mm");
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d.M.u");
             System.out.format(String.format(leftAlignFormat,
@@ -396,7 +398,7 @@ public class ArrangementPropsTest {
         });
 
         System.out.format("%nManager opened the following rules and weights:%n");
-        businessLogic.getArrangementProperties(company).getRule2weight().forEach((key, value) -> {
+        businessLogic.getArrangementProperties(compName).getRule2weight().forEach((key, value) -> {
             System.out.format("%s: %s%n",
                     key.getName(),
                     value);
@@ -404,7 +406,7 @@ public class ArrangementPropsTest {
 
 
         System.out.format("%nManager defined the active employees as follows (participants):%n");
-        businessLogic.getArrangementProperties(company).getActiveEmployees().forEach(employee -> {
+        businessLogic.getArrangementProperties(compName).getActiveEmployees().forEach(employee -> {
             System.out.format("%s%n", employee.getFullName());
         });
 

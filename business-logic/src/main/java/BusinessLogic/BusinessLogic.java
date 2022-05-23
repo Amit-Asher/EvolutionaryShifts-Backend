@@ -11,12 +11,13 @@ import Model.Role;
 import Rule.RuleSlots.RuleSlotsPreference;
 import org.json.JSONException;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.List;
 
 public class BusinessLogic {
-    protected Map<String, Company> name2Company;
+    protected Map<String, Company> name2Company = new HashMap<>();
     // sanity check for git
 
     private static BusinessLogic instance = null;
@@ -30,6 +31,10 @@ public class BusinessLogic {
             instance = new BusinessLogic();
         }
         return instance;
+    }
+
+    public Company getCompanyByName(String compName) {
+        return name2Company.get(compName);
     }
 
     public void addCompany(String compName){
@@ -73,11 +78,13 @@ public class BusinessLogic {
         company.removeRole(role);
     }
 
-    public List<Role> getAllRoles(Company company) {
-        return company.getAllRoles();
+    public List<Role> getAllRoles(String compName) {
+        Company company = name2Company.get(compName);
+        return company.getRolesAsList();
     }
 
-    public List<Employee> getAllEmployees(Company company) {
+    public List<Employee> getAllEmployees(String compName) {
+        Company company = name2Company.get(compName);
         return company.getAllEmployees();
     }
 
@@ -97,13 +104,14 @@ public class BusinessLogic {
         company.getArrangementManager().setCurrArrangementProp(arrangementProperties);
     }
 
-    public ArrangementProperties getArrangementProperties(Company company) {
+    public ArrangementProperties getArrangementProperties(String compName) {
+        Company company = name2Company.get(compName);
         return company.getArrangementManager().getCurrArrangementProp();
     }
 
     /*************** WAIT EMP REQ ***************/
 
-    public void setEmployeePreference(String compName, EmployeePreferences employeePreferences) {
+    public void setEmployeePreference(String compName, EmployeePreferences employeePreferences) throws JSONException {
         Company company = name2Company.get(compName);
         company.getArrangementManager().setEmployeePreference(employeePreferences);
     }
@@ -127,10 +135,11 @@ public class BusinessLogic {
         company.getArrangementManager().startAlgorithm(algorithmConfig);
     }
 
-    public EvolutionStatus getSolution(Company company) {
+    public EvolutionStatus getSolution(String compName) {
+        Company company = name2Company.get(compName);
         return new EvolutionStatus(
                 company.getArrangementManager().getCurArrangementSolution(),
-                false // todo: check if thread finished
+                !company.getArrangementManager().isEvolutionWorkerAlive()
         );
     }
 

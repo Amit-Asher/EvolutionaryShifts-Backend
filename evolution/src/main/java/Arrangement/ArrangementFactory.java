@@ -31,7 +31,8 @@ public class ArrangementFactory extends AbstractCandidateFactory<Arrangement> {
         for (int i = 0; i < arrangementSize; i++) {
             Employee chosenEmployee = activeEmployees.get(random.nextInt(activeEmployees.size()));
             ReqSlot chosenReqSlot = reqSlots.get(random.nextInt(reqSlots.size()));
-            shifts.add(new Shift(chosenEmployee, chosenReqSlot.getRole(), chosenReqSlot.getSlot()));
+            Shift shift = new Shift(chosenEmployee, chosenReqSlot.getRole(), chosenReqSlot.getSlot());
+            shifts.add(shift);
         }
 
         return new Arrangement(shifts);

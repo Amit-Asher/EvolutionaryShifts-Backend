@@ -21,6 +21,7 @@ import org.uncommons.maths.random.Probability;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 import org.uncommons.watchmaker.framework.SelectionStrategy;
 import org.uncommons.watchmaker.framework.TerminationCondition;
+import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
 import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
 import org.uncommons.watchmaker.framework.selection.TournamentSelection;
@@ -36,9 +37,11 @@ public class MainTest {
 
     @Test
     public void mainTest() throws JSONException {
-        Company company = new Company();
         BusinessLogic businessLogic = BusinessLogic.getInstance();
 
+        String compName = "Apple";
+        businessLogic.addCompany(compName);
+        
         // ******** ADD ROLES ******* //
         Role waiter = new Role("waiter");
         Role chef = new Role("chef");
@@ -46,11 +49,11 @@ public class MainTest {
         Role barman = new Role("barman");
         Role shiftManager = new Role("Shift Manager");
 
-        businessLogic.addNewRole(company, waiter);
-        businessLogic.addNewRole(company, chef);
-        businessLogic.addNewRole(company, host);
-        businessLogic.addNewRole(company, barman);
-        businessLogic.addNewRole(company, shiftManager);
+        businessLogic.addNewRole(compName, waiter);
+        businessLogic.addNewRole(compName, chef);
+        businessLogic.addNewRole(compName, host);
+        businessLogic.addNewRole(compName, barman);
+        businessLogic.addNewRole(compName, shiftManager);
 
         // ******** ADD EMPLOYEES ******* //
         Employee waiter1 = new Employee("waiter1Name", "111", new HashSet<Role>() {{
@@ -108,26 +111,26 @@ public class MainTest {
             add(host);
         }});
 
-        businessLogic.addEmployee(company, waiter1);
-        businessLogic.addEmployee(company, waiter2);
-        businessLogic.addEmployee(company, waiter3);
-        businessLogic.addEmployee(company, waiter4);
-        businessLogic.addEmployee(company, waiter5);
-        businessLogic.addEmployee(company, waiter6);
-        businessLogic.addEmployee(company, chef1);
-        businessLogic.addEmployee(company, chef2);
-        businessLogic.addEmployee(company, chef3);
-        businessLogic.addEmployee(company, barman1);
-        businessLogic.addEmployee(company, barman2);
-        businessLogic.addEmployee(company, barman3);
-        businessLogic.addEmployee(company, host1);
-        businessLogic.addEmployee(company, host2);
-        businessLogic.addEmployee(company, shiftManager1);
-        businessLogic.addEmployee(company, shiftManager2);
+        businessLogic.addEmployee(compName, waiter1);
+        businessLogic.addEmployee(compName, waiter2);
+        businessLogic.addEmployee(compName, waiter3);
+        businessLogic.addEmployee(compName, waiter4);
+        businessLogic.addEmployee(compName, waiter5);
+        businessLogic.addEmployee(compName, waiter6);
+        businessLogic.addEmployee(compName, chef1);
+        businessLogic.addEmployee(compName, chef2);
+        businessLogic.addEmployee(compName, chef3);
+        businessLogic.addEmployee(compName, barman1);
+        businessLogic.addEmployee(compName, barman2);
+        businessLogic.addEmployee(compName, barman3);
+        businessLogic.addEmployee(compName, host1);
+        businessLogic.addEmployee(compName, host2);
+        businessLogic.addEmployee(compName, shiftManager1);
+        businessLogic.addEmployee(compName, shiftManager2);
 
 
         // ******** START NEW ARRANGEMENT ******* //
-        businessLogic.startNewArrangement(company);
+        businessLogic.startNewArrangement(compName);
 
 
         // ******** SET ARRANGEMENT PROPS ******* //
@@ -382,7 +385,7 @@ public class MainTest {
 
         }};
 
-        List<Employee> activeEmployees = businessLogic.getAllEmployees(company);
+        List<Employee> activeEmployees = businessLogic.getAllEmployees(compName);
         Map<IRule, Double> ruleWeights = new HashMap<IRule, Double>() {{
             put(new RuleSlots(), 1.0);
         }};
@@ -391,7 +394,7 @@ public class MainTest {
                 reqSlots, activeEmployees, ruleWeights
         );
 
-        businessLogic.setArrangementProperties(company, arrangementProperties);
+        businessLogic.setArrangementProperties(compName, arrangementProperties);
 
         // ******** SET EMPLOYEES PREFERENCES ******* //
 
@@ -479,7 +482,7 @@ public class MainTest {
             }});
         }});
 
-        // businessLogic.setEmployeePreference(company, waiter3NamePref);
+        // businessLogic.setEmployeePreference(compName, waiter3NamePref);
 
         EmployeePreferences waiter2NamePref = new EmployeePreferences(waiter2, new JSONObject() {{
             put("RuleSlots", new JSONObject() {{
@@ -911,34 +914,35 @@ public class MainTest {
             }});
         }});
 
-        businessLogic.setEmployeePreference(company, waiter1NamePref);
-        businessLogic.setEmployeePreference(company, waiter2NamePref);
-        businessLogic.setEmployeePreference(company, waiter3NamePref);
-        businessLogic.setEmployeePreference(company, waiter4NamePref);
-        businessLogic.setEmployeePreference(company, waiter5NamePref);
-        businessLogic.setEmployeePreference(company, waiter6NamePref);
-        businessLogic.setEmployeePreference(company, chef1NamePref);
-        businessLogic.setEmployeePreference(company, chef2NamePref);
-        businessLogic.setEmployeePreference(company, chef3NamePref);
-        businessLogic.setEmployeePreference(company, barman1NamePref);
-        businessLogic.setEmployeePreference(company, barman2NamePref);
-        businessLogic.setEmployeePreference(company, barman3NamePref);
-        businessLogic.setEmployeePreference(company, host1NamePref);
-        businessLogic.setEmployeePreference(company, host2NamePref);
-        businessLogic.setEmployeePreference(company, shiftManager1NamePref);
-        businessLogic.setEmployeePreference(company, shiftManager2NamePref);
+        businessLogic.setEmployeePreference(compName, waiter1NamePref);
+        businessLogic.setEmployeePreference(compName, waiter2NamePref);
+        businessLogic.setEmployeePreference(compName, waiter3NamePref);
+        businessLogic.setEmployeePreference(compName, waiter4NamePref);
+        businessLogic.setEmployeePreference(compName, waiter5NamePref);
+        businessLogic.setEmployeePreference(compName, waiter6NamePref);
+        businessLogic.setEmployeePreference(compName, chef1NamePref);
+        businessLogic.setEmployeePreference(compName, chef2NamePref);
+        businessLogic.setEmployeePreference(compName, chef3NamePref);
+        businessLogic.setEmployeePreference(compName, barman1NamePref);
+        businessLogic.setEmployeePreference(compName, barman2NamePref);
+        businessLogic.setEmployeePreference(compName, barman3NamePref);
+        businessLogic.setEmployeePreference(compName, host1NamePref);
+        businessLogic.setEmployeePreference(compName, host2NamePref);
+        businessLogic.setEmployeePreference(compName, shiftManager1NamePref);
+        businessLogic.setEmployeePreference(compName, shiftManager2NamePref);
 
-        businessLogic.blockEmployeesToSetPref(company);
+        businessLogic.blockEmployeesToSetPref(compName);
 
         // ******** SOLVING ******* //
 
         // pipeline: mutations + crossovers
-        List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
+        List<EvolutionaryOperator<Arrangement>> mutations = new ArrayList<>(2);
         MutationByDay mutationByDay = new MutationByDay(0.2);
         mutationByDay.setEmployees(activeEmployees);
-        operators.add(new BasicCrossover(3));
-        operators.add(mutationByDay);
-        EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<>(operators);
+        mutations.add(mutationByDay);
+
+        AbstractCrossover<Arrangement> crossover = new BasicCrossover(3);
+
 
         // selection strategy
         SelectionStrategy<? super Arrangement> selectionStrategy = new TournamentSelection(new Probability(0.8));
@@ -946,7 +950,8 @@ public class MainTest {
         // termination condition
 //        TerminationCondition terminationCondition = new TargetFitness(95, true);
 
-        TerminationCondition terminationCondition = new GenerationCount(100);
+        List<TerminationCondition> terminationConditions = new ArrayList<>();
+        terminationConditions.add(new GenerationCount(10));
 
         // population size
         int populationSize = 100;
@@ -955,24 +960,35 @@ public class MainTest {
         int elitism = 5;
 
         AlgorithmConfig algorithmConfig = new AlgorithmConfig(
-                pipeline,
+                mutations,
+                crossover,
                 selectionStrategy,
-                terminationCondition,
+                terminationConditions,
                 populationSize,
                 elitism
         );
 
-        businessLogic.startAlgorithm(company, algorithmConfig);
+        businessLogic.startAlgorithm(compName, algorithmConfig);
 
         // FINISHED
-        EvolutionStatus evolutionStatus = businessLogic.getSolution(company);
+        try {
+            EvolutionStatus evolutionStatus;
+            do {
+                evolutionStatus = businessLogic.getSolution(compName);
+                Thread.sleep(1000);
+            } while (!evolutionStatus.isFinished);
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        System.out.println("finished!");
+
 
         // PUBLISH
-        businessLogic.publishArrangement(company);
+        businessLogic.publishArrangement(compName);
 
         // here the manager can set new arrangement after overview the employees tickets
 
         // FINISH ARRANGEMENT
-        businessLogic.finishArrangement(company);
+        businessLogic.finishArrangement(compName);
     }
 }

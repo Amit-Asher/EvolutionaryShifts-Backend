@@ -12,7 +12,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.uncommons.maths.random.MersenneTwisterRNG;
 import org.uncommons.watchmaker.framework.EvolutionEngine;
+import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 import org.uncommons.watchmaker.framework.GenerationalEvolutionEngine;
+import org.uncommons.watchmaker.framework.TerminationCondition;
+import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
 
 import java.util.*;
 
@@ -26,6 +29,11 @@ public class ArrangementManager
     private Map<String, Ticket> tickets = new HashMap<String, Ticket>();
     private ArrangementEvaluator arrangementEvaluator = null;
     private Arrangement solution;
+    private Thread evolutionWorker;
+
+    public boolean isEvolutionWorkerAlive() {
+        return evolutionWorker.isAlive();
+    }
 
     public ArrangementStatus getCurrArrangementStatus() {
         return m_CurrArrangementStatus;
@@ -164,14 +172,20 @@ public class ArrangementManager
             System.out.println();
         });
 
-        new Thread(() ->{
+
+//        solution = finalEngine.evolve(algorithmConfig.getPopulationSize(),
+//        algorithmConfig.getElitism(),
+//        algorithmConfig.getTerminationConditions().toArray(new TerminationCondition[0]));
+
+        this.evolutionWorker = new Thread(() ->{
             //the last parmeter passing is some kind of hack to be able to pass arrylist to vararg cause teminateCondition is ... type parameter
             //link:https://thispointer.com/how-to-pass-an-arraylist-to-varargs-method/
             solution = finalEngine.evolve(algorithmConfig.getPopulationSize(),
                     algorithmConfig.getElitism(),
                     algorithmConfig.getTerminationConditions().toArray(new TerminationCondition[0]));
-
-        }).start();
+        });
+        this.evolutionWorker.setName("evolutionThread");
+        this.evolutionWorker.start();
     }
 
     public ArrangementSolution getCurArrangementSolution() {

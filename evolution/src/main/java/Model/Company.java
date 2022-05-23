@@ -33,6 +33,8 @@ public class Company
     public Set<Role> getRoles() {
         return m_Roles;
     }
+
+    // FOR TESTING
     public List<Role> getRolesAsList() {
         return new ArrayList<>(this.m_Roles);
     }
