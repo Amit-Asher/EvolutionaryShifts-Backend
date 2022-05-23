@@ -11,9 +11,13 @@ import Model.Role;
 import Rule.RuleSlots.RuleSlotsPreference;
 import org.json.JSONException;
 
+import java.util.Map;
+import java.util.Set;
 import java.util.List;
 
 public class BusinessLogic {
+    protected Map<String, Company> name2Company;
+    // sanity check for git
 
     private static BusinessLogic instance = null;
 
@@ -28,34 +32,47 @@ public class BusinessLogic {
         return instance;
     }
 
+    public void addCompany(String compName){
+        Company comp = new Company(compName);
+        name2Company.put(compName,comp);
+    }
     /************** SET PROPS **************/
 
-    public void addEmployee(Company company,
+    public void addEmployee(String compName,
                             Employee employee)
     {
+        Company company = name2Company.get(compName);
         company.addEmployee(employee);
     }
-    public void removeEmployee(Company company, String employeeID)
+
+    public void removeEmployee(String compName, String employeeID)
     {
+        Company company = name2Company.get(compName);
         company.removeEmployee(employeeID);
     }
-    public void setAsManager(Company company, String employeeID)
+    public void setAsManager(String compName, String employeeID)
     {
+        Company company = name2Company.get(compName);
         company.setAsManager(employeeID);
     }
-    public void removeManager(Company company, String employeeID)
+    public void removeManager(String compName, String employeeID)
     {
+        Company company = name2Company.get(compName);
         company.removeManager(employeeID);
     }
 
-    public void addNewRole(Company company, Role role)
+    public void addNewRole(String compName, Role role)
     {
+        Company company = name2Company.get(compName);
         company.addRole(role);
     }
-    public void removeRole(Company company, Role role)
+
+    public void removeRole(String compName, Role role)
     {
+        Company company = name2Company.get(compName);
         company.removeRole(role);
     }
+
     public List<Role> getAllRoles(Company company) {
         return company.getAllRoles();
     }
@@ -64,12 +81,19 @@ public class BusinessLogic {
         return company.getAllEmployees();
     }
 
-    public void startNewArrangement(Company company) {
+    public Set<Role> getRoles(String compName){
+        Company company = name2Company.get(compName);
+        return company.getRoles();
+    }
+
+    public void startNewArrangement(String compName) {
+        Company company = name2Company.get(compName);
         company.startNewArrangement();
     }
 
-    public void setArrangementProperties(Company company,
+    public void setArrangementProperties(String compName,
                                          ArrangementProperties arrangementProperties) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().setCurrArrangementProp(arrangementProperties);
     }
 
@@ -79,24 +103,27 @@ public class BusinessLogic {
 
     /*************** WAIT EMP REQ ***************/
 
-    public void setEmployeePreference(Company company, EmployeePreferences employeePreferences) throws JSONException {
+    public void setEmployeePreference(String compName, EmployeePreferences employeePreferences) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().setEmployeePreference(employeePreferences);
     }
 
     // JUST FOR TESTING
-    public List<RuleSlotsPreference> getEmployeeSlotsPreference(Company company) {
+    public List<RuleSlotsPreference> getEmployeeSlotsPreference(String compName) {
+        Company company = name2Company.get(compName);
         return company.getArrangementManager().getEmployeesSlotsPreferences();
     }
 
-    // todo: maybe we can remove this method and block them automatically on first time manager run algorithm
-    public void blockEmployeesToSetPref(Company company) {
+    public void blockEmployeesToSetPref(String compName) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().BlockEmployeesToSetPref();
     }
 
 
     /**************** SOLVING *******************/
 
-    public void startAlgorithm(Company company, AlgorithmConfig algorithmConfig) {
+    public void startAlgorithm(String compName, AlgorithmConfig algorithmConfig) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().startAlgorithm(algorithmConfig);
     }
 
@@ -107,7 +134,8 @@ public class BusinessLogic {
         );
     }
 
-    public void publishArrangement(Company company) {
+    public void publishArrangement(String compName) {
+        Company company = name2Company.get(compName);
         // manager operation
         company.getArrangementManager().publishArrangement();
     }
@@ -115,26 +143,34 @@ public class BusinessLogic {
     /*************** WAIT EMP APPROVAL *****************/
 
     // declineArrangement
-//    public void createTicket(Company company,
+//    public void createTicket(String compName,
 //                                   Employee employee,
 //                                   String employeeMessage) {
+//        Company company = name2Company.get(compName);
 //        company.getArrangementManager().createTicket(
 //                employee,
 //                employeeMessage
 //        );
+//    }
+//
+//    public void closeTicket(String compName, String ticketId) {
+//        Company company = name2Company.get(compName);
+//        company.getArrangementManager().closeTicket(ticketId);
 //    }
 
 //    public void closeTicket(Company company, String ticketId) {
 //        company.getArrangementManager().closeTicket(ticketId);
 //    }
 
-//    public void setArrangement(Company company, Arrangement arrangement) {
+//    public void setArrangement(String compName, Arrangement arrangement) {
+//        Company company = name2Company.get(compName);
 //        // manager method to set new arrangement after review tickets
 //        company.getArrangementManager().setArrangement(arrangement);
 //
 //    }
 
-    public void finishArrangement(Company company) {
+    public void finishArrangement(String compName) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().finishArrangement();
     }
 

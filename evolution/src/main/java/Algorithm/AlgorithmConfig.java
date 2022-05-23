@@ -5,46 +5,34 @@ import Arrangement.Arrangement;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 import org.uncommons.watchmaker.framework.SelectionStrategy;
 import org.uncommons.watchmaker.framework.TerminationCondition;
+import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
+
+import java.util.ArrayList;
 
 public class AlgorithmConfig
 {
     // todo: maybe we should remove rules weights from set props stage and define them here onRun
 
-    private final EvolutionaryOperator<Arrangement> pipeline; // mutations and crossovers here
+    private final List<EvolutionaryOperator<Arrangement>> mutations;
+    private final AbstractCrossover<Arrangement> crossover;
     private final SelectionStrategy<? super Arrangement> selectionStrategy;
-    private final TerminationCondition terminationCondition;
+    private final List<TerminationCondition> terminationConditions;
     private final int populationSize;
     private final int elitism;
 
-    public AlgorithmConfig(EvolutionaryOperator<Arrangement> pipeline,
-                           SelectionStrategy<? super Arrangement> selectionStrategy,
-                           TerminationCondition terminationCondition,
-                           int populationSize,
-                           int elitism) {
-        this.pipeline = pipeline;
-        this.selectionStrategy = selectionStrategy;
-        this.terminationCondition = terminationCondition;
-        this.populationSize = populationSize;
-        this.elitism = elitism;
+    public AlgorithmConfig() {
+
     }
 
-    public EvolutionaryOperator<Arrangement> getPipeline() {
-        return pipeline;
+    public ArrayList<TerminationCondition> getTerminationConditions() {
+        return terminationConditions;
     }
 
-    public SelectionStrategy<? super Arrangement> getSelectionStrategy() {
-        return selectionStrategy;
-    }
-
-    public TerminationCondition getTerminationCondition() {
-        return terminationCondition;
+    public void setTerminationConditions(ArrayList<TerminationCondition> terminationConditions) {
+        this.terminationConditions = terminationConditions;
     }
 
     public int getPopulationSize() {
         return populationSize;
-    }
-
-    public int getElitism() {
-        return elitism;
     }
 }

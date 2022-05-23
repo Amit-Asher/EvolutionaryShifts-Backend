@@ -25,6 +25,7 @@ public class ArrangementManager
     private ArrangementSolution curArrangementSolution = null;
     private Map<String, Ticket> tickets = new HashMap<String, Ticket>();
     private ArrangementEvaluator arrangementEvaluator = null;
+    private Arrangement solution;
 
     public ArrangementStatus getCurrArrangementStatus() {
         return m_CurrArrangementStatus;
@@ -109,7 +110,7 @@ public class ArrangementManager
     }
  // main comment
     // todo: wrap with thread
-    public Arrangement startAlgorithm(AlgorithmConfig algorithmConfig)
+    public void startAlgorithm(AlgorithmConfig algorithmConfig)
     {
         if (this.m_CurrArrangementStatus == ArrangementStatus.WAIT_EMP_REQ ||
                 this.m_CurrArrangementStatus == ArrangementStatus.WAIT_EMP_APPROVAL) {
@@ -131,18 +132,19 @@ public class ArrangementManager
          *
          *
          *  */
-
-        try {
-            Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getRule2weight();
+        List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>();
+        operators.add(algorithmConfig.getCrossover());
+        operators.addAll(algorithmConfig.getMutations());
+        EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<Arrangement>(operators);
+        try{
             ArrangementFactory arrangementFactory = new ArrangementFactory(
                     m_CurrArrangementProp.getSlots(),
                     m_CurrArrangementProp.getActiveEmployees()
             );
-
-            this.arrangementEvaluator = new ArrangementEvaluator(rule2Weight);
-            this.engine = new GenerationalEvolutionEngine<>(
+            this.arrangementEvaluator = new ArrangementEvaluator(m_CurrArrangementProp.getRule2weight());
+            this.engine = new GenerationalEvolutionEngine<Arrangement>(
                     arrangementFactory,
-                    algorithmConfig.getPipeline(),
+                    pipeline,
                     this.arrangementEvaluator,
                     algorithmConfig.getSelectionStrategy(),
                     new MersenneTwisterRNG()
@@ -150,6 +152,8 @@ public class ArrangementManager
         } catch (Exception e) {
             e.printStackTrace();
         }
+        EvolutionEngine<Arrangement> finalEngine = engine;
+
         this.engine.addEvolutionObserver(populationData -> {
             curArrangementSolution = new ArrangementEvoSolution(
                     populationData.getBestCandidate(),
@@ -160,9 +164,14 @@ public class ArrangementManager
             System.out.println();
         });
 
-        return this.engine.evolve(algorithmConfig.getPopulationSize(),
-                algorithmConfig.getElitism(),
-                algorithmConfig.getTerminationCondition());
+        new Thread(() ->{
+            //the last parmeter passing is some kind of hack to be able to pass arrylist to vararg cause teminateCondition is ... type parameter
+            //link:https://thispointer.com/how-to-pass-an-arraylist-to-varargs-method/
+            solution = finalEngine.evolve(algorithmConfig.getPopulationSize(),
+                    algorithmConfig.getElitism(),
+                    algorithmConfig.getTerminationConditions().toArray(new TerminationCondition[0]));
+
+        }).start();
     }
 
     public ArrangementSolution getCurArrangementSolution() {
@@ -201,7 +210,6 @@ public class ArrangementManager
     }
 
     public void setArrangement(Arrangement arrangement) {
-        /* MANAGER METHOD */
         if (!this.m_CurrArrangementStatus.equals(ArrangementStatus.WAIT_EMP_APPROVAL)) {
             throw new RuntimeException("Failed to set new arrangement \n Current status: " +
                     this.m_CurrArrangementStatus + " expected: WAIT_EMP_APPROVAL");
