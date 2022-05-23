@@ -9,4 +9,8 @@ public class Role
         m_Name = name;
     }
 
+    public String getName() {
+        return m_Name;
+    }
+
 }

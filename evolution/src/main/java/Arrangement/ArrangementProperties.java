@@ -6,6 +6,7 @@ import Rule.IRule;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ArrangementProperties
 {
@@ -20,6 +21,10 @@ public class ArrangementProperties
         this.m_Slots = m_Slots;
         this.m_ActiveEmployees = m_ActiveEmployees;
         this.m_rule2weight = m_rule2weight;
+    }
+
+    public Set<IRule> getRules() {
+        return m_rule2weight.keySet();
     }
 
     public List<ReqSlot> getM_Slots() {

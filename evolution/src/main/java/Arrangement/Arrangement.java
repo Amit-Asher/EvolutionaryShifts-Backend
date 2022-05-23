@@ -16,6 +16,10 @@ public class Arrangement
         this.m_Shifts = new ArrayList<>();
     }
 
+    public Arrangement(List<Shift> shifts) {
+        this.m_Shifts = shifts;
+    }
+
     public Arrangement(Arrangement arrangement) {
         /* DEEP CLONE */
         List<Shift> shifts = arrangement.getShifts();

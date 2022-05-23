@@ -2,10 +2,6 @@ package Model.Employee;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 public class EmployeePreferences
 {
     //            ruleName

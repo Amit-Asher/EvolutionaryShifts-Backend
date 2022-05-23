@@ -34,4 +34,9 @@ public class Slot
     public DayOfWeek getDay() {
         return startTime.getDayOfWeek();
     }
+
+    public boolean equals(Slot slot) {
+        return this.startTime.equals(slot.startTime) &&
+                this.endTime.equals(slot.endTime);
+    }
 }

@@ -5,6 +5,9 @@ import Model.Role;
 
 public class ReqSlot
 {
+
+    // todo: we should improve naming here and use PrfSlot properties.
+    //  maybe we should change PrfSlot to be RoleBasedSlot and hold here RoleBasedSlot
     private Slot slot;
     private Role role;
     private Range personnelSize;

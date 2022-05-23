@@ -8,12 +8,12 @@ import Model.Company;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Role;
+import Rule.RuleSlots.RuleSlotsPreference;
+import org.json.JSONException;
 
 import java.util.List;
 
 public class BusinessLogic {
-//    protected Map<String, Company> m_ID2Company;
-    // sanity check for git
 
     private static BusinessLogic instance = null;
 
@@ -79,14 +79,16 @@ public class BusinessLogic {
 
     /*************** WAIT EMP REQ ***************/
 
-    public void setEmployeePreference(Company company, EmployeePreferences employeePreferences) {
-        try {
-            company.getArrangementManager().updateEmployeePreference(employeePreferences);
-        } catch (Exception exception) {
-            throw exception;
-        }
+    public void setEmployeePreference(Company company, EmployeePreferences employeePreferences) throws JSONException {
+        company.getArrangementManager().setEmployeePreference(employeePreferences);
     }
 
+    // JUST FOR TESTING
+    public List<RuleSlotsPreference> getEmployeeSlotsPreference(Company company) {
+        return company.getArrangementManager().getEmployeesSlotsPreferences();
+    }
+
+    // todo: maybe we can remove this method and block them automatically on first time manager run algorithm
     public void blockEmployeesToSetPref(Company company) {
         company.getArrangementManager().BlockEmployeesToSetPref();
     }
@@ -98,24 +100,7 @@ public class BusinessLogic {
         company.getArrangementManager().startAlgorithm(algorithmConfig);
     }
 
-    // todo: optional- pauseAlgorithm()
-    // todo: optional- stopAlgorithm()
-    // todo: optional- resumeAlgorithm()
-    // todo: optional- set engine configuration
-
-    /*
-     * todo:
-     *  we did SET_PROPS
-     *  we did WAIT_EMP_REQ
-     *  we stopped at SOLVING
-     *   APPROVAL (NOT IMPLEMENTED)
-     *   FINISH (NOTE IMPLEMENTED)
-     *  build test file. for now hard code rules (polymorphism issue)
-     *
-     * */
-
     public EvolutionStatus getSolution(Company company) {
-        // todo: support getHistory
         return new EvolutionStatus(
                 company.getArrangementManager().getCurArrangementSolution(),
                 false // todo: check if thread finished
@@ -130,27 +115,24 @@ public class BusinessLogic {
     /*************** WAIT EMP APPROVAL *****************/
 
     // declineArrangement
-    public void createTicket(Company company,
-                                   Employee employee,
-                                   String employeeMessage) {
-        company.getArrangementManager().createTicket(
-                employee,
-                employeeMessage
-        );
-    }
+//    public void createTicket(Company company,
+//                                   Employee employee,
+//                                   String employeeMessage) {
+//        company.getArrangementManager().createTicket(
+//                employee,
+//                employeeMessage
+//        );
+//    }
 
-    public void closeTicket(Company company, String ticketId) {
-        company.getArrangementManager().closeTicket(ticketId);
-    }
+//    public void closeTicket(Company company, String ticketId) {
+//        company.getArrangementManager().closeTicket(ticketId);
+//    }
 
-    // todo: optional- set employee preferences
-
-    public void setArrangement(Company company, Arrangement arrangement) {
-        // manager method to set new arrangement after review tickets
-        // todo: impl
-        company.getArrangementManager().setArrangement(arrangement);
-
-    }
+//    public void setArrangement(Company company, Arrangement arrangement) {
+//        // manager method to set new arrangement after review tickets
+//        company.getArrangementManager().setArrangement(arrangement);
+//
+//    }
 
     public void finishArrangement(Company company) {
         company.getArrangementManager().finishArrangement();

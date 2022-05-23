@@ -7,16 +7,20 @@ import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Range;
 import Model.Role;
+import Model.Slot.PrfSlot;
 import Model.Slot.ReqSlot;
 import Model.Slot.Slot;
 import Rule.IRule;
 import Rule.RuleSlots.RuleSlots;
+import Rule.RuleSlots.RuleSlotsPreference;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
 
 public class setEmployeePref {
@@ -385,82 +389,82 @@ public class setEmployeePref {
 
         // example of perfect solution (100% fitness) according to employees preferences:
 
-        // 2022-5-22 08:00, waiters: waiter1, waiter4
-        // 2022-5-22 16:00, waiters: waiter2, waiter3, waiter5
-        // 2022-5-23 08:00, waiters: waiter1, waiter6
-        // 2022-5-23 16:00, waiters: waiter2, waiter3, waiter4
-        // 2022-5-24 08:00, waiters: waiter3, waiter6
-        // 2022-5-24 16:00, waiters: waiter2, waiter4, waiter5
-        // 2022-5-25 08:00, waiters: waiter1, waiter4
-        // 2022-5-25 16:00, waiters: waiter3, waiter4, waiter5
-        // 2022-5-26 08:00, waiters: waiter1, waiter2
-        // 2022-5-26 16:00, waiters: waiter1, waiter2, waiter3
+        // 2022-05-22 08:00, waiters: waiter1, waiter4
+        // 2022-05-22 16:00, waiters: waiter2, waiter3, waiter5
+        // 2022-05-23 08:00, waiters: waiter1, waiter6
+        // 2022-05-23 16:00, waiters: waiter2, waiter3, waiter4
+        // 2022-05-24 08:00, waiters: waiter3, waiter6
+        // 2022-05-24 16:00, waiters: waiter2, waiter4, waiter5
+        // 2022-05-25 08:00, waiters: waiter1, waiter4
+        // 2022-05-25 16:00, waiters: waiter3, waiter4, waiter5
+        // 2022-05-26 08:00, waiters: waiter1, waiter2
+        // 2022-05-26 16:00, waiters: waiter1, waiter2, waiter3
 
-        // 2022-5-22 07:00, chefs: chef1
-        // 2022-5-22 16:00, chefs: chef2, chef3
-        // 2022-5-23 07:00, chefs: chef2
-        // 2022-5-23 16:00, chefs: chef1, chef3
-        // 2022-5-24 07:00, chefs: chef3
-        // 2022-5-24 16:00, chefs: chef1, chef2
-        // 2022-5-25 07:00, chefs: chef3
-        // 2022-5-25 16:00, chefs: chef2, chef3
-        // 2022-5-26 07:00, chefs: chef1
-        // 2022-5-26 16:00, chefs: chef2, chef3
+        // 2022-05-22 07:00, chefs: chef1
+        // 2022-05-22 16:00, chefs: chef2, chef3
+        // 2022-05-23 07:00, chefs: chef2
+        // 2022-05-23 16:00, chefs: chef1, chef3
+        // 2022-05-24 07:00, chefs: chef3
+        // 2022-05-24 16:00, chefs: chef1, chef2
+        // 2022-05-25 07:00, chefs: chef3
+        // 2022-05-25 16:00, chefs: chef2, chef3
+        // 2022-05-26 07:00, chefs: chef1
+        // 2022-05-26 16:00, chefs: chef2, chef3
 
-        // 2022-5-22 08:00, barmans: barman1
-        // 2022-5-22 16:00, barmans: barman2, barman3
-        // 2022-5-23 08:00, barmans: barman3
-        // 2022-5-23 16:00, barmans: barman1, barman2
-        // 2022-5-24 08:00, barmans: barman3
-        // 2022-5-24 16:00, barmans: barman1, barman2
-        // 2022-5-25 08:00, barmans: barman1
-        // 2022-5-25 16:00, barmans: barman2, barman3
-        // 2022-5-26 08:00, barmans: barman2
-        // 2022-5-26 16:00, barmans: barman1, barman3
+        // 2022-05-22 08:00, barmans: barman1
+        // 2022-05-22 16:00, barmans: barman2, barman3
+        // 2022-05-23 08:00, barmans: barman3
+        // 2022-05-23 16:00, barmans: barman1, barman2
+        // 2022-05-24 08:00, barmans: barman3
+        // 2022-05-24 16:00, barmans: barman1, barman2
+        // 2022-05-25 08:00, barmans: barman1
+        // 2022-05-25 16:00, barmans: barman2, barman3
+        // 2022-05-26 08:00, barmans: barman2
+        // 2022-05-26 16:00, barmans: barman1, barman3
 
-        // 2022-5-22 16:00, hosts: host1
-        // 2022-5-23 16:00, hosts: host2
-        // 2022-5-24 16:00, hosts: host1
-        // 2022-5-25 16:00, hosts: host2
-        // 2022-5-26 16:00, hosts: host1
+        // 2022-05-22 16:00, hosts: host1
+        // 2022-05-23 16:00, hosts: host2
+        // 2022-05-24 16:00, hosts: host1
+        // 2022-05-25 16:00, hosts: host2
+        // 2022-05-26 16:00, hosts: host1
 
-        // 2022-5-22 08:00, Shift Managers: shift manager1
-        // 2022-5-22 16:00, Shift Managers: shift manager2
-        // 2022-5-23 08:00, Shift Managers: shift manager1
-        // 2022-5-23 16:00, Shift Managers: shift manager2
-        // 2022-5-24 08:00, Shift Managers: shift manager2
-        // 2022-5-24 16:00, Shift Managers: shift manager1
-        // 2022-5-25 08:00, Shift Managers: shift manager2
-        // 2022-5-25 16:00, Shift Managers: shift manager1
-        // 2022-5-26 08:00, Shift Managers: shift manager2
-        // 2022-5-26 16:00, Shift Managers: shift manager1
+        // 2022-05-22 08:00, Shift Managers: shift manager1
+        // 2022-05-22 16:00, Shift Managers: shift manager2
+        // 2022-05-23 08:00, Shift Managers: shift manager1
+        // 2022-05-23 16:00, Shift Managers: shift manager2
+        // 2022-05-24 08:00, Shift Managers: shift manager2
+        // 2022-05-24 16:00, Shift Managers: shift manager1
+        // 2022-05-25 08:00, Shift Managers: shift manager2
+        // 2022-05-25 16:00, Shift Managers: shift manager1
+        // 2022-05-26 08:00, Shift Managers: shift manager2
+        // 2022-05-26 16:00, Shift Managers: shift manager1
 
         EmployeePreferences waiter1NamePref = new EmployeePreferences(waiter1, new JSONObject() {{
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 08:00");
-                        put("endTime", "2022-5-22 16:00");
+                        put("startTime", "2022-05-22 08:00");
+                        put("endTime", "2022-05-22 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 08:00");
-                        put("endTime", "2022-5-23 16:00");
+                        put("startTime", "2022-05-23 08:00");
+                        put("endTime", "2022-05-23 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 08:00");
-                        put("endTime", "2022-5-25 16:00");
+                        put("startTime", "2022-05-25 08:00");
+                        put("endTime", "2022-05-25 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 08:00");
-                        put("endTime", "2022-5-26 16:00");
+                        put("startTime", "2022-05-26 08:00");
+                        put("endTime", "2022-05-26 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -473,28 +477,28 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 08:00");
-                        put("endTime", "2022-5-26 16:00");
+                        put("startTime", "2022-05-26 08:00");
+                        put("endTime", "2022-05-26 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -505,28 +509,28 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 08:00");
-                        put("endTime", "2022-5-24 16:00");
+                        put("startTime", "2022-05-24 08:00");
+                        put("endTime", "2022-05-24 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -537,28 +541,28 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 08:00");
-                        put("endTime", "2022-5-22 16:00");
+                        put("startTime", "2022-05-22 08:00");
+                        put("endTime", "2022-05-22 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 08:00");
-                        put("endTime", "2022-5-25 16:00");
+                        put("startTime", "2022-05-25 08:00");
+                        put("endTime", "2022-05-25 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -569,18 +573,18 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -591,13 +595,13 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 08:00");
-                        put("endTime", "2022-5-23 16:00");
+                        put("startTime", "2022-05-23 08:00");
+                        put("endTime", "2022-05-23 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 08:00");
-                        put("endTime", "2022-5-24 16:00");
+                        put("startTime", "2022-05-24 08:00");
+                        put("endTime", "2022-05-24 16:00");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -608,23 +612,23 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 07:00");
-                        put("endTime", "2022-5-22 16:00");
+                        put("startTime", "2022-05-22 07:00");
+                        put("endTime", "2022-05-22 16:00");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 07:00");
-                        put("endTime", "2022-5-26 16:00");
+                        put("startTime", "2022-05-26 07:00");
+                        put("endTime", "2022-05-26 16:00");
                         put("role", chef.m_Name);
                     }});
                 }});
@@ -635,28 +639,28 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 07:00");
-                        put("endTime", "2022-5-23 16:00");
+                        put("startTime", "2022-05-23 07:00");
+                        put("endTime", "2022-05-23 16:00");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", chef.m_Name);
                     }});
                 }});
@@ -667,33 +671,33 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 07:00");
-                        put("endTime", "2022-5-24 16:00");
+                        put("startTime", "2022-05-24 07:00");
+                        put("endTime", "2022-05-24 16:00");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 07:00");
-                        put("endTime", "2022-5-25 16:00");
+                        put("startTime", "2022-05-25 07:00");
+                        put("endTime", "2022-05-25 16:00");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", chef.m_Name);
                     }});
                 }});
@@ -704,28 +708,28 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 08:00");
-                        put("endTime", "2022-5-22 16:00");
+                        put("startTime", "2022-05-22 08:00");
+                        put("endTime", "2022-05-22 16:00");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 08:00");
-                        put("endTime", "2022-5-25 16:00");
+                        put("startTime", "2022-05-25 08:00");
+                        put("endTime", "2022-05-25 16:00");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", barman.m_Name);
                     }});
                 }});
@@ -736,28 +740,28 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 08:00");
-                        put("endTime", "2022-5-26 16:00");
+                        put("startTime", "2022-05-26 08:00");
+                        put("endTime", "2022-05-26 16:00");
                         put("role", barman.m_Name);
                     }});
                 }});
@@ -768,28 +772,28 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 08:00");
-                        put("endTime", "2022-5-23 16:00");
+                        put("startTime", "2022-05-23 08:00");
+                        put("endTime", "2022-05-23 16:00");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 08:00");
-                        put("endTime", "2022-5-24 16:00");
+                        put("startTime", "2022-05-24 08:00");
+                        put("endTime", "2022-05-24 16:00");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", barman.m_Name);
                     }});
                 }});
@@ -800,18 +804,18 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", host.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", host.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", host.m_Name);
                     }});
                 }});
@@ -822,13 +826,13 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", host.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", host.m_Name);
                     }});
                 }});
@@ -839,28 +843,28 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 08:00");
-                        put("endTime", "2022-5-22 16:00");
+                        put("startTime", "2022-05-22 08:00");
+                        put("endTime", "2022-05-22 16:00");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 08:00");
-                        put("endTime", "2022-5-23 16:00");
+                        put("startTime", "2022-05-23 08:00");
+                        put("endTime", "2022-05-23 16:00");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", shiftManager.m_Name);
                     }});
                 }});
@@ -871,28 +875,28 @@ public class setEmployeePref {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 08:00");
-                        put("endTime", "2022-5-24 16:00");
+                        put("startTime", "2022-05-24 08:00");
+                        put("endTime", "2022-05-24 16:00");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 08:00");
-                        put("endTime", "2022-5-25 16:00");
+                        put("startTime", "2022-05-25 08:00");
+                        put("endTime", "2022-05-25 16:00");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 08:00");
-                        put("endTime", "2022-5-26 16:00");
+                        put("startTime", "2022-05-26 08:00");
+                        put("endTime", "2022-05-26 16:00");
                         put("role", shiftManager.m_Name);
                     }});
                 }});
@@ -916,52 +920,17 @@ public class setEmployeePref {
         businessLogic.setEmployeePreference(company, shiftManager1NamePref);
         businessLogic.setEmployeePreference(company, shiftManager2NamePref);
 
-        System.out.format("***** %s ******\n", waiter1NamePref.getEmployee().getFullName());
-        System.out.println(waiter1NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", waiter2NamePref.getEmployee().getFullName());
-        System.out.println(waiter2NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", waiter3NamePref.getEmployee().getFullName());
-        System.out.println(waiter3NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", waiter4NamePref.getEmployee().getFullName());
-        System.out.println(waiter4NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", waiter5NamePref.getEmployee().getFullName());
-        System.out.println(waiter5NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", waiter6NamePref.getEmployee().getFullName());
-        System.out.println(waiter6NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", chef1NamePref.getEmployee().getFullName());
-        System.out.println(chef1NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", chef2NamePref.getEmployee().getFullName());
-        System.out.println(chef2NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", chef3NamePref.getEmployee().getFullName());
-        System.out.println(chef3NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", barman1NamePref.getEmployee().getFullName());
-        System.out.println(barman1NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", barman2NamePref.getEmployee().getFullName());
-        System.out.println(barman2NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", barman3NamePref.getEmployee().getFullName());
-        System.out.println(barman3NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", host1NamePref.getEmployee().getFullName());
-        System.out.println(host1NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", host2NamePref.getEmployee().getFullName());
-        System.out.println(host2NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", shiftManager1NamePref.getEmployee().getFullName());
-        System.out.println(shiftManager1NamePref.getPreferences().toString(2));
-
-        System.out.format("***** %s ******\n", shiftManager2NamePref.getEmployee().getFullName());
-        System.out.println(shiftManager2NamePref.getPreferences().toString(2));
+        List<RuleSlotsPreference> preferences = businessLogic.getEmployeeSlotsPreference(company);
+        preferences.forEach(preference -> {
+            System.out.format("************** %s *************\n", preference.getEmployee().getFullName());
+            List<PrfSlot> slots = preference.getSlots();
+            slots.forEach(slot -> {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                System.out.println("startTime: " + slot.getSlot().getStartTime().format(formatter));
+                System.out.println("endTime:   " + slot.getSlot().getEndTime().format(formatter));
+                System.out.println("role:   " + slot.getRole().getName());
+                System.out.println();
+            });
+        });
     }
 }

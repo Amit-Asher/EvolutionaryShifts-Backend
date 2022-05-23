@@ -1,17 +1,31 @@
 package Model;
 
+import Algorithm.AlgorithmConfig;
+import Algorithm.EvolutionStatus;
+import Arrangement.Arrangement;
 import Arrangement.ArrangementProperties;
 import BusinessLogic.BusinessLogic;
+import Crossovers.BasicCrossover;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Slot.ReqSlot;
 import Model.Slot.Slot;
+import Mutations.MutationByDay;
 import Rule.IRule;
 import Rule.RuleSlots.RuleSlots;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+import org.uncommons.maths.random.Probability;
+import org.uncommons.watchmaker.framework.EvolutionaryOperator;
+import org.uncommons.watchmaker.framework.SelectionStrategy;
+import org.uncommons.watchmaker.framework.TerminationCondition;
+import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
+import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
+import org.uncommons.watchmaker.framework.selection.TournamentSelection;
+import org.uncommons.watchmaker.framework.termination.GenerationCount;
+import org.uncommons.watchmaker.framework.termination.TargetFitness;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -383,82 +397,82 @@ public class MainTest {
 
         // example of perfect solution (100% fitness) according to employees preferences:
 
-        // 2022-5-22 08:00, waiters: waiter1, waiter4
-        // 2022-5-22 16:00, waiters: waiter2, waiter3, waiter5
-        // 2022-5-23 08:00, waiters: waiter1, waiter6
-        // 2022-5-23 16:00, waiters: waiter2, waiter3, waiter4
-        // 2022-5-24 08:00, waiters: waiter3, waiter6
-        // 2022-5-24 16:00, waiters: waiter2, waiter4, waiter5
-        // 2022-5-25 08:00, waiters: waiter1, waiter4
-        // 2022-5-25 16:00, waiters: waiter3, waiter4, waiter5
-        // 2022-5-26 08:00, waiters: waiter1, waiter2
-        // 2022-5-26 16:00, waiters: waiter1, waiter2, waiter3
+        // 2022-05-22 08:00, waiters: waiter1, waiter4
+        // 2022-05-22 16:00, waiters: waiter2, waiter3, waiter5
+        // 2022-05-23 08:00, waiters: waiter1, waiter6
+        // 2022-05-23 16:00, waiters: waiter2, waiter3, waiter4
+        // 2022-05-24 08:00, waiters: waiter3, waiter6
+        // 2022-05-24 16:00, waiters: waiter2, waiter4, waiter5
+        // 2022-05-25 08:00, waiters: waiter1, waiter4
+        // 2022-05-25 16:00, waiters: waiter3, waiter4, waiter5
+        // 2022-05-26 08:00, waiters: waiter1, waiter2
+        // 2022-05-26 16:00, waiters: waiter1, waiter2, waiter3
 
-        // 2022-5-22 07:00, chefs: chef1
-        // 2022-5-22 16:00, chefs: chef2, chef3
-        // 2022-5-23 07:00, chefs: chef2
-        // 2022-5-23 16:00, chefs: chef1, chef3
-        // 2022-5-24 07:00, chefs: chef3
-        // 2022-5-24 16:00, chefs: chef1, chef2
-        // 2022-5-25 07:00, chefs: chef3
-        // 2022-5-25 16:00, chefs: chef2, chef3
-        // 2022-5-26 07:00, chefs: chef1
-        // 2022-5-26 16:00, chefs: chef2, chef3
+        // 2022-05-22 07:00, chefs: chef1
+        // 2022-05-22 16:00, chefs: chef2, chef3
+        // 2022-05-23 07:00, chefs: chef2
+        // 2022-05-23 16:00, chefs: chef1, chef3
+        // 2022-05-24 07:00, chefs: chef3
+        // 2022-05-24 16:00, chefs: chef1, chef2
+        // 2022-05-25 07:00, chefs: chef3
+        // 2022-05-25 16:00, chefs: chef2, chef3
+        // 2022-05-26 07:00, chefs: chef1
+        // 2022-05-26 16:00, chefs: chef2, chef3
 
-        // 2022-5-22 08:00, barmans: barman1
-        // 2022-5-22 16:00, barmans: barman2, barman3
-        // 2022-5-23 08:00, barmans: barman3
-        // 2022-5-23 16:00, barmans: barman1, barman2
-        // 2022-5-24 08:00, barmans: barman3
-        // 2022-5-24 16:00, barmans: barman1, barman2
-        // 2022-5-25 08:00, barmans: barman1
-        // 2022-5-25 16:00, barmans: barman2, barman3
-        // 2022-5-26 08:00, barmans: barman2
-        // 2022-5-26 16:00, barmans: barman1, barman3
+        // 2022-05-22 08:00, barmans: barman1
+        // 2022-05-22 16:00, barmans: barman2, barman3
+        // 2022-05-23 08:00, barmans: barman3
+        // 2022-05-23 16:00, barmans: barman1, barman2
+        // 2022-05-24 08:00, barmans: barman3
+        // 2022-05-24 16:00, barmans: barman1, barman2
+        // 2022-05-25 08:00, barmans: barman1
+        // 2022-05-25 16:00, barmans: barman2, barman3
+        // 2022-05-26 08:00, barmans: barman2
+        // 2022-05-26 16:00, barmans: barman1, barman3
 
-        // 2022-5-22 16:00, hosts: host1
-        // 2022-5-23 16:00, hosts: host2
-        // 2022-5-24 16:00, hosts: host1
-        // 2022-5-25 16:00, hosts: host2
-        // 2022-5-26 16:00, hosts: host1
+        // 2022-05-22 16:00, hosts: host1
+        // 2022-05-23 16:00, hosts: host2
+        // 2022-05-24 16:00, hosts: host1
+        // 2022-05-25 16:00, hosts: host2
+        // 2022-05-26 16:00, hosts: host1
 
-        // 2022-5-22 08:00, Shift Managers: shift manager1
-        // 2022-5-22 16:00, Shift Managers: shift manager2
-        // 2022-5-23 08:00, Shift Managers: shift manager1
-        // 2022-5-23 16:00, Shift Managers: shift manager2
-        // 2022-5-24 08:00, Shift Managers: shift manager2
-        // 2022-5-24 16:00, Shift Managers: shift manager1
-        // 2022-5-25 08:00, Shift Managers: shift manager2
-        // 2022-5-25 16:00, Shift Managers: shift manager1
-        // 2022-5-26 08:00, Shift Managers: shift manager2
-        // 2022-5-26 16:00, Shift Managers: shift manager1
+        // 2022-05-22 08:00, Shift Managers: shift manager1
+        // 2022-05-22 16:00, Shift Managers: shift manager2
+        // 2022-05-23 08:00, Shift Managers: shift manager1
+        // 2022-05-23 16:00, Shift Managers: shift manager2
+        // 2022-05-24 08:00, Shift Managers: shift manager2
+        // 2022-05-24 16:00, Shift Managers: shift manager1
+        // 2022-05-25 08:00, Shift Managers: shift manager2
+        // 2022-05-25 16:00, Shift Managers: shift manager1
+        // 2022-05-26 08:00, Shift Managers: shift manager2
+        // 2022-05-26 16:00, Shift Managers: shift manager1
 
         EmployeePreferences waiter1NamePref = new EmployeePreferences(waiter1, new JSONObject() {{
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 08:00");
-                        put("endTime", "2022-5-22 16:00");
+                        put("startTime", "2022-05-22 08:00");
+                        put("endTime", "2022-05-22 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 08:00");
-                        put("endTime", "2022-5-23 16:00");
+                        put("startTime", "2022-05-23 08:00");
+                        put("endTime", "2022-05-23 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 08:00");
-                        put("endTime", "2022-5-25 16:00");
+                        put("startTime", "2022-05-25 08:00");
+                        put("endTime", "2022-05-25 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 08:00");
-                        put("endTime", "2022-5-26 16:00");
+                        put("startTime", "2022-05-26 08:00");
+                        put("endTime", "2022-05-26 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -471,28 +485,28 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 08:00");
-                        put("endTime", "2022-5-26 16:00");
+                        put("startTime", "2022-05-26 08:00");
+                        put("endTime", "2022-05-26 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -503,28 +517,28 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 08:00");
-                        put("endTime", "2022-5-24 16:00");
+                        put("startTime", "2022-05-24 08:00");
+                        put("endTime", "2022-05-24 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -535,28 +549,28 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 08:00");
-                        put("endTime", "2022-5-22 16:00");
+                        put("startTime", "2022-05-22 08:00");
+                        put("endTime", "2022-05-22 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 08:00");
-                        put("endTime", "2022-5-25 16:00");
+                        put("startTime", "2022-05-25 08:00");
+                        put("endTime", "2022-05-25 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -567,18 +581,18 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -589,13 +603,13 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 08:00");
-                        put("endTime", "2022-5-23 16:00");
+                        put("startTime", "2022-05-23 08:00");
+                        put("endTime", "2022-05-23 16:00");
                         put("role", waiter.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 08:00");
-                        put("endTime", "2022-5-24 16:00");
+                        put("startTime", "2022-05-24 08:00");
+                        put("endTime", "2022-05-24 16:00");
                         put("role", waiter.m_Name);
                     }});
                 }});
@@ -606,23 +620,23 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 07:00");
-                        put("endTime", "2022-5-22 16:00");
+                        put("startTime", "2022-05-22 07:00");
+                        put("endTime", "2022-05-22 16:00");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 07:00");
-                        put("endTime", "2022-5-26 16:00");
+                        put("startTime", "2022-05-26 07:00");
+                        put("endTime", "2022-05-26 16:00");
                         put("role", chef.m_Name);
                     }});
                 }});
@@ -633,28 +647,28 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 07:00");
-                        put("endTime", "2022-5-23 16:00");
+                        put("startTime", "2022-05-23 07:00");
+                        put("endTime", "2022-05-23 16:00");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", chef.m_Name);
                     }});
                 }});
@@ -665,33 +679,33 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 07:00");
-                        put("endTime", "2022-5-24 16:00");
+                        put("startTime", "2022-05-24 07:00");
+                        put("endTime", "2022-05-24 16:00");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 07:00");
-                        put("endTime", "2022-5-25 16:00");
+                        put("startTime", "2022-05-25 07:00");
+                        put("endTime", "2022-05-25 16:00");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", chef.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", chef.m_Name);
                     }});
                 }});
@@ -702,28 +716,28 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 08:00");
-                        put("endTime", "2022-5-22 16:00");
+                        put("startTime", "2022-05-22 08:00");
+                        put("endTime", "2022-05-22 16:00");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 08:00");
-                        put("endTime", "2022-5-25 16:00");
+                        put("startTime", "2022-05-25 08:00");
+                        put("endTime", "2022-05-25 16:00");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", barman.m_Name);
                     }});
                 }});
@@ -734,28 +748,28 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 08:00");
-                        put("endTime", "2022-5-26 16:00");
+                        put("startTime", "2022-05-26 08:00");
+                        put("endTime", "2022-05-26 16:00");
                         put("role", barman.m_Name);
                     }});
                 }});
@@ -766,28 +780,28 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 08:00");
-                        put("endTime", "2022-5-23 16:00");
+                        put("startTime", "2022-05-23 08:00");
+                        put("endTime", "2022-05-23 16:00");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 08:00");
-                        put("endTime", "2022-5-24 16:00");
+                        put("startTime", "2022-05-24 08:00");
+                        put("endTime", "2022-05-24 16:00");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", barman.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", barman.m_Name);
                     }});
                 }});
@@ -798,18 +812,18 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", host.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", host.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", host.m_Name);
                     }});
                 }});
@@ -820,13 +834,13 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", host.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", host.m_Name);
                     }});
                 }});
@@ -837,28 +851,28 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 08:00");
-                        put("endTime", "2022-5-22 16:00");
+                        put("startTime", "2022-05-22 08:00");
+                        put("endTime", "2022-05-22 16:00");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 08:00");
-                        put("endTime", "2022-5-23 16:00");
+                        put("startTime", "2022-05-23 08:00");
+                        put("endTime", "2022-05-23 16:00");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 16:00");
-                        put("endTime", "2022-5-24 23:59");
+                        put("startTime", "2022-05-24 16:00");
+                        put("endTime", "2022-05-24 23:59");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 16:00");
-                        put("endTime", "2022-5-25 23:59");
+                        put("startTime", "2022-05-25 16:00");
+                        put("endTime", "2022-05-25 23:59");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 16:00");
-                        put("endTime", "2022-5-26 23:59");
+                        put("startTime", "2022-05-26 16:00");
+                        put("endTime", "2022-05-26 23:59");
                         put("role", shiftManager.m_Name);
                     }});
                 }});
@@ -869,28 +883,28 @@ public class MainTest {
             put("RuleSlots", new JSONObject() {{
                 put("slots", new JSONArray() {{
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-22 16:00");
-                        put("endTime", "2022-5-22 23:59");
+                        put("startTime", "2022-05-22 16:00");
+                        put("endTime", "2022-05-22 23:59");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-23 16:00");
-                        put("endTime", "2022-5-23 23:59");
+                        put("startTime", "2022-05-23 16:00");
+                        put("endTime", "2022-05-23 23:59");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-24 08:00");
-                        put("endTime", "2022-5-24 16:00");
+                        put("startTime", "2022-05-24 08:00");
+                        put("endTime", "2022-05-24 16:00");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-25 08:00");
-                        put("endTime", "2022-5-25 16:00");
+                        put("startTime", "2022-05-25 08:00");
+                        put("endTime", "2022-05-25 16:00");
                         put("role", shiftManager.m_Name);
                     }});
                     put(new JSONObject() {{
-                        put("startTime", "2022-5-26 08:00");
-                        put("endTime", "2022-5-26 16:00");
+                        put("startTime", "2022-05-26 08:00");
+                        put("endTime", "2022-05-26 16:00");
                         put("role", shiftManager.m_Name);
                     }});
                 }});
@@ -914,6 +928,51 @@ public class MainTest {
         businessLogic.setEmployeePreference(company, shiftManager1NamePref);
         businessLogic.setEmployeePreference(company, shiftManager2NamePref);
 
+        businessLogic.blockEmployeesToSetPref(company);
 
+        // ******** SOLVING ******* //
+
+        // pipeline: mutations + crossovers
+        List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
+        MutationByDay mutationByDay = new MutationByDay(0.2);
+        mutationByDay.setEmployees(activeEmployees);
+        operators.add(new BasicCrossover(3));
+        operators.add(mutationByDay);
+        EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<>(operators);
+
+        // selection strategy
+        SelectionStrategy<? super Arrangement> selectionStrategy = new TournamentSelection(new Probability(0.8));
+
+        // termination condition
+//        TerminationCondition terminationCondition = new TargetFitness(95, true);
+
+        TerminationCondition terminationCondition = new GenerationCount(100);
+
+        // population size
+        int populationSize = 100;
+
+        // elitism
+        int elitism = 5;
+
+        AlgorithmConfig algorithmConfig = new AlgorithmConfig(
+                pipeline,
+                selectionStrategy,
+                terminationCondition,
+                populationSize,
+                elitism
+        );
+
+        businessLogic.startAlgorithm(company, algorithmConfig);
+
+        // FINISHED
+        EvolutionStatus evolutionStatus = businessLogic.getSolution(company);
+
+        // PUBLISH
+        businessLogic.publishArrangement(company);
+
+        // here the manager can set new arrangement after overview the employees tickets
+
+        // FINISH ARRANGEMENT
+        businessLogic.finishArrangement(company);
     }
 }
