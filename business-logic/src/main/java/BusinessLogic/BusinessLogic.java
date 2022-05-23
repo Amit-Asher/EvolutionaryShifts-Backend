@@ -10,10 +10,11 @@ import Model.Employee.EmployeePreferences;
 import Model.Role;
 import Arrangement.ArrangementStatus;
 
+import java.util.Map;
 import java.util.Set;
 
 public class BusinessLogic {
-//    protected Map<String, Company> m_ID2Company;
+    protected Map<String, Company> name2Company;
     // sanity check for git
 
     private static BusinessLogic instance = null;
@@ -22,6 +23,7 @@ public class BusinessLogic {
 
     }
 
+
     public static BusinessLogic getInstance() {
         if (instance == null) {
             instance = new BusinessLogic();
@@ -29,55 +31,73 @@ public class BusinessLogic {
         return instance;
     }
 
+    public void addCompany(String compName){
+        Company comp = new Company(compName);
+        name2Company.put(compName,comp);
+    }
     /************** SET PROPS **************/
 
-    public void addEmployee(Company company,
+    public void addEmployee(String compName,
                             String employeeName,
                             String phoneNumber,
                             Set<Role> fitRoles)
     {
+        Company company = name2Company.get(compName);
         Employee employee = new Employee(employeeName,
                 phoneNumber,
                 fitRoles);
 
         company.addEmployee(employee);
     }
-    public void removeEmployee(Company company, String employeeID)
+    public void removeEmployee(String compName, String employeeID)
     {
+        Company company = name2Company.get(compName);
         company.removeEmployee(employeeID);
     }
-    public void setAsManager(Company company, String employeeID)
+    public void setAsManager(String compName, String employeeID)
     {
+        Company company = name2Company.get(compName);
         company.setAsManager(employeeID);
     }
-    public void removeManager(Company company, String employeeID)
+    public void removeManager(String compName, String employeeID)
     {
+        Company company = name2Company.get(compName);
         company.removeManager(employeeID);
     }
 
-    public void addNewRole(Company company, String roleName)
+    public void addNewRole(String compName, String roleName)
     {
+        Company company = name2Company.get(compName);
         Role role = new Role(roleName);
         company.addRole(role);
     }
-    public void removeRole(Company company, String roleName)
+    public void removeRole(String compName, String roleName)
     {
+        Company company = name2Company.get(compName);
         Role role = new Role(roleName);
         company.removeRole(role);
     }
 
-    public void startNewArrangement(Company company) {
+    public Set<Role> getRoles(String compName){
+        Company company = name2Company.get(compName);
+        return company.getRoles();
+    }
+
+    public void startNewArrangement(String compName) {
+        Company company = name2Company.get(compName);
         company.startNewArrangement();
     }
 
-    public void setArrangementProperties(Company company,
+    public void setArrangementProperties(String compName,
                                          ArrangementProperties arrangementProperties) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().setCurrArrangementProp(arrangementProperties);
     }
 
     /*************** WAIT EMP REQ ***************/
 
-    public void setEmployeePreference(Company company, EmployeePreferences employeePreferences) {
+    public void setEmployeePreference(String compName, EmployeePreferences employeePreferences) {
+        Company company = name2Company.get(compName);
         try {
             company.getArrangementManager().updateEmployeePreference(employeePreferences);
         } catch (Exception exception) {
@@ -85,14 +105,16 @@ public class BusinessLogic {
         }
     }
 
-    public void blockEmployeesToSetPref(Company company) {
+    public void blockEmployeesToSetPref(String compName) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().BlockEmployeesToSetPref();
     }
 
 
     /**************** SOLVING *******************/
 
-    public void startAlgorithm(Company company, AlgorithmConfig algorithmConfig) {
+    public void startAlgorithm(String compName, AlgorithmConfig algorithmConfig) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().startAlgorithm(algorithmConfig);
     }
 
@@ -112,7 +134,8 @@ public class BusinessLogic {
      *
      * */
 
-    public EvolutionStatus getSolution(Company company) {
+    public EvolutionStatus getSolution(String compName) {
+        Company company = name2Company.get(compName);
         // todo: support getHistory
         return new EvolutionStatus(
                 company.getArrangementManager().getCurArrangementSolution(),
@@ -120,7 +143,8 @@ public class BusinessLogic {
         );
     }
 
-    public void publishArrangement(Company company) {
+    public void publishArrangement(String compName) {
+        Company company = name2Company.get(compName);
         // manager operation
         company.getArrangementManager().publishArrangement();
     }
@@ -128,29 +152,33 @@ public class BusinessLogic {
     /*************** WAIT EMP APPROVAL *****************/
 
     // declineArrangement
-    public void createTicket(Company company,
+    public void createTicket(String compName,
                                    Employee employee,
                                    String employeeMessage) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().createTicket(
                 employee,
                 employeeMessage
         );
     }
 
-    public void closeTicket(Company company, String ticketId) {
+    public void closeTicket(String compName, String ticketId) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().closeTicket(ticketId);
     }
 
     // todo: optional- set employee preferences
 
-    public void setArrangement(Company company, Arrangement arrangement) {
+    public void setArrangement(String compName, Arrangement arrangement) {
+        Company company = name2Company.get(compName);
         // manager method to set new arrangement after review tickets
         // todo: impl
         company.getArrangementManager().setArrangement(arrangement);
 
     }
 
-    public void finishArrangement(Company company) {
+    public void finishArrangement(String compName) {
+        Company company = name2Company.get(compName);
         company.getArrangementManager().finishArrangement();
     }
 

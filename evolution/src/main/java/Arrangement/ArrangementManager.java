@@ -14,10 +14,7 @@ import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
 import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
 import org.uncommons.watchmaker.framework.termination.TargetFitness;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ArrangementManager
 {
@@ -28,6 +25,7 @@ public class ArrangementManager
     private ArrangementSolution curArrangementSolution;
     private Map<String, Ticket> tickets = new HashMap<String, Ticket>();
     private ArrangementEvaluator arrangementEvaluator;
+    private Arrangement solution;
 
     public ArrangementStatus getCurrArrangementStatus() {
         return m_CurrArrangementStatus;
@@ -74,7 +72,7 @@ public class ArrangementManager
     }
  // main comment
     // todo: wrap with thread
-    public Arrangement startAlgorithm(AlgorithmConfig algorithmConfig)
+    public void startAlgorithm(AlgorithmConfig algorithmConfig)
     {
         if (this.m_CurrArrangementStatus == ArrangementStatus.WAIT_EMP_REQ ||
                 this.m_CurrArrangementStatus == ArrangementStatus.WAIT_EMP_APPROVAL) {
@@ -96,8 +94,36 @@ public class ArrangementManager
          *
          *
          *  */
+        List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>();
+        operators.add(algorithmConfig.getCrossover());
+        operators.addAll(algorithmConfig.getMutation());
+        EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<Arrangement>(operators);
+        ArrangementFactory factory = new ArrangementFactory();
+        EvolutionEngine<Arrangement> engine = null;
+        try{
+            this.arrangementEvaluator = new ArrangementEvaluator(m_CurrArrangementProp.m_rule2weight);
+            engine = new GenerationalEvolutionEngine<Arrangement>(
+                    factory,
+                    pipeline,
+                    this.arrangementEvaluator,
+                    algorithmConfig.getSelection(),
+                    new MersenneTwisterRNG()
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        EvolutionEngine<Arrangement> finalEngine = engine;
 
-        Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
+        new Thread(() ->{
+            //the last parmeter passing is some kind of hack to be able to pass arrylist to vararg cause teminateCondition is ... type parameter
+            //link:https://thispointer.com/how-to-pass-an-arraylist-to-varargs-method/
+            solution = finalEngine.evolve(algorithmConfig.getPopulationSize(),
+                    algorithmConfig.getElitism(),
+                    algorithmConfig.getTerminationConditions().toArray(new TerminationCondition[0]));
+
+        }).start();
+
+        /*Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
         ArrangementFactory factory = new ArrangementFactory();
         List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
         operators.add(new MutationByDay(0.3));
@@ -121,10 +147,8 @@ public class ArrangementManager
                     populationData.getBestCandidate(),
                     populationData.getGenerationNumber(),
                     populationData.getBestCandidateFitness());
-        });
-        return engine.evolve(100, // 100 individuals in the population.
-                5, // 5% elitism.
-                new TargetFitness(0, true));
+        });*/
+
     }
 
     public ArrangementSolution getCurArrangementSolution() {

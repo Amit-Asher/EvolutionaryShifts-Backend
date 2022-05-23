@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Company
 {
-    protected String m_Name;
+    protected String name;
     protected Set<Role> m_Roles = new HashSet<>();
     protected Map<String, Employee> m_Id2Employee = new HashMap<>();
     protected Map<String, Employee> m_ID2Manager = new HashMap<>();
@@ -19,11 +19,19 @@ public class Company
     protected ArrayList<ArrangementProperties> m_SavedProperties;
     protected Map<Date, Arrangement> m_History;
 
+    public Company(String name) {
+        this.name = name;
+    }
+
+
     public void addRole(Role role){
         m_Roles.add(role);
     }
     public void removeRole(Role role){
         m_Roles.remove(role);
+    }
+    public Set<Role> getRoles() {
+        return m_Roles;
     }
     public void addEmployee(Employee employee){
         m_Id2Employee.put(employee.getID(), employee);
