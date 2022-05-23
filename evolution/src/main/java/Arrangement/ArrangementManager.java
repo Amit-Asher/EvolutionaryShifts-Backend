@@ -6,7 +6,8 @@ import Algorithm.ArrangementEvoSolution;
 import Crossovers.BasicCrossover;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
-import Mutations.MutationByDay;
+import Mutations.BasicMutation;
+import Mutations.MutateBy.MutateByDay;
 import Rule.IRule;
 import org.uncommons.maths.random.MersenneTwisterRNG;
 import org.uncommons.watchmaker.framework.*;
@@ -14,6 +15,7 @@ import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
 import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
 import org.uncommons.watchmaker.framework.termination.TargetFitness;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +25,7 @@ public class ArrangementManager
 {
     private ArrangementProperties m_CurrArrangementProp;
     private ArrangementStatus m_CurrArrangementStatus = ArrangementStatus.SET_PROPS;
-    private EvolutionEngine<Arrangement> engine;
+    private EvolutionEngine<Arrangement> engine = null;
 
     private ArrangementSolution curArrangementSolution;
     private Map<String, Ticket> tickets = new HashMap<String, Ticket>();
@@ -47,7 +49,7 @@ public class ArrangementManager
             }).forEach(rule -> rule.addPreference(preferenceInput));
         });
     }
-
+ // comment
     public void setCurrArrangementProp(ArrangementProperties m_CurrArrangementProp) {
         this.m_CurrArrangementProp = m_CurrArrangementProp;
         this.m_CurrArrangementStatus = ArrangementStatus.WAIT_EMP_REQ;
@@ -97,16 +99,16 @@ public class ArrangementManager
          *
          *  */
 
-        Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
-        ArrangementFactory factory = new ArrangementFactory();
+        Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getRule2weight();
+        ArrangementFactory factory = new ArrangementFactory(m_CurrArrangementProp);
         List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
-        operators.add(new MutationByDay(0.3));
+        operators.add(new BasicMutation<DayOfWeek>(0.3, (ArrayList<DayOfWeek>) m_CurrArrangementProp.getDays(), new MutateByDay()));
         operators.add(new BasicCrossover(2));
         EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<>(operators);
-        EvolutionEngine<Arrangement> engine = null;
+
         try {
             this.arrangementEvaluator = new ArrangementEvaluator(rule2Weight);
-            engine = new GenerationalEvolutionEngine<>(
+            this.engine = new GenerationalEvolutionEngine<>(
                     factory,
                     pipeline,
                     this.arrangementEvaluator,
@@ -116,13 +118,13 @@ public class ArrangementManager
         } catch (Exception e) {
             e.printStackTrace();
         }
-        engine.addEvolutionObserver(populationData -> {
+        this.engine.addEvolutionObserver(populationData -> {
             curArrangementSolution = new ArrangementEvoSolution(
                     populationData.getBestCandidate(),
                     populationData.getGenerationNumber(),
                     populationData.getBestCandidateFitness());
         });
-        return engine.evolve(100, // 100 individuals in the population.
+        return this.engine.evolve(100, // 100 individuals in the population.
                 5, // 5% elitism.
                 new TargetFitness(0, true));
     }

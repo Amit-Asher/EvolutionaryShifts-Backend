@@ -1,14 +1,18 @@
 package Arrangement;
 
-import Model.Day;
 import Model.Employee.Employee;
 import Model.Shift;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Arrangement
 {
     protected ArrayList<Shift> m_Shifts;
+
+    //private int daysOfWork; //instead of getWorkDays() maybe
 
     public Arrangement() {
         this.m_Shifts = new ArrayList<>();
@@ -27,26 +31,61 @@ public class Arrangement
         }
     }
 
+    public void addShift(Shift shift)
+    {
+        m_Shifts.add(shift);
+    }
+
     public ArrayList<Shift> getShifts() {
         return m_Shifts;
     }
 
-    public ArrayList<Day> getDaysOfWorkForEmployee(Employee employee)
+    public ArrayList<DayOfWeek> getDaysOfWorkForEmployee(Employee employee)
     {
-        ArrayList<Day> daysOfWork = new ArrayList<>();
+        ArrayList<DayOfWeek> daysOfWork = new ArrayList<>();
         ArrayList<Boolean> days = new ArrayList<>(7);
 
         for(int i = 0;i < 7;i++)
             days.add(false);
 
         for(Shift shift : m_Shifts)
-            days.set(shift.getSlot().getDay().ordinal(), true);
+            days.set(shift.getSlot().getDay().getValue(), true);
 
         for(int i = 0;i < 7;i++)
             if(days.get(i))
-                daysOfWork.add(Day.getDay(i + 1));
+                daysOfWork.add(DayOfWeek.of(i + 1));
 
         return daysOfWork;
+    }
+
+    public ArrayList<Shift> getShiftsByDay(DayOfWeek day)
+    {
+        ArrayList<Shift> shifts = new ArrayList<>();
+
+        for(int i=0;i < this.m_Shifts.size();i++)
+        {
+            if(this.m_Shifts.get(i).getSlot().getDay().equals(day))
+            {
+                shifts.add(this.m_Shifts.get(i));
+            }
+        }
+
+        return shifts;
+    }
+
+    public int size() {
+        return m_Shifts.size();
+    }
+
+    public ArrayList<DayOfWeek> getWorkDays()
+    {
+        Set<DayOfWeek> days = new HashSet<>();
+
+        for(Shift shift : m_Shifts){
+            days.add(shift.getSlot().getDay());
+        }
+
+        return new ArrayList<>(days);
     }
 
     /* public Arrangement(ArrayList<Map.Entry<Integer, ArrayList<Integer>>> daysOfWork2Levels, ArrayList<ArrayList<Shift>> arrangement)

@@ -18,6 +18,12 @@ public class Shift
         this.m_Slot = m_Slot;
     }
 
+    public Shift(Shift shift) {
+        this.m_Employee = new Employee(shift.m_Employee);
+        this.m_Role = new Role(shift.m_Role.m_Name);
+        this.m_Slot = new Slot(shift.m_Slot);
+    }
+
     public Slot getSlot() {return m_Slot;}
     public Employee getEmployee() {return m_Employee;}
     public Role getRole() {return m_Role;}

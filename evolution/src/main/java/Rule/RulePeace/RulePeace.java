@@ -1,4 +1,4 @@
-package Rule.RuleFight;
+package Rule.RulePeace;
 
 import Arrangement.Arrangement;
 import Model.Employee.Employee;
@@ -11,16 +11,16 @@ import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuleFight implements IRule<RuleFightPreference> {
-    private final RuleConfig<RuleFightPreference> config = new RuleConfig<>();
+public class RulePeace implements IRule<RulePeacePreference> {
+    private final RuleConfig<RulePeacePreference> config = new RuleConfig<>();
 
     @Override
     public double evaluate(Arrangement arrangement) {
         double finalGrade = 0.0;
-        List<RuleFightPreference> preferences = config.getPreferences();
+        List<RulePeacePreference> preferences = config.getPreferences();
 
         DeleteDuplicates();
-        for(RuleFightPreference pref : preferences)
+        for(RulePeacePreference pref : preferences)
         {
             double gradeForEmployee = 100;
             Employee employee = pref.getEmployee();
@@ -44,14 +44,14 @@ public class RuleFight implements IRule<RuleFightPreference> {
                                 Shift shift2 = shifts.get(j);
                                 Slot slot2 = shift2.getSlot();
 
-                                if(shift2.getEmployee().equals(pref.getOpp())) {
+                                if(shift2.getEmployee().equals(pref.getFriend())) {
                                     if (slot2.getDay().equals(day)) {
                                         // the two opponents work in the same day
                                         //It remains to be seen if they overlap during working hours
-                                        if ((slot1.getStartTime().isBefore(slot2.getEndTime()) &&
+                                        if (!((slot1.getStartTime().isBefore(slot2.getEndTime()) &&
                                                 slot2.getEndTime().isBefore(slot1.getEndTime())) ||
-                                        (slot1.getStartTime().isBefore(slot2.getStartTime()) &&
-                                                slot2.getStartTime().isBefore(slot1.getEndTime())))
+                                                (slot1.getStartTime().isBefore(slot2.getStartTime()) &&
+                                                        slot2.getStartTime().isBefore(slot1.getEndTime()))))
                                         {
                                             gradeForEmployee -= 100.0 / daysOfWork.size();
                                             flagBreakSlot1 = true;
@@ -75,18 +75,18 @@ public class RuleFight implements IRule<RuleFightPreference> {
     }
 
     @Override
-    public void addPreference(RuleFightPreference preference) {
+    public void addPreference(RulePeacePreference preference) {
         config.addPreferences(preference);
     }
 
     @Override
     public String getName() {
-        return "RuleFight";
+        return "RulePeace";
     }
 
     private void DeleteDuplicates()
     {
-        List<RuleFightPreference> Preferences = config.getPreferences();
+        List<RulePeacePreference> Preferences = config.getPreferences();
         int sizePref = Preferences.size();
 
         for(int i = 0;i < sizePref;i++)
@@ -94,9 +94,9 @@ public class RuleFight implements IRule<RuleFightPreference> {
             for(int j = 0;j < sizePref;j++)
             {
                 if(Preferences.get(i).getEmployee().getFullName().equals(
-                        Preferences.get(j).getOpp().getFullName()) &&
+                        Preferences.get(j).getFriend().getFullName()) &&
                         Preferences.get(j).getEmployee().getFullName().equals(
-                        Preferences.get(i).getOpp().getFullName()))
+                                Preferences.get(i).getFriend().getFullName()))
                 {
                     Preferences.remove(j);
                     sizePref--;

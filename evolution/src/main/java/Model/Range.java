@@ -21,4 +21,9 @@ public class Range
     {
         return (number >= low && number <= high);
     }
+
+    public boolean equals(Range range) {
+        return this.low == range.low &&
+                this.high == range.high;
+    }
 }

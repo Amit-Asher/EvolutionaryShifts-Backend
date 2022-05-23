@@ -1,16 +1,16 @@
 package Rule.RuleSlots;
 
 import Model.Employee.Employee;
-import Model.Slot.Slot;
+import Model.Slot.ReqSlot;
 
 import java.util.ArrayList;
 
-public class RuleSlotsPreference
+public class RuleReqSlotsPreference
 {
-    private ArrayList<Slot> slots;
+    private ArrayList<ReqSlot> slots;
     private Employee employee;
 
-    public ArrayList<Slot> getSlots() {
+    public ArrayList<ReqSlot> getReqSlots() {
         return slots;
     }
 

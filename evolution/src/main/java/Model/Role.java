@@ -9,4 +9,12 @@ public class Role
         m_Name = name;
     }
 
+    public boolean equals(Role role) {
+        return this.m_Name.equals(role.m_Name);
+    }
+
+    @Override
+    public String toString() {
+        return m_Name;
+    }
 }
