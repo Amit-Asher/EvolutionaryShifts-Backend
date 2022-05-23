@@ -86,8 +86,6 @@ public class RuleSlots implements IRule
             }
         }
 
-        System.out.println(i);
-        System.out.println(arrangement.getShifts().size());
         goodShifts = goodShifts / arrangement.getShifts().size();
         goodShifts = goodShifts * 100;
 

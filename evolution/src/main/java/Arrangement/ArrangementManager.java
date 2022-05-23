@@ -1,31 +1,19 @@
 package Arrangement;
 
 import Algorithm.AlgorithmConfig;
-import Algorithm.ArrangementSolution;
 import Algorithm.ArrangementEvoSolution;
-import Crossovers.BasicCrossover;
+import Algorithm.ArrangementSolution;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
-import Mutations.BasicMutation;
-import Mutations.MutateBy.MutateByDay;
-import Model.Slot.PrfSlot;
-import Mutations.MutationByDay;
 import Rule.IRule;
 import Rule.RuleSlots.RuleSlots;
 import Rule.RuleSlots.RuleSlotsPreference;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.uncommons.maths.random.MersenneTwisterRNG;
-import org.uncommons.watchmaker.framework.*;
-import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
-import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
-import org.uncommons.watchmaker.framework.termination.TargetFitness;
+import org.uncommons.watchmaker.framework.EvolutionEngine;
+import org.uncommons.watchmaker.framework.GenerationalEvolutionEngine;
 
-import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.*;
 
 public class ArrangementManager
@@ -144,16 +132,15 @@ public class ArrangementManager
          *
          *  */
 
-        EvolutionEngine<Arrangement> engine = null;
         try {
-            Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
+            Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getRule2weight();
             ArrangementFactory arrangementFactory = new ArrangementFactory(
-                    m_CurrArrangementProp.getM_Slots(),
-                    m_CurrArrangementProp.getM_ActiveEmployees()
+                    m_CurrArrangementProp.getSlots(),
+                    m_CurrArrangementProp.getActiveEmployees()
             );
 
             this.arrangementEvaluator = new ArrangementEvaluator(rule2Weight);
-            engine = new GenerationalEvolutionEngine<>(
+            this.engine = new GenerationalEvolutionEngine<>(
                     arrangementFactory,
                     algorithmConfig.getPipeline(),
                     this.arrangementEvaluator,

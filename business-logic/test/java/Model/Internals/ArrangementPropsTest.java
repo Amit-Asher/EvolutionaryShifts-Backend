@@ -383,7 +383,7 @@ public class ArrangementPropsTest {
         System.out.format("+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+%n");
         System.out.format("| Date            | Day             | Role            | Personnel Size  | Start Time      | End Time        |%n");
         System.out.format("+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+%n");
-        businessLogic.getArrangementProperties(company).getM_Slots().forEach(reqSlot -> {
+        businessLogic.getArrangementProperties(company).getSlots().forEach(reqSlot -> {
             DateTimeFormatter hmFormatter = DateTimeFormatter.ofPattern("HH:mm");
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d.M.u");
             System.out.format(String.format(leftAlignFormat,
@@ -396,7 +396,7 @@ public class ArrangementPropsTest {
         });
 
         System.out.format("%nManager opened the following rules and weights:%n");
-        businessLogic.getArrangementProperties(company).getM_rule2weight().forEach((key, value) -> {
+        businessLogic.getArrangementProperties(company).getRule2weight().forEach((key, value) -> {
             System.out.format("%s: %s%n",
                     key.getName(),
                     value);
@@ -404,7 +404,7 @@ public class ArrangementPropsTest {
 
 
         System.out.format("%nManager defined the active employees as follows (participants):%n");
-        businessLogic.getArrangementProperties(company).getM_ActiveEmployees().forEach(employee -> {
+        businessLogic.getArrangementProperties(company).getActiveEmployees().forEach(employee -> {
             System.out.format("%s%n", employee.getFullName());
         });
 

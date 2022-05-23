@@ -2,7 +2,7 @@ package Rule.RuleSlots;
 
 import Model.Employee.Employee;
 import Model.Slot.PrfSlot;
-import com.google.gson.*;
+import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

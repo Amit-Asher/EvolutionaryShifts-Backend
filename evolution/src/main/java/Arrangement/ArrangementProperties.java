@@ -14,8 +14,8 @@ public class ArrangementProperties
     private Map<IRule, Double> m_rule2weight;
     protected Set<DayOfWeek> days;
 
-    public ArrangementProperties(ArrayList<ReqSlot> m_Slots,
-                                 ArrayList<Employee> m_ActiveEmployees,
+    public ArrangementProperties(List<ReqSlot> m_Slots,
+                                 List<Employee> m_ActiveEmployees,
                                  Map<IRule, Double> m_rule2weight)
     {
         this.m_Slots = m_Slots;

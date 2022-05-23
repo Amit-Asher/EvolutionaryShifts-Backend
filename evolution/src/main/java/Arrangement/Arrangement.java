@@ -34,13 +34,12 @@ public class Arrangement
         }
     }
 
-    public List<Shift> getShifts() {
     public void addShift(Shift shift)
     {
         m_Shifts.add(shift);
     }
 
-    public ArrayList<Shift> getShifts() {
+    public List<Shift> getShifts() {
         return m_Shifts;
     }
 

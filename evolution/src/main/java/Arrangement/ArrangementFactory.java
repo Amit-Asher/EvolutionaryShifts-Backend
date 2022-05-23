@@ -3,19 +3,11 @@ package Arrangement;
 import Model.Employee.Employee;
 import Model.Shift;
 import Model.Slot.ReqSlot;
-import Model.Employee.Employee;
-import Model.Shift;
-import Model.Slot.ReqSlot;
-import Rule.IRule;
-import Rule.RuleSlots.RuleReqSlots;
-import Rule.RuleSlots.RuleReqSlotsPreference;
 
 import org.uncommons.watchmaker.framework.factories.AbstractCandidateFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.Random;
 
 public class ArrangementFactory extends AbstractCandidateFactory<Arrangement> {
