@@ -4,25 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="implementing RuleRangeWorkDays">
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/MyUtils/OneTimeRandomRange.java" afterDir="false" />
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="Delete Enum Day, better naming and create OneTimeRandomRange class">
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleReqSlots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementEvaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicCrossover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Day.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Range.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/ReqSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/ReqSlot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/BasicMutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/BasicMutation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutateBy/MutateByDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutateBy/MutateByDay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutateBy/MutateByEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutateBy/MutateByEmployee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFight/RuleFight.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFight/RuleFight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RulePeace/RulePeace.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RulePeace/RulePeace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/Arrangement.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/Arrangement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlots.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlotsPreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleReqSlotsPreference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Day.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Range.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Range.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/Slot.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/Slot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,16 +84,16 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/AlgorithmConfig.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/web-server/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/business-logic/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/database/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/operators/EvolutionPipeline.class" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/EvolutionaryOperator.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/operators/EvolutionPipeline.class" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/evolution/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/AlgorithmConfig.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/web-server/pom.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -103,19 +106,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.112612605" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java\BusinessLogic" />
@@ -161,7 +158,10 @@
       <workItem from="1651319379959" duration="30981000" />
       <workItem from="1651487540906" duration="8787000" />
       <workItem from="1651561503246" duration="11458000" />
-      <workItem from="1652471488143" duration="16369000" />
+      <workItem from="1652471488143" duration="16752000" />
+      <workItem from="1652541605670" duration="2000" />
+      <workItem from="1653246210240" duration="1472000" />
+      <workItem from="1653249458519" duration="16003000" />
     </task>
     <task id="LOCAL‎00001" summary="adding another solution for RuleSlots">
       <created>1649410094056</created>
@@ -217,7 +217,13 @@
       <option name="presentableId" value="LOCAL‎00009" />
       <updated>1651665060532</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL‎00010" summary="Delete Enum Day, better naming and create OneTimeRandomRange class">
+      <created>1652534555765</created>
+      <option name="number" value="LOCAL‎00010" />
+      <option name="presentableId" value="LOCAL‎00010" />
+      <updated>1652534555766</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +250,7 @@
     <MESSAGE value="Delete MutationByDay class and create generic BasicMutation" />
     <MESSAGE value="implementing RuleFitEmpRole and RulePeace" />
     <MESSAGE value="implementing RuleRangeWorkDays" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing RuleRangeWorkDays" />
+    <MESSAGE value="Delete Enum Day, better naming and create OneTimeRandomRange class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete Enum Day, better naming and create OneTimeRandomRange class" />
   </component>
 </project>

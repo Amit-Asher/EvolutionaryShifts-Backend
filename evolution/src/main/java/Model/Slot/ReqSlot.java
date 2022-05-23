@@ -34,4 +34,10 @@ public class ReqSlot
                 )&&
                 this.m_PersonnelSize.equals(reqSlot.m_PersonnelSize);
     }
+
+    public boolean equals(ReqSlot reqSlot) {
+        return this.m_Slot.equals(reqSlot.m_Slot) &&
+                this.m_Role.equals(reqSlot.m_Role) &&
+                this.m_PersonnelSize.equals(reqSlot.m_PersonnelSize);
+    }
 }

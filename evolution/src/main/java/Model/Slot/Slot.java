@@ -47,4 +47,10 @@ public class Slot
         endTime = temp.plusHours(24L * (day.getValue() -
                 endTime.getDayOfWeek().getValue()));
     }
+
+
+    public boolean equals(Slot slot) {
+        return this.startTime.equals(slot.startTime) &&
+                this.endTime.equals(slot.endTime);
+    }
 }

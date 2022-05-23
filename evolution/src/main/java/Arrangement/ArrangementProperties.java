@@ -28,23 +28,23 @@ public class ArrangementProperties
         this.days = days;
     }
 
-    public ArrayList<ReqSlot> getM_Slots() {
+    public ArrayList<ReqSlot> getSlots() {
         return m_Slots;
     }
 
-    public void setM_Slots(ArrayList<ReqSlot> m_Slots) {
+    public void setSlots(ArrayList<ReqSlot> m_Slots) {
         this.m_Slots = m_Slots;
     }
 
-    public ArrayList<Employee> getM_ActiveEmployees() {
+    public ArrayList<Employee> getActiveEmployees() {
         return m_ActiveEmployees;
     }
 
-    public void setM_ActiveEmployees(ArrayList<Employee> m_ActiveEmployees) {
+    public void setActiveEmployees(ArrayList<Employee> m_ActiveEmployees) {
         this.m_ActiveEmployees = m_ActiveEmployees;
     }
 
-    public void setM_rule2weight(Map<IRule, Double> m_rule2weight) {
+    public void setRule2weight(Map<IRule, Double> m_rule2weight) {
         this.m_rule2weight = m_rule2weight;
     }
 
@@ -52,7 +52,7 @@ public class ArrangementProperties
         this.days = days;
     }
 
-    public Map<IRule, Double> getM_rule2weight() {
+    public Map<IRule, Double> getRule2weight() {
         return m_rule2weight;
     }
 
