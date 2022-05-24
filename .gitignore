@@ -1,3 +1,5 @@
 out
 .idea
 */target/**
+/business-logic/target/
+/evolution/target/

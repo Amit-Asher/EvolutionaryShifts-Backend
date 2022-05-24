@@ -34,6 +34,14 @@ public class Arrangement
         }
     }
 
+    public Set<Employee> getWorkingEmp(){
+        Set<Employee> allemp = new HashSet<>();
+        for(Shift shift: m_Shifts){
+            allemp.add(shift.getEmployee());
+        }
+        return allemp;
+    }
+
     public void addShift(Shift shift)
     {
         m_Shifts.add(shift);
@@ -52,7 +60,7 @@ public class Arrangement
             days.add(false);
 
         for(Shift shift : m_Shifts)
-            days.set(shift.getSlot().getDay().getValue(), true);
+            days.set(shift.getSlot().getDay().getValue() - 1 , true);
 
         for(int i = 0;i < 7;i++)
             if(days.get(i))

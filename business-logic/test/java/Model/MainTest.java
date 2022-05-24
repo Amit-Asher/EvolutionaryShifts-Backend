@@ -12,6 +12,8 @@ import Model.Slot.ReqSlot;
 import Model.Slot.Slot;
 import Mutations.MutationByDay;
 import Rule.IRule;
+import Rule.RuleFight.RuleFight;
+import Rule.RuleRangeWorkDays.RuleRangeWorkDays;
 import Rule.RuleSlots.RuleSlots;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -387,7 +389,9 @@ public class MainTest {
 
         List<Employee> activeEmployees = businessLogic.getAllEmployees(compName);
         Map<IRule, Double> ruleWeights = new HashMap<IRule, Double>() {{
-            put(new RuleSlots(), 1.0);
+            put(new RuleSlots(), 0.2);
+            put(new RuleRangeWorkDays(),0.4);
+            put(new RuleFight(),0.4);
         }};
 
         ArrangementProperties arrangementProperties = new ArrangementProperties(
@@ -480,6 +484,13 @@ public class MainTest {
                     }});
                 }});
             }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
+            }});
+            put("RuleFight",new JSONObject(){{
+                put("opp","waiter2Name");
+            }});
         }});
 
         // businessLogic.setEmployeePreference(compName, waiter3NamePref);
@@ -514,6 +525,13 @@ public class MainTest {
                     }});
                 }});
             }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
+            }});
+            put("RuleFight",new JSONObject(){{
+                put("opp","waiter4Name");
+            }});
         }});
 
         EmployeePreferences waiter3NamePref = new EmployeePreferences(waiter3, new JSONObject() {{
@@ -545,6 +563,10 @@ public class MainTest {
                         put("role", waiter.m_Name);
                     }});
                 }});
+            }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
             }});
         }});
 
@@ -578,6 +600,10 @@ public class MainTest {
                     }});
                 }});
             }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
+            }});
         }});
 
         EmployeePreferences waiter5NamePref = new EmployeePreferences(waiter5, new JSONObject() {{
@@ -600,6 +626,10 @@ public class MainTest {
                     }});
                 }});
             }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
+            }});
         }});
 
         EmployeePreferences waiter6NamePref = new EmployeePreferences(waiter6, new JSONObject() {{
@@ -616,6 +646,10 @@ public class MainTest {
                         put("role", waiter.m_Name);
                     }});
                 }});
+            }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
             }});
         }});
 
@@ -643,6 +677,10 @@ public class MainTest {
                         put("role", chef.m_Name);
                     }});
                 }});
+            }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
             }});
         }});
 
@@ -675,6 +713,10 @@ public class MainTest {
                         put("role", chef.m_Name);
                     }});
                 }});
+            }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
             }});
         }});
 
@@ -713,6 +755,10 @@ public class MainTest {
                     }});
                 }});
             }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
+            }});
         }});
 
         EmployeePreferences barman1NamePref = new EmployeePreferences(barman1, new JSONObject() {{
@@ -744,6 +790,10 @@ public class MainTest {
                         put("role", barman.m_Name);
                     }});
                 }});
+            }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
             }});
         }});
 
@@ -777,6 +827,10 @@ public class MainTest {
                     }});
                 }});
             }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
+            }});
         }});
 
         EmployeePreferences barman3NamePref = new EmployeePreferences(barman3, new JSONObject() {{
@@ -809,6 +863,10 @@ public class MainTest {
                     }});
                 }});
             }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
+            }});
         }});
 
         EmployeePreferences host1NamePref = new EmployeePreferences(host1, new JSONObject() {{
@@ -831,6 +889,10 @@ public class MainTest {
                     }});
                 }});
             }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
+            }});
         }});
 
         EmployeePreferences host2NamePref = new EmployeePreferences(host2, new JSONObject() {{
@@ -847,6 +909,10 @@ public class MainTest {
                         put("role", host.m_Name);
                     }});
                 }});
+            }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
             }});
         }});
 
@@ -880,6 +946,10 @@ public class MainTest {
                     }});
                 }});
             }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
+            }});
         }});
 
         EmployeePreferences shiftManager2NamePref = new EmployeePreferences(shiftManager2, new JSONObject() {{
@@ -911,6 +981,10 @@ public class MainTest {
                         put("role", shiftManager.m_Name);
                     }});
                 }});
+            }});
+            put("RuleRangeWorkDays",new JSONObject(){{
+                put("minDays", 1);
+                put("maxDays", 7);
             }});
         }});
 
