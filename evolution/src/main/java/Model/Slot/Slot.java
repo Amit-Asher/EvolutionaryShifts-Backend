@@ -48,7 +48,17 @@ public class Slot
         this.endTime = endTime;
     }
 
-    public boolean equals(Slot slot) {
+    @Override
+    public boolean equals(Object object) {
+//        try {
+//            Slot slot = (Slot) object;
+//            return this.startTime.equals(slot.startTime) &&
+//                    this.endTime.equals(slot.endTime);
+//        } catch (ClassCastException e) {
+////            System.out.println("tov");
+//        }
+//        return false;
+        Slot slot = (Slot) object;
         return this.startTime.equals(slot.startTime) &&
                 this.endTime.equals(slot.endTime);
     }

@@ -3,6 +3,7 @@ package Rule.RuleFitEmpRole;
 
 import Arrangement.Arrangement;
 import Model.Employee.Employee;
+import Model.Shift;
 import Rule.IRule;
 import Rule.RuleSlots.RuleSlotsPreference;
 import org.json.JSONObject;
@@ -41,11 +42,10 @@ public class RuleFitEmpRole  implements IRule {
         double finalGrade = 0, gradeForFitRole = 100.0 / arrangement.size();
 
         for(int i = 0;i < arrangement.size();i++) {
-            if (arrangement.getShifts().get(i).getEmployee().
-                    getFitRoles().contains(
-                    arrangement.getShifts().get(i).getRole()
-            ))
+            Shift shift = arrangement.getShifts().get(i);
+            if (shift.getEmployee().getFitRoles().contains(shift.getRole())) {
                 finalGrade += gradeForFitRole;
+            }
         }
 
         return finalGrade;

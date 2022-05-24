@@ -10,8 +10,8 @@ import Model.Employee.Employee;
 import Model.Role;
 import Model.Shift;
 import Model.Slot.PrfSlot;
-import Mutations.MutationByDay;
 import Mutations.MutationByEmployee;
+import Mutations.MutationBySlot;
 import Rule.RuleSlots.RuleSlotsPreference;
 import org.uncommons.maths.random.Probability;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
@@ -19,6 +19,7 @@ import org.uncommons.watchmaker.framework.SelectionStrategy;
 import org.uncommons.watchmaker.framework.TerminationCondition;
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 import org.uncommons.watchmaker.framework.selection.RankSelection;
+import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
 import org.uncommons.watchmaker.framework.selection.TournamentSelection;
 import org.uncommons.watchmaker.framework.termination.GenerationCount;
 
@@ -160,21 +161,30 @@ public class RequestHandler {
         List<Employee> activeEmployees = BusinessLogic.getInstance().getActiveEmployees(Constants.COMPANY_NAME);
         List<EvolutionaryOperator<Arrangement>> mutations = new ArrayList<>(2);
         MutationByEmployee mutationByEmployee = new MutationByEmployee(0.1, 3, activeEmployees);
-        mutations.add(mutationByEmployee);
+        MutationBySlot mutationBySlot = new MutationBySlot(
+                0.8,
+                8,
+                BusinessLogic.getInstance().getEmployeeSlotsPreference(Constants.COMPANY_NAME),
+                BusinessLogic.getInstance().getReqSlots(Constants.COMPANY_NAME)
 
-        AbstractCrossover<Arrangement> crossover = new BasicCrossover(3);
+        );
+
+        mutations.add(mutationByEmployee);
+        mutations.add(mutationBySlot);
+
+        AbstractCrossover<Arrangement> crossover = new BasicCrossover(7);
 
         // selection strategy
-        SelectionStrategy<? super Arrangement> selectionStrategy = new RankSelection();
+        SelectionStrategy<? super Arrangement> selectionStrategy = new RouletteWheelSelection();
 
         List<TerminationCondition> terminationConditions = new ArrayList<>();
-        terminationConditions.add(new GenerationCount(100));
+        terminationConditions.add(new GenerationCount(300));
 
         // population size
         int populationSize = 100;
 
         // elitism
-        int elitism = 5;
+        int elitism = 10;
 
         AlgorithmConfig algorithmConfig = new AlgorithmConfig(
                 mutations,

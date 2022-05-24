@@ -8,6 +8,7 @@ import Model.Company;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Role;
+import Model.Slot.ReqSlot;
 import Rule.RuleSlots.RuleSlotsPreference;
 import org.json.JSONException;
 
@@ -125,6 +126,11 @@ public class BusinessLogic {
     public List<RuleSlotsPreference> getEmployeeSlotsPreference(String compName) {
         Company company = name2Company.get(compName);
         return company.getArrangementManager().getEmployeesSlotsPreferences();
+    }
+
+    public List<ReqSlot> getReqSlots(String compName) {
+        Company company = name2Company.get(compName);
+        return company.getArrangementManager().getReqSlots();
     }
 
     public void blockEmployeesToSetPref(String compName) {

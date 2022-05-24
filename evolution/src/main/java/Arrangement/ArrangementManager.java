@@ -6,6 +6,7 @@ import Algorithm.ArrangementSolution;
 import Crossovers.BasicRandomCrossover;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
+import Model.Slot.ReqSlot;
 import Rule.IRule;
 import Rule.RuleSlots.RuleSlots;
 import Rule.RuleSlots.RuleSlotsPreference;
@@ -95,6 +96,11 @@ public class ArrangementManager
         // just for testing relax!...
         return rule.getPreferences();
     }
+
+    public List<ReqSlot> getReqSlots() {
+        return m_CurrArrangementProp.getSlots();
+    }
+
  // comment
     public void setCurrArrangementProp(ArrangementProperties m_CurrArrangementProp) {
         this.m_CurrArrangementProp = m_CurrArrangementProp;

@@ -76,7 +76,7 @@ public class RuleSlots implements IRule
             for (PrfSlot employeeValidSlot : employeeValidSlots) { // middle loop iterates employee slots
                 for (Shift shift : arrangement.getShifts()) { // inner loop iterates all current shifts
                     if (employeeValidSlot.getSlot().equals(shift.getSlot()) &&
-                            employeeValidSlot.getRole().getName().equals(shift.getRole().getName()) &&
+//                            employeeValidSlot.getRole().getName().equals(shift.getRole().getName()) &&
                             pref.getEmployee().getFullName().equals(shift.getEmployee().getFullName())) {
                         goodShifts++;
                         break;

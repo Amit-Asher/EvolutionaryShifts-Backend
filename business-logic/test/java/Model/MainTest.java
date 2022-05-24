@@ -1017,18 +1017,14 @@ public class MainTest {
 
         // pipeline: mutations + crossovers
         List<EvolutionaryOperator<Arrangement>> mutations = new ArrayList<>(2);
-        MutationByEmployee mutationByDay = new MutationByEmployee(0.2);
-        mutationByDay.setEmployees(activeEmployees);
-        mutations.add(mutationByDay);
 
-        /**
+
         BasicMutation<Employee> basicMutation = new BasicMutation<>(
                 0.2,
                 activeEmployees,
                 new MutateByEmployee(),
         2);
         mutations.add(basicMutation);
-        */
 
         AbstractCrossover<Arrangement> crossover = new BasicCrossover(3);
 

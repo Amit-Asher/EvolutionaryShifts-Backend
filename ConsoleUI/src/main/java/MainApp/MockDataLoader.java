@@ -12,8 +12,8 @@ import Model.Range;
 import Model.Role;
 import Model.Slot.ReqSlot;
 import Model.Slot.Slot;
-import Mutations.MutationByDay;
 import Rule.IRule;
+import Rule.RuleFitEmpRole.RuleFitEmpRole;
 import Rule.RuleSlots.RuleSlots;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -382,7 +382,8 @@ public class MockDataLoader {
 
         List<Employee> activeEmployees = businessLogic.getAllEmployees(compName);
         Map<IRule, Double> ruleWeights = new HashMap<IRule, Double>() {{
-            put(new RuleSlots(), 1.0);
+            put(new RuleFitEmpRole(), 0.5);
+            put(new RuleSlots(), 0.5);
         }};
 
         ArrangementProperties arrangementProperties = new ArrangementProperties(

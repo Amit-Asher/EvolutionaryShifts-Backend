@@ -2,6 +2,7 @@ package Mutations;
 
 import Arrangement.Arrangement;
 import Model.Employee.Employee;
+import Model.Shift;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 
 import java.util.List;
@@ -19,15 +20,18 @@ public class MutationByEmployee implements EvolutionaryOperator<Arrangement> {
         this.employees = employees;
     }
 
+    private boolean isGoodShift(Shift shift) {
+        return shift.getEmployee().getFitRoles().contains(shift.getRole());
+    }
+
     @Override
     public List<Arrangement> apply(List<Arrangement> arrangements, Random random) {
 
         arrangements.forEach(arrangement -> {
             for(int i = 0; i < numberOfShiftsToChange; i++) {
-                if (random.nextDouble() < this.probability) {
-                    arrangement.getShifts().get(
-                            random.nextInt(arrangement.size())
-                    ).setEmployee(this.employees.get(random.nextInt(employees.size())));
+                Shift shiftToMutate = arrangement.getShifts().get(random.nextInt(arrangement.size()));
+                if (random.nextDouble() < this.probability && !isGoodShift(shiftToMutate)) {
+                    shiftToMutate.setEmployee(this.employees.get(random.nextInt(employees.size())));
                 }
             }
         });
