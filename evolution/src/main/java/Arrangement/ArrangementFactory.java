@@ -23,17 +23,14 @@ public class ArrangementFactory extends AbstractCandidateFactory<Arrangement> {
     @Override
     public Arrangement generateRandomCandidate(Random random) {
         List<Shift> shifts = new ArrayList<>();
-        int arrangementSize = 0;
-        for (ReqSlot reqSlot : reqSlots) {
-            arrangementSize += reqSlot.getPersonnelSize().getHigh();
-        }
 
-        for (int i = 0; i < arrangementSize; i++) {
-            Employee chosenEmployee = activeEmployees.get(random.nextInt(activeEmployees.size()));
-            ReqSlot chosenReqSlot = reqSlots.get(random.nextInt(reqSlots.size()));
-            Shift shift = new Shift(chosenEmployee, chosenReqSlot.getRole(), chosenReqSlot.getSlot());
-            shifts.add(shift);
-        }
+        reqSlots.forEach(reqSlot -> {
+            for (int i=0; i < reqSlot.getPersonnelSize().getHigh(); i++) {
+                Employee chosenEmployee = activeEmployees.get(random.nextInt(activeEmployees.size()));
+                Shift shift = new Shift(chosenEmployee, reqSlot.getRole(), reqSlot.getSlot());
+                shifts.add(shift);
+            }
+        });
 
         return new Arrangement(shifts);
     }

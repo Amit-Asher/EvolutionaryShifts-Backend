@@ -29,7 +29,11 @@ public class MutationByDay implements EvolutionaryOperator<Arrangement> {
 
         for(int i = 0;i < arrangements.size();i++)
         {
-            if(random.nextDouble() <= m_Probability) {
+
+
+
+
+            if (random.nextDouble() <= m_Probability) {
                 arrangements.get(i).getShifts().get(
                         random.nextInt(arrangements.get(i).getShifts().size())
                 ).setEmployee(employees.get(random.nextInt(employees.size())));

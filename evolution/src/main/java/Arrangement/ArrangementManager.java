@@ -32,7 +32,11 @@ public class ArrangementManager
     private Thread evolutionWorker;
 
     public boolean isEvolutionWorkerAlive() {
-        return evolutionWorker.isAlive();
+        try {
+            return evolutionWorker.isAlive();
+        } catch(Exception e) {
+            return false;
+        }
     }
 
     public ArrangementStatus getCurrArrangementStatus() {
@@ -68,6 +72,9 @@ public class ArrangementManager
         }
     }
 
+    public List<Employee> getActiveEmployees() {
+        return this.m_CurrArrangementProp.getActiveEmployees();
+    }
 
     /**
      * ONLY FOR TESTING
@@ -167,15 +174,7 @@ public class ArrangementManager
                     populationData.getBestCandidate(),
                     populationData.getGenerationNumber(),
                     populationData.getBestCandidateFitness());
-            System.out.println(populationData.getGenerationNumber());
-            System.out.println(populationData.getBestCandidateFitness());
-            System.out.println();
         });
-
-
-//        solution = finalEngine.evolve(algorithmConfig.getPopulationSize(),
-//        algorithmConfig.getElitism(),
-//        algorithmConfig.getTerminationConditions().toArray(new TerminationCondition[0]));
 
         this.evolutionWorker = new Thread(() ->{
             //the last parmeter passing is some kind of hack to be able to pass arrylist to vararg cause teminateCondition is ... type parameter

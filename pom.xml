@@ -11,6 +11,7 @@
       <module>business-logic</module>
       <module>database</module>
       <module>web-server</module>
+        <module>ConsoleUI</module>
     </modules>
     <name>es-backend</name>
   <url>http://maven.apache.org</url>

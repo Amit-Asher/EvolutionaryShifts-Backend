@@ -88,6 +88,11 @@ public class BusinessLogic {
         return company.getAllEmployees();
     }
 
+    public List<Employee> getActiveEmployees(String compName) {
+        Company company = name2Company.get(compName);
+        return company.getArrangementManager().getActiveEmployees();
+    }
+
     public Set<Role> getRoles(String compName){
         Company company = name2Company.get(compName);
         return company.getRoles();
