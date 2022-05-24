@@ -11,12 +11,12 @@ import java.util.*;
 public class BasicMutation<T> implements EvolutionaryOperator<Arrangement> {
 
     private double m_Probability;
-    private ArrayList<T> options;
+    private List<T> options;
     private MutateBy<T> mutateBy;
     private int howMuchToMutate;
 
     public BasicMutation(double probability,
-                         ArrayList<T> options,
+                         List<T> options,
                          MutateBy<T> mutateBy,
                          int howMuchToMutate)
     {

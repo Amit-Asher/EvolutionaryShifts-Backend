@@ -5,24 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="Delete Enum Day, better naming and create OneTimeRandomRange class">
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleReqSlots.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicRandomCrossover.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleReqSlots/RuleReqSlots.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleReqSlots/RuleReqSlotsPreference.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/test/java/Model/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/test/java/Model/MainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementEvaluator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Range.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/ReqSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/ReqSlot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlots.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlotsPreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleReqSlotsPreference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/BasicMutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/BasicMutation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRolePreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRolePreference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RulePeace/RulePeace.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RulePeace/RulePeace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Algorithm/EvolutionStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Algorithm/EvolutionStatus.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Company.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Range.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Range.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/Slot.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/Slot.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" afterDir="false" />
@@ -67,6 +72,10 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="Evo2.0" />
+                    <option name="lastUsedInstant" value="1653386380" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="Evo1.0" />
                     <option name="lastUsedInstant" value="1651324344" />
                   </RecentBranch>
@@ -106,13 +115,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java\BusinessLogic" />
@@ -122,7 +131,7 @@
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.test in business-logic">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="BusinessLogic.Test" />
       <module name="business-logic" />
@@ -136,8 +145,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test in business-logic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="business-logic" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/business-logic/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.test in business-logic" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
