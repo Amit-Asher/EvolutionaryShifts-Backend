@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="fix gitignore issues" />
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="Delete Enum Day, better naming and create OneTimeRandomRange class">
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicRandomCrossover.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleReqSlots/RuleReqSlots.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleReqSlots/RuleReqSlotsPreference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/test/java/Model/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/test/java/Model/MainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementEvaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/BasicMutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/BasicMutation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRolePreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFitEmpRole/RuleFitEmpRolePreference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RulePeace/RulePeace.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RulePeace/RulePeace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Algorithm/EvolutionStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Algorithm/EvolutionStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Company.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Range.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Range.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/Slot.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/Slot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +72,10 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="Evo2.0" />
+                    <option name="lastUsedInstant" value="1653386380" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="Evo1.0" />
                     <option name="lastUsedInstant" value="1651324344" />
                   </RecentBranch>
@@ -62,25 +93,16 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/evolution/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Rule/IRule.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/MockDataLoader.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/web-server/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/RequestHandler.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/operators/EvolutionPipeline.class" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/database/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/EvolutionaryOperator.class" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/ConsoleUI.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/AlgorithmConfig.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/business-logic/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ConsoleUI/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByDay.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByEmployee.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/database/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/EvolutionaryOperator.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/operators/EvolutionPipeline.class" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/evolution/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/AlgorithmConfig.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/web-server/pom.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -93,12 +115,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ConsoleUI/pom.xml" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.3045977" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java\BusinessLogic" />
@@ -108,20 +131,7 @@
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ConsoleUI">
-    <configuration name="ConsoleUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainApp.ConsoleUI" />
-      <module name="ConsoleUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainApp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.test in business-logic">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="BusinessLogic.Test" />
       <module name="business-logic" />
@@ -135,13 +145,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.Test" />
-      <item itemvalue="Application.ConsoleUI" />
-    </list>
+    <configuration name="test in business-logic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="business-logic" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/business-logic/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ConsoleUI" />
+        <item itemvalue="JUnit.test in business-logic" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -227,21 +241,7 @@
       <option name="presentableId" value="LOCAL‎00010" />
       <updated>1652534555766</updated>
     </task>
-    <task id="LOCAL-00011" summary="create console ui">
-      <created>1653423010384</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1653423010384</updated>
-    </task>
-    <task id="LOCAL-00012" summary="fix gitignore issues">
-      <created>1653423565061</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1653423565061</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,7 +257,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -270,20 +269,6 @@
     <MESSAGE value="implementing RuleFitEmpRole and RulePeace" />
     <MESSAGE value="implementing RuleRangeWorkDays" />
     <MESSAGE value="Delete Enum Day, better naming and create OneTimeRandomRange class" />
-    <MESSAGE value="create console ui" />
-    <MESSAGE value="fix gitignore issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix gitignore issues" />
-  </component>
-  <component name="XDebuggerManager">
-    <pin-to-top-manager>
-      <pinned-members>
-        <PinnedItemInfo parentTag="Model.Employee.EmployeePreferences" memberName="preferences" />
-        <PinnedItemInfo parentTag="Arrangement.Arrangement" memberName="m_Shifts" />
-      </pinned-members>
-    </pin-to-top-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete Enum Day, better naming and create OneTimeRandomRange class" />
   </component>
 </project>

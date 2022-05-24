@@ -3,6 +3,7 @@ package Arrangement;
 import Algorithm.AlgorithmConfig;
 import Algorithm.ArrangementEvoSolution;
 import Algorithm.ArrangementSolution;
+import Crossovers.BasicRandomCrossover;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Rule.IRule;
