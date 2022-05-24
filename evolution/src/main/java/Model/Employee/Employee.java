@@ -2,8 +2,7 @@ package Model.Employee;
 
 import Model.Role;
 
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 public class Employee {
     protected String m_FullName;
@@ -25,14 +24,22 @@ public class Employee {
         m_PhoneNumber = phoneNumber;
         m_FitRoles = fitRoles;
 //        m_IsTrainee = isTrainee;
-        m_ID =  UUID.randomUUID().toString();
+        m_ID = UUID.randomUUID().toString();
+    }
+
+    public Employee(Employee employee) {
+        this.m_FullName = employee.m_FullName;
+        this.m_PhoneNumber = employee.m_PhoneNumber;
+        this.m_FitRoles = new HashSet<>();
+        this.m_FitRoles.addAll(employee.m_FitRoles);
+        this.m_ID = employee.m_ID;
     }
 
     public Set<Role> getFitRoles() {return m_FitRoles;}
     public String getFullName() {return m_FullName;}
     public String getPhoneNumber() {return m_PhoneNumber;}
 //    public boolean IsTrainee() {return m_IsTrainee;}
-    public String getID() {return m_ID;}
+    public String getID() { return m_ID; }
 
     public void setFitRoles(Set<Role> fitRoles) {this.m_FitRoles = fitRoles;}
     public void setFullName(String fullName) {this.m_FullName = fullName;}

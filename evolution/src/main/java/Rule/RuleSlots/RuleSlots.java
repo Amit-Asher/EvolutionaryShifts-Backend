@@ -3,20 +3,28 @@ package Rule.RuleSlots;
 import Arrangement.Arrangement;
 import Model.Employee.Employee;
 import Model.Shift;
+import Model.Slot.PrfSlot;
 import Model.Slot.Slot;
 import Rule.IRule;
-import Rule.RuleConfig;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuleSlots implements IRule<RuleSlotsPreference>
+public class RuleSlots implements IRule
 {
-    private final RuleConfig<RuleSlotsPreference> config = new RuleConfig<>();
+    private final List<RuleSlotsPreference> preferences = new ArrayList<>();
+
+    /**
+     * FOR TESTING
+     */
+    public List<RuleSlotsPreference> getPreferences() {
+        return preferences;
+    }
 
     @Override
-    public void addPreference(RuleSlotsPreference preference) {
-        config.addPreferences(preference);
+    public void addPreference(Employee employee, JSONObject preferenceJson) throws RuntimeException {
+        preferences.add(new RuleSlotsPreference(employee, preferenceJson));
     }
 
     @Override
@@ -56,20 +64,25 @@ public class RuleSlots implements IRule<RuleSlotsPreference>
          return (goodShifts / arrangement.getShifts().size()) * 100;
          */
 
-        //new solution
-        //Assumed that *all* employees participate in this Rule *once*
-        //return how many shifts from arrangement are valid(shift in emp-pref)
+        // new solution
+        // Assumed that *all* employees participate in this Rule *once*
+        // return how many shifts from arrangement are valid (shift in emp-pref)
         double goodShifts = 0.0;
-        List<RuleSlotsPreference> preferences = config.getPreferences();
-        ArrayList<Slot> employeeValidSlots;
+        int i = 0;
+        int j = 0;
 
-        for (RuleSlotsPreference pref : preferences) {
-            employeeValidSlots = pref.getSlots();
-            for (Slot employeeValidSlot : employeeValidSlots) {
-                for (Shift shift : arrangement.getShifts()) {
-                    if (employeeValidSlot.equals(shift.getSlot()))
+        for (RuleSlotsPreference pref : this.preferences) { // outer loop iterates employees
+            ArrayList<PrfSlot> employeeValidSlots = pref.getSlots();
+            for (PrfSlot employeeValidSlot : employeeValidSlots) { // middle loop iterates employee slots
+                for (Shift shift : arrangement.getShifts()) { // inner loop iterates all current shifts
+                    if (employeeValidSlot.getSlot().equals(shift.getSlot()) &&
+                            employeeValidSlot.getRole().getName().equals(shift.getRole().getName()) &&
+                            pref.getEmployee().getFullName().equals(shift.getEmployee().getFullName())) {
                         goodShifts++;
+                        break;
+                    }
                 }
+                i++;
             }
         }
 

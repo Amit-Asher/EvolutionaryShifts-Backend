@@ -14,7 +14,7 @@ public class ArrangementEvaluator implements FitnessEvaluator<Arrangement>
     {
         if (rule2Weight != null && !rule2Weight.isEmpty()) {
             if(rule2Weight.values().stream().mapToDouble(d -> d).sum() != 1)
-                     throw new Exception("go away");
+                     throw new Exception("ArrangementEvaluator: sum of all weight != 1");
         }
 
         m_Rule2Weight = rule2Weight;

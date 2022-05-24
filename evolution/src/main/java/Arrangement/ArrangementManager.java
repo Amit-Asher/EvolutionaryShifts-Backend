@@ -1,56 +1,100 @@
 package Arrangement;
 
 import Algorithm.AlgorithmConfig;
-import Algorithm.ArrangementSolution;
 import Algorithm.ArrangementEvoSolution;
-import Crossovers.BasicCrossover;
+import Algorithm.ArrangementSolution;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
-import Mutations.MutationByDay;
 import Rule.IRule;
+import Rule.RuleSlots.RuleSlots;
+import Rule.RuleSlots.RuleSlotsPreference;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.uncommons.maths.random.MersenneTwisterRNG;
-import org.uncommons.watchmaker.framework.*;
+import org.uncommons.watchmaker.framework.EvolutionEngine;
+import org.uncommons.watchmaker.framework.EvolutionaryOperator;
+import org.uncommons.watchmaker.framework.GenerationalEvolutionEngine;
+import org.uncommons.watchmaker.framework.TerminationCondition;
 import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
-import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
-import org.uncommons.watchmaker.framework.termination.TargetFitness;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ArrangementManager
 {
-    private ArrangementProperties m_CurrArrangementProp;
+    private ArrangementProperties m_CurrArrangementProp = null;
     private ArrangementStatus m_CurrArrangementStatus = ArrangementStatus.SET_PROPS;
-    private EvolutionEngine<Arrangement> engine;
+    private EvolutionEngine<Arrangement> engine = null;
 
-    private ArrangementSolution curArrangementSolution;
+    private ArrangementSolution curArrangementSolution = null;
     private Map<String, Ticket> tickets = new HashMap<String, Ticket>();
-    private ArrangementEvaluator arrangementEvaluator;
+    private ArrangementEvaluator arrangementEvaluator = null;
+    private Arrangement solution;
+    private Thread evolutionWorker;
+
+    public boolean isEvolutionWorkerAlive() {
+        return evolutionWorker.isAlive();
+    }
 
     public ArrangementStatus getCurrArrangementStatus() {
         return m_CurrArrangementStatus;
     }
 
-    public void updateEmployeePreference(EmployeePreferences employeePreference)
-    {
+    public void setEmployeePreference(EmployeePreferences employeePreference) throws JSONException {
         if (m_CurrArrangementStatus != ArrangementStatus.WAIT_EMP_REQ) {
             throw new RuntimeException("Failed to setEmployeePreference\n Current status: " +
                     m_CurrArrangementStatus + " expected: WAIT_EMP_REQ");
         }
 
-        // add employees preferences to each rule configuration
-        employeePreference.getPreferences().forEach((ruleName, preferenceInput) -> {
-            m_CurrArrangementProp.m_rule2weight.keySet().stream().filter(rule -> {
-                return rule.getName().equals(ruleName);
-            }).forEach(rule -> rule.addPreference(preferenceInput));
-        });
+        // todo: we should think of a better design than save the preferences
+        //  inside the rules which is inside the arrangement props...
+        //  maybe save the preferences in seperated field or even a whole independent preferences service!
+
+        Set<IRule> rules = this.m_CurrArrangementProp.getRules();
+        JSONObject preferencesJson = employeePreference.getPreferences();
+        Iterator<String> ruleTypes = preferencesJson.keys();
+        while(ruleTypes.hasNext()) {
+            String ruleType = ruleTypes.next();
+            IRule rule = rules.stream()
+                    .filter(x -> x.getName().equals(ruleType))
+                    .findFirst()
+                    .orElse(null);
+
+            if (rule == null) {
+                throw new RuntimeException("rule type is not supported: " + ruleType);
+            }
+
+            JSONObject preferenceJson = (JSONObject) preferencesJson.get(ruleType);
+            rule.addPreference(employeePreference.getEmployee(), preferenceJson); // baaa sa..
+        }
+    }
+
+
+    /**
+     * ONLY FOR TESTING
+     * todo: we should think of a better design to return employee preference nicer
+     */
+    public List<RuleSlotsPreference> getEmployeesSlotsPreferences() {
+        // let me introduce you the most terrible OOP method ever written.
+        // enjoy catching the anti-patterns :)
+        Set<IRule> rules = this.m_CurrArrangementProp.getRules();
+
+        // I know, I know, pulling the instance out of dictionary keys make you sick
+        RuleSlots rule = (RuleSlots) rules.stream() // cast to death
+                .filter(x -> x.getName().equals("RuleSlots")) // hard code to end of times!
+                .findFirst()
+                .orElse(null);
+
+        // just for testing relax!...
+        return rule.getPreferences();
     }
  // comment
     public void setCurrArrangementProp(ArrangementProperties m_CurrArrangementProp) {
         this.m_CurrArrangementProp = m_CurrArrangementProp;
         this.m_CurrArrangementStatus = ArrangementStatus.WAIT_EMP_REQ;
+    }
+
+    public ArrangementProperties getCurrArrangementProp() {
+        return this.m_CurrArrangementProp;
     }
 
     public void BlockEmployeesToSetPref()
@@ -74,7 +118,7 @@ public class ArrangementManager
     }
  // main comment
     // todo: wrap with thread
-    public Arrangement startAlgorithm(AlgorithmConfig algorithmConfig)
+    public void startAlgorithm(AlgorithmConfig algorithmConfig)
     {
         if (this.m_CurrArrangementStatus == ArrangementStatus.WAIT_EMP_REQ ||
                 this.m_CurrArrangementStatus == ArrangementStatus.WAIT_EMP_APPROVAL) {
@@ -96,35 +140,52 @@ public class ArrangementManager
          *
          *
          *  */
-
-        Map<IRule, Double> rule2Weight = m_CurrArrangementProp.getM_rule2weight();
-        ArrangementFactory factory = new ArrangementFactory();
-        List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>(2);
-        operators.add(new MutationByDay(0.3));
-        operators.add(new BasicCrossover(2));
-        EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<>(operators);
-        EvolutionEngine<Arrangement> engine = null;
-        try {
-            this.arrangementEvaluator = new ArrangementEvaluator(rule2Weight);
-            engine = new GenerationalEvolutionEngine<>(
-                    factory,
+        List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>();
+        operators.add(algorithmConfig.getCrossover());
+        operators.addAll(algorithmConfig.getMutations());
+        EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<Arrangement>(operators);
+        try{
+            ArrangementFactory arrangementFactory = new ArrangementFactory(
+                    m_CurrArrangementProp.getSlots(),
+                    m_CurrArrangementProp.getActiveEmployees()
+            );
+            this.arrangementEvaluator = new ArrangementEvaluator(m_CurrArrangementProp.getRule2weight());
+            this.engine = new GenerationalEvolutionEngine<Arrangement>(
+                    arrangementFactory,
                     pipeline,
                     this.arrangementEvaluator,
-                    new RouletteWheelSelection(),
+                    algorithmConfig.getSelectionStrategy(),
                     new MersenneTwisterRNG()
             );
         } catch (Exception e) {
             e.printStackTrace();
         }
-        engine.addEvolutionObserver(populationData -> {
+        EvolutionEngine<Arrangement> finalEngine = engine;
+
+        this.engine.addEvolutionObserver(populationData -> {
             curArrangementSolution = new ArrangementEvoSolution(
                     populationData.getBestCandidate(),
                     populationData.getGenerationNumber(),
                     populationData.getBestCandidateFitness());
+            System.out.println(populationData.getGenerationNumber());
+            System.out.println(populationData.getBestCandidateFitness());
+            System.out.println();
         });
-        return engine.evolve(100, // 100 individuals in the population.
-                5, // 5% elitism.
-                new TargetFitness(0, true));
+
+
+//        solution = finalEngine.evolve(algorithmConfig.getPopulationSize(),
+//        algorithmConfig.getElitism(),
+//        algorithmConfig.getTerminationConditions().toArray(new TerminationCondition[0]));
+
+        this.evolutionWorker = new Thread(() ->{
+            //the last parmeter passing is some kind of hack to be able to pass arrylist to vararg cause teminateCondition is ... type parameter
+            //link:https://thispointer.com/how-to-pass-an-arraylist-to-varargs-method/
+            solution = finalEngine.evolve(algorithmConfig.getPopulationSize(),
+                    algorithmConfig.getElitism(),
+                    algorithmConfig.getTerminationConditions().toArray(new TerminationCondition[0]));
+        });
+        this.evolutionWorker.setName("evolutionThread");
+        this.evolutionWorker.start();
     }
 
     public ArrangementSolution getCurArrangementSolution() {
