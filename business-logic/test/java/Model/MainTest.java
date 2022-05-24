@@ -6,12 +6,17 @@ import Arrangement.Arrangement;
 import Arrangement.ArrangementProperties;
 import BusinessLogic.BusinessLogic;
 import Crossovers.BasicCrossover;
+import Crossovers.BasicRandomCrossover;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Slot.ReqSlot;
 import Model.Slot.Slot;
-import Mutations.MutationByDay;
+import Mutations.BasicMutation;
+import Mutations.MutateBy.MutateBy;
+import Mutations.MutateBy.MutateByEmployee;
+import Mutations.MutationByEmployee;
 import Rule.IRule;
+import Rule.RuleFitEmpRole.RuleFitEmpRole;
 import Rule.RuleFight.RuleFight;
 import Rule.RuleRangeWorkDays.RuleRangeWorkDays;
 import Rule.RuleSlots.RuleSlots;
@@ -390,8 +395,9 @@ public class MainTest {
         List<Employee> activeEmployees = businessLogic.getAllEmployees(compName);
         Map<IRule, Double> ruleWeights = new HashMap<IRule, Double>() {{
             put(new RuleSlots(), 0.2);
-            put(new RuleRangeWorkDays(),0.4);
-            put(new RuleFight(),0.4);
+            put(new RuleRangeWorkDays(),0.2);
+            put(new RuleFight(),0.3);
+            put(new RuleFitEmpRole(), 0.3);/**addition*/
         }};
 
         ArrangementProperties arrangementProperties = new ArrangementProperties(
@@ -1011,11 +1017,24 @@ public class MainTest {
 
         // pipeline: mutations + crossovers
         List<EvolutionaryOperator<Arrangement>> mutations = new ArrayList<>(2);
-        MutationByDay mutationByDay = new MutationByDay(0.2);
+        MutationByEmployee mutationByDay = new MutationByEmployee(0.2);
         mutationByDay.setEmployees(activeEmployees);
         mutations.add(mutationByDay);
 
+        /**
+        BasicMutation<Employee> basicMutation = new BasicMutation<>(
+                0.2,
+                activeEmployees,
+                new MutateByEmployee(),
+        2);
+        mutations.add(basicMutation);
+        */
+
         AbstractCrossover<Arrangement> crossover = new BasicCrossover(3);
+
+        /**
+        AbstractCrossover<Arrangement> crossover = new BasicRandomCrossover(3);
+        */
 
 
         // selection strategy
