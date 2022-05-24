@@ -10,10 +10,12 @@
         <module name="evolution" />
         <module name="business-logic" />
         <module name="web-server" />
+        <module name="ConsoleUI" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="business-logic" target="8" />
+      <module name="ConsoleUI" target="8" />
       <module name="database" target="8" />
       <module name="es-backend" target="1.5" />
       <module name="evolution" target="8" />
