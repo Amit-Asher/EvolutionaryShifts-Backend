@@ -214,7 +214,7 @@ public class RequestHandler {
         if (!evolutionStatus.isFinished) {
             System.out.format("Evolution algorithm still running (generation: %s/%s, fitness: %s)%n%n",
                     evolutionStatus.arrangementSolution.generationNumber,
-                    100,
+                    300,
                     evolutionStatus.arrangementSolution.fitness);
             return;
         }
