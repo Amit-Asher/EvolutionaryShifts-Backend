@@ -28,4 +28,9 @@ public class Shift
     public void setSlot(Slot slot) {this.m_Slot = slot;}
     public void setEmployee(Employee employee) {this.m_Employee = employee;}
     public void setRole(Role role) {this.m_Role = role;}
+
+    @Override
+    public String toString() {
+        return m_Employee.getFullName() + m_Role.m_Name + m_Slot.toString();
+    }
 }

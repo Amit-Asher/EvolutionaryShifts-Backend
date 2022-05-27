@@ -8,8 +8,8 @@ import Model.Slot.Slot;
 import Rule.IRule;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RuleSlots implements IRule
 {
@@ -34,55 +34,25 @@ public class RuleSlots implements IRule
 
     @Override
     public double evaluate(Arrangement arrangement) {
-        //old solution
-        /**
-         // todo: try to improve accuracy
-         double goodShifts = 0;
-         for (Shift shift : arrangement.getShifts())
-         {
-         Employee employee = shift.getEmployee();
-         RuleSlotsPreference employeesPref = null;
-         for (RuleSlotsPreference pref :  config.getPreferences()) {
-         if (pref.employee.equals(employee)) {
-         employeesPref = pref;
-         }
-         }
 
-         if (employeesPref == null) {
-         continue;
-         }
-
-         for (Slot slot : employeesPref.slots)
-         {
-         if(slot == shift.getSlot())
-         {
-         goodShifts ++;
-         }
-         }
-         }
-
-         return (goodShifts / arrangement.getShifts().size()) * 100;
-         */
-
-        // new solution
-        // Assumed that *all* employees participate in this Rule *once*
-        // return how many shifts from arrangement are valid (shift in emp-pref)
         double goodShifts = 0.0;
-        int i = 0;
-        int j = 0;
 
-        for (RuleSlotsPreference pref : this.preferences) { // outer loop iterates employees
-            ArrayList<PrfSlot> employeeValidSlots = pref.getSlots();
-            for (PrfSlot employeeValidSlot : employeeValidSlots) { // middle loop iterates employee slots
-                for (Shift shift : arrangement.getShifts()) { // inner loop iterates all current shifts
-                    if (employeeValidSlot.getSlot().equals(shift.getSlot()) &&
-//                            employeeValidSlot.getRole().getName().equals(shift.getRole().getName()) &&
-                            pref.getEmployee().getFullName().equals(shift.getEmployee().getFullName())) {
-                        goodShifts++;
-                        break;
-                    }
+        // Set<Slot> didn't work as expected while using contains. so compare toStrings...
+        Map<Employee, Set<String>> employeeSlotsMap = new HashMap<>();
+
+        for (RuleSlotsPreference employeePreference : this.preferences) {
+            for (PrfSlot employeeValidSlot : employeePreference.getSlots()) {
+                if (!employeeSlotsMap.containsKey(employeePreference.getEmployee())) {
+                    employeeSlotsMap.put(employeePreference.getEmployee(), new HashSet<>());
                 }
-                i++;
+                employeeSlotsMap.get(employeePreference.getEmployee()).add(employeeValidSlot.getSlot().toString());
+            }
+        }
+
+        for (Shift shift : arrangement.getShifts()) {
+            Set<String> employeeValidSlots = employeeSlotsMap.get(shift.getEmployee());
+            if (employeeValidSlots.contains(shift.getSlot().toString())) {
+                goodShifts++;
             }
         }
 

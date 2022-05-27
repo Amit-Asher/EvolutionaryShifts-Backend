@@ -8,13 +8,13 @@ import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 import java.util.List;
 import java.util.Random;
 
-public class MutationByEmployee implements EvolutionaryOperator<Arrangement> {
+public class MutationGenerateEmployee implements EvolutionaryOperator<Arrangement> {
 
     private final double probability;
     private final int numberOfShiftsToChange;
     private final List<Employee> employees;
 
-    public MutationByEmployee(double probability, int numberOfShiftsToChange, List<Employee> employees) {
+    public MutationGenerateEmployee(double probability, int numberOfShiftsToChange, List<Employee> employees) {
         this.probability = probability;
         this.numberOfShiftsToChange = numberOfShiftsToChange;
         this.employees = employees;

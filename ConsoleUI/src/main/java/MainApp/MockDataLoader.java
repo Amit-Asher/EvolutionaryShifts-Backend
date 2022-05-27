@@ -382,8 +382,8 @@ public class MockDataLoader {
 
         List<Employee> activeEmployees = businessLogic.getAllEmployees(compName);
         Map<IRule, Double> ruleWeights = new HashMap<IRule, Double>() {{
-            put(new RuleFitEmpRole(), 0.5);
-            put(new RuleSlots(), 0.5);
+            put(new RuleFitEmpRole(), 0.0);
+            put(new RuleSlots(), 1.0);
         }};
 
         ArrangementProperties arrangementProperties = new ArrangementProperties(

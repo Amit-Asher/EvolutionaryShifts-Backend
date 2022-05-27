@@ -8,19 +8,16 @@ import BusinessLogic.BusinessLogic;
 import Crossovers.BasicCrossover;
 import Model.Employee.Employee;
 import Model.Role;
-import Model.Shift;
 import Model.Slot.PrfSlot;
-import Mutations.MutationByEmployee;
-import Mutations.MutationBySlot;
+import Mutations.MutationDupsByEmployee;
+import Mutations.MutationGenerateEmployee;
+import Mutations.MutationSwapEmployees;
 import Rule.RuleSlots.RuleSlotsPreference;
-import org.uncommons.maths.random.Probability;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 import org.uncommons.watchmaker.framework.SelectionStrategy;
 import org.uncommons.watchmaker.framework.TerminationCondition;
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
-import org.uncommons.watchmaker.framework.selection.RankSelection;
 import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
-import org.uncommons.watchmaker.framework.selection.TournamentSelection;
 import org.uncommons.watchmaker.framework.termination.GenerationCount;
 
 import java.time.format.DateTimeFormatter;
@@ -160,19 +157,20 @@ public class RequestHandler {
         System.out.println("hold on!...");
         List<Employee> activeEmployees = BusinessLogic.getInstance().getActiveEmployees(Constants.COMPANY_NAME);
         List<EvolutionaryOperator<Arrangement>> mutations = new ArrayList<>(2);
-        MutationByEmployee mutationByEmployee = new MutationByEmployee(0.1, 3, activeEmployees);
-        MutationBySlot mutationBySlot = new MutationBySlot(
-                0.8,
-                8,
+        MutationGenerateEmployee mutationGenerateEmployee = new MutationGenerateEmployee(0.3, 5, activeEmployees);
+        MutationSwapEmployees mutationSwapEmployees = new MutationSwapEmployees(
+                0.3,
+                5,
                 BusinessLogic.getInstance().getEmployeeSlotsPreference(Constants.COMPANY_NAME),
                 BusinessLogic.getInstance().getReqSlots(Constants.COMPANY_NAME)
-
         );
+        MutationDupsByEmployee mutationDupsByEmployee = new MutationDupsByEmployee(activeEmployees);
 
-        mutations.add(mutationByEmployee);
-        mutations.add(mutationBySlot);
+        mutations.add(mutationGenerateEmployee);
+        mutations.add(mutationSwapEmployees);
+        mutations.add(mutationDupsByEmployee);
 
-        AbstractCrossover<Arrangement> crossover = new BasicCrossover(7);
+        AbstractCrossover<Arrangement> crossover = new BasicCrossover(3);
 
         // selection strategy
         SelectionStrategy<? super Arrangement> selectionStrategy = new RouletteWheelSelection();
@@ -204,6 +202,8 @@ public class RequestHandler {
     public static void handleShowBestSolution() {
 
         EvolutionStatus evolutionStatus = BusinessLogic.getInstance().getSolution(Constants.COMPANY_NAME);
+        List<RuleSlotsPreference> ruleSlotsPreferences = BusinessLogic.getInstance().getEmployeeSlotsPreference(Constants.COMPANY_NAME);
+
         if (evolutionStatus.arrangementSolution == null) {
             System.out.println("No solution found");
             System.out.println("(Choose 5 in order to run evolution algorithm)");
@@ -221,10 +221,10 @@ public class RequestHandler {
 
         System.out.println("************** BEST ARRANGEMENT ******************");
         System.out.println("Fitness: " + evolutionStatus.arrangementSolution.fitness);
-        String leftAlignFormat = "| %-25s | %-15s | %-15s | %-20s | %-15s |%n";
-        System.out.format("+---------------------------+-----------------+-----------------+----------------------+-----------------+%n");
-        System.out.format("| Date                      | Start Time      | End Time        | Employee             | Role            |%n");
-        System.out.format("+---------------------------+-----------------+-----------------+----------------------+-----------------+%n");
+        String leftAlignFormat = "| %-25s | %-15s | %-15s | %-20s | %-15s | %-5s |%n";
+        System.out.format("+---------------------------+-----------------+-----------------+----------------------+-----------------+-------+%n");
+        System.out.format("| Date                      | Start Time      | End Time        | Employee             | Role            | Fit   |%n");
+        System.out.format("+---------------------------+-----------------+-----------------+----------------------+-----------------+-------+%n");
         DateTimeFormatter hmFormatter = DateTimeFormatter.ofPattern("HH:mm");
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d.M.u");
 
@@ -237,7 +237,9 @@ public class RequestHandler {
                     shift.getSlot().getStartTime().format(hmFormatter),
                     shift.getSlot().getEndTime().format(hmFormatter),
                     shift.getEmployee().getFullName(),
-                    shift.getRole().m_Name));
+                    shift.getRole().m_Name,
+                    Utils.isEmployeeSatisfied(shift, ruleSlotsPreferences) ? "V" : "* X *"
+            ));
         });
 
         System.out.println();

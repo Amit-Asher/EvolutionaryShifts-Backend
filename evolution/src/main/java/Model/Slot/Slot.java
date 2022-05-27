@@ -62,4 +62,12 @@ public class Slot
         return this.startTime.equals(slot.startTime) &&
                 this.endTime.equals(slot.endTime);
     }
+
+    @Override
+    public String toString() {
+        return "Slot{" +
+                "startTime=" + startTime +
+                ", endTime=" + endTime +
+                '}';
+    }
 }
