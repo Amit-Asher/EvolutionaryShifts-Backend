@@ -1,10 +1,9 @@
 package com.evo.springboot.app;
 
 import BusinessLogic.BusinessLogic;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.gson.JsonObject;
+import Model.Role;
+import com.evo.springboot.app.DTO_Objects.RoleDTO;
+import com.evo.springboot.app.DTO_Objects.RolesDTO;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +12,16 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 public class MyController implements ErrorController {
 
-    //install spring cli from here: https://docs.spring.io/spring-boot/docs/current/reference/html/cli.html
-    //run the script: spring run web-server/src/main/java/com/evolution/springboot/app/MainResolver.java
-
     //not working
+    //server.error.path=/error
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
@@ -39,27 +39,43 @@ public class MyController implements ErrorController {
 
     @RequestMapping("/")
     public ModelAndView index() {
-        return new ModelAndView("index.html");
+        return new ModelAndView("index.html");//work for static
     }
 
     @RequestMapping("/api/home")
     public String home() {
-        return "Hello world from Spring Boot";
+        return "Hello world from Spring Boot";//for CheckHTTPResponse
     }
 
-    //http:localhost:8080/api/v1/addEmployee/?name=Andrio2
-    @RequestMapping(value = "/api/addEmployee", params = "name", method = GET)
+    //http://localhost:8080/api/addEmployee/?name=Andrio&phoneNumber=050&fitRoles=manager,theacer
+    @RequestMapping(value = "/api/addEmployee",
+            params = {"name", "phoneNumber", "fitRoles"}, method = GET)
     public @ResponseBody String addEmployee(
-            @RequestParam String name) {
+            @RequestParam String name,
+            @RequestParam String phoneNumber,
+            RolesDTO fitRoles) {
 
+        Set<Role> roles = new HashSet<>();
 
-        return "Success addEmployee";
+        for(int i = 0;i < fitRoles.getFitRoles().length;i++)
+            roles.add(new Role(fitRoles.getFitRoles()[i]));
+
+        BusinessLogic businessLogic = BusinessLogic.getInstance();
+        businessLogic.addEmployee(name, BusinessLogic.company,
+                phoneNumber, roles);
+
+        return "Success addEmployee: " + name;
     }
 
+    //http://localhost:8080/api/removeEmployee/?id=232
+    @RequestMapping(value = "/api/removeEmployee",
+            params = "id", method = GET)
+    public @ResponseBody String removeEmployee(@RequestParam String id) {
 
-    @GetMapping("/api/removeEmployee")
-    String removeEmployee() {
-        return "removeEmployee";
+        BusinessLogic businessLogic = BusinessLogic.getInstance();
+        businessLogic.removeEmployee(id, BusinessLogic.company);
+
+        return "removeEmployee: " + id;
     }
 
     @GetMapping("/api/setAsManager")
@@ -73,22 +89,26 @@ public class MyController implements ErrorController {
     }
 
     //http://localhost:8080/api/addNewRole/?name=manager
-    @RequestMapping(value = "api/addNewRole", params = "name", method = GET)
-    public @ResponseBody String addNewRole(@RequestParam String name){
+    @RequestMapping(value = "api/addNewRole", params = "name",
+            method = GET)
+    public @ResponseBody String addNewRole(RoleDTO roleDTO){
 
-        JsonObject json = new JsonObject();
-        json.addProperty("name", name);
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        RoleDTO roleDTO;
-        try {
-            roleDTO = mapper.readValue(json.toString(), RoleDTO.class);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+//        JsonObject json = new JsonObject();
+//        ObjectMapper mapper = new ObjectMapper();
+//        RoleDTO roleDTO;
+//
+//        json.addProperty("name", name);
+//        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+//        try {
+//            roleDTO = mapper.readValue(json.toString(), RoleDTO.class);
+//        } catch (JsonProcessingException e) {
+//            throw new RuntimeException(e);
+//        }
+
         BusinessLogic businessLogic = BusinessLogic.getInstance();
-        businessLogic.addNewRole(roleDTO.name, BusinessLogic.company);
-          return "Success addNewRole: " + name;
+        businessLogic.addNewRole(roleDTO.getName(), BusinessLogic.company);
+
+        return "Success addNewRole: " + roleDTO.getName();
     }
 
     @GetMapping("/api/removeRole")
