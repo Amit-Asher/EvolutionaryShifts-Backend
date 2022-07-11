@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="create web-server-2">
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO_Objects/RoleDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO_Objects/RolesDTO.java" afterDir="false" />
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="add DTO objects">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/MyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/MyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/RoleDTO.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +32,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/business-logic/pom.xml" root0="FORCE_HIGHLIGHTING" />
@@ -54,6 +58,9 @@
       </map>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="27VGZkyXDQuJ59Eyr2dmKCxR3Jq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -70,11 +77,13 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "1.8",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.14760506",
     "project.structure.side.proportion": "0.11481056",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "project.propVCSSupport.ChangelistConflict",
+    "spring.configuration.checksum": "82c391d72625278fe9a32f06e3cc0a5d"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -181,6 +190,8 @@
       <workItem from="1649400858322" duration="45000" />
       <workItem from="1649400930175" duration="96000" />
       <workItem from="1649799616290" duration="1089000" />
+      <workItem from="1656936363081" duration="100000" />
+      <workItem from="1656936508429" duration="5604000" />
     </task>
     <task id="LOCAL‎00001" summary="adding another solution for RuleSlots">
       <created>1649410094056</created>
@@ -194,7 +205,13 @@
       <option name="presentableId" value="LOCAL‎00002" />
       <updated>1655708492998</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL‎00003" summary="add DTO objects">
+      <created>1656013801734</created>
+      <option name="number" value="LOCAL‎00003" />
+      <option name="presentableId" value="LOCAL‎00003" />
+      <updated>1656013801734</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +232,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="adding another solution for RuleSlots" />
     <MESSAGE value="create web-server-2" />
-    <option name="LAST_COMMIT_MESSAGE" value="create web-server-2" />
+    <MESSAGE value="add DTO objects" />
+    <option name="LAST_COMMIT_MESSAGE" value="add DTO objects" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

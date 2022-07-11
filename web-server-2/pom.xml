@@ -10,11 +10,11 @@
         <version>2.7.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.evo.springboot.app</groupId>
+    <!--<groupId>com.evo.springboot.app</groupId>
     <artifactId>web-server-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>web-server-2</name>
-    <description>web-server-2</description>
+    <description>web-server-2</description>-->
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -23,7 +23,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -39,6 +38,14 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
     </dependencies>
 

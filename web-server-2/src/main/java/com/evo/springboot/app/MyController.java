@@ -78,43 +78,64 @@ public class MyController implements ErrorController {
         return "removeEmployee: " + id;
     }
 
-    @GetMapping("/api/setAsManager")
-    String setAsManager() {
-        return "setAsManager";
+    //http://localhost:8080/api/setAsManager/?id=345
+    @RequestMapping(value = "api/setAsManager", params = "id",
+            method = GET)
+    public @ResponseBody String setAsManager(String id)
+    {
+        BusinessLogic businessLogic = BusinessLogic.getInstance();
+        businessLogic.setAsManager(id, BusinessLogic.company);
+
+        return "setAsManager: " + id;
     }
 
-    @GetMapping("/api/removeManager")
-    String removeManager() {
-        return "removeManager";
+    //http://localhost:8080/api/removeManager/?id=345
+    @RequestMapping(value = "api/removeManager", params = "id",
+            method = GET)
+    public @ResponseBody String removeManager(String id) {
+        BusinessLogic businessLogic = BusinessLogic.getInstance();
+        businessLogic.setAsManager(id, BusinessLogic.company);
+
+        return "removeManager: " + id;
     }
 
     //http://localhost:8080/api/addNewRole/?name=manager
     @RequestMapping(value = "api/addNewRole", params = "name",
             method = GET)
-    public @ResponseBody String addNewRole(RoleDTO roleDTO){
-
-//        JsonObject json = new JsonObject();
-//        ObjectMapper mapper = new ObjectMapper();
-//        RoleDTO roleDTO;
-//
-//        json.addProperty("name", name);
-//        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-//        try {
-//            roleDTO = mapper.readValue(json.toString(), RoleDTO.class);
-//        } catch (JsonProcessingException e) {
-//            throw new RuntimeException(e);
-//        }
-
+    public @ResponseBody String addNewRole(RoleDTO roleDTO)
+    {
         BusinessLogic businessLogic = BusinessLogic.getInstance();
         businessLogic.addNewRole(roleDTO.getName(), BusinessLogic.company);
 
         return "Success addNewRole: " + roleDTO.getName();
     }
 
-    @GetMapping("/api/removeRole")
-    String removeRole() {
-        return "removeRole";
+    //http://localhost:8080/api/removeRole/?name=manager
+    @RequestMapping(value = "api/removeRole", params = "name",
+            method = GET)
+    public @ResponseBody String removeRole(RoleDTO roleDTO) {
+        BusinessLogic businessLogic = BusinessLogic.getInstance();
+        businessLogic.removeRole(roleDTO.getName(), BusinessLogic.company);
+
+        return "Success removeRole: " + roleDTO.getName();
     }
+
+    @RequestMapping(value = "api/getSolution", method = GET)
+    public @ResponseBody String getSolution() {
+        return "getSolution";
+    }
+
+    @RequestMapping(value = "api/publishArrangement", method = GET)
+    public @ResponseBody String publishArrangement() {
+        return "publishArrangement";
+    }
+
+    @RequestMapping(value = "api/finishArrangement", method = GET)
+    public @ResponseBody String finishArrangement() {
+        return "finishArrangement";
+    }
+
+    ///////////////////////////////////////////
 
     @GetMapping("/api/setArrangementProperties")
     String setArrangementProperties() {
@@ -136,21 +157,6 @@ public class MyController implements ErrorController {
         return "startAlgorithm";
     }
 
-    @GetMapping("/api/getSolution")
-    String getSolution() {
-        return "getSolution";
-    }
-
-    @GetMapping("/api/publishArrangement")
-    String publishArrangement() {
-        return "publishArrangement";
-    }
-
-    @GetMapping("/api/approveArrangement")
-    String approveArrangement() {
-        return "approveArrangement";
-    }
-
     @GetMapping("/api/declineArrangement")
     String declineArrangement() {
         return "declineArrangement";
@@ -159,15 +165,5 @@ public class MyController implements ErrorController {
     @GetMapping("/api/setArrangement")
     String setArrangement() {
         return "setArrangement";
-    }
-
-    @GetMapping("/api/finishArrangement")
-    String finishArrangement() {
-        return "finishArrangement";
-    }
-
-    @GetMapping("/api/reopenArrangement")
-    String reopenArrangement() {
-        return "reopenArrangement";
     }
 }
