@@ -1,9 +1,11 @@
 package Algorithm;
 
-import Arrangement.Arrangement;
-
 public class EvolutionStatus {
-    public Arrangement arrangement;
+    public ArrangementEvoSolution arrangementSolution;
     public boolean isFinished;
-    public int generation;
+
+    public EvolutionStatus(ArrangementSolution arrangementSolution, boolean isFinished) {
+        this.arrangementSolution = (ArrangementEvoSolution) arrangementSolution;
+        this.isFinished = isFinished;
+    }
 }

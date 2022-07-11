@@ -1,60 +1,64 @@
 package Arrangement;
 
-import Model.Day;
 import Model.Employee.Employee;
 import Model.Slot.ReqSlot;
 import Rule.IRule;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
+import java.time.DayOfWeek;
 
 public class ArrangementProperties
 {
+    private List<ReqSlot> m_Slots;
+    private List<Employee> m_ActiveEmployees;
+    private Map<IRule, Double> m_rule2weight;
+    protected Set<DayOfWeek> days;
 
-    protected ArrayList<ReqSlot> m_Slots;
-    protected ArrayList<Employee> m_ActiveEmployees;
-    protected Map<IRule, Double> m_rule2weight;
-    protected ArrayList<Day> days;
-
-    public ArrangementProperties(ArrayList<ReqSlot> m_Slots,
-                                 ArrayList<Employee> m_ActiveEmployees,
-                                 Map<IRule, Double> m_rule2weight,
-                                 ArrayList<Day> days)
+    public ArrangementProperties(List<ReqSlot> m_Slots,
+                                 List<Employee> m_ActiveEmployees,
+                                 Map<IRule, Double> m_rule2weight)
     {
         this.m_Slots = m_Slots;
         this.m_ActiveEmployees = m_ActiveEmployees;
         this.m_rule2weight = m_rule2weight;
-        this.days = days;
+        this.days = new HashSet<>();
+        for (int i=0; i < m_Slots.size(); i++) {
+            this.days.add(this.m_Slots.get(i).getSlot().getDay());
+        }
     }
 
-    public ArrayList<ReqSlot> getM_Slots() {
+    public Set<IRule> getRules() {
+        return m_rule2weight.keySet();
+    }
+
+    public List<ReqSlot> getSlots() {
         return m_Slots;
     }
 
-    public void setM_Slots(ArrayList<ReqSlot> m_Slots) {
+    public void setSlots(List<ReqSlot> m_Slots) {
         this.m_Slots = m_Slots;
     }
 
-    public ArrayList<Employee> getM_ActiveEmployees() {
+    public List<Employee> getActiveEmployees() {
         return m_ActiveEmployees;
     }
 
-    public void setM_ActiveEmployees(ArrayList<Employee> m_ActiveEmployees) {
+    public void setActiveEmployees(List<Employee> m_ActiveEmployees) {
         this.m_ActiveEmployees = m_ActiveEmployees;
     }
 
-    public void setM_rule2weight(Map<IRule, Double> m_rule2weight) {
+    public void setRule2weight(Map<IRule, Double> m_rule2weight) {
         this.m_rule2weight = m_rule2weight;
     }
 
-    public void setDays(ArrayList<Day> days) {
+    public void setDays(Set<DayOfWeek> days) {
         this.days = days;
     }
 
-    public Map<IRule, Double> getM_rule2weight() {
+    public Map<IRule, Double> getRule2weight() {
         return m_rule2weight;
     }
 
-    public ArrayList<Day> getDays() { return days; }
+    public Set<DayOfWeek> getDays() { return days; }
     public int getNumOfDays() { return days.size(); }
 }

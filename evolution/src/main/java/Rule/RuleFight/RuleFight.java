@@ -1,35 +1,35 @@
 package Rule.RuleFight;
 
 import Arrangement.Arrangement;
-import Model.Day;
 import Model.Employee.Employee;
 import Model.Shift;
 import Model.Slot.Slot;
 import Rule.IRule;
-import Rule.RuleConfig;
+import org.json.JSONObject;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-public class RuleFight implements IRule<RuleFightPreference> {
-    private final RuleConfig<RuleFightPreference> config = new RuleConfig<>();
+public class RuleFight implements IRule {
+    private final List<RuleFightPreference> config = new ArrayList<>();
 
     @Override
     public double evaluate(Arrangement arrangement) {
         double finalGrade = 0.0;
-        List<RuleFightPreference> preferences = config.getPreferences();
-
-        DeleteDuplicates();
+        List<RuleFightPreference> preferences = config;
+        Set<Employee> allEmp = arrangement.getWorkingEmp();
         for(RuleFightPreference pref : preferences)
         {
             double gradeForEmployee = 100;
             Employee employee = pref.getEmployee();
-            ArrayList<Day> daysOfWork = arrangement.getDaysOfWorkForEmployee(employee);
-            ArrayList<Shift> shifts = arrangement.getShifts();
+            ArrayList<DayOfWeek> daysOfWork = arrangement.getDaysOfWorkForEmployee(employee);
+            List<Shift> shifts = arrangement.getShifts();
             int sizeShifts = shifts.size();
             boolean flagBreakSlot1;
-
-            for (Day day : daysOfWork)
+            Employee opp = getOpp(allEmp,pref.getOpp());
+            for (DayOfWeek day : daysOfWork)
             {
                 flagBreakSlot1 = false;
 
@@ -44,7 +44,7 @@ public class RuleFight implements IRule<RuleFightPreference> {
                                 Shift shift2 = shifts.get(j);
                                 Slot slot2 = shift2.getSlot();
 
-                                if(shift2.getEmployee().equals(pref.getOpp())) {
+                                if(shift2.getEmployee().equals(opp)) {
                                     if (slot2.getDay().equals(day)) {
                                         // the two opponents work in the same day
                                         //It remains to be seen if they overlap during working hours
@@ -67,16 +67,31 @@ public class RuleFight implements IRule<RuleFightPreference> {
                     }
                 }
 
-                finalGrade += gradeForEmployee / preferences.size();
+                if(flagBreakSlot1)
+                    break;
+
+
             }
+            finalGrade += gradeForEmployee / preferences.size();
         }
 
         return finalGrade;
     }
 
     @Override
-    public void addPreference(RuleFightPreference preference) {
-        config.addPreferences(preference);
+    public void addPreference(Employee employee, JSONObject preference) {
+        config.add(new RuleFightPreference(employee, preference));
+    }
+
+    private Employee getOpp(Set<Employee> allEmp, String firendName){
+        Employee friend = null;
+        for(Employee emp :allEmp){
+            if(emp.getFullName().equals(firendName)) {
+                friend = emp;
+                break;
+            }
+        }
+        return friend;
     }
 
     @Override
@@ -84,25 +99,4 @@ public class RuleFight implements IRule<RuleFightPreference> {
         return "RuleFight";
     }
 
-    private void DeleteDuplicates()
-    {
-        List<RuleFightPreference> Preferences = config.getPreferences();
-        int sizePref = Preferences.size();
-
-        for(int i = 0;i < sizePref;i++)
-        {
-            for(int j = 0;j < sizePref;j++)
-            {
-                if(Preferences.get(i).getEmployee().getFullName().equals(
-                        Preferences.get(j).getOpp().getFullName()) &&
-                        Preferences.get(j).getEmployee().getFullName().equals(
-                        Preferences.get(i).getOpp().getFullName()))
-                {
-                    Preferences.remove(j);
-                    sizePref--;
-                    break;
-                }
-            }
-        }
-    }
 }
