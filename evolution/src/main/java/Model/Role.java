@@ -2,23 +2,23 @@ package Model;
 
 public class Role
 {
-    public String m_Name;
+    public String name;
 
     public Role(String name)
     {
-        m_Name = name;
+        this.name = name;
     }
 
     public String getName() {
-        return m_Name;
+        return this.name;
     }
 
     public boolean equals(Role role) {
-        return this.m_Name.equals(role.m_Name);
+        return this.name.equals(role.name);
     }
 
     @Override
     public String toString() {
-        return m_Name;
+        return name;
     }
 }

@@ -27,6 +27,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
@@ -61,12 +62,12 @@ public class RequestHandler {
     }
 
     public static void handleShowAllRoles() {
-        List<Role> allRoles = BusinessLogic.getInstance().getAllRoles(Constants.COMPANY_NAME);
+        Set<Role> allRoles = BusinessLogic.getInstance().getAllRoles(Constants.COMPANY_NAME);
 
         System.out.println();
         System.out.println("******* ALL ROLES ********");
         allRoles.forEach((role) -> {
-            System.out.println(role.m_Name);
+            System.out.println(role.name);
         });
         System.out.println("**************************");
         System.out.println();
@@ -87,7 +88,7 @@ public class RequestHandler {
             employee.getFitRoles().forEach(role -> {
                 System.out.format(String.format(leftAlignFormat,
                         firstFlag.get() ? employee.getFullName() : "",
-                        role.m_Name
+                        role.name
                         ));
                 firstFlag.set(false);
             });
@@ -113,7 +114,7 @@ public class RequestHandler {
                             " (" + reqSlot.getSlot().getStartTime().getDayOfWeek() + ")",
                     reqSlot.getSlot().getStartTime().format(hmFormatter),
                     reqSlot.getSlot().getEndTime().format(hmFormatter),
-                    reqSlot.getRole().m_Name,
+                    reqSlot.getRole().name,
                     reqSlot.getPersonnelSize().toString()));
         });
 
@@ -237,7 +238,7 @@ public class RequestHandler {
                     shift.getSlot().getStartTime().format(hmFormatter),
                     shift.getSlot().getEndTime().format(hmFormatter),
                     shift.getEmployee().getFullName(),
-                    shift.getRole().m_Name));
+                    shift.getRole().name));
         });
 
         System.out.println();
