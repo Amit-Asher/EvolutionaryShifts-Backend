@@ -1,24 +1,35 @@
 package com.evo.springboot.app.Controllers;
 
+import Algorithm.AlgorithmConfig;
+import Algorithm.EvolutionStatus;
+import Arrangement.Arrangement;
 import Arrangement.ArrangementProperties;
 import BusinessLogic.BusinessLogic;
+import Crossovers.BasicCrossover;
+import Crossovers.CrossoverFactory;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Role;
 import Model.Slot.ReqSlot;
+import Mutations.BasicMutation;
+import Mutations.MutateBy.MutateByEmployee;
 import Rule.IRule;
-import com.evo.springboot.app.Converters.EmployeeConverter;
-import com.evo.springboot.app.Converters.PreferencesConverter;
-import com.evo.springboot.app.Converters.PropertiesConverter;
+import com.evo.springboot.app.Converters.*;
 import com.evo.springboot.app.DTO.Incoming.DbDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
+import com.evo.springboot.app.ToRefactor.MutationFactory;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.uncommons.watchmaker.framework.EvolutionaryOperator;
+import org.uncommons.watchmaker.framework.SelectionStrategy;
+import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +38,7 @@ import java.util.Map;
 public class LoadDbController {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
+
 
     // TODO: REQUIRE PERMISSIONS!
     @PostMapping(value = "loadCompanyDb")
@@ -97,7 +109,31 @@ public class LoadDbController {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            });
 
+            businessLogic.blockEmployeesToSetPref(BusinessLogic.staticCompName);
+            AlgorithmConfig algorithmConfig = AlgorithmConfigConverter.convert(
+                    companyDb.getEvolution()
+            );
+            businessLogic.startAlgorithm(BusinessLogic.staticCompName, algorithmConfig);
+
+            // FINISHED
+            EvolutionStatus evolutionStatus = null;
+            try {
+                do {
+                    evolutionStatus = businessLogic.getSolution(BusinessLogic.staticCompName);
+                    Thread.sleep(1000);
+                } while (!evolutionStatus.isFinished);
+            } catch (Exception e) {
+                System.out.println("error");
+            }
+            System.out.println("finished!");
+            // print solution
+            evolutionStatus.arrangementSolution.arrangement.getShifts().forEach(slot -> {
+                String startTime = TimeConverter.convert(slot.getSlot().getStartTime());
+                String endTime = TimeConverter.convert(slot.getSlot().getEndTime());
+                String employee = slot.getEmployee().getFullName();
+                System.out.format("%s: %s - %s", employee, startTime, endTime);
             });
 
             logger.info("[LoadDbController][api/loadArrangement] load arrangement completed successfully");
@@ -138,5 +174,18 @@ public class LoadDbController {
             );
         }
     }
+
+
+    @PostMapping(value = "test")
+    public String testRoute(@RequestBody Map<String, Object> json) {
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            System.out.println(jsonObject.get("field1"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "ok";
+    }
+
 
 }

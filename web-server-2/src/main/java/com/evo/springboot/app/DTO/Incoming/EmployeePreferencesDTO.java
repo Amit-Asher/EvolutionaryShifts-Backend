@@ -2,16 +2,18 @@ package com.evo.springboot.app.DTO.Incoming;
 
 import org.json.JSONObject;
 
-public class PreferencesDTO {
-    private JSONObject preferences;
+import java.util.Map;
+
+public class EmployeePreferencesDTO {
+    private Map<String, Object> preferences;
     private String employeeId; // todo: we should take it from token!
     private String employeeName;
 
     public JSONObject getPreferences() {
-        return preferences;
+        return new JSONObject(preferences);
     }
 
-    public void setPreferences(JSONObject preferences) {
+    public void setPreferences(Map<String, Object> preferences) {
         this.preferences = preferences;
     }
 

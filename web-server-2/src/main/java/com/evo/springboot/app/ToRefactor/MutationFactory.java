@@ -38,7 +38,10 @@ public class MutationFactory {
                 // todo: business logic should not be here
                 List<Employee> allEmployees = BusinessLogic.getInstance()
                         .getAllEmployees(BusinessLogic.staticCompName);
-                List<Employee> activeEmployees = allEmployees.stream().filter(employee -> allEmployees.contains(employee.getID())).collect(Collectors.toList());
+                List<String> allEmployeesIds = allEmployees.stream().map(employee -> employee.getID()).collect(Collectors.toList());
+                List<Employee> activeEmployees = allEmployees.stream()
+                        .filter(employee -> allEmployeesIds.contains(employee.getID()))
+                        .collect(Collectors.toList());
                 mutationToReturn = new BasicMutation<Employee>(
                         params.getDouble("probability"),
                         activeEmployees,

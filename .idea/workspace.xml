@@ -4,95 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="initial implementation of web server">
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/CrossoverFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Selections/SelectionFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/TermConds/TermCondFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/generateDb/loadDb.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/generateDb/restaurantDb.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/DocsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EvolutionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/PublishController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/AlgorithmConfigConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/EmployeeConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/PreferencesConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/PropertiesConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/TimeConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/AlgorithmConfigDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/CompanyDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/DbDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/EvolutionaryOperatorDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/NewEmployeeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/PreferencesDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/PropertiesDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/RangeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/ReqSlotDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/RoleDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/RuleWeightDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/SlotPreferenceDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/EmployeeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/EmployeesDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/EvolutionStatusDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/SwaggerDocConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/ToRefactor/MutationFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="build web server with swagger">
+      <change afterPath="$PROJECT_DIR$/scripts/backup.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/EvolutionStatusConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/EmpSlotsPreferenceDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/PrfSlotDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/ShiftDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/SlotsPreferencesDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleUI/ConsoleUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleUI/ConsoleUI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/MockDataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/MockDataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/ArrangementPropsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/ArrangementPropsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/EmployeesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/EmployeesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/RolesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/RolesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/setEmployeePref.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/test/java/Model/Internals/setEmployeePref.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/test/java/Model/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/test/java/Model/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory2.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementFactory2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicCrossover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicRandomCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicRandomCrossover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Range.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Shift.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Shift.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/BasicMutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/BasicMutation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutateBy/MutateByRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutateBy/MutateByRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/MyUtils/OneTimeRandomRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Utils/OneTimeRandomRange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementProperties.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Company.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Range.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Range.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Slot/ReqSlot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/CompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/ConsoleUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/CrossoverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/CrossoverFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/generateDb/restaurantDb.json" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generateDb/restaurantDb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EvolutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EvolutionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/LoadDbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/LoadDbController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ManagerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/EmployeeConverterDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/CompanyDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/DbDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/EmployeeDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/GenericResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/GenericResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/RoleDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/RolesDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/RolesDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/WebServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/WebServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evolution/springboot/app/Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evolution/springboot/app/MainResolver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/web-server.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/PreferencesConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/PreferencesConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/DbDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/DbDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/EvolutionaryOperatorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/EvolutionaryOperatorDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/PreferencesDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/EmployeePreferencesDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/SlotPreferenceDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/EvolutionStatusDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/EvolutionStatusDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/ToRefactor/MutationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/ToRefactor/MutationFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,6 +131,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -329,7 +263,7 @@
       <workItem from="1657652320734" duration="1038000" />
       <workItem from="1657653446715" duration="16478000" />
       <workItem from="1657824863986" duration="19037000" />
-      <workItem from="1657845115076" duration="33796000" />
+      <workItem from="1657845115076" duration="49948000" />
     </task>
     <task id="LOCAL‎00001" summary="adding another solution for RuleSlots">
       <created>1649410094056</created>
@@ -391,7 +325,21 @@
       <option name="presentableId" value="LOCAL‎00010" />
       <updated>1652534555766</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="build web server with swagger">
+      <created>1657933935978</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1657933935978</updated>
+    </task>
+    <task id="LOCAL-00012" summary="build web server with swagger">
+      <created>1657933980683</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1657933980683</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +368,8 @@
     <MESSAGE value="implementing RuleFitEmpRole and RulePeace" />
     <MESSAGE value="implementing RuleRangeWorkDays" />
     <MESSAGE value="Delete Enum Day, better naming and create OneTimeRandomRange class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete Enum Day, better naming and create OneTimeRandomRange class" />
+    <MESSAGE value="build web server with swagger" />
+    <option name="LAST_COMMIT_MESSAGE" value="build web server with swagger" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -432,38 +381,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java</url>
-          <line>106</line>
+          <line>107</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/LoadDbController.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="59" />
+          <line>181</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/LoadDbController.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="60" />
+          <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/ToRefactor/MutationFactory.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/evolution/src/main/java/Model/Company.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="62" />
+          <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/AlgorithmConfigConverter.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="63" />
+          <url>file://$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicCrossover.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/LoadDbController.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/PreferencesConverter.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="65" />
+          <url>jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/operators/AbstractCrossover.class</url>
+          <line>26</line>
+          <option name="timeStamp" value="109" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -474,6 +418,15 @@
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="mutation.getType()" language="JAVA" />
+        <watch expression="mutation.getParams()" language="JAVA" />
+        <watch expression="params.getDouble(&quot;probability&quot;)" language="JAVA" />
+        <watch expression="algorithmConfigDTO.getCrossover().getType()" language="JAVA" />
+        <watch expression="algorithmConfigDTO.getCrossover().getParams()" language="JAVA" />
+        <watch expression="ex" language="JAVA" />
+        <watch expression="params.getInt(&quot;crossoverPoints&quot;)" language="JAVA" />
+      </configuration>
       <configuration name="Application">
         <watch expression="shiftToMutate.getEmployee().getFitRoles().contains(shiftToMutate.getRole()" language="JAVA" />
       </configuration>

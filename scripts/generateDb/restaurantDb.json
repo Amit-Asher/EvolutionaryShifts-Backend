@@ -1066,5 +1066,37 @@
         }
       }
     }
-  ]
+  ],
+  "evolution": {
+    "crossover": {
+      "params": {
+        "crossoverPoints": 3
+      },
+      "type": "BasicCrossover"
+    },
+    "elitism": 5,
+    "mutations": [
+      {
+        "params": {
+          "probability": 0.7
+        },
+        "type": "MutationByEmployee"
+      }
+    ],
+    "populationSize": 100,
+    "selection": {
+      "params": {
+        "probability": 0.8
+      },
+      "type": "TournamentSelection"
+    },
+    "terminationCondition": [
+      {
+        "params": {
+          "count": 500
+        },
+        "type": "GenerationCount"
+      }
+    ]
+  }
 }

@@ -6,9 +6,10 @@ import Model.Employee.EmployeePreferences;
 import Rule.RuleSlots.RuleSlotsPreference;
 import com.evo.springboot.app.Converters.PreferencesConverter;
 import com.evo.springboot.app.Converters.PropertiesConverter;
-import com.evo.springboot.app.DTO.Incoming.PreferencesDTO;
+import com.evo.springboot.app.DTO.Incoming.EmployeePreferencesDTO;
 import com.evo.springboot.app.DTO.Incoming.PropertiesDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
+import com.evo.springboot.app.DTO.Outgoing.SlotsPreferencesDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -75,7 +76,7 @@ public class ArrangementController {
 
     @PostMapping(value = "addPreferences")
     public @ResponseBody
-    GenericResponseDTO addPreferences(@RequestBody PreferencesDTO preferencesDTO) {
+    GenericResponseDTO addPreferences(@RequestBody EmployeePreferencesDTO preferencesDTO) {
         try {
             logger.info("[ArrangementController][api/addPreferences] received new request to add Preferences");
             EmployeePreferences employeePreferences = PreferencesConverter.convert(preferencesDTO);
@@ -102,13 +103,14 @@ public class ArrangementController {
 
     @GetMapping(value = "getPreferences")
     public @ResponseBody
-    List<RuleSlotsPreference> getPreferences() {
+    SlotsPreferencesDTO getPreferences() {
         try {
             logger.info("[ArrangementController][api/getPreferences] received new request to get preferences");
             List<RuleSlotsPreference> preferences = BusinessLogic.getInstance().getEmployeeSlotsPreference(BusinessLogic.staticCompName);
+            SlotsPreferencesDTO preferencesDTO = PreferencesConverter.convert(preferences);
 
             logger.info("[ArrangementController][api/getPreferences] get preferences completed successfully");
-            return preferences;
+            return preferencesDTO;
 
         } catch (Exception err) {
             logger.error("[ArrangementController][api/getPreferences] get preferences failed");

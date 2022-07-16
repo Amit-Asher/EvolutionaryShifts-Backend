@@ -7,7 +7,8 @@ public class DbDTO {
     private List<RoleDTO> roles;
     private List<NewEmployeeDTO> employees;
     private PropertiesDTO properties;
-    private List<PreferencesDTO> preferences;
+    private List<EmployeePreferencesDTO> preferences;
+    private AlgorithmConfigDTO evolution;
 
     public CompanyDTO getCompany() {
         return company;
@@ -41,11 +42,19 @@ public class DbDTO {
         this.properties = properties;
     }
 
-    public List<PreferencesDTO> getPreferences() {
+    public List<EmployeePreferencesDTO> getPreferences() {
         return preferences;
     }
 
-    public void setPreferences(List<PreferencesDTO> preferences) {
+    public void setPreferences(List<EmployeePreferencesDTO> preferences) {
         this.preferences = preferences;
+    }
+
+    public AlgorithmConfigDTO getEvolution() {
+        return evolution;
+    }
+
+    public void setEvolution(AlgorithmConfigDTO evolution) {
+        this.evolution = evolution;
     }
 }

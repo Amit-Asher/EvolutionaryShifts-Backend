@@ -2,9 +2,11 @@ package com.evo.springboot.app.DTO.Incoming;
 
 import org.json.JSONObject;
 
+import java.util.Map;
+
 public class EvolutionaryOperatorDTO {
     private String type;
-    private JSONObject params;
+    private Map<String, Object> params;
 
     public String getType() {
         return type;
@@ -15,10 +17,10 @@ public class EvolutionaryOperatorDTO {
     }
 
     public JSONObject getParams() {
-        return params;
+        return new JSONObject(params);
     }
 
-    public void setParams(JSONObject params) {
+    public void setParams(Map<String, Object> params) {
         this.params = params;
     }
 }

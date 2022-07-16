@@ -3,7 +3,6 @@ package Crossovers;
 import Arrangement.Arrangement;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 
 public class CrossoverFactory {
