@@ -25,7 +25,7 @@ public class ArrangementFactory extends AbstractCandidateFactory<Arrangement> {
         List<Shift> shifts = new ArrayList<>();
 
         reqSlots.forEach(reqSlot -> {
-            for (int i=0; i < reqSlot.getPersonnelSize().getHigh(); i++) {
+            for (int i = 0; i < reqSlot.getPersonnelSize().getMax(); i++) {
                 Employee chosenEmployee = activeEmployees.get(random.nextInt(activeEmployees.size()));
                 Shift shift = new Shift(chosenEmployee, reqSlot.getRole(), reqSlot.getSlot());
                 shifts.add(shift);

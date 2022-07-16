@@ -2,7 +2,6 @@ package Model.Internals;
 
 import Arrangement.ArrangementProperties;
 import BusinessLogic.BusinessLogic;
-import Model.Company;
 import Model.Employee.Employee;
 import Model.Range;
 import Model.Role;
@@ -109,7 +108,6 @@ public class ArrangementPropsTest {
         businessLogic.addEmployee(compName, host2);
         businessLogic.addEmployee(compName, shiftManager1);
         businessLogic.addEmployee(compName, shiftManager2);
-
 
 
         // ******** START NEW ARRANGEMENT ******* //
@@ -385,20 +383,20 @@ public class ArrangementPropsTest {
         System.out.format("+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+%n");
         System.out.format("| Date            | Day             | Role            | Personnel Size  | Start Time      | End Time        |%n");
         System.out.format("+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+%n");
-        businessLogic.getArrangementProperties(compName).getSlots().forEach(reqSlot -> {
+        businessLogic.getArrangementProperties(compName).getReqSlots().forEach(reqSlot -> {
             DateTimeFormatter hmFormatter = DateTimeFormatter.ofPattern("HH:mm");
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d.M.u");
             System.out.format(String.format(leftAlignFormat,
                     reqSlot.getSlot().getStartTime().format(dateFormatter),
                     reqSlot.getSlot().getStartTime().getDayOfWeek(),
-                    reqSlot.getRole().m_Name,
+                    reqSlot.getRole().getName(),
                     reqSlot.getPersonnelSize().toString(),
                     reqSlot.getSlot().getStartTime().format(hmFormatter),
                     reqSlot.getSlot().getEndTime().format(hmFormatter)));
         });
 
         System.out.format("%nManager opened the following rules and weights:%n");
-        businessLogic.getArrangementProperties(compName).getRule2weight().forEach((key, value) -> {
+        businessLogic.getArrangementProperties(compName).getRuleName2weight().forEach((key, value) -> {
             System.out.format("%s: %s%n",
                     key.getName(),
                     value);

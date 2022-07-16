@@ -3,7 +3,7 @@ package Mutations;
 import Arrangement.Arrangement;
 import Model.Shift;
 import Mutations.MutateBy.MutateBy;
-import MyUtils.OneTimeRandomRange;
+import Utils.OneTimeRandomRange;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 
 import java.util.*;
@@ -37,7 +37,7 @@ public class BasicMutation<T> implements EvolutionaryOperator<Arrangement> {
     }
 
     public BasicMutation(double probability,
-                         ArrayList<T> options,
+                         List<T> options,
                          MutateBy<T> mutateBy)
     {
         this(probability, options, mutateBy, 1);

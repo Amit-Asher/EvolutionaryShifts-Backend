@@ -36,6 +36,10 @@ public class BusinessLogic {
         return instance;
     }
 
+    public void cleanDb(String compName) {
+        name2Company.put(compName, new Company(compName));
+    }
+
     public Company getCompanyByName(String compName) {
         return name2Company.get(compName);
     }
@@ -97,7 +101,7 @@ public class BusinessLogic {
 
     public Set<Role> getRoles(String compName){
         Company company = name2Company.get(compName);
-        return company.getRoles();
+        return company.getAllRoles();
     }
 
     public void startNewArrangement(String compName) {
@@ -196,4 +200,16 @@ public class BusinessLogic {
     }
 
     /********************** FINISH ********************/
+
+
+
+
+
+
+    /********************** ALT DATABASE ********************/
+
+
+
+
+
 }

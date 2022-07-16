@@ -29,7 +29,7 @@ public class RolesTest {
 
         System.out.println("******** ROLES *********");
         businessLogic.getAllRoles(compName).forEach((role) -> {
-            System.out.println(role.m_Name);
+            System.out.println(role.name);
         });
         System.out.println("************************");
         System.out.println();

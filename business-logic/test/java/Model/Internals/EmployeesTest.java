@@ -113,7 +113,7 @@ public class EmployeesTest {
             System.out.println(String.format("id: %s", employee.getID()));
             System.out.print("fit roles:");
             employee.getFitRoles().forEach((role) -> {
-                System.out.print(String.format(" %s |", role.m_Name));
+                System.out.print(String.format(" %s |", role.name));
             });
             System.out.println();
             System.out.println();

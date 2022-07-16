@@ -11,6 +11,6 @@ public class MutateByRole  implements MutateBy<Role>{
 
     @Override
     public void set(Shift shift, Role value) {
-        shift.getRole().m_Name = value.m_Name;
+        shift.getRole().name = value.getName();
     }
 }

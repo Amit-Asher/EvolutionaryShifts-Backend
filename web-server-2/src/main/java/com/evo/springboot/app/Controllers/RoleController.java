@@ -2,9 +2,9 @@ package com.evo.springboot.app.Controllers;
 
 import BusinessLogic.BusinessLogic;
 import Model.Role;
-import com.evo.springboot.app.DTO.GenericResponseDTO;
-import com.evo.springboot.app.DTO.RoleDTO;
-import com.evo.springboot.app.DTO.RolesDTO;
+import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
+import com.evo.springboot.app.DTO.Incoming.RoleDTO;
+import com.evo.springboot.app.DTO.Outgoing.RolesDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -15,21 +15,22 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/api")
 public class RoleController {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @PostMapping(value = "api/addNewRole")
+    @PostMapping(value = "addNewRole")
     public @ResponseBody GenericResponseDTO addNewRole(@RequestBody RoleDTO roleDTO)
     {
         try {
             logger.info("[RoleController][api/addNewRole] received new request to add new role");
             BusinessLogic businessLogic = BusinessLogic.getInstance();
-            businessLogic.addNewRole(BusinessLogic.staticCompName, new Role(roleDTO.name));
+            businessLogic.addNewRole(BusinessLogic.staticCompName, new Role(roleDTO.getRole()));
 
             logger.info("[RoleController][api/addNewRole] add new role completed successfully");
             return new GenericResponseDTO(
-                    String.format("add new role '%s' completed successfully", roleDTO.name),
+                    String.format("add new role '%s' completed successfully", roleDTO.getRole()),
                     true
             );
 
@@ -37,13 +38,13 @@ public class RoleController {
             logger.error("[RoleController][api/addNewRole] add new role failed");
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    String.format("add new role '%s' failed", roleDTO.name),
+                    String.format("add new role '%s' failed", roleDTO.getRole()),
                     err
             );
         }
     }
 
-    @DeleteMapping(value = "api/removeRole")
+    @DeleteMapping(value = "removeRole")
     public @ResponseBody GenericResponseDTO removeRole(@RequestParam String roleName) {
         // TODO: REPLACE THE PARAMETER FROM STRING TO GUID
         try {
@@ -67,7 +68,7 @@ public class RoleController {
         }
     }
 
-    @GetMapping(value = "api/getAllRoles")
+    @GetMapping(value = "getAllRoles")
     public @ResponseBody RolesDTO getAllRoles() {
         try {
             logger.info("[RoleController][api/getAllRoles] received new request to get all roles");

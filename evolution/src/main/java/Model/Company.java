@@ -25,7 +25,10 @@ public class Company
 
 
     public void addRole(Role role){
-        this.roles.add(role);
+        boolean found = roles.stream().anyMatch(existingRole -> existingRole.name.equals(role.name));
+        if (!found) {
+            this.roles.add(role);
+        }
     }
     public void removeRole(Role role){
         this.roles.removeIf(existingRole -> existingRole.name.equals(role.name));

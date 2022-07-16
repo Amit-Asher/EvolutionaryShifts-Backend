@@ -2,6 +2,8 @@ package Crossovers;
 
 import Arrangement.Arrangement;
 import Model.Shift;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 
 import java.util.ArrayList;
@@ -10,8 +12,8 @@ import java.util.Random;
 
 public class BasicCrossover extends AbstractCrossover<Arrangement> {
 
-    public BasicCrossover(int crossoverPoints) {
-        super(crossoverPoints);
+    public BasicCrossover(JSONObject params) throws JSONException {
+        super(params.getInt("crossoverPoints"));
     }
 
     @Override
