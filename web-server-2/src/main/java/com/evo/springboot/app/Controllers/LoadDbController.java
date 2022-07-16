@@ -117,25 +117,6 @@ public class LoadDbController {
             );
             businessLogic.startAlgorithm(BusinessLogic.staticCompName, algorithmConfig);
 
-            // FINISHED
-            EvolutionStatus evolutionStatus = null;
-            try {
-                do {
-                    evolutionStatus = businessLogic.getSolution(BusinessLogic.staticCompName);
-                    Thread.sleep(1000);
-                } while (!evolutionStatus.isFinished);
-            } catch (Exception e) {
-                System.out.println("error");
-            }
-            System.out.println("finished!");
-            // print solution
-            evolutionStatus.arrangementSolution.arrangement.getShifts().forEach(slot -> {
-                String startTime = TimeConverter.convert(slot.getSlot().getStartTime());
-                String endTime = TimeConverter.convert(slot.getSlot().getEndTime());
-                String employee = slot.getEmployee().getFullName();
-                System.out.format("%s: %s - %s", employee, startTime, endTime);
-            });
-
             logger.info("[LoadDbController][api/loadArrangement] load arrangement completed successfully");
             return new GenericResponseDTO(
                     String.format("load arrangement completed successfully"),

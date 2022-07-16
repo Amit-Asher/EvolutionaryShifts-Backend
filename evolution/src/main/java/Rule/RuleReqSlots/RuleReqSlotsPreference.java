@@ -4,7 +4,6 @@ import Model.Employee.Employee;
 import Model.Slot.ReqSlot;
 import org.json.JSONObject;
 
-
 import java.util.List;
 
 public class RuleReqSlotsPreference

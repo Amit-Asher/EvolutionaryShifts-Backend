@@ -10,11 +10,6 @@
         <version>2.7.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <!--<groupId>com.evo.springboot.app</groupId>
-    <artifactId>web-server-2</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>web-server-2</name>
-    <description>web-server-2</description>-->
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -29,19 +24,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>es-backend</groupId>
-            <artifactId>business-logic</artifactId>
-            <version>1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.9.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -57,7 +42,16 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
+        </dependency>
+        <dependency>
+            <groupId>org.uncommons.maths</groupId>
+            <artifactId>uncommons-maths</artifactId>
+            <version>1.2.2a</version>
+        </dependency>
     </dependencies>
 
     <build>
