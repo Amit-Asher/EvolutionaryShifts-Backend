@@ -4,24 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="build web server with swagger">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_9_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_3_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_3_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_3_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_3_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_3_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_3_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_3_18.xml" beforeDir="false" />
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="fix maven issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/business-logic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/business-logic.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/evolution.iml" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/evolution.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleReqSlots/RuleReqSlotsPreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleReqSlots/RuleReqSlotsPreference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/LoadDbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/LoadDbController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/WebServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/WebServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/resources/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +112,7 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web-server-2/src/main/resources/static" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -131,13 +120,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\web-server-2\src\main\resources\static" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java\BusinessLogic" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\evolution" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\evolution\src\main\java" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java" />
-      <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\web-server-2\src\main\resources\static" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\scripts" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -335,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657933980683</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix maven issues">
+      <created>1657999187873</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1657999187873</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,7 +362,8 @@
     <MESSAGE value="implementing RuleRangeWorkDays" />
     <MESSAGE value="Delete Enum Day, better naming and create OneTimeRandomRange class" />
     <MESSAGE value="build web server with swagger" />
-    <option name="LAST_COMMIT_MESSAGE" value="build web server with swagger" />
+    <MESSAGE value="fix maven issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix maven issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -402,6 +400,7 @@
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="params.getInt(&quot;crossoverPoints&quot;)" language="JAVA" />
         <watch expression="params.getInt(&quot;crossoverPoints&quot;)" language="JAVA" />
+        <watch expression="company.getArrangementManager()" language="JAVA" />
       </configuration>
       <configuration name="Application">
         <watch expression="shiftToMutate.getEmployee().getFitRoles().contains(shiftToMutate.getRole()" language="JAVA" />

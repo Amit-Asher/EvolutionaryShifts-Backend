@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -14,7 +15,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class MainController implements ErrorController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @GetMapping("/")
+    @RequestMapping("/")
     public ModelAndView getBundle() {
         // send the front bundle
         return new ModelAndView("index.html"); //work for static
