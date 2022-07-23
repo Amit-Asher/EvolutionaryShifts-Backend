@@ -10,6 +10,11 @@ import com.evo.springboot.app.DTO.Incoming.EmployeePreferencesDTO;
 import com.evo.springboot.app.DTO.Incoming.PropertiesDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import com.evo.springboot.app.DTO.Outgoing.SlotsPreferencesDTO;
+import com.evo.springboot.app.SwaggerDocConfig;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -20,10 +25,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@Api(value = "", tags = {"arrangement", ""})
 public class ArrangementController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @ApiOperation(value = "", nickname = "createArrangement")
     @PostMapping(value = "createArrangement")
     public @ResponseBody
     GenericResponseDTO createArrangement(@RequestBody PropertiesDTO propertiesDTO) {
@@ -53,6 +60,7 @@ public class ArrangementController {
         }
     }
 
+    @ApiOperation(value = "", nickname = "getProperties")
     @GetMapping(value = "getProperties")
     public @ResponseBody
     PropertiesDTO getProperties() {
@@ -74,6 +82,7 @@ public class ArrangementController {
         }
     }
 
+    @ApiOperation(value = "", nickname = "addPreferences")
     @PostMapping(value = "addPreferences")
     public @ResponseBody
     GenericResponseDTO addPreferences(@RequestBody EmployeePreferencesDTO preferencesDTO) {
@@ -101,6 +110,7 @@ public class ArrangementController {
         }
     }
 
+    @ApiOperation(value = "", nickname = "getPreferences")
     @GetMapping(value = "getPreferences")
     public @ResponseBody
     SlotsPreferencesDTO getPreferences() {

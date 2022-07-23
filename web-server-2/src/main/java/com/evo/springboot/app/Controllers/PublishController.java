@@ -2,6 +2,8 @@ package com.evo.springboot.app.Controllers;
 
 import BusinessLogic.BusinessLogic;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -13,10 +15,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api")
+@Api(value = "", tags = {"publish", ""})
 public class PublishController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @ApiOperation(value = "", nickname = "publishArrangement")
     @PostMapping(value = "publishArrangement")
     public @ResponseBody
     GenericResponseDTO publishArrangement() {
@@ -39,6 +43,7 @@ public class PublishController {
         }
     }
 
+    @ApiOperation(value = "", nickname = "finishArrangement")
     @PostMapping(value = "finishArrangement")
     public @ResponseBody
     GenericResponseDTO finishArrangement() {

@@ -5,6 +5,8 @@ import Model.Role;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import com.evo.springboot.app.DTO.Incoming.RoleDTO;
 import com.evo.springboot.app.DTO.Outgoing.RolesDTO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -16,10 +18,12 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
+@Api(value = "", tags = {"role", ""})
 public class RoleController {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @ApiOperation(value = "", nickname = "addNewRole")
     @PostMapping(value = "addNewRole")
     public @ResponseBody GenericResponseDTO addNewRole(@RequestBody RoleDTO roleDTO)
     {
@@ -44,6 +48,7 @@ public class RoleController {
         }
     }
 
+    @ApiOperation(value = "", nickname = "removeRole")
     @DeleteMapping(value = "removeRole")
     public @ResponseBody GenericResponseDTO removeRole(@RequestParam String roleName) {
         // TODO: REPLACE THE PARAMETER FROM STRING TO GUID
@@ -68,6 +73,7 @@ public class RoleController {
         }
     }
 
+    @ApiOperation(value = "", nickname = "getAllRoles")
     @GetMapping(value = "getAllRoles")
     public @ResponseBody RolesDTO getAllRoles() {
         try {

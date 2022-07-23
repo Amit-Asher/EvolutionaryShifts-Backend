@@ -18,6 +18,8 @@ import com.evo.springboot.app.Converters.*;
 import com.evo.springboot.app.DTO.Incoming.DbDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import com.evo.springboot.app.ToRefactor.MutationFactory;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -35,12 +37,14 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/dev")
+@Api(value = "", tags = {"loadb", ""})
 public class LoadDbController {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     // TODO: REQUIRE PERMISSIONS!
+    @ApiOperation(value = "", nickname = "loadCompanyDb")
     @PostMapping(value = "loadCompanyDb")
     public @ResponseBody GenericResponseDTO loadCompanyDb(@RequestBody DbDTO companyDb) {
         try {
@@ -75,6 +79,7 @@ public class LoadDbController {
     }
 
     // TODO: REQUIRE PERMISSIONS!
+    @ApiOperation(value = "", nickname = "loadArrangement")
     @PostMapping(value = "loadArrangement")
     public @ResponseBody GenericResponseDTO loadArrangement(@RequestBody DbDTO companyDb) {
         try {
@@ -134,6 +139,7 @@ public class LoadDbController {
 
 
     // TODO: REQUIRE PERMISSIONS! ONLY FOR DEVELOPMENT
+    @ApiOperation(value = "", nickname = "cleanDb")
     @DeleteMapping(value = "cleanDb")
     public @ResponseBody GenericResponseDTO cleanDb() {
         try {
@@ -157,6 +163,7 @@ public class LoadDbController {
     }
 
 
+    @ApiOperation(value = "", nickname = "test")
     @PostMapping(value = "test")
     public String testRoute(@RequestBody Map<String, Object> json) {
         try {

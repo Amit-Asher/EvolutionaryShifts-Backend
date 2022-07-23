@@ -3,6 +3,8 @@ package com.evo.springboot.app.Controllers;
 import BusinessLogic.BusinessLogic;
 import com.evo.springboot.app.DTO.Incoming.CompanyDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -11,9 +13,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api")
+@Api(value = "", tags = {"company", ""})
 public class CompanyController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @ApiOperation(value = "", nickname = "addCompany")
     @PostMapping(value = "addCompany")
     public @ResponseBody GenericResponseDTO addCompany(@RequestBody CompanyDTO companyDTO) {
         try {

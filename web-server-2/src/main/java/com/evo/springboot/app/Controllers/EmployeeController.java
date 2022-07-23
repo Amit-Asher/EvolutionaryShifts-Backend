@@ -7,6 +7,8 @@ import com.evo.springboot.app.DTO.Incoming.NewEmployeeDTO;
 import com.evo.springboot.app.DTO.Outgoing.EmployeeDTO;
 import com.evo.springboot.app.DTO.Outgoing.EmployeesDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -19,10 +21,12 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
+@Api(value = "", tags = {"employee", ""})
 public class EmployeeController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @ApiOperation(value = "", nickname = "addEmployee")
     @PostMapping(value = "addEmployee")
     public @ResponseBody GenericResponseDTO addEmployee(@RequestBody NewEmployeeDTO employeeDTO) {
         try {
@@ -47,6 +51,7 @@ public class EmployeeController {
         }
     }
 
+    @ApiOperation(value = "", nickname = "removeEmployee")
     @DeleteMapping(value = "removeEmployee")
     public @ResponseBody GenericResponseDTO removeEmployee(@RequestParam String employeeId) {
         try {
@@ -70,6 +75,7 @@ public class EmployeeController {
         }
     }
 
+    @ApiOperation(value = "", nickname = "getAllEmployees")
     @GetMapping(value = "getAllEmployees")
     public @ResponseBody EmployeesDTO getAllEmployees() {
         try {
@@ -101,6 +107,7 @@ public class EmployeeController {
         }
     }
 
+    @ApiOperation(value = "", nickname = "setAsManager")
     @PostMapping(value = "setAsManager")
     public @ResponseBody GenericResponseDTO setAsManager(@RequestParam String employeeId)
     {
@@ -124,6 +131,7 @@ public class EmployeeController {
         }
     }
 
+    @ApiOperation(value = "", nickname = "removeAsManager")
     @PostMapping(value = "removeAsManager")
     public @ResponseBody GenericResponseDTO removeAsManager(@RequestParam String employeeId)
     {
