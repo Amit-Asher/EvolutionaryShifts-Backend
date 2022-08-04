@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="add initial fe">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConsoleUI/ConsoleUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleUI/ConsoleUI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/business-logic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/business-logic.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/evolution.iml" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/evolution.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Shift.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Shift.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/generateDb/restaurantDb.json" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generateDb/restaurantDb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/CompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/DocsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/DocsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EvolutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EvolutionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/LoadDbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/LoadDbController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/PublishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/PublishController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/SwaggerDocConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/SwaggerDocConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/WebServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/WebServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +31,12 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/rule-changing_" />
+    <option name="BRANCH" value="origin/spring-boot-restful-v2" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="spring-boot-restful-v2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,7 +84,6 @@
     <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Rule/IRule.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsoleUI/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationByEmployee.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/operators/EvolutionPipeline.class" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/MockDataLoader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/database/pom.xml" root0="FORCE_HIGHLIGHTING" />
@@ -123,10 +117,12 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/web-server-2/src/main/resources/static" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.16129035" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -137,6 +133,7 @@
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\web-server-2" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\web-server-2\src\main\resources\static" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\scripts" />
     </key>
@@ -228,10 +225,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.test in business-logic" />
         <item itemvalue="JUnit.MainTest.mainTest" />
-        <item itemvalue="Application.ConsoleUI" />
         <item itemvalue="JUnit.SlotTest.slotTest" />
+        <item itemvalue="JUnit.test in business-logic" />
+        <item itemvalue="Application.ConsoleUI" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -264,6 +261,8 @@
       <workItem from="1658265217039" duration="9822000" />
       <workItem from="1658423380210" duration="772000" />
       <workItem from="1658430077825" duration="6623000" />
+      <workItem from="1659632352634" duration="1035000" />
+      <workItem from="1659633443419" duration="757000" />
     </task>
     <task id="LOCAL‎00001" summary="adding another solution for RuleSlots">
       <created>1649410094056</created>
@@ -394,16 +393,6 @@
           <url>file://$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java</url>
           <line>57</line>
           <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java</url>
-          <line>117</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/LoadDbController.java</url>
-          <line>169</line>
-          <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/ToRefactor/MutationFactory.java</url>

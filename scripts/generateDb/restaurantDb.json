@@ -1093,7 +1093,7 @@
     "terminationCondition": [
       {
         "params": {
-          "count": 500
+          "count": 10000
         },
         "type": "GenerationCount"
       }

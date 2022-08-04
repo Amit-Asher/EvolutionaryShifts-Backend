@@ -52,6 +52,18 @@
             <artifactId>uncommons-maths</artifactId>
             <version>1.2.2a</version>
         </dependency>
+        <dependency>
+            <groupId>es-backend</groupId>
+            <artifactId>evolution</artifactId>
+            <version>1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>es-backend</groupId>
+            <artifactId>business-logic</artifactId>
+            <version>1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

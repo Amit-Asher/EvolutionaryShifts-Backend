@@ -31,6 +31,6 @@ public class Shift
 
     @Override
     public String toString() {
-        return m_Employee.getFullName() + m_Role.m_Name + m_Slot.toString();
+        return m_Employee.getFullName() + m_Slot.toString();
     }
 }
