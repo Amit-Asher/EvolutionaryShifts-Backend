@@ -9,7 +9,6 @@ import Rule.RuleReqSlots.RuleReqSlotsPreference;
 
 import org.uncommons.watchmaker.framework.factories.AbstractCandidateFactory;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,14 +23,13 @@ public class ArrangementFactory2 extends AbstractCandidateFactory<Arrangement> {
         this.arrangementProperties = arrangementProperties;
     }
 
-
     @Override
     public Arrangement generateRandomCandidate(Random random)
     {
         ArrayList<Employee> activeEmployees = (ArrayList<Employee>) arrangementProperties.getActiveEmployees();
-        ArrayList<ReqSlot> prefReqSlotsManager = (ArrayList<ReqSlot>) arrangementProperties.getSlots();
+        ArrayList<ReqSlot> prefReqSlotsManager = (ArrayList<ReqSlot>) arrangementProperties.getReqSlots();
         ArrayList<RuleReqSlotsPreference> ruleSlotsPreference = null;
-        Map<IRule, Double> m_rule2weight = arrangementProperties.getRule2weight();
+        Map<IRule, Double> m_rule2weight = arrangementProperties.getRuleName2weight();
         for(Map.Entry<IRule, Double> entry : m_rule2weight.entrySet())
         {
             if(entry.getKey().getName().equals("RuleReqSlots"))

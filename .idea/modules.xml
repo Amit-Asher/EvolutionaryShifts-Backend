@@ -7,7 +7,8 @@
       <module fileurl="file://$PROJECT_DIR$/database/database.iml" filepath="$PROJECT_DIR$/database/database.iml" />
       <module fileurl="file://$PROJECT_DIR$/es-backend.iml" filepath="$PROJECT_DIR$/es-backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/evolution/evolution.iml" filepath="$PROJECT_DIR$/evolution/evolution.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-server/web-server.iml" filepath="$PROJECT_DIR$/web-server/web-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-server-2/spring-boot-index-page.iml" filepath="$PROJECT_DIR$/web-server-2/spring-boot-index-page.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-server-2/web-server-2.iml" filepath="$PROJECT_DIR$/web-server-2/web-server-2.iml" />
     </modules>
   </component>
 </project>

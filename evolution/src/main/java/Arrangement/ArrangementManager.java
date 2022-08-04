@@ -3,7 +3,6 @@ package Arrangement;
 import Algorithm.AlgorithmConfig;
 import Algorithm.ArrangementEvoSolution;
 import Algorithm.ArrangementSolution;
-import Crossovers.BasicRandomCrossover;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Slot.ReqSlot;
@@ -55,7 +54,7 @@ public class ArrangementManager
         //  inside the rules which is inside the arrangement props...
         //  maybe save the preferences in seperated field or even a whole independent preferences service!
 
-        Set<IRule> rules = this.m_CurrArrangementProp.getRules();
+        Set<IRule> rules = this.m_CurrArrangementProp.getRulesTypes();
         JSONObject preferencesJson = employeePreference.getPreferences();
         Iterator<String> ruleTypes = preferencesJson.keys();
         while(ruleTypes.hasNext()) {
@@ -85,7 +84,7 @@ public class ArrangementManager
     public List<RuleSlotsPreference> getEmployeesSlotsPreferences() {
         // let me introduce you the most terrible OOP method ever written.
         // enjoy catching the anti-patterns :)
-        Set<IRule> rules = this.m_CurrArrangementProp.getRules();
+        Set<IRule> rules = this.m_CurrArrangementProp.getRulesTypes();
 
         // I know, I know, pulling the instance out of dictionary keys make you sick
         RuleSlots rule = (RuleSlots) rules.stream() // cast to death
@@ -98,7 +97,7 @@ public class ArrangementManager
     }
 
     public List<ReqSlot> getReqSlots() {
-        return m_CurrArrangementProp.getSlots();
+        return m_CurrArrangementProp.getReqSlots();
     }
 
  // comment
@@ -160,10 +159,10 @@ public class ArrangementManager
         EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<Arrangement>(operators);
         try{
             ArrangementFactory arrangementFactory = new ArrangementFactory(
-                    m_CurrArrangementProp.getSlots(),
+                    m_CurrArrangementProp.getReqSlots(),
                     m_CurrArrangementProp.getActiveEmployees()
             );
-            this.arrangementEvaluator = new ArrangementEvaluator(m_CurrArrangementProp.getRule2weight());
+            this.arrangementEvaluator = new ArrangementEvaluator(m_CurrArrangementProp.getRuleName2weight());
             this.engine = new GenerationalEvolutionEngine<Arrangement>(
                     arrangementFactory,
                     pipeline,

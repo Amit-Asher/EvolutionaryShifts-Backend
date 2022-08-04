@@ -2,7 +2,7 @@ package Crossovers;
 
 import Arrangement.Arrangement;
 import Model.Shift;
-import MyUtils.OneTimeRandomRange;
+import Utils.OneTimeRandomRange;
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 
 import java.util.ArrayList;

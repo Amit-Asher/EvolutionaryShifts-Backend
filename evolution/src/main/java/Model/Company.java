@@ -11,7 +11,7 @@ import java.util.*;
 public class Company
 {
     protected String name;
-    protected Set<Role> m_Roles = new HashSet<>();
+    protected Set<Role> roles = new HashSet<>();
     protected Map<String, Employee> m_Id2Employee = new HashMap<>();
     protected Map<String, Employee> m_ID2Manager = new HashMap<>();
     protected ArrangementManager m_ArrangementManager = null;
@@ -25,18 +25,17 @@ public class Company
 
 
     public void addRole(Role role){
-        this.m_Roles.add(role);
+        boolean found = roles.stream().anyMatch(existingRole -> existingRole.name.equals(role.name));
+        if (!found) {
+            this.roles.add(role);
+        }
     }
     public void removeRole(Role role){
-        this.m_Roles.remove(role);
-    }
-    public Set<Role> getRoles() {
-        return m_Roles;
+        this.roles.removeIf(existingRole -> existingRole.name.equals(role.name));
     }
 
-    // FOR TESTING
-    public List<Role> getRolesAsList() {
-        return new ArrayList<>(this.m_Roles);
+    public Set<Role> getAllRoles() {
+        return this.roles;
     }
 
     public void addEmployee(Employee employee){

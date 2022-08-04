@@ -17,7 +17,7 @@ public class Shift
 
     public Shift(Shift shift) {
         this.m_Employee = new Employee(shift.m_Employee);
-        this.m_Role = new Role(shift.m_Role.m_Name);
+        this.m_Role = new Role(shift.m_Role.getName());
         this.m_Slot = new Slot(shift.m_Slot);
     }
 

@@ -2,51 +2,51 @@ package Model;
 
 public class Range
 {
-    private int low;
-    private int high;
+    private int min;
+    private int max;
 
     public Range(int low, int high)
     {
-        this.low = low;
-        this.high = high;
+        this.min = low;
+        this.max = high;
     }
 
     public Range(int exact)
     {
-        this.low = exact;
-        this.high = exact;
+        this.min = exact;
+        this.max = exact;
     }
 
     public String toString() {
-        if (this.low == this.high) {
-            return Integer.toString(low);
+        if (this.min == this.max) {
+            return Integer.toString(min);
         }
-        return String.format("%s-%s", low, high);
+        return String.format("%s-%s", min, max);
     }
 
     public boolean contains(int number)
     {
-        return (number >= low && number <= high);
+        return (number >= min && number <= max);
     }
 
-    public int getLow() {
-        return low;
+    public int getMin() {
+        return min;
     }
 
-    public void setLow(int low) {
-        this.low = low;
+    public void setMin(int min) {
+        this.min = min;
     }
 
-    public int getHigh() {
-        return high;
+    public int getMax() {
+        return max;
     }
 
-    public void setHigh(int high) {
-        this.high = high;
+    public void setMax(int max) {
+        this.max = max;
     }
 
     public boolean equals(Range range) {
-        return this.low == range.low &&
-                this.high == range.high;
+        return this.min == range.min &&
+                this.max == range.max;
     }
 }

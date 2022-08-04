@@ -2,7 +2,6 @@ package BusinessLogic;
 
 import Algorithm.AlgorithmConfig;
 import Algorithm.EvolutionStatus;
-import Arrangement.Arrangement;
 import Arrangement.ArrangementProperties;
 import Model.Company;
 import Model.Employee.Employee;
@@ -19,7 +18,9 @@ import java.util.List;
 
 public class BusinessLogic {
     protected Map<String, Company> name2Company = new HashMap<>();
-    // sanity check for git
+
+    // TODO: REPLACE THIS LOGIC WITH AUTHENTICATION
+    public static String staticCompName = "Apple";
 
     private static BusinessLogic instance = null;
 
@@ -30,8 +31,13 @@ public class BusinessLogic {
     public static BusinessLogic getInstance() {
         if (instance == null) {
             instance = new BusinessLogic();
+            instance.addCompany("Apple");
         }
         return instance;
+    }
+
+    public void cleanDb(String compName) {
+        name2Company.put(compName, new Company(compName));
     }
 
     public Company getCompanyByName(String compName) {
@@ -44,8 +50,7 @@ public class BusinessLogic {
     }
     /************** SET PROPS **************/
 
-    public void addEmployee(String compName,
-                            Employee employee)
+    public void addEmployee(String compName, Employee employee)
     {
         Company company = name2Company.get(compName);
         company.addEmployee(employee);
@@ -79,9 +84,9 @@ public class BusinessLogic {
         company.removeRole(role);
     }
 
-    public List<Role> getAllRoles(String compName) {
+    public Set<Role> getAllRoles(String compName) {
         Company company = name2Company.get(compName);
-        return company.getRolesAsList();
+        return company.getAllRoles();
     }
 
     public List<Employee> getAllEmployees(String compName) {
@@ -96,7 +101,7 @@ public class BusinessLogic {
 
     public Set<Role> getRoles(String compName){
         Company company = name2Company.get(compName);
-        return company.getRoles();
+        return company.getAllRoles();
     }
 
     public void startNewArrangement(String compName) {
@@ -195,4 +200,16 @@ public class BusinessLogic {
     }
 
     /********************** FINISH ********************/
+
+
+
+
+
+
+    /********************** ALT DATABASE ********************/
+
+
+
+
+
 }

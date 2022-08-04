@@ -447,27 +447,27 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 08:00");
                         put("endTime", "2022-05-22 16:00");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 08:00");
                         put("endTime", "2022-05-23 16:00");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 08:00");
                         put("endTime", "2022-05-25 16:00");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 08:00");
                         put("endTime", "2022-05-26 16:00");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 16:00");
                         put("endTime", "2022-05-26 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                 }});
             }});
@@ -481,27 +481,27 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 16:00");
                         put("endTime", "2022-05-22 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 16:00");
                         put("endTime", "2022-05-23 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 16:00");
                         put("endTime", "2022-05-24 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 08:00");
                         put("endTime", "2022-05-26 16:00");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 16:00");
                         put("endTime", "2022-05-26 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                 }});
             }});
@@ -513,27 +513,27 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 16:00");
                         put("endTime", "2022-05-22 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 16:00");
                         put("endTime", "2022-05-23 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 08:00");
                         put("endTime", "2022-05-24 16:00");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 16:00");
                         put("endTime", "2022-05-25 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 16:00");
                         put("endTime", "2022-05-26 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                 }});
             }});
@@ -545,27 +545,27 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 08:00");
                         put("endTime", "2022-05-22 16:00");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 16:00");
                         put("endTime", "2022-05-23 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 16:00");
                         put("endTime", "2022-05-24 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 08:00");
                         put("endTime", "2022-05-25 16:00");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 16:00");
                         put("endTime", "2022-05-25 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                 }});
             }});
@@ -577,17 +577,17 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 16:00");
                         put("endTime", "2022-05-22 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 16:00");
                         put("endTime", "2022-05-24 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 16:00");
                         put("endTime", "2022-05-25 23:59");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                 }});
             }});
@@ -599,12 +599,12 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 08:00");
                         put("endTime", "2022-05-23 16:00");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 08:00");
                         put("endTime", "2022-05-24 16:00");
-                        put("role", waiter.m_Name);
+                        put("role", waiter.name);
                     }});
                 }});
             }});
@@ -616,22 +616,22 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 07:00");
                         put("endTime", "2022-05-22 16:00");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 16:00");
                         put("endTime", "2022-05-23 23:59");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 16:00");
                         put("endTime", "2022-05-24 23:59");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 07:00");
                         put("endTime", "2022-05-26 16:00");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                 }});
             }});
@@ -643,27 +643,27 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 16:00");
                         put("endTime", "2022-05-22 23:59");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 07:00");
                         put("endTime", "2022-05-23 16:00");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 16:00");
                         put("endTime", "2022-05-24 23:59");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 16:00");
                         put("endTime", "2022-05-25 23:59");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 16:00");
                         put("endTime", "2022-05-26 23:59");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                 }});
             }});
@@ -675,32 +675,32 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 16:00");
                         put("endTime", "2022-05-22 23:59");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 16:00");
                         put("endTime", "2022-05-23 23:59");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 07:00");
                         put("endTime", "2022-05-24 16:00");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 07:00");
                         put("endTime", "2022-05-25 16:00");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 16:00");
                         put("endTime", "2022-05-25 23:59");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 16:00");
                         put("endTime", "2022-05-26 23:59");
-                        put("role", chef.m_Name);
+                        put("role", chef.name);
                     }});
                 }});
             }});
@@ -712,27 +712,27 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 08:00");
                         put("endTime", "2022-05-22 16:00");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 16:00");
                         put("endTime", "2022-05-23 23:59");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 16:00");
                         put("endTime", "2022-05-24 23:59");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 08:00");
                         put("endTime", "2022-05-25 16:00");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 16:00");
                         put("endTime", "2022-05-26 23:59");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                 }});
             }});
@@ -744,27 +744,27 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 16:00");
                         put("endTime", "2022-05-22 23:59");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 16:00");
                         put("endTime", "2022-05-23 23:59");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 16:00");
                         put("endTime", "2022-05-24 23:59");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 16:00");
                         put("endTime", "2022-05-25 23:59");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 08:00");
                         put("endTime", "2022-05-26 16:00");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                 }});
             }});
@@ -776,27 +776,27 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 16:00");
                         put("endTime", "2022-05-22 23:59");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 08:00");
                         put("endTime", "2022-05-23 16:00");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 08:00");
                         put("endTime", "2022-05-24 16:00");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 16:00");
                         put("endTime", "2022-05-25 23:59");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 16:00");
                         put("endTime", "2022-05-26 23:59");
-                        put("role", barman.m_Name);
+                        put("role", barman.name);
                     }});
                 }});
             }});
@@ -808,17 +808,17 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 16:00");
                         put("endTime", "2022-05-22 23:59");
-                        put("role", host.m_Name);
+                        put("role", host.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 16:00");
                         put("endTime", "2022-05-24 23:59");
-                        put("role", host.m_Name);
+                        put("role", host.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 16:00");
                         put("endTime", "2022-05-26 23:59");
-                        put("role", host.m_Name);
+                        put("role", host.name);
                     }});
                 }});
             }});
@@ -830,12 +830,12 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 16:00");
                         put("endTime", "2022-05-23 23:59");
-                        put("role", host.m_Name);
+                        put("role", host.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 16:00");
                         put("endTime", "2022-05-25 23:59");
-                        put("role", host.m_Name);
+                        put("role", host.name);
                     }});
                 }});
             }});
@@ -847,27 +847,27 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 08:00");
                         put("endTime", "2022-05-22 16:00");
-                        put("role", shiftManager.m_Name);
+                        put("role", shiftManager.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 08:00");
                         put("endTime", "2022-05-23 16:00");
-                        put("role", shiftManager.m_Name);
+                        put("role", shiftManager.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 16:00");
                         put("endTime", "2022-05-24 23:59");
-                        put("role", shiftManager.m_Name);
+                        put("role", shiftManager.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 16:00");
                         put("endTime", "2022-05-25 23:59");
-                        put("role", shiftManager.m_Name);
+                        put("role", shiftManager.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 16:00");
                         put("endTime", "2022-05-26 23:59");
-                        put("role", shiftManager.m_Name);
+                        put("role", shiftManager.name);
                     }});
                 }});
             }});
@@ -879,27 +879,27 @@ public class setEmployeePref {
                     put(new JSONObject() {{
                         put("startTime", "2022-05-22 16:00");
                         put("endTime", "2022-05-22 23:59");
-                        put("role", shiftManager.m_Name);
+                        put("role", shiftManager.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-23 16:00");
                         put("endTime", "2022-05-23 23:59");
-                        put("role", shiftManager.m_Name);
+                        put("role", shiftManager.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-24 08:00");
                         put("endTime", "2022-05-24 16:00");
-                        put("role", shiftManager.m_Name);
+                        put("role", shiftManager.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-25 08:00");
                         put("endTime", "2022-05-25 16:00");
-                        put("role", shiftManager.m_Name);
+                        put("role", shiftManager.name);
                     }});
                     put(new JSONObject() {{
                         put("startTime", "2022-05-26 08:00");
                         put("endTime", "2022-05-26 16:00");
-                        put("role", shiftManager.m_Name);
+                        put("role", shiftManager.name);
                     }});
                 }});
             }});
