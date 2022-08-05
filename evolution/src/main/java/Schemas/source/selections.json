@@ -9,6 +9,19 @@
           "type": "number"
         }
       ]
+    },
+    {
+      "name": "TruncationSelection",
+      "params": [
+        {
+          "name": "ratio",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "RankSelection",
+      "params": []
     }
   ]
 }

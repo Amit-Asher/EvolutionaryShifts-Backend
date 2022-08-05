@@ -5,6 +5,9 @@ import BusinessLogic.BusinessLogic;
 import Model.Employee.Employee;
 import Mutations.BasicMutation;
 import Mutations.MutateBy.MutateByEmployee;
+import Mutations.MutationDupsByEmployee;
+import Mutations.MutationGenerateEmployee;
+import Mutations.MutationSwapEmployees;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +24,10 @@ public class MutationFactory {
     private class MutationTypes {
         public final static String MutationBySlot = "MutationBySlot";
         public final static String MutationByEmployee = "MutationByEmployee";
+        public final static String MutationDupsByEmployee = "MutationDupsByEmployee";
+        public final static String MutationSwapEmployees = "MutationSwapEmployees";
+        public final static String MutationGenerateEmployee = "MutationGenerateEmployee";
+
     }
     public static EvolutionaryOperator<Arrangement> createMutation(String _mutationtype, JSONObject params) throws JSONException {
         // todo: improve design by remove switch case pattern
@@ -37,16 +44,30 @@ public class MutationFactory {
                 break;
             case MutationFactory.MutationTypes.MutationByEmployee:
                 // todo: business logic should not be here
-                List<Employee> allEmployees = BusinessLogic.getInstance()
-                        .getAllEmployees(BusinessLogic.staticCompName);
-                List<String> allEmployeesIds = allEmployees.stream().map(employee -> employee.getID()).collect(Collectors.toList());
-                List<Employee> activeEmployees = allEmployees.stream()
-                        .filter(employee -> allEmployeesIds.contains(employee.getID()))
-                        .collect(Collectors.toList());
                 mutationToReturn = new BasicMutation<Employee>(
                         params.getDouble("probability"),
-                        activeEmployees,
+                        BusinessLogic.getInstance().getActiveEmployees(BusinessLogic.staticCompName),
                         new MutateByEmployee()
+                );
+                break;
+            case MutationFactory.MutationTypes.MutationDupsByEmployee:
+                mutationToReturn = new MutationDupsByEmployee(
+                        BusinessLogic.getInstance().getActiveEmployees(BusinessLogic.staticCompName)
+                );
+                break;
+            case MutationFactory.MutationTypes.MutationSwapEmployees:
+                mutationToReturn = new MutationSwapEmployees(
+                        params.getDouble("probability"),
+                        params.getInt("numberOfShiftsToChange"),
+                        BusinessLogic.getInstance().getEmployeeSlotsPreference(BusinessLogic.staticCompName),
+                        BusinessLogic.getInstance().getReqSlots(BusinessLogic.staticCompName)
+                );
+                break;
+            case MutationFactory.MutationTypes.MutationGenerateEmployee:
+                mutationToReturn = new MutationGenerateEmployee(
+                        params.getDouble("probability"),
+                        params.getInt("numberOfShiftsToChange"),
+                        BusinessLogic.getInstance().getActiveEmployees(BusinessLogic.staticCompName)
                 );
                 break;
             default:

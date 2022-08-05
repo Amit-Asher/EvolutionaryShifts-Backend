@@ -104,6 +104,10 @@ public class BusinessLogic {
         return company.getAllRoles();
     }
 
+    public SchemaFamily getRulesOptions() {
+        return SchemaFactory.getSchemas(SchemaFactory.SchemaType.RULES);
+    }
+
     public void startNewArrangement(String compName) {
         Company company = name2Company.get(compName);
         company.startNewArrangement();

@@ -2,28 +2,11 @@
   "family": "mutations",
   "schemas": [
     {
-      "name": "here is what you looking for...",
-      "params": [
-        {
-          "name": "write it on url",
-          "type": "string"
-        },
-        {
-          "name": "https://bit.ly/3BEPQhF",
-          "type": "string"
-        },
-        {
-          "name": "dont be lazy",
-          "type": "string"
-        }
-      ]
-    },
-    {
       "name": "MutationDupsByEmployee",
       "params": []
     },
     {
-      "name": "mutationSwapEmployees",
+      "name": "MutationSwapEmployees",
       "params": [
         {
           "name": "probability",
@@ -36,7 +19,7 @@
       ]
     },
     {
-      "name": "mutationGenerateEmployee",
+      "name": "MutationGenerateEmployee",
       "params": [
         {
           "name": "probability",
@@ -45,62 +28,6 @@
         {
           "name": "numberOfShiftsToChange",
           "type": "number"
-        }
-      ]
-    },
-    {
-      "name": "Click Here if you dare",
-      "params": [
-        {
-          "name": "I Hope you like it",
-          "type": "number"
-        },
-        {
-          "name": "shaked & andrio",
-          "type": "number"
-        }
-      ]
-    },
-    {
-      "name": "Only for the brave hearts",
-      "params": [
-        {
-          "name": "It was a long night, az...",
-          "type": "number"
-        },
-        {
-          "name": "layla tov!",
-          "type": "number"
-        }
-      ]
-    },
-    {
-      "name": "For your pleasure",
-      "params": [
-        {
-          "name": "Go to mutations.json in the BE",
-          "type": "number"
-        },
-        {
-          "name": "Put your own records",
-          "type": "number"
-        }
-      ]
-    },
-    {
-      "name": "YOU MUST ENTER THIS LINK!",
-      "params": [
-        {
-          "name": "write it on url",
-          "type": "string"
-        },
-        {
-          "name": "https://bit.ly/3BEPQhF",
-          "type": "string"
-        },
-        {
-          "name": "dont be lazy",
-          "type": "string"
         }
       ]
     }

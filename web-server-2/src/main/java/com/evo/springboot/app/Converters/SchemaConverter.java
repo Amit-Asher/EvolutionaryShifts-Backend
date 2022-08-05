@@ -13,6 +13,20 @@ import java.util.stream.Collectors;
 
 public class SchemaConverter {
 
+    public static SchemaFamilyDTO convert(SchemaFamily schemaFamily) {
+        SchemaFamilyDTO schemaFamilyDTO = new SchemaFamilyDTO(
+                schemaFamily.getFamily(),
+                schemaFamily.getSchemas().stream().map(schema -> new SchemaDTO(
+                        schema.getName(),
+                        schema.getParams().stream().map(paramOfSchema -> new ParamOfSchemaDTO(
+                                paramOfSchema.getName(),
+                                paramOfSchema.getType()
+                        )).collect(Collectors.toList())
+                        )).collect(Collectors.toList())
+        );
+        return schemaFamilyDTO;
+    }
+
     public static List<SchemaFamilyDTO> covert(List<SchemaFamily> schemaFamilies) {
         List<SchemaFamilyDTO> schemaFamiliesDto = new ArrayList<>();
         schemaFamilies.stream().forEach(schemaFamily -> {

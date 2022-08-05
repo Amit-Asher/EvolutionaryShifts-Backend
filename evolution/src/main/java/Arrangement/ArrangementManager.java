@@ -132,8 +132,7 @@ public class ArrangementManager
     public void setCurrArrangementStatus(ArrangementStatus m_CurrArrangementStatus) {
         this.m_CurrArrangementStatus = m_CurrArrangementStatus;
     }
- // main comment
-    // todo: wrap with thread
+
     public void startAlgorithm(AlgorithmConfig algorithmConfig)
     {
         if (this.m_CurrArrangementStatus == ArrangementStatus.WAIT_EMP_REQ ||
@@ -145,37 +144,12 @@ public class ArrangementManager
             throw new RuntimeException("Failed to start algorithm \n Current status: " +
                     this.m_CurrArrangementStatus + " expected: SOLVING");
         }
-            /*
-         * todo:
-         *
-         *
-         *
-         * create EvolutionThread extends Thread that
-         * implements all the logic off creating new engine
-         * and run evolve based on algorithmConfig.
-         *
-         *
-         *  */
+
         List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>();
         operators.add(algorithmConfig.getCrossover());
-
-        List<EvolutionaryOperator<Arrangement>> mutations = new ArrayList<>(2);
-        MutationGenerateEmployee mutationGenerateEmployee = new MutationGenerateEmployee(0.3, 5, this.getActiveEmployees());
-        MutationSwapEmployees mutationSwapEmployees = new MutationSwapEmployees(
-                0.3,
-                5,
-                this.getEmployeesSlotsPreferences(),
-                this.getReqSlots()
-        );
-        MutationDupsByEmployee mutationDupsByEmployee = new MutationDupsByEmployee(this.getActiveEmployees());
-
-        mutations.add(mutationGenerateEmployee);
-        mutations.add(mutationSwapEmployees);
-        mutations.add(mutationDupsByEmployee);
-//        operators.addAll(algorithmConfig.getMutations());
-        operators.addAll(mutations);
-
+        operators.addAll(algorithmConfig.getMutations());
         EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<Arrangement>(operators);
+
         try{
             ArrangementFactory arrangementFactory = new ArrangementFactory(
                     m_CurrArrangementProp.getReqSlots(),

@@ -6,9 +6,11 @@ import Model.Employee.EmployeePreferences;
 import Rule.RuleSlots.RuleSlotsPreference;
 import com.evo.springboot.app.Converters.PreferencesConverter;
 import com.evo.springboot.app.Converters.PropertiesConverter;
+import com.evo.springboot.app.Converters.SchemaConverter;
 import com.evo.springboot.app.DTO.Incoming.EmployeePreferencesDTO;
 import com.evo.springboot.app.DTO.Incoming.PropertiesDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
+import com.evo.springboot.app.DTO.Outgoing.SchemaFamilyDTO;
 import com.evo.springboot.app.DTO.Outgoing.SlotsPreferencesDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,6 +28,26 @@ import java.util.List;
 public class ArrangementController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @ApiOperation(value = "", nickname = "getRulesOptions")
+    @GetMapping(value = "getRulesOptions")
+    public @ResponseBody
+    SchemaFamilyDTO getRulesOptions() {
+        try {
+            logger.info("[ArrangementController][api/getRulesOptions] received new request to get rules options");
+            SchemaFamilyDTO schemaFamilyDTO = SchemaConverter.convert(BusinessLogic.getInstance().getRulesOptions());
+            logger.info("[ArrangementController][api/getRulesOptions] get rules options completed successfully");
+            return schemaFamilyDTO;
+
+        } catch (Exception err) {
+            logger.error("[ArrangementController][api/getRulesOptions] get rules options failed");
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    String.format("get rules options failed"),
+                    err
+            );
+        }
+    }
 
     @ApiOperation(value = "", nickname = "createArrangement")
     @PostMapping(value = "createArrangement")

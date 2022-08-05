@@ -47,6 +47,7 @@ public class BasicMutation<T> implements EvolutionaryOperator<Arrangement> {
 
     @Override
     public List<Arrangement> apply(List<Arrangement> list, Random random) {
+
         for (Arrangement arrangement : list) {
             int fixedHowMuchToMutate = howMuchToMutate;
 

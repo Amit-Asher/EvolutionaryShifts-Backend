@@ -2,40 +2,28 @@
   "family": "rules",
   "schemas": [
     {
-      "name": "RuleSlots",
-      "params": [
-        {
-          "name": "probability",
-          "type": "number"
-        }
-      ]
-    },
-    {
-      "name": "RuleRangeWorkDays",
-      "params": [
-        {
-          "name": "probability",
-          "type": "number"
-        }
-      ]
-    },
-    {
       "name": "RuleFight",
-      "params": [
-        {
-          "name": "probability",
-          "type": "number"
-        }
-      ]
+      "params": []
     },
     {
       "name": "RuleFitEmpRole",
-      "params": [
-        {
-          "name": "probability",
-          "type": "number"
-        }
-      ]
+      "params": []
+    },
+    {
+      "name": "RulePeace",
+      "params": []
+    },
+    {
+      "name": "RuleRangeWorkDays",
+      "params": []
+    },
+    {
+      "name": "RuleReqSlots",
+      "params": []
+    },
+    {
+      "name": "RuleSlots",
+      "params": []
     }
   ]
 }

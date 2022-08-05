@@ -4,31 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="ALL IN!">
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/ParamOfSchema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/Schema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/SchemaFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/SchemaFamily.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/crossovers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/mutations.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/rules.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/selections.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/term_conds.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/SchemaConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/ParamOfSchemaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/SchemaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/SchemaFamilyDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="add initial json config files">
+      <change afterPath="$PROJECT_DIR$/scripts/generateDb/testDb.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Incoming/SchemaParamValueDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationDupsByEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationDupsByEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/BasicCrossover1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/CrossoverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Crossovers/CrossoverFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/BasicMutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/BasicMutation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Rule/RuleFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/crossovers.json" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/crossovers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/mutations.json" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/mutations.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/rules.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/selections.json" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/selections.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/term_conds.json" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/term_conds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Selections/SelectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Selections/SelectionFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/src/main/java/TermConds/TermCondFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/TermConds/TermCondFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EvolutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EvolutionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/SchemaConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/SchemaConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/ToRefactor/MutationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/ToRefactor/MutationFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/WebServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/WebServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +128,7 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web-server-2/src/main/resources/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts/generateDb" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -141,11 +138,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\scripts\generateDb" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\web-server-2\src\main\resources\static" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java\BusinessLogic" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\evolution" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\evolution\src\main\java" />
-      <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\evolution\src\main\java\Schemas\source" />
@@ -279,7 +276,8 @@
       <workItem from="1658430077825" duration="6623000" />
       <workItem from="1659632352634" duration="1035000" />
       <workItem from="1659633443419" duration="757000" />
-      <workItem from="1659653589239" duration="11695000" />
+      <workItem from="1659653589239" duration="12023000" />
+      <workItem from="1659696727575" duration="15357000" />
     </task>
     <task id="LOCAL‎00001" summary="adding another solution for RuleSlots">
       <created>1649410094056</created>
@@ -369,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658009915380</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add initial json config files">
+      <created>1659669571189</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1659669571189</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,7 +406,8 @@
     <MESSAGE value="build web server with swagger" />
     <MESSAGE value="fix maven issues" />
     <MESSAGE value="add initial fe" />
-    <option name="LAST_COMMIT_MESSAGE" value="add initial fe" />
+    <MESSAGE value="add initial json config files" />
+    <option name="LAST_COMMIT_MESSAGE" value="add initial json config files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -9,6 +9,33 @@
           "type": "number"
         }
       ]
+    },
+    {
+      "name": "ElapsedTime",
+      "params": [
+        {
+          "name": "maxDuration",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "Stagnation",
+      "params": [
+        {
+          "name": "generationLimit",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "TargetFitness",
+      "params": [
+        {
+          "name": "targetFitness",
+          "type": "number"
+        }
+      ]
     }
   ]
 }

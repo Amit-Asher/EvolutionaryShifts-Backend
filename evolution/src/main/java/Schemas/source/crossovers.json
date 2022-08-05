@@ -9,6 +9,15 @@
           "type": "number"
         }
       ]
+    },
+    {
+      "name": "BasicRandomCrossover",
+      "params": [
+        {
+          "name": "crossoverPoints",
+          "type": "number"
+        }
+      ]
     }
   ]
 }
