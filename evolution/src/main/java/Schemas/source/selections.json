@@ -1,0 +1,14 @@
+{
+  "family": "selections",
+  "schemas": [
+    {
+      "name": "TournamentSelection",
+      "params": [
+        {
+          "name": "probability",
+          "type": "number"
+        }
+      ]
+    }
+  ]
+}

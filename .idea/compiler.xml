@@ -10,7 +10,6 @@
         <module name="evolution" />
         <module name="spring-boot-index-page" />
         <module name="business-logic" />
-        <module name="web-server" />
         <module name="ConsoleUI" />
       </profile>
     </annotationProcessing>

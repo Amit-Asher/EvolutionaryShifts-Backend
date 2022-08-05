@@ -9,12 +9,12 @@ import Model.Employee.EmployeePreferences;
 import Model.Role;
 import Model.Slot.ReqSlot;
 import Rule.RuleSlots.RuleSlotsPreference;
+import Schemas.SchemaFactory;
+import Schemas.SchemaFamily;
 import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.List;
+import java.util.*;
 
 public class BusinessLogic {
     protected Map<String, Company> name2Company = new HashMap<>();
@@ -145,6 +145,15 @@ public class BusinessLogic {
 
 
     /**************** SOLVING *******************/
+
+    public List<SchemaFamily> getSchemasFamilies() {
+        List<SchemaFamily> schemaFamilies = new ArrayList<>();
+        schemaFamilies.add(SchemaFactory.getSchemas(SchemaFactory.SchemaType.MUTATIONS));
+        schemaFamilies.add(SchemaFactory.getSchemas(SchemaFactory.SchemaType.CROSSOVERS));
+        schemaFamilies.add(SchemaFactory.getSchemas(SchemaFactory.SchemaType.SELECTIONS));
+        schemaFamilies.add(SchemaFactory.getSchemas(SchemaFactory.SchemaType.TERM_CONDS));
+        return schemaFamilies;
+    }
 
     public void startAlgorithm(String compName, AlgorithmConfig algorithmConfig) {
         Company company = name2Company.get(compName);

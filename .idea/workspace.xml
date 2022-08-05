@@ -4,17 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="add initial fe">
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="ALL IN!">
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/ParamOfSchema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/Schema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/SchemaFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/SchemaFamily.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/crossovers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/mutations.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/rules.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/selections.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evolution/src/main/java/Schemas/source/term_conds.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Converters/SchemaConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/ParamOfSchemaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/SchemaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/DTO/Outgoing/SchemaFamilyDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleUI/ConsoleUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleUI/ConsoleUI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Shift.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Shift.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Shift.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Rule/RuleSlots/RuleSlots.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generateDb/restaurantDb.json" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generateDb/restaurantDb.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/ArrangementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationDupsByEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Mutations/MutationDupsByEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/TermConds/TermCondFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/TermConds/TermCondFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Arrangement/ArrangementManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EvolutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/Controllers/EvolutionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/ToRefactor/MutationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/ToRefactor/MutationFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/WebServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/WebServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +40,7 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
+        <option value="package.json" />
         <option value="Class" />
       </list>
     </option>
@@ -133,6 +148,7 @@
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\business-logic\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\evolution\src\main\java\Schemas\source" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\web-server-2" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\web-server-2\src\main\resources\static" />
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\scripts" />
@@ -172,7 +188,7 @@
       <module name="business-logic" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Model.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -188,7 +204,7 @@
       <module name="business-logic" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Model.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -263,6 +279,7 @@
       <workItem from="1658430077825" duration="6623000" />
       <workItem from="1659632352634" duration="1035000" />
       <workItem from="1659633443419" duration="757000" />
+      <workItem from="1659653589239" duration="11695000" />
     </task>
     <task id="LOCAL‎00001" summary="adding another solution for RuleSlots">
       <created>1649410094056</created>
@@ -393,11 +410,6 @@
           <url>file://$PROJECT_DIR$/evolution/src/main/java/Model/Slot/Slot.java</url>
           <line>57</line>
           <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/web-server-2/src/main/java/com/evo/springboot/app/ToRefactor/MutationFactory.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="76" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

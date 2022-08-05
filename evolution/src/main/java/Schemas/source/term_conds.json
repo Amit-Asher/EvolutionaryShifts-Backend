@@ -1,0 +1,14 @@
+{
+  "family": "term_conds",
+  "schemas": [
+    {
+      "name": "GenerationCount",
+      "params": [
+        {
+          "name": "count",
+          "type": "number"
+        }
+      ]
+    }
+  ]
+}

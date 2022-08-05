@@ -12,6 +12,7 @@ public class MutationDupsByEmployee implements EvolutionaryOperator<Arrangement>
     private final List<Employee> employees;
 
     public MutationDupsByEmployee(List<Employee> employees) {
+
         this.employees = employees;
     }
 

@@ -1,0 +1,14 @@
+{
+  "family": "crossovers",
+  "schemas": [
+    {
+      "name": "BasicCrossover",
+      "params": [
+        {
+          "name": "crossoverPoints",
+          "type": "number"
+        }
+      ]
+    }
+  ]
+}

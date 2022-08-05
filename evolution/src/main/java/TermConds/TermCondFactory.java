@@ -9,6 +9,7 @@ public class TermCondFactory {
     private class TermCondType {
         public final static String GenerationCount = "GenerationCount";
     }
+
     public static TerminationCondition createTerminationCondition(String _conditionType, JSONObject params) throws JSONException {
         // todo: improve design by remove switch case pattern
         // 1. define dictionary- string to class type

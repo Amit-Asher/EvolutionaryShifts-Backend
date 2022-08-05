@@ -6,6 +6,9 @@ import Algorithm.ArrangementSolution;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Slot.ReqSlot;
+import Mutations.MutationDupsByEmployee;
+import Mutations.MutationGenerateEmployee;
+import Mutations.MutationSwapEmployees;
 import Rule.IRule;
 import Rule.RuleSlots.RuleSlots;
 import Rule.RuleSlots.RuleSlotsPreference;
@@ -155,7 +158,23 @@ public class ArrangementManager
          *  */
         List<EvolutionaryOperator<Arrangement>> operators = new ArrayList<>();
         operators.add(algorithmConfig.getCrossover());
-        operators.addAll(algorithmConfig.getMutations());
+
+        List<EvolutionaryOperator<Arrangement>> mutations = new ArrayList<>(2);
+        MutationGenerateEmployee mutationGenerateEmployee = new MutationGenerateEmployee(0.3, 5, this.getActiveEmployees());
+        MutationSwapEmployees mutationSwapEmployees = new MutationSwapEmployees(
+                0.3,
+                5,
+                this.getEmployeesSlotsPreferences(),
+                this.getReqSlots()
+        );
+        MutationDupsByEmployee mutationDupsByEmployee = new MutationDupsByEmployee(this.getActiveEmployees());
+
+        mutations.add(mutationGenerateEmployee);
+        mutations.add(mutationSwapEmployees);
+        mutations.add(mutationDupsByEmployee);
+//        operators.addAll(algorithmConfig.getMutations());
+        operators.addAll(mutations);
+
         EvolutionaryOperator<Arrangement> pipeline = new EvolutionPipeline<Arrangement>(operators);
         try{
             ArrangementFactory arrangementFactory = new ArrangementFactory(

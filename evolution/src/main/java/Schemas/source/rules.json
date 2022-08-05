@@ -1,0 +1,41 @@
+{
+  "family": "rules",
+  "schemas": [
+    {
+      "name": "RuleSlots",
+      "params": [
+        {
+          "name": "probability",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "RuleRangeWorkDays",
+      "params": [
+        {
+          "name": "probability",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "RuleFight",
+      "params": [
+        {
+          "name": "probability",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "RuleFitEmpRole",
+      "params": [
+        {
+          "name": "probability",
+          "type": "number"
+        }
+      ]
+    }
+  ]
+}
