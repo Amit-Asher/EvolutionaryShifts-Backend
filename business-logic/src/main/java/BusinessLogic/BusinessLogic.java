@@ -11,8 +11,8 @@ import Model.Slot.ReqSlot;
 import Rule.RuleSlots.RuleSlotsPreference;
 import Schemas.SchemaFactory;
 import Schemas.SchemaFamily;
+import Users.UsersRepository;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.*;
 
@@ -25,7 +25,6 @@ public class BusinessLogic {
     private static BusinessLogic instance = null;
 
     private BusinessLogic() {
-
     }
 
     public static BusinessLogic getInstance() {
@@ -36,6 +35,23 @@ public class BusinessLogic {
         return instance;
     }
 
+    public void doSignup(String username, String password) {
+        try {
+            UsersRepository.getInstance().register(username, password);
+        } catch (Exception err) {
+            throw err;
+        }
+    }
+
+    public boolean doLogin(String username, String password) {
+        return UsersRepository.getInstance().isValidCredentials(username, password);
+    }
+
+    public void doSignout(String username) {
+        UsersRepository.getInstance().deleteUser(username);
+    }
+
+
     public void cleanDb(String compName) {
         name2Company.put(compName, new Company(compName));
     }
@@ -44,42 +60,39 @@ public class BusinessLogic {
         return name2Company.get(compName);
     }
 
-    public void addCompany(String compName){
+    public void addCompany(String compName) {
         Company comp = new Company(compName);
-        name2Company.put(compName,comp);
+        name2Company.put(compName, comp);
     }
+
     /************** SET PROPS **************/
 
-    public void addEmployee(String compName, Employee employee)
-    {
+    public void addEmployee(String compName, Employee employee) {
         Company company = name2Company.get(compName);
         company.addEmployee(employee);
     }
 
-    public void removeEmployee(String compName, String employeeID)
-    {
+    public void removeEmployee(String compName, String employeeID) {
         Company company = name2Company.get(compName);
         company.removeEmployee(employeeID);
     }
-    public void setAsManager(String compName, String employeeID)
-    {
+
+    public void setAsManager(String compName, String employeeID) {
         Company company = name2Company.get(compName);
         company.setAsManager(employeeID);
     }
-    public void removeManager(String compName, String employeeID)
-    {
+
+    public void removeManager(String compName, String employeeID) {
         Company company = name2Company.get(compName);
         company.removeManager(employeeID);
     }
 
-    public void addNewRole(String compName, Role role)
-    {
+    public void addNewRole(String compName, Role role) {
         Company company = name2Company.get(compName);
         company.addRole(role);
     }
 
-    public void removeRole(String compName, Role role)
-    {
+    public void removeRole(String compName, Role role) {
         Company company = name2Company.get(compName);
         company.removeRole(role);
     }
@@ -99,7 +112,7 @@ public class BusinessLogic {
         return company.getArrangementManager().getActiveEmployees();
     }
 
-    public Set<Role> getRoles(String compName){
+    public Set<Role> getRoles(String compName) {
         Company company = name2Company.get(compName);
         return company.getAllRoles();
     }
@@ -206,7 +219,6 @@ public class BusinessLogic {
 //        company.getArrangementManager().setArrangement(arrangement);
 //
 //    }
-
     public void finishArrangement(String compName) {
         Company company = name2Company.get(compName);
         company.getArrangementManager().finishArrangement();
@@ -215,14 +227,7 @@ public class BusinessLogic {
     /********************** FINISH ********************/
 
 
-
-
-
-
     /********************** ALT DATABASE ********************/
-
-
-
 
 
 }

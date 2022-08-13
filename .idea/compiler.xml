@@ -8,8 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="database" />
         <module name="evolution" />
-        <module name="spring-boot-index-page" />
         <module name="business-logic" />
+        <module name="web-server" />
         <module name="ConsoleUI" />
       </profile>
     </annotationProcessing>
@@ -17,15 +17,16 @@
       <module name="business-logic" target="8" />
       <module name="ConsoleUI" target="8" />
       <module name="database" target="8" />
-      <module name="es-backend" target="1.5" />
       <module name="evolution" target="8" />
+      <module name="EvolutionaryShifts" target="1.5" />
       <module name="spring-boot-index-page" target="1.8" />
-      <module name="web-server" target="8" />
+      <module name="web-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-boot-index-page" options="-parameters" />
+      <module name="web-server" options="-parameters" />
     </option>
   </component>
 </project>

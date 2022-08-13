@@ -3,11 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ConsoleUI/ConsoleUI.iml" filepath="$PROJECT_DIR$/ConsoleUI/ConsoleUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EvolutionaryShifts.iml" filepath="$PROJECT_DIR$/EvolutionaryShifts.iml" />
       <module fileurl="file://$PROJECT_DIR$/business-logic/business-logic.iml" filepath="$PROJECT_DIR$/business-logic/business-logic.iml" />
       <module fileurl="file://$PROJECT_DIR$/database/database.iml" filepath="$PROJECT_DIR$/database/database.iml" />
-      <module fileurl="file://$PROJECT_DIR$/es-backend.iml" filepath="$PROJECT_DIR$/es-backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/evolution/evolution.iml" filepath="$PROJECT_DIR$/evolution/evolution.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-server-2/spring-boot-index-page.iml" filepath="$PROJECT_DIR$/web-server-2/spring-boot-index-page.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-server/web-server.iml" filepath="$PROJECT_DIR$/web-server/web-server.iml" />
     </modules>
   </component>
 </project>

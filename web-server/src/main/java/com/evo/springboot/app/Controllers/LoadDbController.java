@@ -1,23 +1,19 @@
 package com.evo.springboot.app.Controllers;
 
 import Algorithm.AlgorithmConfig;
-import Algorithm.EvolutionStatus;
-import Arrangement.Arrangement;
 import Arrangement.ArrangementProperties;
 import BusinessLogic.BusinessLogic;
-import Crossovers.BasicCrossover;
-import Crossovers.CrossoverFactory;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Role;
 import Model.Slot.ReqSlot;
-import Mutations.BasicMutation;
-import Mutations.MutateBy.MutateByEmployee;
 import Rule.IRule;
-import com.evo.springboot.app.Converters.*;
+import com.evo.springboot.app.Converters.AlgorithmConfigConverter;
+import com.evo.springboot.app.Converters.EmployeeConverter;
+import com.evo.springboot.app.Converters.PreferencesConverter;
+import com.evo.springboot.app.Converters.PropertiesConverter;
 import com.evo.springboot.app.DTO.Incoming.DbDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
-import com.evo.springboot.app.ToRefactor.MutationFactory;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.json.JSONException;
@@ -27,11 +23,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import org.uncommons.watchmaker.framework.EvolutionaryOperator;
-import org.uncommons.watchmaker.framework.SelectionStrategy;
-import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

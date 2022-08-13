@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot-index-page</artifactId>
+    <artifactId>web-server</artifactId>
     <description>This is example of spring boot index page or default landing page</description>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -53,16 +53,26 @@
             <version>1.2.2a</version>
         </dependency>
         <dependency>
-            <groupId>es-backend</groupId>
-            <artifactId>evolution</artifactId>
+            <groupId>EvolutionaryShifts</groupId>
+            <artifactId>EvolutionaryShifts</artifactId>
             <version>1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>es-backend</groupId>
+            <groupId>EvolutionaryShifts</groupId>
             <artifactId>business-logic</artifactId>
             <version>1</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>2.7.5</version>
         </dependency>
     </dependencies>
 
