@@ -41,7 +41,7 @@ public class UsersRepository {
 
     public void deleteUser(String username) {
         mockUserDb = mockUserDb.stream()
-                .filter(credentials -> !Objects.equals(credentials.getUsername(), username))
+                .filter(credentials -> credentials.getUsername() == username) // do not change to intelij suggestion
                 .collect(Collectors.toList());
     }
 }

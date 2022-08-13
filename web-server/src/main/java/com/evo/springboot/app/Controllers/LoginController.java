@@ -132,4 +132,21 @@ public class LoginController {
             );
         }
     }
+
+    @ApiOperation(value = "", nickname = "doSilentLogin")
+    @PostMapping(value = "doSilentLogin")
+    public ResponseEntity<GenericResponseDTO> doSilentLogin() {
+        try {
+            return ResponseEntity
+                    .ok()
+                    .body((new GenericResponseDTO("silent login completed successfully", true)));
+        } catch (Exception err) {
+            logger.error(String.format("[LoginController][api/doSilentLogin] do silent login failed: %s", err));
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    String.format("do silent login failed"),
+                    err
+            );
+        }
+    }
 }
