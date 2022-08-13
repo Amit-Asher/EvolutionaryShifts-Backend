@@ -5,7 +5,11 @@ import java.util.Set;
 
 public class EmployeeDTO {
     private String id;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String fullName;
+    private String email;
+    private String password;
     private String phoneNumber;
     private List<String> roles;
 
@@ -17,16 +21,46 @@ public class EmployeeDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+        this.fullName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+        this.fullName = this.fullName + " " + lastName;
+    }
+
+    public String getFullName(){
+        return fullName;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPhoneNumber(String phoneNumber) {

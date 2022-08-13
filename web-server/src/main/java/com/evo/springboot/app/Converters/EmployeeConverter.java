@@ -27,7 +27,7 @@ public class EmployeeConverter {
         });
 
         return new Employee(
-                employeeDTO.getName(),
+                employeeDTO.getFullName(),
                 employeeDTO.getPhoneNumber(),
                 rolesToSet);
     }

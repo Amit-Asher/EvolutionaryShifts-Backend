@@ -37,7 +37,7 @@ public class EmployeeController {
 
             logger.info("[EmployeeController][api/addEmployee] add new employee completed successfully");
             return new GenericResponseDTO(
-                    String.format("add new employee '%s' completed successfully", employeeDTO.getName()),
+                    String.format("add new employee '%s' completed successfully", employeeDTO.getFullName()),
                     true
             );
 
@@ -45,7 +45,7 @@ public class EmployeeController {
             logger.error("[EmployeeController][api/addEmployee] add new employee failed");
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    String.format("add new employee '%s' failed", employeeDTO.getName()),
+                    String.format("add new employee '%s' failed", employeeDTO.getFullName()),
                     err
             );
         }
@@ -87,7 +87,10 @@ public class EmployeeController {
             return new EmployeesDTO(employees.stream().map(employee -> {
                 EmployeeDTO employeeDTO = new EmployeeDTO();
                 employeeDTO.setId(employee.getID());
-                employeeDTO.setName(employee.getFullName());
+                employeeDTO.setFirstName(employee.getFirstName());//todo
+                employeeDTO.setLastName(employee.getLastName());
+                employeeDTO.setEmail("email");
+                employeeDTO.setPassword("password");
                 employeeDTO.setPhoneNumber(employee.getPhoneNumber());
                 List<String> roles = new ArrayList<>();
                 employee.getFitRoles().forEach(role -> {

@@ -45,4 +45,13 @@ public class Employee {
     public void setFullName(String fullName) {this.m_FullName = fullName;}
     public void setPhoneNumber(String phoneNumber) {this.m_PhoneNumber = phoneNumber;}
 //    public void setIsTrainee(boolean isTrainee) {this.m_IsTrainee = isTrainee;}
+
+
+    public String getFirstName(){
+        return m_FullName.split(" ", 2)[0];
+    }
+
+    public String getLastName(){
+        return m_FullName.split(" ", 2)[1];
+    }
 }

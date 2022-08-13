@@ -21,21 +21,24 @@
   ],
   "employees": [
     {
-      "name": "waiter1Name",
+      "firstName": "waiter1Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "waiter"
       ]
     },
     {
-      "name": "waiter2Name",
+      "firstName": "waiter2Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "waiter"
       ]
     },
     {
-      "name": "waiter3Name",
+      "firstName": "waiter3Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "waiter",
@@ -43,7 +46,8 @@
       ]
     },
     {
-      "name": "waiter4Name",
+      "firstName": "waiter4Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "waiter",
@@ -51,14 +55,16 @@
       ]
     },
     {
-      "name": "waiter5Name",
+      "firstName": "waiter5Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "waiter"
       ]
     },
     {
-      "name": "waiter6Name",
+      "firstName": "waiter6Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "waiter",
@@ -66,21 +72,24 @@
       ]
     },
     {
-      "name": "chef1Name",
+      "firstName": "chef1Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "chef"
       ]
     },
     {
-      "name": "chef2Name",
+      "firstName": "chef2Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "chef"
       ]
     },
     {
-      "name": "chef3Name",
+      "firstName": "chef3Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "chef",
@@ -88,42 +97,48 @@
       ]
     },
     {
-      "name": "barman1Name",
+      "firstName": "barman1Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "barman"
       ]
     },
     {
-      "name": "barman2Name",
+      "firstName": "barman2Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "barman"
       ]
     },
     {
-      "name": "barman3Name",
+      "firstName": "barman3Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "barman"
       ]
     },
     {
-      "name": "host1Name",
+      "firstName": "host1Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "host"
       ]
     },
     {
-      "name": "host2Name",
+      "firstName": "host2Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "host"
       ]
     },
     {
-      "name": "shiftManager1Name",
+      "firstName": "shiftManager1Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "shift-manager",
@@ -131,7 +146,8 @@
       ]
     },
     {
-      "name": "shiftManager2Name",
+      "firstName": "shiftManager2Name",
+      "lastName": "LN",
       "phoneNumber": "123",
       "roles": [
         "shift-manager",
