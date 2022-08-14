@@ -97,6 +97,11 @@ public class BusinessLogic {
         company.removeRole(role);
     }
 
+    public void removeRoleFromEmp(String compName, Role role, String employeeID) {
+        Company company = name2Company.get(compName);
+        company.removeRoleFromEmp(role, employeeID);
+    }
+
     public Set<Role> getAllRoles(String compName) {
         Company company = name2Company.get(compName);
         return company.getAllRoles();

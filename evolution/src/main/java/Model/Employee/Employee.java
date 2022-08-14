@@ -7,6 +7,8 @@ import java.util.*;
 public class Employee {
     protected String m_FullName;
     protected String m_PhoneNumber;
+    protected String email;
+    protected String password;
     protected Set<Role> m_FitRoles;
     protected String m_ID;
 
@@ -35,6 +37,22 @@ public class Employee {
         this.m_ID = employee.m_ID;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Set<Role> getFitRoles() {return m_FitRoles;}
     public String getFullName() {return m_FullName;}
     public String getPhoneNumber() {return m_PhoneNumber;}
@@ -54,4 +72,9 @@ public class Employee {
     public String getLastName(){
         return m_FullName.split(" ", 2)[1];
     }
+
+    public void removeRole(Role role){
+        this.m_FitRoles.removeIf(r -> r.equals(role));
+    }
+
 }

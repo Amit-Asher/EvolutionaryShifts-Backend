@@ -34,6 +34,12 @@ public class Company
         this.roles.removeIf(existingRole -> existingRole.name.equals(role.name));
     }
 
+    public void removeRoleFromEmp(Role role, String employeeID){
+        this.m_Id2Employee.get(employeeID).removeRole(role);
+    }
+
+
+
     public Set<Role> getAllRoles() {
         return this.roles;
     }

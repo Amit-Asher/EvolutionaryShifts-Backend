@@ -26,9 +26,14 @@ public class EmployeeConverter {
             rolesToSet.add(roleToSet);
         });
 
-        return new Employee(
+        Employee employee = new Employee(
                 employeeDTO.getFullName(),
                 employeeDTO.getPhoneNumber(),
                 rolesToSet);
+
+        employee.setEmail(employeeDTO.getEmail());
+        employee.setPassword(employeeDTO.getPassword());
+
+        return employee;
     }
 }

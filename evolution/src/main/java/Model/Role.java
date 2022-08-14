@@ -18,6 +18,12 @@ public class Role
     }
 
     @Override
+    public boolean equals(Object obj) {
+        Role r = (Role) obj;
+        return equals(r);
+    }
+
+    @Override
     public String toString() {
         return name;
     }

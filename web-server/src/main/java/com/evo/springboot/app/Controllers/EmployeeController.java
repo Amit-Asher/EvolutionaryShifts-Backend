@@ -37,7 +37,7 @@ public class EmployeeController {
 
             logger.info("[EmployeeController][api/addEmployee] add new employee completed successfully");
             return new GenericResponseDTO(
-                    String.format("add new employee '%s' completed successfully", employeeDTO.getFullName()),
+                    String.format("add new employee '%s' completed successfully. The new id is: %s", employeeDTO.getFullName(), newEmployee.getID()),
                     true
             );
 
@@ -87,10 +87,10 @@ public class EmployeeController {
             return new EmployeesDTO(employees.stream().map(employee -> {
                 EmployeeDTO employeeDTO = new EmployeeDTO();
                 employeeDTO.setId(employee.getID());
-                employeeDTO.setFirstName(employee.getFirstName());//todo
+                employeeDTO.setFirstName(employee.getFirstName());
                 employeeDTO.setLastName(employee.getLastName());
-                employeeDTO.setEmail("email");
-                employeeDTO.setPassword("password");
+                employeeDTO.setEmail(employee.getEmail());
+                employeeDTO.setPassword(employee.getPassword());
                 employeeDTO.setPhoneNumber(employee.getPhoneNumber());
                 List<String> roles = new ArrayList<>();
                 employee.getFitRoles().forEach(role -> {

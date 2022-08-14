@@ -93,4 +93,41 @@ public class RoleController {
             );
         }
     }
+
+
+
+
+
+
+
+
+    @ApiOperation(value = "", nickname = "removeRoleFromEmp")
+    @DeleteMapping(value = "removeRoleFromEmp")
+    public @ResponseBody GenericResponseDTO removeRoleFromEmp(
+            @RequestParam String roleName, @RequestParam String employeeID) {
+
+        try {
+            logger.info("[RoleController][api/removeRoleFromEmp] received new request to remove role from employee");
+            BusinessLogic businessLogic = BusinessLogic.getInstance();
+            businessLogic.removeRoleFromEmp(BusinessLogic.staticCompName, new Role(roleName), employeeID);
+            logger.info("[MainController][api/removeRoleFromEmp] remove role from employee completed successfully");
+            return new GenericResponseDTO(
+                    String.format("remove role '%s' from employee id '%s' completed successfully.", roleName, employeeID),
+                    true
+            );
+
+        } catch (Exception err) {
+            logger.error("[MainController][api/removeRoleFromEmp] remove role from employee failed");
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    String.format("remove role '%s' from employee '%s' failed", roleName, employeeID),
+                    err
+            );
+        }
+    }
+
+
+
+
+
 }
