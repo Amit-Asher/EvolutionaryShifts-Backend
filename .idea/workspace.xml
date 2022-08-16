@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="create auth flow">
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="fix auth bugs">
+      <change afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Services/VerifyResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/Users/UsersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Users/UsersRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Middlewares/UserServiceInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Middlewares/UserServiceInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Services/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Services/AuthService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +108,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -272,7 +276,9 @@
       <workItem from="1660304644888" duration="32815000" />
       <workItem from="1660346912762" duration="510000" />
       <workItem from="1660347461940" duration="3959000" />
-      <workItem from="1660351513822" duration="10137000" />
+      <workItem from="1660351513822" duration="11003000" />
+      <workItem from="1660391310182" duration="2165000" />
+      <workItem from="1660594728368" duration="12635000" />
     </task>
     <task id="LOCAL‎00001" summary="adding another solution for RuleSlots">
       <created>1649410094056</created>
@@ -376,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660361859311</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix auth bugs">
+      <created>1660388714192</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1660388714192</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,7 +424,8 @@
     <MESSAGE value="add initial json config files" />
     <MESSAGE value="support delete requests in api" />
     <MESSAGE value="create auth flow" />
-    <option name="LAST_COMMIT_MESSAGE" value="create auth flow" />
+    <MESSAGE value="fix auth bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix auth bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -435,6 +449,9 @@
         <watch expression="params.getInt(&quot;crossoverPoints&quot;)" language="JAVA" />
         <watch expression="company.getArrangementManager()" language="JAVA" />
         <watch expression="UsersRepository.getInstance()" language="JAVA" />
+        <watch expression="request.getCookies()" language="JAVA" />
+        <watch expression="request.getCookies()[0].getName() == AuthService.TOKEN_NAME" language="JAVA" />
+        <watch expression="AuthService.TOKEN_NAME" language="JAVA" />
       </configuration>
       <configuration name="Application">
         <watch expression="shiftToMutate.getEmployee().getFitRoles().contains(shiftToMutate.getRole()" language="JAVA" />

@@ -6,9 +6,9 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 public class AuthService {
 
@@ -16,6 +16,7 @@ public class AuthService {
     private static final String COMPANY = "company";
     private static final String EMPLOYEE = "employee";
     private static final int EXPIRATION_TIME_MILLIS = 1000 * 60 * 5; // 5 minutes
+    public static final String TOKEN_NAME = "evo-token";
 
     public static String generateToken(String company, String employee) {
         Map<String, Object> payload = new HashMap<>();
@@ -27,27 +28,57 @@ public class AuthService {
                 .sign(SECRET);
     }
 
-    public static boolean isTokenVerified(String token) {
+    public static VerifyResult isTokenVerified(String token) {
         try {
             JWTVerifier verifier = JWT.require(SECRET).build();
-            verifier.verify(token); // if invalid then exception raise here
-            return true;
+            DecodedJWT jwt = verifier.verify(token); // if invalid then exception raise here
+            return new VerifyResult(true, jwt);
         } catch (Exception err) {
             System.out.println("unauthorized (401)");
-            return false;
+            return new VerifyResult(false, null);
         }
     }
 
-    public static RequestContext getContext(String token) {
+    public static VerifyResult verifyRequest(HttpServletRequest request) {
         try {
-            if (!isTokenVerified(token)) {
-                // just in case... never should get here
-                throw new RuntimeException("unauthorized (401)");
+            Cookie[] cookies = request.getCookies();
+            if (cookies == null) {
+                // auth route with no cookie (ui redirects to login)
+                throw new RuntimeException("unauthorized request with no cookie");
             }
 
-            JWTVerifier verifier = JWT.require(SECRET).build();
-            DecodedJWT jwt = verifier.verify(token); // possible exception
-            Map<String, Claim> claims = jwt.getClaims();
+            Cookie cookie = Arrays.stream(request.getCookies())
+                    .filter(c -> Objects.equals(c.getName(), AuthService.TOKEN_NAME))
+                    .findFirst()
+                    .orElse(null);
+
+            if (cookie == null) {
+                // auth route with no token (ui redirects to login)
+                throw new RuntimeException("unauthorized request with no token");
+            }
+
+            String token = cookie.getValue();
+            VerifyResult verifyResult = AuthService.isTokenVerified(token);
+            if (!verifyResult.isSuccess()) {
+                // auth route with no valid token (ui redirects to login)
+                throw new RuntimeException("unauthorized request with invalid token");
+            }
+
+            return verifyResult;
+
+        } catch (Exception err) {
+            return new VerifyResult(false, null);
+        }
+    }
+
+    public static RequestContext extractRequestContext(HttpServletRequest request) {
+        try {
+            VerifyResult verifyResult = verifyRequest(request);
+            if (!verifyResult.isSuccess()) {
+                throw new RuntimeException("invalid request. please log in.");
+            }
+
+            Map<String, Claim> claims = verifyResult.getJwt().getClaims();
             String company = claims.get(COMPANY).asString();
             String employee = claims.get(EMPLOYEE).asString();
             return new RequestContext(company, employee);
