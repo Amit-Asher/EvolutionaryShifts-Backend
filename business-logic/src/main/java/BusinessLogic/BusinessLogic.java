@@ -35,6 +35,35 @@ public class BusinessLogic {
         return instance;
     }
 
+    public static String generatePassword(){
+        Integer password = 0;
+        Random random = new Random();
+
+        for(int i = 1;i <= 6;i++)
+        {
+            password*=10;
+            password+=random.nextInt(10);
+        }
+
+        return password.toString();
+    }
+
+
+    //method for any employee!!!
+    //We need to tell the manager about any changes!!!
+    public void updateDataForEmp(String compName, String employeeID, String typeData,String data){
+        Company company = name2Company.get(compName);
+        company.updateDataForEmp(employeeID, typeData, data);
+    }
+
+    //method only for manager!!!
+    public String generatePasswordForEmp(String compName, String employeeID){
+        Company company = name2Company.get(compName);
+        String newPassword = generatePassword();
+        company.updatePasswordForEmp(employeeID, newPassword);
+        return  newPassword;
+    }
+
     public void doSignup(String username, String password) {
         try {
             UsersRepository.getInstance().register(username, password);
@@ -95,6 +124,11 @@ public class BusinessLogic {
     public void removeRole(String compName, Role role) {
         Company company = name2Company.get(compName);
         company.removeRole(role);
+    }
+
+    public void addRoleToEmp(String compName, Role role, String employeeID){
+        Company company = name2Company.get(compName);
+        company.addRoleToEmp(role, employeeID);
     }
 
     public void removeRoleFromEmp(String compName, Role role, String employeeID) {

@@ -4,7 +4,6 @@ import BusinessLogic.BusinessLogic;
 import Model.Employee.Employee;
 import Model.Role;
 import com.evo.springboot.app.DTO.Incoming.NewEmployeeDTO;
-import com.evo.springboot.app.DTO.Outgoing.EmployeeDTO;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,7 +31,6 @@ public class EmployeeConverter {
                 rolesToSet);
 
         employee.setEmail(employeeDTO.getEmail());
-        employee.setPassword(employeeDTO.getPassword());
 
         return employee;
     }

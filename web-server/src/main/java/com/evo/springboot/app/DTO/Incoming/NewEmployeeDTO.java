@@ -8,7 +8,6 @@ public class NewEmployeeDTO {
     private String lastName;
     private String fullName;
     private String email;
-    private String password;
     private String phoneNumber;
     private List<String> roles;
 
@@ -44,14 +43,6 @@ public class NewEmployeeDTO {
 
     public String getEmail() {
         return email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPhoneNumber(String phoneNumber) {

@@ -2,6 +2,7 @@ package com.evo.springboot.app.Controllers;
 
 import BusinessLogic.BusinessLogic;
 import Model.Role;
+import com.evo.springboot.app.DTO.Incoming.AddRemoveRoleDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import com.evo.springboot.app.DTO.Incoming.RoleDTO;
 import com.evo.springboot.app.DTO.Outgoing.RolesDTO;
@@ -94,25 +95,20 @@ public class RoleController {
         }
     }
 
-
-
-
-
-
-
-
     @ApiOperation(value = "", nickname = "removeRoleFromEmp")
     @DeleteMapping(value = "removeRoleFromEmp")
     public @ResponseBody GenericResponseDTO removeRoleFromEmp(
-            @RequestParam String roleName, @RequestParam String employeeID) {
+            @RequestBody AddRemoveRoleDTO addRemoveRoleDTO) {
+        BusinessLogic businessLogic = BusinessLogic.getInstance();
+        String empName = businessLogic.getAllEmployees(BusinessLogic.staticCompName).stream()
+                .filter(employee -> employee.getID().equals(addRemoveRoleDTO.getEmployeeID())).findFirst().get().getFullName();
 
         try {
             logger.info("[RoleController][api/removeRoleFromEmp] received new request to remove role from employee");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
-            businessLogic.removeRoleFromEmp(BusinessLogic.staticCompName, new Role(roleName), employeeID);
+            businessLogic.removeRoleFromEmp(BusinessLogic.staticCompName, new Role(addRemoveRoleDTO.getRoleName()), addRemoveRoleDTO.getEmployeeID());
             logger.info("[MainController][api/removeRoleFromEmp] remove role from employee completed successfully");
             return new GenericResponseDTO(
-                    String.format("remove role '%s' from employee id '%s' completed successfully.", roleName, employeeID),
+                    String.format("remove role '%s' from employee '%s' completed successfully.", addRemoveRoleDTO.getRoleName(), empName),
                     true
             );
 
@@ -120,14 +116,36 @@ public class RoleController {
             logger.error("[MainController][api/removeRoleFromEmp] remove role from employee failed");
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    String.format("remove role '%s' from employee '%s' failed", roleName, employeeID),
+                    String.format("remove role '%s' from employee '%s' failed", addRemoveRoleDTO.getRoleName(), empName),
                     err
             );
         }
     }
 
+    @ApiOperation(value = "", nickname = "addRoleToEmp")
+    @DeleteMapping(value = "addRoleToEmp")
+    public @ResponseBody GenericResponseDTO addRoleToEmp(
+            @RequestBody AddRemoveRoleDTO addRemoveRoleDTO) {
+        BusinessLogic businessLogic = BusinessLogic.getInstance();
+        String empName = businessLogic.getAllEmployees(BusinessLogic.staticCompName).stream()
+                .filter(employee -> employee.getID().equals(addRemoveRoleDTO.getEmployeeID())).findFirst().get().getFullName();
 
+        try {
+            logger.info("[RoleController][api/addRoleToEmp] received add role to employee");
+            businessLogic.addRoleToEmp(BusinessLogic.staticCompName, new Role(addRemoveRoleDTO.getRoleName()), addRemoveRoleDTO.getEmployeeID());
+            logger.info("[MainController][api/addRoleToEmp] add role to employee completed successfully");
+            return new GenericResponseDTO(
+                    String.format("add role '%s' from employee '%s' completed successfully.", addRemoveRoleDTO.getRoleName(), empName),
+                    true
+            );
 
-
-
+        } catch (Exception err) {
+            logger.error("[MainController][api/addRoleToEmp] remove role from employee failed");
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    String.format("add role '%s' from employee '%s' failed", addRemoveRoleDTO.getRoleName(), empName),
+                    err
+            );
+        }
+    }
 }

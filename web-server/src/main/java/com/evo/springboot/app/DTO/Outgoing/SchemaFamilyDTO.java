@@ -1,7 +1,5 @@
 package com.evo.springboot.app.DTO.Outgoing;
 
-import Schemas.Schema;
-
 import java.util.List;
 
 public class SchemaFamilyDTO {

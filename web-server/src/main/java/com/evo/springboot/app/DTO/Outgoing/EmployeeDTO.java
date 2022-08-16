@@ -1,7 +1,6 @@
 package com.evo.springboot.app.DTO.Outgoing;
 
 import java.util.List;
-import java.util.Set;
 
 public class EmployeeDTO {
     private String id;
@@ -9,7 +8,6 @@ public class EmployeeDTO {
     private String lastName;
     private String fullName;
     private String email;
-    private String password;
     private String phoneNumber;
     private List<String> roles;
 
@@ -53,14 +51,6 @@ public class EmployeeDTO {
 
     public String getEmail() {
         return email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPhoneNumber(String phoneNumber) {

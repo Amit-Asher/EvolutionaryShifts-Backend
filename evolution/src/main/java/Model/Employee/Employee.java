@@ -77,4 +77,7 @@ public class Employee {
         this.m_FitRoles.removeIf(r -> r.equals(role));
     }
 
+    public void addRole(Role role) {
+        this.m_FitRoles.add(role);
+    }
 }

@@ -7,6 +7,7 @@ import com.evo.springboot.app.DTO.Incoming.NewEmployeeDTO;
 import com.evo.springboot.app.DTO.Outgoing.EmployeeDTO;
 import com.evo.springboot.app.DTO.Outgoing.EmployeesDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
+import com.evo.springboot.app.DTO.Outgoing.NewEmployeeResponseDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,17 +30,18 @@ public class EmployeeController {
 
     @ApiOperation(value = "", nickname = "addEmployee")
     @PostMapping(value = "addEmployee")
-    public @ResponseBody GenericResponseDTO addEmployee(@RequestBody NewEmployeeDTO employeeDTO) {
+    public @ResponseBody NewEmployeeResponseDTO addEmployee(@RequestBody NewEmployeeDTO employeeDTO, HttpServletRequest request) {
         try {
             logger.info("[EmployeeController][api/addEmployee] received new request to add new employee");
             BusinessLogic businessLogic = BusinessLogic.getInstance();
             Employee newEmployee = EmployeeConverter.convert(employeeDTO);
             businessLogic.addEmployee(BusinessLogic.staticCompName, newEmployee);
-
             logger.info("[EmployeeController][api/addEmployee] add new employee completed successfully");
-            return new GenericResponseDTO(
-                    String.format("add new employee '%s' completed successfully. The new id is: %s", employeeDTO.getFullName(), newEmployee.getID()),
-                    true
+            return new NewEmployeeResponseDTO(
+                    String.format("add new employee '%s' completed successfully.", employeeDTO.getFullName()),
+                    true,
+                    newEmployee.getID(),
+                    BusinessLogic.generatePassword()
             );
 
         } catch (Exception err) {
@@ -90,7 +93,6 @@ public class EmployeeController {
                 employeeDTO.setFirstName(employee.getFirstName());
                 employeeDTO.setLastName(employee.getLastName());
                 employeeDTO.setEmail(employee.getEmail());
-                employeeDTO.setPassword(employee.getPassword());
                 employeeDTO.setPhoneNumber(employee.getPhoneNumber());
                 List<String> roles = new ArrayList<>();
                 employee.getFitRoles().forEach(role -> {

@@ -9,7 +9,10 @@ import Model.Slot.ReqSlot;
 import Model.Slot.Slot;
 import Rule.IRule;
 import Rule.RuleFactory;
-import com.evo.springboot.app.DTO.Incoming.*;
+import com.evo.springboot.app.DTO.Incoming.PropertiesDTO;
+import com.evo.springboot.app.DTO.Incoming.RangeDTO;
+import com.evo.springboot.app.DTO.Incoming.ReqSlotDTO;
+import com.evo.springboot.app.DTO.Incoming.RuleWeightDTO;
 
 import java.util.*;
 import java.util.stream.Collectors;

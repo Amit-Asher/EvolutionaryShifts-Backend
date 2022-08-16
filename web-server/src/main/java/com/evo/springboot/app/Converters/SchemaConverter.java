@@ -1,8 +1,6 @@
 package com.evo.springboot.app.Converters;
 
-import Model.Slot.ReqSlot;
 import Schemas.SchemaFamily;
-import com.evo.springboot.app.DTO.Incoming.PropertiesDTO;
 import com.evo.springboot.app.DTO.Outgoing.ParamOfSchemaDTO;
 import com.evo.springboot.app.DTO.Outgoing.SchemaDTO;
 import com.evo.springboot.app.DTO.Outgoing.SchemaFamilyDTO;

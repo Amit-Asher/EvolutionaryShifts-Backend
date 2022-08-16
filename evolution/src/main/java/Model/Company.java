@@ -23,6 +23,32 @@ public class Company
         this.name = name;
     }
 
+    public void updatePasswordForEmp(String employeeID,  String newPassword){
+        m_Id2Employee.get(employeeID).setPassword(newPassword);
+    }
+
+    public void updateDataForEmp(String employeeID, String typeData, String data){
+        Employee employee =  m_Id2Employee.get(employeeID);
+
+        switch (typeData){
+            case "EMAIL":
+                employee.setEmail(data);
+                break;
+            case "PHONE":
+                employee.setPhoneNumber(data);
+                break;
+            case "PASSWORD":
+                employee.setPassword(data);
+                break;
+            case "FULL_NAME":
+                employee.setFullName(data);
+                break;
+            default:
+                throw new IllegalArgumentException("type data to change in employee was not valid");
+        }
+    }
+
+
 
     public void addRole(Role role){
         boolean found = roles.stream().anyMatch(existingRole -> existingRole.name.equals(role.name));
@@ -38,7 +64,9 @@ public class Company
         this.m_Id2Employee.get(employeeID).removeRole(role);
     }
 
-
+    public void addRoleToEmp(Role role, String employeeID) {
+        this.m_Id2Employee.get(employeeID).addRole(role);
+    }
 
     public Set<Role> getAllRoles() {
         return this.roles;
