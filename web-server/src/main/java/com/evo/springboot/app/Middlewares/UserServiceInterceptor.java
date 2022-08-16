@@ -1,10 +1,15 @@
 package com.evo.springboot.app.Middlewares;
 
+import com.evo.springboot.app.Services.AuthService;
+import com.evo.springboot.app.Services.VerifyResult;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -13,6 +18,9 @@ public class UserServiceInterceptor implements HandlerInterceptor {
     private static final List<String> openRoutes = new ArrayList<String>() {{
         add("/api/doLogin");
         add("/api/doSignup");
+        add("/docs");
+        add("/dev/loadCompanyDb"); // for development only
+        add("/dev/loadArrangement");  // for development only
     }};
 
     @Override
@@ -22,15 +30,14 @@ public class UserServiceInterceptor implements HandlerInterceptor {
                 return true;
             }
 
-            // if missing token return 401 (unauthorized)
-
-            // verify token:
-            // if token is invalid then return 401 (unauthorized)
-            // if token is valid then extract the employeeId + companyId from payload
+            VerifyResult verifyResult = AuthService.verifyRequest(request);
+            if (!verifyResult.isSuccess()) {
+                throw new RuntimeException("invalid request. please log in.");
+            }
 
             return true;
         } catch (Exception exception){
-            System.out.println("error in jwt");
+            response.setStatus(401); // 401- Unauthorized
             return false;
         }
     }

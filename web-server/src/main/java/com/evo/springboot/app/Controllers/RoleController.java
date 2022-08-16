@@ -1,11 +1,14 @@
 package com.evo.springboot.app.Controllers;
 
 import BusinessLogic.BusinessLogic;
+import Model.Company;
 import Model.Role;
 import com.evo.springboot.app.DTO.Incoming.AddRemoveRoleDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import com.evo.springboot.app.DTO.Incoming.RoleDTO;
 import com.evo.springboot.app.DTO.Outgoing.RolesDTO;
+import com.evo.springboot.app.Services.AuthService;
+import com.evo.springboot.app.Services.RequestContext;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -14,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -76,7 +80,7 @@ public class RoleController {
 
     @ApiOperation(value = "", nickname = "getAllRoles")
     @GetMapping(value = "getAllRoles")
-    public @ResponseBody RolesDTO getAllRoles() {
+    public @ResponseBody RolesDTO getAllRoles(HttpServletRequest request) {
         try {
             logger.info("[RoleController][api/getAllRoles] received new request to get all roles");
             BusinessLogic businessLogic = BusinessLogic.getInstance();

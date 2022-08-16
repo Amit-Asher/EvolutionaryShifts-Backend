@@ -4,30 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="added route RemoveRoleFromEmp">
-      <change afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/SettingsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Incoming/AddRemoveRoleDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Incoming/UpdateDataDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Outgoing/NewEmployeeResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Outgoing/NewPasswordDTO.java" afterDir="false" />
+    <list default="true" id="636685dd-e8ff-4085-930b-9ba1b15a9710" name="Changes" comment="fix auth bugs">
+      <change afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Services/VerifyResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/business-logic/target/classes/BusinessLogic/BusinessLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/src/main/java/Model/Employee/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/src/main/java/Model/Employee/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Company.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Employee/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Employee/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/evolution/target/classes/Model/Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/EmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Controllers/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Converters/EmployeeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Converters/EmployeeConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Converters/PropertiesConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Converters/PropertiesConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Converters/SchemaConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Converters/SchemaConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Incoming/NewEmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Incoming/NewEmployeeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Outgoing/EmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Outgoing/EmployeeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Outgoing/SchemaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Outgoing/SchemaDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Outgoing/SchemaFamilyDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/DTO/Outgoing/SchemaFamilyDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Middlewares/UserServiceInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Middlewares/UserServiceInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Services/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-server/src/main/java/com/evo/springboot/app/Services/AuthService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +21,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Enum" />
         <option value="package.json" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -50,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="middleware-auth" />
+        <entry key="$PROJECT_DIR$" value="middleware" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,10 +56,6 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="employees_changes" />
-                    <option name="lastUsedInstant" value="1660394538" />
-                  </RecentBranch>
-                  <RecentBranch>
                     <option name="branchName" value="Evo2.0" />
                     <option name="lastUsedInstant" value="1653386380" />
                   </RecentBranch>
@@ -98,24 +77,24 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/ConsoleUI/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/ConsoleUI.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/MockDataLoader.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/RequestHandler.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business-logic/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/database/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/EvolutionaryOperator.class" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/operators/EvolutionPipeline.class" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/evolution/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/AlgorithmConfig.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementEvaluator.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Rule/IRule.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlots.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ConsoleUI/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/operators/EvolutionPipeline.class" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/MockDataLoader.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/database/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/RequestHandler.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/evolution/lib/watchmaker-framework-0.7.1.jar!/org/uncommons/watchmaker/framework/EvolutionaryOperator.class" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Rule/RuleSlots/RuleSlots.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/EvolutionStatus.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Algorithm/AlgorithmConfig.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business-logic/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ConsoleUI/src/main/java/MainApp/ConsoleUI.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementEvaluator.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/Arrangement.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/evolution/src/main/java/Arrangement/ArrangementManager.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business-logic/src/main/java/BusinessLogic/BusinessLogic.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -128,22 +107,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "show.run.dashboard.notification": "false",
-    "spring.configuration.checksum": "526f154c5234ed3b8cf526ebcd80f59b"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.16129035" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="show.run.dashboard.notification" value="false" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Amit Asher\Desktop\Amit\לימודים\סדנה\EvolutionaryShifts\scripts" />
@@ -297,10 +276,9 @@
       <workItem from="1660304644888" duration="32815000" />
       <workItem from="1660346912762" duration="510000" />
       <workItem from="1660347461940" duration="3959000" />
-      <workItem from="1660351513822" duration="10137000" />
-      <workItem from="1660389307490" duration="27943000" />
-      <workItem from="1660587879888" duration="4212000" />
-      <workItem from="1660644434982" duration="15359000" />
+      <workItem from="1660351513822" duration="11003000" />
+      <workItem from="1660391310182" duration="2165000" />
+      <workItem from="1660594728368" duration="12635000" />
     </task>
     <task id="LOCAL‎00001" summary="adding another solution for RuleSlots">
       <created>1649410094056</created>
@@ -404,21 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660361859311</updated>
     </task>
-    <task id="LOCAL‎-00017" summary="update Employee DTO classes">
-      <created>1660409557710</created>
+    <task id="LOCAL-00017" summary="fix auth bugs">
+      <created>1660388714192</created>
       <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL‎-00017" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1660409557710</updated>
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1660388714192</updated>
     </task>
-    <task id="LOCAL‎-00018" summary="added route RemoveRoleFromEmp">
-      <created>1660508122536</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL‎-00018" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1660508122536</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,6 +405,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -452,9 +424,8 @@
     <MESSAGE value="add initial json config files" />
     <MESSAGE value="support delete requests in api" />
     <MESSAGE value="create auth flow" />
-    <MESSAGE value="update Employee DTO classes" />
-    <MESSAGE value="added route RemoveRoleFromEmp" />
-    <option name="LAST_COMMIT_MESSAGE" value="added route RemoveRoleFromEmp" />
+    <MESSAGE value="fix auth bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix auth bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -478,6 +449,9 @@
         <watch expression="params.getInt(&quot;crossoverPoints&quot;)" language="JAVA" />
         <watch expression="company.getArrangementManager()" language="JAVA" />
         <watch expression="UsersRepository.getInstance()" language="JAVA" />
+        <watch expression="request.getCookies()" language="JAVA" />
+        <watch expression="request.getCookies()[0].getName() == AuthService.TOKEN_NAME" language="JAVA" />
+        <watch expression="AuthService.TOKEN_NAME" language="JAVA" />
       </configuration>
       <configuration name="Application">
         <watch expression="shiftToMutate.getEmployee().getFitRoles().contains(shiftToMutate.getRole()" language="JAVA" />

@@ -4,6 +4,7 @@ import BusinessLogic.BusinessLogic;
 import com.evo.springboot.app.DTO.Incoming.CredentialsDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import com.evo.springboot.app.Services.AuthService;
+import com.evo.springboot.app.Services.RequestContext;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -22,6 +23,7 @@ public class LoginController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private static final String EVO_TOKEN = "evo-token";
+    private static final int TOKEN_TIMEOUT_SEC = 300; // 5 minutes
 
     private ResponseCookie createCookie(String key, String value, Integer expSeconds) {
         return ResponseCookie.from(key, value)
@@ -67,7 +69,7 @@ public class LoginController {
             logger.info("[LoginController][api/doSignup] received new request to do signup");
             BusinessLogic.getInstance().doSignup(credentialsDTO.getUsername(), credentialsDTO.getPassword());
             String token = AuthService.generateToken(BusinessLogic.staticCompName, credentialsDTO.getUsername());
-            ResponseCookie springCookie = createCookie(EVO_TOKEN, token, 180);
+            ResponseCookie springCookie = createCookie(EVO_TOKEN, token, TOKEN_TIMEOUT_SEC);
             logger.info("[LoginController][api/doSignup] do signup completed successfully");
             return ResponseEntity
                     .ok()
@@ -140,6 +142,31 @@ public class LoginController {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
                     String.format("do silent login failed"),
+                    err
+            );
+        }
+    }
+
+    @ApiOperation(value = "", nickname = "keepAlive")
+    @PostMapping(value = "keepAlive")
+    public ResponseEntity<GenericResponseDTO> keepAlive(HttpServletRequest request) {
+        try {
+            RequestContext requestContext = AuthService.extractRequestContext(request);
+            String companyName = requestContext.getCompany(); // should be companyId
+            String employeeName = requestContext.getEmployee(); // should be employeeId
+
+            String token = AuthService.generateToken(BusinessLogic.staticCompName, employeeName);
+            ResponseCookie springCookie = createCookie(EVO_TOKEN, token, TOKEN_TIMEOUT_SEC); // 3:5 minutes (KA:invalidation)
+            logger.info("[LoginController][api/doLogin] do keepAlive completed successfully");
+            return ResponseEntity
+                    .ok()
+                    .header(HttpHeaders.SET_COOKIE, springCookie.toString())
+                    .body((new GenericResponseDTO("login keepAlive successfully", true)));
+        } catch (Exception err) {
+            logger.error(String.format("[LoginController][api/keepAlive] do keepAlive failed: %s", err));
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    String.format("do keepAlive failed"),
                     err
             );
         }
