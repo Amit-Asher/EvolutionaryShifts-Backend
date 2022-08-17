@@ -27,6 +27,19 @@ public class UsersRepository {
                         Objects.equals(credentials.getPassword(), password));
     }
 
+    public boolean changePassword(String username, String newPassword)
+    {
+        for (Credentials credential:mockUserDb) {
+            if(credential.getUsername().equals(username))
+            {
+                credential.setPassword(newPassword);
+                return true;
+            }
+        }
+
+        return  false;
+    }
+
     public void register(String username, String password) {
         boolean usernameAlreadyExist = mockUserDb.stream().anyMatch(credentials ->
                 Objects.equals(credentials.getUsername(), username) &&

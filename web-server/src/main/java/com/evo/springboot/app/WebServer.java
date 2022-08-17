@@ -23,7 +23,8 @@ public class WebServer {
                         .allowedOrigins("http://localhost:3000") // not wildcard! on prod replace with real domain
                         .allowCredentials(true)
                         .allowedHeaders("Content-Type") // not wildcard!
-                        .allowedMethods("GET", "DELETE", "POST"); // not wildcard!
+                        .allowedMethods("POST", "DELETE", "GET", "OPTIONS"); // not wildcard!
+
             }
         };
     }

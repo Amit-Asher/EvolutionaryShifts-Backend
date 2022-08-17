@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class UserServiceInterceptor implements HandlerInterceptor {
@@ -26,7 +27,7 @@ public class UserServiceInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         try {
-            if (openRoutes.contains(request.getRequestURI())) {
+            if (openRoutes.contains(request.getRequestURI()) || Objects.equals(request.getMethod(), "OPTIONS")) {
                 return true;
             }
 

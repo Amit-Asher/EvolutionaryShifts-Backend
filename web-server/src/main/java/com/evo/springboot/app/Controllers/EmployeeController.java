@@ -2,6 +2,7 @@ package com.evo.springboot.app.Controllers;
 
 import BusinessLogic.BusinessLogic;
 import Model.Employee.Employee;
+import Users.UsersRepository;
 import com.evo.springboot.app.Converters.EmployeeConverter;
 import com.evo.springboot.app.DTO.Incoming.NewEmployeeDTO;
 import com.evo.springboot.app.DTO.Outgoing.EmployeeDTO;
@@ -36,6 +37,10 @@ public class EmployeeController {
             BusinessLogic businessLogic = BusinessLogic.getInstance();
             Employee newEmployee = EmployeeConverter.convert(employeeDTO);
             businessLogic.addEmployee(BusinessLogic.staticCompName, newEmployee);
+
+            UsersRepository usersRepository = UsersRepository.getInstance();
+            usersRepository.register(newEmployee.getFullName(), newEmployee.getPassword());
+
             logger.info("[EmployeeController][api/addEmployee] add new employee completed successfully");
             return new NewEmployeeResponseDTO(
                     String.format("add new employee '%s' completed successfully.", employeeDTO.getFullName()),

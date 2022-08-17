@@ -23,10 +23,6 @@ public class Company
         this.name = name;
     }
 
-    public void updatePasswordForEmp(String employeeID,  String newPassword){
-        m_Id2Employee.get(employeeID).setPassword(newPassword);
-    }
-
     public void updateDataForEmp(String employeeID, String typeData, String data){
         Employee employee =  m_Id2Employee.get(employeeID);
 

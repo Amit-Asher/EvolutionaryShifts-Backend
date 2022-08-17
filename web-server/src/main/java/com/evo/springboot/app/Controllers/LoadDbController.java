@@ -8,6 +8,7 @@ import Model.Employee.EmployeePreferences;
 import Model.Role;
 import Model.Slot.ReqSlot;
 import Rule.IRule;
+import Users.UsersRepository;
 import com.evo.springboot.app.Converters.AlgorithmConfigConverter;
 import com.evo.springboot.app.Converters.EmployeeConverter;
 import com.evo.springboot.app.Converters.PreferencesConverter;
@@ -48,10 +49,14 @@ public class LoadDbController {
                 businessLogic.addNewRole(BusinessLogic.staticCompName, new Role(role.getRole()));
             });
 
+            UsersRepository usersRepository = UsersRepository.getInstance();
+
+
             // load employees
             companyDb.getEmployees().forEach(employeeDTO -> {
                 Employee newEmployee = EmployeeConverter.convert(employeeDTO);
                 businessLogic.addEmployee(BusinessLogic.staticCompName, newEmployee);
+                usersRepository.register(newEmployee.getFullName(), newEmployee.getPassword());
             });
 
 

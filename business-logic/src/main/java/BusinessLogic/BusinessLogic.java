@@ -60,7 +60,7 @@ public class BusinessLogic {
     public String generatePasswordForEmp(String compName, String employeeID){
         Company company = name2Company.get(compName);
         String newPassword = generatePassword();
-        company.updatePasswordForEmp(employeeID, newPassword);
+        company.updateDataForEmp(employeeID, "PASSWORD", newPassword);
         return  newPassword;
     }
 
@@ -99,6 +99,8 @@ public class BusinessLogic {
     public void addEmployee(String compName, Employee employee) {
         Company company = name2Company.get(compName);
         company.addEmployee(employee);
+        String newPassword = generatePassword();
+        company.updateDataForEmp(employee.getID(), "PASSWORD", newPassword);
     }
 
     public void removeEmployee(String compName, String employeeID) {

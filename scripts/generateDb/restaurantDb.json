@@ -24,7 +24,6 @@
       "firstName": "waiter1Name",
       "lastName": "LN",
       "email": "waiter1@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "waiter"
@@ -34,7 +33,6 @@
       "firstName": "waiter2Name",
       "lastName": "LN",
       "email": "waiter2@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "waiter"
@@ -44,7 +42,6 @@
       "firstName": "waiter3Name",
       "lastName": "LN",
       "email": "waiter3@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "waiter",
@@ -55,8 +52,6 @@
       "firstName": "waiter4Name",
       "lastName": "LN",
       "email": "waiter4@gmail.com",
-      "password": "1234",
-
       "phoneNumber": "123",
       "roles": [
         "waiter",
@@ -67,7 +62,6 @@
       "firstName": "waiter5Name",
       "lastName": "LN",
       "email": "waiter5@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "waiter"
@@ -77,7 +71,6 @@
       "firstName": "waiter6Name",
       "lastName": "LN",
       "email": "waiter6@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "waiter",
@@ -88,7 +81,6 @@
       "firstName": "chef1Name",
       "lastName": "LN",
       "email": "chef1@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "chef"
@@ -98,7 +90,6 @@
       "firstName": "chef2Name",
       "lastName": "LN",
       "email": "chef2@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "chef"
@@ -108,7 +99,6 @@
       "firstName": "chef3Name",
       "lastName": "LN",
       "email": "chef3@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "chef",
@@ -119,7 +109,6 @@
       "firstName": "barman1Name",
       "lastName": "LN",
       "email": "barman1@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "barman"
@@ -129,7 +118,6 @@
       "firstName": "barman2Name",
       "lastName": "LN",
       "email": "barman2@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "barman"
@@ -139,7 +127,6 @@
       "firstName": "barman3Name",
       "lastName": "LN",
       "email": "barman3@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "barman"
@@ -149,7 +136,6 @@
       "firstName": "host1Name",
       "lastName": "LN",
       "email": "host1@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "host"
@@ -159,7 +145,6 @@
       "firstName": "host2Name",
       "lastName": "LN",
       "email": "host2@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "host"
@@ -169,7 +154,6 @@
       "firstName": "shiftManager1Name",
       "lastName": "LN",
       "email": "shiftManager1@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "shift-manager",
@@ -180,7 +164,6 @@
       "firstName": "shiftManager2Name",
       "lastName": "LN",
       "email": "shiftManager2@gmail.com",
-      "password": "1234",
       "phoneNumber": "123",
       "roles": [
         "shift-manager",
