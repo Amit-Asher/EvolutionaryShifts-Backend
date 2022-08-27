@@ -1,6 +1,6 @@
 package com.evo.springboot.app.Controllers;
 
-import BusinessLogic.BusinessLogic;
+import com.evo.springboot.bl.BusinessLogic;
 import com.evo.springboot.app.DTO.Incoming.CredentialsDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import com.evo.springboot.app.Services.AuthService;
@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
@@ -22,6 +23,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/api")
 @Api(value = "", tags = {"login", ""})
 public class LoginController {
+    @Autowired
+    BusinessLogic businessLogic;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private static final String EVO_TOKEN = "evo-token";
@@ -42,11 +45,12 @@ public class LoginController {
     public ResponseEntity<GenericResponseDTO> doLogin(@RequestBody CredentialsDTO credentialsDTO) {
         try {
             logger.info("[LoginController][api/doLogin] received new request to do login");
-            boolean success = BusinessLogic.getInstance().doLogin(credentialsDTO.getUsername(), credentialsDTO.getPassword());
+            boolean success = businessLogic.doLogin(credentialsDTO.getUsername(), credentialsDTO.getPassword());
             if (!success) {
                 logger.error(String.format("[LoginController][api/doLogin] invalid credentials."));
                 throw new RuntimeException("invalid credentials");
             }
+
             String token = AuthService.generateToken(BusinessLogic.staticCompName, credentialsDTO.getUsername());
             ResponseCookie springCookie = createCookie(EVO_TOKEN, token, 180);
             logger.info("[LoginController][api/doLogin] do login completed successfully");
@@ -69,7 +73,7 @@ public class LoginController {
     public ResponseEntity<GenericResponseDTO> doSignup(@RequestBody CredentialsDTO credentialsDTO) {
         try {
             logger.info("[LoginController][api/doSignup] received new request to do signup");
-            BusinessLogic.getInstance().doSignup(credentialsDTO.getUsername(), credentialsDTO.getPassword());
+            businessLogic.doSignup(credentialsDTO.getUsername(), credentialsDTO.getPassword());
             String token = AuthService.generateToken(BusinessLogic.staticCompName, credentialsDTO.getUsername());
             ResponseCookie springCookie = createCookie(EVO_TOKEN, token, TOKEN_TIMEOUT_SEC);
             logger.info("[LoginController][api/doSignup] do signup completed successfully");
@@ -112,10 +116,11 @@ public class LoginController {
 
     @ApiOperation(value = "", nickname = "doSignout")
     @PostMapping(value = "doSignout")
-    public ResponseEntity<GenericResponseDTO> doSignout(@RequestBody CredentialsDTO credentialsDTO) {
+    public ResponseEntity<GenericResponseDTO> doSignout(@RequestBody CredentialsDTO credentialsDTO, HttpServletRequest request) {
         try {
             logger.info("[LoginController][api/doSignout] received new request to do signout");
-            BusinessLogic.getInstance().doSignout(credentialsDTO.getUsername());
+            RequestContext requestContext = AuthService.extractRequestContext(request);
+            businessLogic.doSignout(requestContext.getEmployee()); // not the best design, but for now its ok
             ResponseCookie springCookie = createCookie(EVO_TOKEN, null, 0); // delete cookie
             logger.info("[LoginController][api/doSignout] do signout completed successfully");
             return ResponseEntity

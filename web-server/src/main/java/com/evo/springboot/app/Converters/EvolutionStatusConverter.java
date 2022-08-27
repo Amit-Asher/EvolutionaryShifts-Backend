@@ -3,12 +3,15 @@ package com.evo.springboot.app.Converters;
 import Algorithm.EvolutionStatus;
 import com.evo.springboot.app.DTO.Outgoing.EvolutionStatusDTO;
 import com.evo.springboot.app.DTO.Outgoing.ShiftDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class EvolutionStatusConverter {
-    public static EvolutionStatusDTO convert(EvolutionStatus evolutionStatus) {
+
+    public EvolutionStatusDTO convert(EvolutionStatus evolutionStatus) {
 
         // convert shifts
         List<ShiftDTO> arrangementDTO = new ArrayList<>();

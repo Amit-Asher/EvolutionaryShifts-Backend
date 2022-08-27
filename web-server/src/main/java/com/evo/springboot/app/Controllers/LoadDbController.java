@@ -2,13 +2,13 @@ package com.evo.springboot.app.Controllers;
 
 import Algorithm.AlgorithmConfig;
 import Arrangement.ArrangementProperties;
-import BusinessLogic.BusinessLogic;
+import com.evo.springboot.bl.BusinessLogic;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
 import Model.Role;
 import Model.Slot.ReqSlot;
 import Rule.IRule;
-import Users.UsersRepository;
+import com.evo.springboot.db.Users.UsersRepository;
 import com.evo.springboot.app.Converters.AlgorithmConfigConverter;
 import com.evo.springboot.app.Converters.EmployeeConverter;
 import com.evo.springboot.app.Converters.PreferencesConverter;
@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -33,6 +34,21 @@ import java.util.Map;
 @Api(value = "", tags = {"loadb", ""})
 public class LoadDbController {
 
+    @Autowired
+    BusinessLogic businessLogic;
+
+    @Autowired
+    EmployeeConverter employeeConverter;
+
+    @Autowired
+    PropertiesConverter propertiesConverter;
+
+    @Autowired
+    PreferencesConverter preferencesConverter;
+
+    @Autowired
+    AlgorithmConfigConverter algorithmConfigConverter;
+
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
@@ -42,7 +58,6 @@ public class LoadDbController {
     public @ResponseBody GenericResponseDTO loadCompanyDb(@RequestBody DbDTO companyDb) {
         try {
             logger.info("[LoadDbController][api/loadCompanyDb] received new request to load company db");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
 
             // load roles
             companyDb.getRoles().forEach(role -> {
@@ -54,7 +69,7 @@ public class LoadDbController {
 
             // load employees
             companyDb.getEmployees().forEach(employeeDTO -> {
-                Employee newEmployee = EmployeeConverter.convert(employeeDTO);
+                Employee newEmployee = employeeConverter.convert(employeeDTO);
                 businessLogic.addEmployee(BusinessLogic.staticCompName, newEmployee);
                 usersRepository.register(newEmployee.getFullName(), newEmployee.getPassword());
             });
@@ -81,11 +96,10 @@ public class LoadDbController {
     public @ResponseBody GenericResponseDTO loadArrangement(@RequestBody DbDTO companyDb) {
         try {
             logger.info("[LoadDbController][api/loadArrangement] received new request to loadArrangement");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
 
             // load properties
-            List<ReqSlot> reqSlots = PropertiesConverter.buildReqSlots(companyDb.getProperties());
-            List<Employee> activeEmployees = BusinessLogic.getInstance().getAllEmployees(BusinessLogic.staticCompName);
+            List<ReqSlot> reqSlots = propertiesConverter.buildReqSlots(companyDb.getProperties());
+            List<Employee> activeEmployees = businessLogic.getAllEmployees(BusinessLogic.staticCompName);
             Map<IRule, Double> ruleWeights = PropertiesConverter.buildRuleWeights(companyDb.getProperties());
 
             ArrangementProperties arrangementProperties = new ArrangementProperties(
@@ -103,8 +117,8 @@ public class LoadDbController {
             // add preferences
             companyDb.getPreferences().forEach(preferencesDTO -> {
                 try {
-                    EmployeePreferences employeePreferences = PreferencesConverter.convert(preferencesDTO);
-                    BusinessLogic.getInstance().setEmployeePreference(
+                    EmployeePreferences employeePreferences = preferencesConverter.convert(preferencesDTO);
+                    businessLogic.setEmployeePreference(
                             BusinessLogic.staticCompName,
                             employeePreferences
                     );
@@ -114,7 +128,7 @@ public class LoadDbController {
             });
 
             businessLogic.blockEmployeesToSetPref(BusinessLogic.staticCompName);
-            AlgorithmConfig algorithmConfig = AlgorithmConfigConverter.convert(
+            AlgorithmConfig algorithmConfig = algorithmConfigConverter.convert(
                     companyDb.getEvolution()
             );
             businessLogic.startAlgorithm(BusinessLogic.staticCompName, algorithmConfig);
@@ -141,8 +155,7 @@ public class LoadDbController {
     public @ResponseBody GenericResponseDTO cleanDb() {
         try {
             logger.info("[LoadDbController][api/cleanDb] received new request to cleanDb");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
-            BusinessLogic.getInstance().cleanDb(BusinessLogic.staticCompName);
+            businessLogic.cleanDb(BusinessLogic.staticCompName);
             logger.info("[LoadDbController][api/cleanDb] cleanDb completed successfully");
             return new GenericResponseDTO(
                     String.format("cleanDb completed successfully"),
@@ -160,7 +173,7 @@ public class LoadDbController {
     }
 
 
-    @ApiOperation(value = "", nickname = "test")
+    @ApiOperation(value = "", nickname = "com/evo/springboot/db")
     @PostMapping(value = "test")
     public String testRoute(@RequestBody Map<String, Object> json) {
         try {
@@ -171,6 +184,4 @@ public class LoadDbController {
         }
         return "ok";
     }
-
-
 }

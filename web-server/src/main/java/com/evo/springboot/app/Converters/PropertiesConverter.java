@@ -1,7 +1,7 @@
 package com.evo.springboot.app.Converters;
 
 import Arrangement.ArrangementProperties;
-import BusinessLogic.BusinessLogic;
+import com.evo.springboot.bl.BusinessLogic;
 import Model.Employee.Employee;
 import Model.Range;
 import Model.Role;
@@ -13,13 +13,18 @@ import com.evo.springboot.app.DTO.Incoming.PropertiesDTO;
 import com.evo.springboot.app.DTO.Incoming.RangeDTO;
 import com.evo.springboot.app.DTO.Incoming.ReqSlotDTO;
 import com.evo.springboot.app.DTO.Incoming.RuleWeightDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Service
 public class PropertiesConverter {
-
-    public static List<ReqSlot> buildReqSlots(PropertiesDTO propertiesDTO) {
+    @Autowired
+    BusinessLogic businessLogic;
+    
+    public List<ReqSlot> buildReqSlots(PropertiesDTO propertiesDTO) {
         List<ReqSlotDTO> reqSlotsDTO = propertiesDTO.getReqSlots();
         List<ReqSlot> reqSlots = new ArrayList<>();
         reqSlotsDTO.forEach(reqSlotDTO -> {
@@ -29,7 +34,7 @@ public class PropertiesConverter {
             );
 
             // todo: make it stateless! yaks
-            Set<Role> allRoles = BusinessLogic.getInstance().getRoles(BusinessLogic.staticCompName);
+            Set<Role> allRoles = businessLogic.getRoles(BusinessLogic.staticCompName);
             Role role = allRoles.stream()
                     .filter(existingRole -> existingRole.name.equals(reqSlotDTO.getRole()))
                     .findFirst()
@@ -45,11 +50,11 @@ public class PropertiesConverter {
         return reqSlots;
     }
 
-    public static List<Employee> buildActiveEmployees(PropertiesDTO propertiesDTO) {
+    public List<Employee> buildActiveEmployees(PropertiesDTO propertiesDTO) {
         List<String> activeEmployeesIds = propertiesDTO.getActiveEmployeesIds();
 
         // todo: make it stateless! yaks
-        List<Employee> allEmployees = BusinessLogic.getInstance().getAllEmployees(BusinessLogic.staticCompName);
+        List<Employee> allEmployees = businessLogic.getAllEmployees(BusinessLogic.staticCompName);
         List<Employee> activeEmployees = allEmployees.stream().filter(employee ->
                         activeEmployeesIds.contains(employee.getID()))
                 .collect(Collectors.toList());
@@ -68,9 +73,9 @@ public class PropertiesConverter {
         return ruleWeights;
     }
 
-    public static ArrangementProperties convert(PropertiesDTO propertiesDTO) {
-        List<ReqSlot> reqSlots = PropertiesConverter.buildReqSlots(propertiesDTO);
-        List<Employee> activeEmployees = PropertiesConverter.buildActiveEmployees(propertiesDTO);
+    public ArrangementProperties convert(PropertiesDTO propertiesDTO) {
+        List<ReqSlot> reqSlots = this.buildReqSlots(propertiesDTO);
+        List<Employee> activeEmployees = this.buildActiveEmployees(propertiesDTO);
         // todo: pass 'params' json to factory in order to build the rule with generic schema for parameters
         Map<IRule, Double> ruleWeights = PropertiesConverter.buildRuleWeights(propertiesDTO);
 
@@ -80,7 +85,7 @@ public class PropertiesConverter {
                 ruleWeights
         );
     }
-    public static PropertiesDTO convert(ArrangementProperties arrangementProperties) {
+    public PropertiesDTO convert(ArrangementProperties arrangementProperties) {
         PropertiesDTO propertiesDTO = new PropertiesDTO();
 
         // build activeEmployeesIds

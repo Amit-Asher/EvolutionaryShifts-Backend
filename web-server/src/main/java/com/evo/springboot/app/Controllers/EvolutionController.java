@@ -2,7 +2,7 @@ package com.evo.springboot.app.Controllers;
 
 import Algorithm.AlgorithmConfig;
 import Algorithm.EvolutionStatus;
-import BusinessLogic.BusinessLogic;
+import com.evo.springboot.bl.BusinessLogic;
 import Schemas.SchemaFamily;
 import com.evo.springboot.app.Converters.AlgorithmConfigConverter;
 import com.evo.springboot.app.Converters.EvolutionStatusConverter;
@@ -15,6 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -26,6 +27,15 @@ import java.util.List;
 @Api(value = "", tags = {"evolution", ""})
 public class EvolutionController {
 
+    @Autowired
+    BusinessLogic businessLogic;
+
+    @Autowired
+    AlgorithmConfigConverter algorithmConfigConverter;
+
+    @Autowired
+    EvolutionStatusConverter evolutionStatusConverter;
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ApiOperation(value = "", nickname = "getSchemas")
@@ -33,7 +43,6 @@ public class EvolutionController {
     public @ResponseBody List<SchemaFamilyDTO> getSchemas() {
         try {
             logger.info("[EvolutionController][api/getOperatorsSchemas] received new request to get operators schemas");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             List<SchemaFamily> schemaFamilies = businessLogic.getSchemasFamilies();
             List<SchemaFamilyDTO> schemaFamiliesDto = SchemaConverter.covert(schemaFamilies);
             logger.info("[EvolutionController][api/getOperatorsSchemas] get operators schemas completed successfully");
@@ -54,9 +63,8 @@ public class EvolutionController {
     GenericResponseDTO solveArrangement(@RequestBody AlgorithmConfigDTO algorithmConfigDTO) {
         try {
             logger.info("[EvolutionController][api/solveArrangement] received new request to solve arrangement");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             businessLogic.blockEmployeesToSetPref(BusinessLogic.staticCompName);
-            AlgorithmConfig algorithmConfig = AlgorithmConfigConverter.convert(algorithmConfigDTO);
+            AlgorithmConfig algorithmConfig = algorithmConfigConverter.convert(algorithmConfigDTO);
             businessLogic.startAlgorithm(BusinessLogic.staticCompName, algorithmConfig);
 
             logger.info("[EvolutionController][api/solveArrangement] solve arrangement completed successfully");
@@ -81,9 +89,8 @@ public class EvolutionController {
     EvolutionStatusDTO getSolution() {
         try {
             logger.info("[EvolutionController][api/getSolution] received new request to get evolution result");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             EvolutionStatus evolutionStatus = businessLogic.getSolution(BusinessLogic.staticCompName);
-            EvolutionStatusDTO evolutionStatusDTO = EvolutionStatusConverter.convert(evolutionStatus);
+            EvolutionStatusDTO evolutionStatusDTO = evolutionStatusConverter.convert(evolutionStatus);
             logger.info("[EvolutionController][api/getSolution] get evolution result completed successfully");
             return evolutionStatusDTO;
 

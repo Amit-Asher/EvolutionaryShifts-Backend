@@ -1,4 +1,4 @@
-package Users;
+package com.evo.springboot.db.Users;
 
 public class Credentials {
     private String username;

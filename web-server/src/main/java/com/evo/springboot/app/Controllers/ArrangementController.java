@@ -1,11 +1,11 @@
 package com.evo.springboot.app.Controllers;
 
 import Arrangement.ArrangementProperties;
-import BusinessLogic.BusinessLogic;
+import com.evo.springboot.app.Converters.PropertiesConverter;
+import com.evo.springboot.bl.BusinessLogic;
 import Model.Employee.EmployeePreferences;
 import Rule.RuleSlots.RuleSlotsPreference;
 import com.evo.springboot.app.Converters.PreferencesConverter;
-import com.evo.springboot.app.Converters.PropertiesConverter;
 import com.evo.springboot.app.Converters.SchemaConverter;
 import com.evo.springboot.app.DTO.Incoming.EmployeePreferencesDTO;
 import com.evo.springboot.app.DTO.Incoming.PropertiesDTO;
@@ -16,6 +16,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -27,6 +28,16 @@ import java.util.List;
 @Api(value = "", tags = {"arrangement", ""})
 public class ArrangementController {
 
+    @Autowired
+    BusinessLogic businessLogic;
+
+    @Autowired
+    PropertiesConverter propertiesConverter;
+
+    @Autowired
+    PreferencesConverter preferencesConverter;
+
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ApiOperation(value = "", nickname = "getRulesOptions")
@@ -35,7 +46,7 @@ public class ArrangementController {
     SchemaFamilyDTO getRulesOptions() {
         try {
             logger.info("[ArrangementController][api/getRulesOptions] received new request to get rules options");
-            SchemaFamilyDTO schemaFamilyDTO = SchemaConverter.convert(BusinessLogic.getInstance().getRulesOptions());
+            SchemaFamilyDTO schemaFamilyDTO = SchemaConverter.convert(businessLogic.getRulesOptions());
             logger.info("[ArrangementController][api/getRulesOptions] get rules options completed successfully");
             return schemaFamilyDTO;
 
@@ -55,8 +66,7 @@ public class ArrangementController {
     GenericResponseDTO createArrangement(@RequestBody PropertiesDTO propertiesDTO) {
         try {
             logger.info("[ArrangementController][api/createArrangement] received new request to create new arrangement");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
-            ArrangementProperties arrangementProperties = PropertiesConverter.convert(propertiesDTO);
+            ArrangementProperties arrangementProperties = propertiesConverter.convert(propertiesDTO);
             businessLogic.startNewArrangement(BusinessLogic.staticCompName);
             businessLogic.setArrangementProperties(
                     BusinessLogic.staticCompName,
@@ -85,9 +95,8 @@ public class ArrangementController {
     PropertiesDTO getProperties() {
         try {
             logger.info("[ArrangementController][api/getProperties] received new request to get properties");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             ArrangementProperties arrangementProperties = businessLogic.getArrangementProperties(BusinessLogic.staticCompName);
-            PropertiesDTO propertiesDTO = PropertiesConverter.convert(arrangementProperties);
+            PropertiesDTO propertiesDTO = propertiesConverter.convert(arrangementProperties);
             logger.info("[ArrangementController][api/getProperties] get properties completed successfully");
             return propertiesDTO;
 
@@ -107,8 +116,8 @@ public class ArrangementController {
     GenericResponseDTO addPreferences(@RequestBody EmployeePreferencesDTO preferencesDTO) {
         try {
             logger.info("[ArrangementController][api/addPreferences] received new request to add Preferences");
-            EmployeePreferences employeePreferences = PreferencesConverter.convert(preferencesDTO);
-            BusinessLogic.getInstance().setEmployeePreference(
+            EmployeePreferences employeePreferences = preferencesConverter.convert(preferencesDTO);
+            businessLogic.setEmployeePreference(
                     BusinessLogic.staticCompName,
                     employeePreferences
             );
@@ -135,8 +144,8 @@ public class ArrangementController {
     SlotsPreferencesDTO getPreferences() {
         try {
             logger.info("[ArrangementController][api/getPreferences] received new request to get preferences");
-            List<RuleSlotsPreference> preferences = BusinessLogic.getInstance().getEmployeeSlotsPreference(BusinessLogic.staticCompName);
-            SlotsPreferencesDTO preferencesDTO = PreferencesConverter.convert(preferences);
+            List<RuleSlotsPreference> preferences = businessLogic.getEmployeeSlotsPreference(BusinessLogic.staticCompName);
+            SlotsPreferencesDTO preferencesDTO = preferencesConverter.convert(preferences);
 
             logger.info("[ArrangementController][api/getPreferences] get preferences completed successfully");
             return preferencesDTO;

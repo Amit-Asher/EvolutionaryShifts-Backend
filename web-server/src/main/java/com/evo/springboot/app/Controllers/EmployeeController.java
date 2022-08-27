@@ -1,8 +1,8 @@
 package com.evo.springboot.app.Controllers;
 
-import BusinessLogic.BusinessLogic;
+import com.evo.springboot.bl.BusinessLogic;
 import Model.Employee.Employee;
-import Users.UsersRepository;
+import com.evo.springboot.db.Users.UsersRepository;
 import com.evo.springboot.app.Converters.EmployeeConverter;
 import com.evo.springboot.app.DTO.Incoming.NewEmployeeDTO;
 import com.evo.springboot.app.DTO.Outgoing.EmployeeDTO;
@@ -13,6 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -27,6 +28,12 @@ import java.util.stream.Collectors;
 @Api(value = "", tags = {"employee", ""})
 public class EmployeeController {
 
+    @Autowired
+    BusinessLogic businessLogic;
+
+    @Autowired
+    EmployeeConverter employeeConverter;
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ApiOperation(value = "", nickname = "addEmployee")
@@ -34,8 +41,7 @@ public class EmployeeController {
     public @ResponseBody NewEmployeeResponseDTO addEmployee(@RequestBody NewEmployeeDTO employeeDTO, HttpServletRequest request) {
         try {
             logger.info("[EmployeeController][api/addEmployee] received new request to add new employee");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
-            Employee newEmployee = EmployeeConverter.convert(employeeDTO);
+            Employee newEmployee = employeeConverter.convert(employeeDTO);
             businessLogic.addEmployee(BusinessLogic.staticCompName, newEmployee);
 
             UsersRepository usersRepository = UsersRepository.getInstance();
@@ -64,7 +70,6 @@ public class EmployeeController {
     public @ResponseBody GenericResponseDTO removeEmployee(@RequestParam String employeeId) {
         try {
             logger.info("[EmployeeController][api/removeEmployee] received new request to remove employee");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             businessLogic.removeEmployee(BusinessLogic.staticCompName, employeeId);
 
             logger.info("[EmployeeController][api/removeEmployee] remove employee completed successfully");
@@ -88,7 +93,6 @@ public class EmployeeController {
     public @ResponseBody EmployeesDTO getAllEmployees() {
         try {
             logger.info("[EmployeeController][api/getAllEmployees] received new request to get all employees");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             List<Employee> employees = businessLogic.getAllEmployees(BusinessLogic.staticCompName);
 
             logger.info("[EmployeeController][api/getAllEmployees] get all employees completed successfully");
@@ -123,7 +127,6 @@ public class EmployeeController {
     {
         try {
             logger.info("[EmployeeController][api/setAsManager] received new request to set manager");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             businessLogic.setAsManager(BusinessLogic.staticCompName, employeeId);
 
             logger.info("[EmployeeController][api/setAsManager] set manager completed successfully");
@@ -147,7 +150,6 @@ public class EmployeeController {
     {
         try {
             logger.info("[EmployeeController][api/removeAsManager] received new request to set manager");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             businessLogic.setAsManager(BusinessLogic.staticCompName, employeeId);
 
             logger.info("[EmployeeController][api/removeAsManager] set manager completed successfully");

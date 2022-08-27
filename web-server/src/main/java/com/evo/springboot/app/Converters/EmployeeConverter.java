@@ -1,17 +1,23 @@
 package com.evo.springboot.app.Converters;
 
-import BusinessLogic.BusinessLogic;
+import com.evo.springboot.bl.BusinessLogic;
 import Model.Employee.Employee;
 import Model.Role;
 import com.evo.springboot.app.DTO.Incoming.NewEmployeeDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class EmployeeConverter {
-    public static Employee convert(NewEmployeeDTO employeeDTO) {
 
-        Set<Role> allRoles = BusinessLogic.getInstance().getAllRoles(BusinessLogic.staticCompName);
+    @Autowired
+    BusinessLogic businessLogic;
+
+    public Employee convert(NewEmployeeDTO employeeDTO) {
+
+        Set<Role> allRoles = businessLogic.getAllRoles(BusinessLogic.staticCompName);
 
         // todo: make it stateless! yaks
         Set<Role> rolesToSet = new HashSet<>();

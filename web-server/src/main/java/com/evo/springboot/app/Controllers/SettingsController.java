@@ -1,8 +1,7 @@
 package com.evo.springboot.app.Controllers;
 
-
-import BusinessLogic.BusinessLogic;
-import Users.UsersRepository;
+import com.evo.springboot.bl.BusinessLogic;
+import com.evo.springboot.db.Users.UsersRepository;
 import com.evo.springboot.app.DTO.Incoming.UpdateDataDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import com.evo.springboot.app.DTO.Outgoing.NewPasswordDTO;
@@ -10,22 +9,24 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api")
 @Api(value = "", tags = {"settings", ""})
 public class SettingsController {
+
+    @Autowired
+    BusinessLogic businessLogic;
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ApiOperation(value = "", nickname = "updatePasswordForEmp")
     @PostMapping(value = "updatePasswordForEmp")
     public @ResponseBody GenericResponseDTO updatePasswordForEmp(@RequestBody UpdateDataDTO updateDataDTO) {
-        BusinessLogic businessLogic = BusinessLogic.getInstance();
         String empName = businessLogic.getAllEmployees(BusinessLogic.staticCompName).stream()
                 .filter(employee -> employee.getID().equals(updateDataDTO.getEmployeeID())).findFirst().get().getFullName();
         try {
@@ -49,7 +50,6 @@ public class SettingsController {
     @ApiOperation(value = "", nickname = "updateEmailForEmp")
     @PostMapping(value = "updateEmailForEmp")
     public @ResponseBody GenericResponseDTO updateEmailForEmp(@RequestBody UpdateDataDTO updateDataDTO) {
-        BusinessLogic businessLogic = BusinessLogic.getInstance();
         String empName = businessLogic.getAllEmployees(BusinessLogic.staticCompName).stream()
                 .filter(employee -> employee.getID().equals(updateDataDTO.getEmployeeID())).findFirst().get().getFullName();
         try {
@@ -73,7 +73,6 @@ public class SettingsController {
     @ApiOperation(value = "", nickname = "updatePhoneForEmp")
     @PostMapping(value = "updatePhoneForEmp")
     public @ResponseBody GenericResponseDTO updatePhoneForEmp(@RequestBody UpdateDataDTO updateDataDTO) {
-        BusinessLogic businessLogic = BusinessLogic.getInstance();
         String empName = businessLogic.getAllEmployees(BusinessLogic.staticCompName).stream()
                 .filter(employee -> employee.getID().equals(updateDataDTO.getEmployeeID())).findFirst().get().getFullName();
         try {
@@ -98,7 +97,6 @@ public class SettingsController {
     @ApiOperation(value = "", nickname = "updateNameForEmp")
     @PostMapping(value = "updateNameForEmp")
     public @ResponseBody GenericResponseDTO updateNameForEmp(@RequestBody UpdateDataDTO updateDataDTO) {
-        BusinessLogic businessLogic = BusinessLogic.getInstance();
         String empName = businessLogic.getAllEmployees(BusinessLogic.staticCompName).stream()
                 .filter(employee -> employee.getID().equals(updateDataDTO.getEmployeeID())).findFirst().get().getFullName();
         try {
@@ -122,7 +120,6 @@ public class SettingsController {
     @ApiOperation(value = "", nickname = "generatePasswordForEmp")
     @PostMapping(value = "generatePasswordForEmp")
     public @ResponseBody NewPasswordDTO generatePasswordForEmp(@RequestParam String employeeID) {
-        BusinessLogic businessLogic = BusinessLogic.getInstance();
         String empName = businessLogic.getAllEmployees(BusinessLogic.staticCompName).stream()
                 .filter(employee -> employee.getID().equals(employeeID)).findFirst().get().getFullName();
         try {
@@ -130,7 +127,8 @@ public class SettingsController {
             String newPassword = businessLogic.generatePasswordForEmp(BusinessLogic.staticCompName, employeeID);
 
             UsersRepository usersRepository = UsersRepository.getInstance();
-            usersRepository.changePassword(empName, newPassword);
+//            usersRepository.changePassword(empName, newPassword);
+            businessLogic.changePassword(empName, newPassword);
 
             logger.info("[SettingsController][api/generatePasswordForEmp] received generate password for employee");
             return new NewPasswordDTO(

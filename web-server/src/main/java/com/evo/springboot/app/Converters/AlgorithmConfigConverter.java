@@ -8,6 +8,8 @@ import TermConds.TermCondFactory;
 import com.evo.springboot.app.DTO.Incoming.AlgorithmConfigDTO;
 import com.evo.springboot.app.ToRefactor.MutationFactory;
 import org.json.JSONException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 import org.uncommons.watchmaker.framework.SelectionStrategy;
 import org.uncommons.watchmaker.framework.TerminationCondition;
@@ -16,14 +18,19 @@ import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class AlgorithmConfigConverter {
-    public static AlgorithmConfig convert(AlgorithmConfigDTO algorithmConfigDTO) throws JSONException {
+
+    @Autowired
+    MutationFactory mutationFactory;
+
+    public AlgorithmConfig convert(AlgorithmConfigDTO algorithmConfigDTO) throws JSONException {
 
         int mutationsCount = algorithmConfigDTO.getMutations().size();
         List<EvolutionaryOperator<Arrangement>> mutations = new ArrayList<>(mutationsCount);
         algorithmConfigDTO.getMutations().forEach(mutation -> {
             try {
-                mutations.add(MutationFactory.createMutation(
+                mutations.add(mutationFactory.createMutation(
                         mutation.getType(),
                         mutation.getParams()));
             } catch (JSONException e) {

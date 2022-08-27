@@ -1,4 +1,4 @@
-package BusinessLogic;
+package com.evo.springboot.bl;
 
 import Algorithm.AlgorithmConfig;
 import Algorithm.EvolutionStatus;
@@ -11,29 +11,28 @@ import Model.Slot.ReqSlot;
 import Rule.RuleSlots.RuleSlotsPreference;
 import Schemas.SchemaFactory;
 import Schemas.SchemaFamily;
-import Users.UsersRepository;
+import com.evo.springboot.db.Entities.User;
+import com.evo.springboot.db.Repositories.UserRepository;
+import com.evo.springboot.db.Users.Credentials;
 import org.json.JSONException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
+@Service
 public class BusinessLogic {
-    protected Map<String, Company> name2Company = new HashMap<>();
+
+    @Autowired
+    UserRepository userRepo;
+
+    protected Map<String, Company> name2Company = new HashMap<String, Company>() {{
+        put(staticCompName, new Company(staticCompName));
+    }};
 
     // TODO: REPLACE THIS LOGIC WITH AUTHENTICATION
     public static String staticCompName = "Apple";
-
-    private static BusinessLogic instance = null;
-
-    private BusinessLogic() {
-    }
-
-    public static BusinessLogic getInstance() {
-        if (instance == null) {
-            instance = new BusinessLogic();
-            instance.addCompany("Apple");
-        }
-        return instance;
-    }
 
     public static String generatePassword(){
         Integer password = 0;
@@ -64,22 +63,47 @@ public class BusinessLogic {
         return  newPassword;
     }
 
-    public void doSignup(String username, String password) {
+    public void doSignup(String userEmail, String password) {
         try {
-            UsersRepository.getInstance().register(username, password);
+            boolean usernameAlreadyExist = userRepo.existsUserByUserEmail(userEmail);
+
+            if (usernameAlreadyExist) {
+                throw new RuntimeException("user email is already exist");
+            }
+
+            User user = new User();
+            user.setUserId(UUID.randomUUID().toString());
+            user.setUserEmail(userEmail);
+            user.setUserPassword(password);
+            userRepo.save(user);
         } catch (Exception err) {
             throw err;
         }
     }
 
+    public boolean changePassword(String userEmail, String newPassword)
+    {
+        User user = userRepo.findUserByUserEmail(userEmail);
+
+        if (user == null) {
+            return false;
+        }
+
+        user.setUserPassword(newPassword);
+        userRepo.save(user);
+
+        return  false;
+    }
+
     public boolean doLogin(String username, String password) {
-        return UsersRepository.getInstance().isValidCredentials(username, password);
+        User user = userRepo.findUserByUserEmailAndAndUserPassword(username, password);
+        return user != null;
     }
 
-    public void doSignout(String username) {
-        UsersRepository.getInstance().deleteUser(username);
+    @Transactional
+    public void doSignout(String userEmail) {
+        userRepo.deleteUserByUserEmail(userEmail);
     }
-
 
     public void cleanDb(String compName) {
         name2Company.put(compName, new Company(compName));
@@ -264,11 +288,9 @@ public class BusinessLogic {
         Company company = name2Company.get(compName);
         company.getArrangementManager().finishArrangement();
     }
-
     /********************** FINISH ********************/
 
 
     /********************** ALT DATABASE ********************/
-
 
 }

@@ -1,12 +1,12 @@
 package com.evo.springboot.app.Controllers;
-
-import BusinessLogic.BusinessLogic;
+import com.evo.springboot.bl.BusinessLogic;
 import com.evo.springboot.app.DTO.Incoming.CompanyDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,6 +15,9 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/api")
 @Api(value = "", tags = {"company", ""})
 public class CompanyController {
+    @Autowired
+    BusinessLogic businessLogic;
+
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ApiOperation(value = "", nickname = "addCompany")
@@ -22,7 +25,6 @@ public class CompanyController {
     public @ResponseBody GenericResponseDTO addCompany(@RequestBody CompanyDTO companyDTO) {
         try {
             logger.info("[CompanyController][api/addCompany] received new request to add new company");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             businessLogic.addCompany(companyDTO.getName());
 
             logger.info("[CompanyController][api/addCompany] add new company completed successfully");

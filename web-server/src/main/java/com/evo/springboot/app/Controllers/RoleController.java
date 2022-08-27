@@ -1,14 +1,16 @@
 package com.evo.springboot.app.Controllers;
 
-import BusinessLogic.BusinessLogic;
+import com.evo.springboot.bl.BusinessLogic;
 import Model.Role;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import com.evo.springboot.app.DTO.Incoming.RoleDTO;
 import com.evo.springboot.app.DTO.Outgoing.RolesDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import net.bytebuddy.implementation.auxiliary.AuxiliaryType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -22,6 +24,9 @@ import java.util.stream.Collectors;
 @Api(value = "", tags = {"role", ""})
 public class RoleController {
 
+    @Autowired
+    BusinessLogic businessLogic;
+
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ApiOperation(value = "", nickname = "addNewRole")
@@ -30,7 +35,6 @@ public class RoleController {
     {
         try {
             logger.info("[RoleController][api/addNewRole] received new request to add new role");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             businessLogic.addNewRole(BusinessLogic.staticCompName, new Role(roleDTO.getRole()));
 
             logger.info("[RoleController][api/addNewRole] add new role completed successfully");
@@ -55,7 +59,6 @@ public class RoleController {
         // TODO: REPLACE THE PARAMETER FROM STRING TO GUID
         try {
             logger.info("[RoleController][api/removeRole] received new request to remove role");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             businessLogic.removeRole(BusinessLogic.staticCompName, new Role(roleName));
 
             logger.info("[MainController][api/removeRole] remove role completed successfully");
@@ -79,7 +82,6 @@ public class RoleController {
     public @ResponseBody RolesDTO getAllRoles(HttpServletRequest request) {
         try {
             logger.info("[RoleController][api/getAllRoles] received new request to get all roles");
-            BusinessLogic businessLogic = BusinessLogic.getInstance();
             Set<Role> roles = businessLogic.getAllRoles(BusinessLogic.staticCompName);
 
             logger.info("[RoleController][api/getAllRoles] get all roles completed successfully");
@@ -99,7 +101,6 @@ public class RoleController {
     @DeleteMapping(value = "removeRoleFromEmp")
     public @ResponseBody GenericResponseDTO removeRoleFromEmp(
             @RequestParam String roleName, @RequestParam String employeeID) {
-        BusinessLogic businessLogic = BusinessLogic.getInstance();
         String empName = businessLogic.getAllEmployees(BusinessLogic.staticCompName).stream()
                 .filter(employee -> employee.getID().equals(employeeID)).findFirst().get().getFullName();
 
@@ -126,7 +127,6 @@ public class RoleController {
     @PostMapping(value = "addRoleToEmp")
     public @ResponseBody GenericResponseDTO addRoleToEmp(
             @RequestParam String roleName, @RequestParam String employeeID) {
-        BusinessLogic businessLogic = BusinessLogic.getInstance();
         String empName = businessLogic.getAllEmployees(BusinessLogic.staticCompName).stream()
                 .filter(employee -> employee.getID().equals(employeeID)).findFirst().get().getFullName();
 
