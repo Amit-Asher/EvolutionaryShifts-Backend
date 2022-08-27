@@ -5,3 +5,5 @@ out
 /evolution/target/
 /ConsoleUI/target/
 /database/src/main/resources/
+/business-logic/src/main/resources/
+/web-server/src/main/resources/
