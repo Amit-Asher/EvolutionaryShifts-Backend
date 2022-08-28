@@ -27,7 +27,11 @@ public class UserServiceInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         try {
-            if (openRoutes.contains(request.getRequestURI()) || Objects.equals(request.getMethod(), "OPTIONS")) {
+            String url = request.getRequestURI();
+            if (url.startsWith("/swagger") || url.startsWith("/webjars/springfox")) {
+                return true;
+            }
+            if (openRoutes.contains(url) || Objects.equals(request.getMethod(), "OPTIONS")) {
                 return true;
             }
 
