@@ -30,6 +30,12 @@
             <version>2.7.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>EvolutionaryShifts</groupId>
+            <artifactId>evolution</artifactId>
+            <version>1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <properties>
