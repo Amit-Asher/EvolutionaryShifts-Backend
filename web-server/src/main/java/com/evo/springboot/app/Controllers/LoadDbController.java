@@ -127,11 +127,11 @@ public class LoadDbController {
                 }
             });
 
-            businessLogic.blockEmployeesToSetPref(BusinessLogic.staticCompName);
-            AlgorithmConfig algorithmConfig = algorithmConfigConverter.convert(
-                    companyDb.getEvolution()
-            );
-            businessLogic.startAlgorithm(BusinessLogic.staticCompName, algorithmConfig);
+//            businessLogic.blockEmployeesToSetPref(BusinessLogic.staticCompName);
+//            AlgorithmConfig algorithmConfig = algorithmConfigConverter.convert(
+//                    companyDb.getEvolution()
+//            );
+//            businessLogic.startAlgorithm(BusinessLogic.staticCompName, algorithmConfig);
 
             logger.info("[LoadDbController][api/loadArrangement] load arrangement completed successfully");
             return new GenericResponseDTO(

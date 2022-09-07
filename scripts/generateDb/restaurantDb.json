@@ -590,7 +590,7 @@
   "preferences": [
     {
       "employeeId": "",
-      "employeeName": "waiter1Name",
+      "employeeName": "waiter1Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -625,7 +625,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "waiter2Name",
+      "employeeName": "waiter2Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -660,7 +660,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "waiter3Name",
+      "employeeName": "waiter3Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -695,7 +695,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "waiter4Name",
+      "employeeName": "waiter4Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -730,7 +730,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "waiter5Name",
+      "employeeName": "waiter5Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -755,7 +755,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "waiter6Name",
+      "employeeName": "waiter6Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -775,7 +775,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "chef1Name",
+      "employeeName": "chef1Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -805,7 +805,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "chef2Name",
+      "employeeName": "chef2Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -840,7 +840,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "chef3Name",
+      "employeeName": "chef3Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -880,7 +880,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "barman1Name",
+      "employeeName": "barman1Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -915,7 +915,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "barman2Name",
+      "employeeName": "barman2Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -950,7 +950,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "barman3Name",
+      "employeeName": "barman3Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -985,7 +985,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "host1Name",
+      "employeeName": "host1Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -1010,7 +1010,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "host2Name",
+      "employeeName": "host2Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -1030,7 +1030,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "shiftManager1Name",
+      "employeeName": "shiftManager1Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
@@ -1065,7 +1065,7 @@
     },
     {
       "employeeId": "",
-      "employeeName": "shiftManager2Name",
+      "employeeName": "shiftManager2Name LN",
       "preferences": {
         "RuleSlots": {
           "slots": [
