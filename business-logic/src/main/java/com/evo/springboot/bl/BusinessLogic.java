@@ -3,6 +3,7 @@ package com.evo.springboot.bl;
 import Algorithm.AlgorithmConfig;
 import Algorithm.EvolutionStatus;
 import Arrangement.ArrangementProperties;
+import Arrangement.Ticket;
 import Model.Company;
 import Model.Employee.Employee;
 import Model.Employee.EmployeePreferences;
@@ -259,15 +260,19 @@ public class BusinessLogic {
     /*************** WAIT EMP APPROVAL *****************/
 
     // declineArrangement
-//    public void createTicket(String compName,
-//                                   Employee employee,
-//                                   String employeeMessage) {
-//        Company company = name2Company.get(compName);
-//        company.getArrangementManager().createTicket(
-//                employee,
-//                employeeMessage
-//        );
-//    }
+    public void createTicket(String compName,
+                                   Employee employee,
+                                   String employeeMessage) {
+        Company company = name2Company.get(compName);
+        company.getArrangementManager().createTicket(
+                employee,
+                employeeMessage
+        );
+    }
+    public Map<String, Ticket> getAllTickets(String compName){
+        Company company = name2Company.get(compName);
+        return company.getArrangementManager().getAllTickets();
+    }
 //
 //    public void closeTicket(String compName, String ticketId) {
 //        Company company = name2Company.get(compName);
