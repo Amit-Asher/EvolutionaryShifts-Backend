@@ -2,6 +2,10 @@
   "family": "rules",
   "schemas": [
     {
+      "name": "RuleSlots",
+      "params": []
+    },
+    {
       "name": "RuleFight",
       "params": []
     },
@@ -10,19 +14,11 @@
       "params": []
     },
     {
-      "name": "RulePeace",
-      "params": []
-    },
-    {
       "name": "RuleRangeWorkDays",
       "params": []
     },
     {
-      "name": "RuleReqSlots",
-      "params": []
-    },
-    {
-      "name": "RuleSlots",
+      "name": "RulePeace",
       "params": []
     }
   ]
