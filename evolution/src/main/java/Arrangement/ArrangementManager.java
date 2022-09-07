@@ -208,6 +208,9 @@ public class ArrangementManager
         this.tickets.put(ticket.getId(), ticket);
     }
 
+    public Map<String,Ticket> getAllTickets(){
+        return this.tickets;
+    }
     public void closeTicket(String ticketId) {
         this.tickets.get(ticketId).setStatus(TicketStatus.CLOSED);
     }
