@@ -2,6 +2,7 @@ package com.evo.springboot.app.Controllers;
 
 import Algorithm.AlgorithmConfig;
 import Algorithm.EvolutionStatus;
+import com.evo.springboot.app.DTO.Outgoing.ShiftDTO;
 import com.evo.springboot.bl.BusinessLogic;
 import Schemas.SchemaFamily;
 import com.evo.springboot.app.Converters.AlgorithmConfigConverter;
@@ -20,6 +21,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -83,16 +86,31 @@ public class EvolutionController {
         }
     }
 
+    int gen = 0;
+    int fit=0;
+
     @ApiOperation(value = "", nickname = "getSolution")
     @GetMapping(value = "getSolution")
     public @ResponseBody
     EvolutionStatusDTO getSolution() {
         try {
             logger.info("[EvolutionController][api/getSolution] received new request to get evolution result");
-            EvolutionStatus evolutionStatus = businessLogic.getSolution(BusinessLogic.staticCompName);
-            EvolutionStatusDTO evolutionStatusDTO = evolutionStatusConverter.convert(evolutionStatus);
+            //EvolutionStatus evolutionStatus = businessLogic.getSolution(BusinessLogic.staticCompName);
+            //EvolutionStatusDTO evolutionStatusDTO = evolutionStatusConverter.convert(evolutionStatus);
             logger.info("[EvolutionController][api/getSolution] get evolution result completed successfully");
-            return evolutionStatusDTO;
+            //return evolutionStatusDTO;
+
+            gen++;
+            fit++;
+            ShiftDTO s1 = new ShiftDTO("e_id1 ", "ando1 " + gen, "waiter","2022-05-26 08:00", "2022-05-26 16:00");
+            ShiftDTO s2 = new ShiftDTO("e_id2 ", "ando2 " + gen, "waiter","2022-05-25 08:00", "2022-05-25 16:00");
+
+            List<ShiftDTO> l = new ArrayList<>(Arrays.asList(new ShiftDTO[]{s1, s2}));
+
+            if(gen % 25 == 0)
+                return new EvolutionStatusDTO(l,gen,fit,true, gen);
+            else
+            return new EvolutionStatusDTO(l,gen,fit,false, gen);
 
         } catch (Exception err) {
             logger.error(String.format("[EvolutionController][api/getSolution] get evolution result failed: %s", err));

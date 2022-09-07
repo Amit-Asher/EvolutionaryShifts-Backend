@@ -7,16 +7,31 @@ public class EvolutionStatusDTO {
     private int generationNumber;
     private double fitness;
     private boolean isFinished;
+    private long elapsedTime;
 
-    public EvolutionStatusDTO(List<ShiftDTO> arrangement, int generationNumber, double fitness, boolean isFinished) {
+    public EvolutionStatusDTO(List<ShiftDTO> arrangement,
+                              int generationNumber,
+                              double fitness,
+                              boolean isFinished,
+                              long elapsedTime)
+    {
         this.arrangement = arrangement;
         this.generationNumber = generationNumber;
         this.fitness = fitness;
         this.isFinished = isFinished;
+        this.elapsedTime = elapsedTime;
     }
 
     public List<ShiftDTO> getArrangement() {
         return arrangement;
+    }
+
+    public void setElapsedTime(long elapsedTime) {
+        this.elapsedTime = elapsedTime;
+    }
+
+    public long getElapsedTime() {
+        return elapsedTime;
     }
 
     public void setArrangement(List<ShiftDTO> arrangement) {

@@ -29,7 +29,8 @@ public class EvolutionStatusConverter {
                 arrangementDTO,
                 evolutionStatus.arrangementSolution.generationNumber,
                 evolutionStatus.arrangementSolution.fitness,
-                evolutionStatus.isFinished
+                evolutionStatus.isFinished,
+                evolutionStatus.arrangementSolution.elapsedTime
         );
     }
 }

@@ -172,7 +172,8 @@ public class ArrangementManager
             curArrangementSolution = new ArrangementEvoSolution(
                     populationData.getBestCandidate(),
                     populationData.getGenerationNumber(),
-                    populationData.getBestCandidateFitness());
+                    populationData.getBestCandidateFitness(),
+                    populationData.getElapsedTime());
         });
 
         this.evolutionWorker = new Thread(() ->{
