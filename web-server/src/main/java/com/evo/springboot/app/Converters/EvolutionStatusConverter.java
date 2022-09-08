@@ -27,7 +27,7 @@ public class EvolutionStatusConverter {
 
         return new EvolutionStatusDTO(
                 arrangementDTO,
-                evolutionStatus.arrangementSolution.generationNumber,
+                evolutionStatus.arrangementSolution.generationNumber + 1,
                 evolutionStatus.arrangementSolution.fitness,
                 evolutionStatus.isFinished,
                 evolutionStatus.arrangementSolution.elapsedTime
