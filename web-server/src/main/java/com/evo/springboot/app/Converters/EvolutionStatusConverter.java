@@ -15,6 +15,9 @@ public class EvolutionStatusConverter {
 
         // convert shifts
         List<ShiftDTO> arrangementDTO = new ArrayList<>();
+        if(evolutionStatus.arrangementSolution == null){
+            return new EvolutionStatusDTO(arrangementDTO,0,0,false,0);
+        }
         evolutionStatus.arrangementSolution.arrangement.getShifts().forEach(shift -> {
             arrangementDTO.add(new ShiftDTO(
                     shift.getEmployee().getID(),

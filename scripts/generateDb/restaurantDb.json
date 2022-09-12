@@ -176,7 +176,11 @@
     "rulesWeights": [
       {
         "ruleName": "RuleSlots",
-        "weight": 1
+        "weight": 0.5
+      },
+      {
+        "ruleName": "RuleFitEmpRole",
+        "weight": 0.5
       }
     ],
     "reqSlots": [
