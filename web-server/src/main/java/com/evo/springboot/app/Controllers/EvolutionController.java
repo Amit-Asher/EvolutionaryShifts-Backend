@@ -2,16 +2,13 @@ package com.evo.springboot.app.Controllers;
 
 import Algorithm.AlgorithmConfig;
 import Algorithm.EvolutionStatus;
-import com.evo.springboot.app.DTO.Outgoing.ShiftDTO;
+import com.evo.springboot.app.DTO.Outgoing.*;
 import com.evo.springboot.bl.BusinessLogic;
 import Schemas.SchemaFamily;
 import com.evo.springboot.app.Converters.AlgorithmConfigConverter;
 import com.evo.springboot.app.Converters.EvolutionStatusConverter;
 import com.evo.springboot.app.Converters.SchemaConverter;
 import com.evo.springboot.app.DTO.Incoming.AlgorithmConfigDTO;
-import com.evo.springboot.app.DTO.Outgoing.EvolutionStatusDTO;
-import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
-import com.evo.springboot.app.DTO.Outgoing.SchemaFamilyDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -24,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -99,24 +97,51 @@ public class EvolutionController {
             EvolutionStatusDTO evolutionStatusDTO = evolutionStatusConverter.convert(evolutionStatus);
             logger.info("[EvolutionController][api/getSolution] get evolution result completed successfully");
             return evolutionStatusDTO;
-
-//            gen++;
-//            fit++;
-//            ShiftDTO s1 = new ShiftDTO("e_id1 ", "ando1 " + gen, "waiter","2022-05-26 08:00", "2022-05-26 16:00");
-//            ShiftDTO s2 = new ShiftDTO("e_id2 ", "ando2 " + gen, "waiter","2022-05-25 08:00", "2022-05-25 16:00");
-//
-//            List<ShiftDTO> l = new ArrayList<>(Arrays.asList(new ShiftDTO[]{s1, s2}));
-//
-//            if(gen % 25 == 0)
-//                return new EvolutionStatusDTO(l,gen,fit,true, gen);
-//            else
-//            return new EvolutionStatusDTO(l,gen,fit,false, gen);
-
         } catch (Exception err) {
             logger.error(String.format("[EvolutionController][api/getSolution] get evolution result failed: %s", err));
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
                     String.format("solve arrangement failed"),
+                    err
+            );
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @ApiOperation(value = "", nickname = "getTermConditions")
+    @GetMapping(value = "getTermConditions")
+    public @ResponseBody List<TermConditionsDTO> getTermConditions() {
+        try {
+            logger.info("[EvolutionController][api/getTermConditions] received new request to get term conditions");
+            Map<String, Map<String, String>> mapTM = businessLogic.getMapTM(BusinessLogic.staticCompName);
+            List<TermConditionsDTO> res = new ArrayList<>();
+            if(mapTM != null) {
+                for (Map.Entry<String, Map<String, String>> e : mapTM.entrySet()) {
+                    res.add(new TermConditionsDTO(e.getKey(), e.getValue()));
+                }
+            }
+            logger.info("[EvolutionController][api/getTermConditions] get term conditions completed successfully");
+            return res;
+        } catch (Exception err) {
+            logger.error(String.format("[EvolutionController][api/getTermConditions] get term conditions failed: %s", err));
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    String.format("get term conditions failed"),
                     err
             );
         }

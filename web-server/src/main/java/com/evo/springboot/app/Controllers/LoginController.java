@@ -1,10 +1,12 @@
 package com.evo.springboot.app.Controllers;
 
+import com.evo.springboot.app.DTO.Outgoing.NewPasswordDTO;
 import com.evo.springboot.bl.BusinessLogic;
 import com.evo.springboot.app.DTO.Incoming.CredentialsDTO;
 import com.evo.springboot.app.DTO.Outgoing.GenericResponseDTO;
 import com.evo.springboot.app.Services.AuthService;
 import com.evo.springboot.app.Services.RequestContext;
+import com.evo.springboot.db.Entities.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -174,6 +176,38 @@ public class LoginController {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
                     String.format("do keepAlive failed"),
+                    err
+            );
+        }
+    }
+
+    @ApiOperation(value = "", nickname = "generatePasswordForUser")
+    @PostMapping(value = "generatePasswordForUser")
+    public @ResponseBody NewPasswordDTO generatePasswordForUser(@RequestParam String emailUser) {
+        try {
+            logger.info("[SettingsController][api/generatePasswordForEmp] received generate password for user");
+            String newPassword = businessLogic.generatePasswordForUser();
+            User user = businessLogic.changePassword(emailUser, newPassword);
+            boolean isPasswordChanged = user == null ? false : true;
+            String message;
+            if(!isPasswordChanged) {
+                newPassword = "***";
+                message =  String.format("received generate password for user email %s  failed.", emailUser);
+            }
+            else {
+                message = String.format("received generate password for user email '%s' completed successfully.", emailUser);
+            }
+            logger.info("[SettingsController][api/generatePasswordForEmp] received generate password for user");
+            return new NewPasswordDTO(
+                    message,
+                    isPasswordChanged,
+                    newPassword);
+
+        } catch (Exception err) {
+            logger.error("[SettingsController][api/generatePasswordForEmp] generate password for user failed");
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    String.format("generate password for user email %s failed", emailUser),
                     err
             );
         }

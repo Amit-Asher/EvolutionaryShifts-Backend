@@ -2,6 +2,7 @@ package Algorithm;
 
 
 import Arrangement.Arrangement;
+import org.json.JSONObject;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 import org.uncommons.watchmaker.framework.SelectionStrategy;
 import org.uncommons.watchmaker.framework.TerminationCondition;
@@ -9,6 +10,7 @@ import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AlgorithmConfig
 {
@@ -20,6 +22,16 @@ public class AlgorithmConfig
     private final List<TerminationCondition> terminationConditions;
     private final int populationSize;
     private final int elitism;
+
+    private Map<String, Map<String, String>> MapTM = null;
+
+    public Map<String, Map<String, String>> getMapTM() {
+        return MapTM;
+    }
+
+    public void setMapTM(Map<String, Map<String, String>> mapTM) {
+        this.MapTM = mapTM;
+    }
 
     public AlgorithmConfig(List<EvolutionaryOperator<Arrangement>> mutations,
                            AbstractCrossover<Arrangement> crossover,
@@ -58,4 +70,7 @@ public class AlgorithmConfig
     public int getElitism() {
         return elitism;
     }
+
+
+
 }

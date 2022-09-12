@@ -5,6 +5,7 @@ import Arrangement.ArrangementManager;
 import Arrangement.ArrangementProperties;
 import Arrangement.ArrangementStatus;
 import Model.Employee.Employee;
+import org.uncommons.watchmaker.framework.TerminationCondition;
 
 import java.util.*;
 
@@ -104,5 +105,12 @@ public class Company
         }
 
         this.m_ArrangementManager = new ArrangementManager();
+    }
+
+    public Map<String, Map<String, String>> getMapTM() {
+        if(m_ArrangementManager == null)
+            return null;
+        else
+            return m_ArrangementManager.getMapTM();
     }
 }

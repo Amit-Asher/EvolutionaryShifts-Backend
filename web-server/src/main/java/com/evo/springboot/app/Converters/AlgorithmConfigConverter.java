@@ -8,6 +8,7 @@ import TermConds.TermCondFactory;
 import com.evo.springboot.app.DTO.Incoming.AlgorithmConfigDTO;
 import com.evo.springboot.app.ToRefactor.MutationFactory;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
@@ -16,13 +17,18 @@ import org.uncommons.watchmaker.framework.TerminationCondition;
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AlgorithmConfigConverter {
 
     @Autowired
     MutationFactory mutationFactory;
+
+    private Map<String, Map<String, String>> mapTM = new HashMap<>();
+
 
     public AlgorithmConfig convert(AlgorithmConfigDTO algorithmConfigDTO) throws JSONException {
 
@@ -49,12 +55,25 @@ public class AlgorithmConfigConverter {
         );
 
         List<TerminationCondition> terminationConditions = new ArrayList<>();
+
+
         algorithmConfigDTO.getTerminationCondition().forEach(termCond -> {
             try {
                 terminationConditions.add(TermCondFactory.createTerminationCondition(
                         termCond.getType(),
                         termCond.getParams()
                 ));
+
+                Map<String, String > params = new HashMap<>();
+                JSONObject jsonObject = termCond.getParams();
+
+                if(jsonObject != null) {
+                    for (int i = 0; i < jsonObject.names().length(); i++) {
+                        params.put(jsonObject.names().getString(i), jsonObject.get(jsonObject.names().getString(i)).toString());
+                    }
+                }
+                mapTM.put(termCond.getType(), params);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -71,6 +90,8 @@ public class AlgorithmConfigConverter {
                 populationSize,
                 elitism
         );
+
+        algorithmConfig.setMapTM(mapTM);
 
         return algorithmConfig;
     }

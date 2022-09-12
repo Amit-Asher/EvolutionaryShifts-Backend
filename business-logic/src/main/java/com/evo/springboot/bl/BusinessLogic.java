@@ -35,6 +35,7 @@ public class BusinessLogic {
     // TODO: REPLACE THIS LOGIC WITH AUTHENTICATION
     public static String staticCompName = "Apple";
 
+    //need to delete
     public static String generatePassword(){
         Integer password = 0;
         Random random = new Random();
@@ -56,12 +57,18 @@ public class BusinessLogic {
         company.updateDataForEmp(employeeID, typeData, data);
     }
 
-    //method only for manager!!!
-    public String generatePasswordForEmp(String compName, String employeeID){
-        Company company = name2Company.get(compName);
-        String newPassword = generatePassword();
-        company.updateDataForEmp(employeeID, "PASSWORD", newPassword);
-        return  newPassword;
+
+    public String generatePasswordForUser(){
+        Integer password = 0;
+        Random random = new Random();
+
+        for(int i = 1;i <= 6;i++)
+        {
+            password*=10;
+            password+=random.nextInt(10);
+        }
+
+        return password.toString();
     }
 
     public void doSignup(String userEmail, String password) {
@@ -82,18 +89,18 @@ public class BusinessLogic {
         }
     }
 
-    public boolean changePassword(String userEmail, String newPassword)
+    public User changePassword(String userEmail, String newPassword)
     {
         User user = userRepo.findUserByUserEmail(userEmail);
 
         if (user == null) {
-            return false;
+            return null;
         }
 
         user.setUserPassword(newPassword);
         userRepo.save(user);
 
-        return  false;
+        return  user;
     }
 
     public boolean doLogin(String username, String password) {
@@ -236,6 +243,11 @@ public class BusinessLogic {
         schemaFamilies.add(SchemaFactory.getSchemas(SchemaFactory.SchemaType.SELECTIONS));
         schemaFamilies.add(SchemaFactory.getSchemas(SchemaFactory.SchemaType.TERM_CONDS));
         return schemaFamilies;
+    }
+
+    public Map<String, Map<String, String>> getMapTM(String compName){
+        Company company = name2Company.get(compName);
+        return company.getMapTM();
     }
 
     public void startAlgorithm(String compName, AlgorithmConfig algorithmConfig) {

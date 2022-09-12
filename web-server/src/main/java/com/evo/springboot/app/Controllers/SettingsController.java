@@ -117,32 +117,5 @@ public class SettingsController {
         }
     }
 
-    @ApiOperation(value = "", nickname = "generatePasswordForEmp")
-    @PostMapping(value = "generatePasswordForEmp")
-    public @ResponseBody NewPasswordDTO generatePasswordForEmp(@RequestParam String employeeID) {
-        String empName = businessLogic.getAllEmployees(BusinessLogic.staticCompName).stream()
-                .filter(employee -> employee.getID().equals(employeeID)).findFirst().get().getFullName();
-        try {
-            logger.info("[SettingsController][api/generatePasswordForEmp] received generate password for employee");
-            String newPassword = businessLogic.generatePasswordForEmp(BusinessLogic.staticCompName, employeeID);
 
-            UsersRepository usersRepository = UsersRepository.getInstance();
-//            usersRepository.changePassword(empName, newPassword);
-            businessLogic.changePassword(empName, newPassword);
-
-            logger.info("[SettingsController][api/generatePasswordForEmp] received generate password for employee");
-            return new NewPasswordDTO(
-                    String.format("received generate password for employee '%s' completed successfully.", empName),
-                    true,
-                    newPassword);
-
-        } catch (Exception err) {
-            logger.error("[SettingsController][api/generatePasswordForEmp] ugenerate password for employee failed");
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST,
-                    String.format("generate password for employee  '%s' failed", empName),
-                    err
-            );
-        }
-    }
 }
