@@ -22,6 +22,7 @@ public class UserServiceInterceptor implements HandlerInterceptor {
         add("/docs");
         add("/dev/loadCompanyDb"); // for development only
         add("/dev/loadArrangement");  // for development only
+        add("/api/generatePasswordForUser");
     }};
 
     @Override

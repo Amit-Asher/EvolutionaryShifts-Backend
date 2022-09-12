@@ -35,6 +35,12 @@ public class ArrangementManager
     private Arrangement solution;
     private Thread evolutionWorker;
 
+    private Map<String, Map<String, String>> mapTM = null;
+
+    public Map<String, Map<String, String>> getMapTM() {
+        return mapTM;
+    }
+
     public boolean isEvolutionWorkerAlive() {
         try {
             return evolutionWorker.isAlive();
@@ -175,6 +181,8 @@ public class ArrangementManager
                     populationData.getBestCandidateFitness(),
                     populationData.getElapsedTime());
         });
+
+        this.mapTM = algorithmConfig.getMapTM();
 
         this.evolutionWorker = new Thread(() ->{
             //the last parmeter passing is some kind of hack to be able to pass arrylist to vararg cause teminateCondition is ... type parameter
