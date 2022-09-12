@@ -87,6 +87,9 @@ public class PropertiesConverter {
     }
     public PropertiesDTO convert(ArrangementProperties arrangementProperties) {
         PropertiesDTO propertiesDTO = new PropertiesDTO();
+        if (arrangementProperties == null) {
+            return propertiesDTO;
+        }
 
         // build activeEmployeesIds
         List<String> activeEmployeesIds = arrangementProperties
