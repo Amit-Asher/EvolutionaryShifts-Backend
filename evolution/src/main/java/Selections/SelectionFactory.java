@@ -14,7 +14,7 @@ public class SelectionFactory {
     private class SelectionTypes {
         public final static String TournamentSelection = "TournamentSelection";
         public final static String TruncationSelection = "TruncationSelection";
-        public final static String RankSelection = "StochasticUniversalSampling";
+        public final static String RankSelection = "RankSelection";
     }
 
     public static SelectionStrategy<? super Arrangement> createSelection(String _selectiontype, JSONObject params) throws JSONException {
