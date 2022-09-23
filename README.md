@@ -20,6 +20,15 @@ The project is maven based.
 Frontend will be based on react & typescript
 
 
+Backend technology:
+* Java
+* Maven
+* Spring boot
+* JPA/Hibernate
+* Open API (swagger)
+* Watchmaker framework
+* PostgreSQL
+* JWT
 
 
 
